@@ -4,13 +4,158 @@
   
   
   <entry>
-    <title>Hello World</title>
-    <link href="/2022/04/11/hello-world/"/>
-    <url>/2022/04/11/hello-world/</url>
+    <title>计算机网络-url</title>
+    <link href="/2022/05/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-url/"/>
+    <url>/2022/05/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-url/</url>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="三次握手-x2F-四次挥手"><a href="#三次握手-x2F-四次挥手" class="headerlink" title="三次握手&#x2F;四次挥手"></a>三次握手&#x2F;四次挥手</h1><h2 id="TCP的三次握手四次挥手理解及面试题"><a href="#TCP的三次握手四次挥手理解及面试题" class="headerlink" title="TCP的三次握手四次挥手理解及面试题"></a><a href="https://www.cnblogs.com/xp1315458571/articles/11361140.html">TCP的三次握手四次挥手理解及面试题</a></h2><h2 id="三次握手-x2F-四次挥手中的丢失情况及处理机制"><a href="#三次握手-x2F-四次挥手中的丢失情况及处理机制" class="headerlink" title="三次握手&#x2F;四次挥手中的丢失情况及处理机制"></a><a href="https://blog.51cto.com/u_14888059/3812405#:~:text=%E7%AC%AC%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%A2%E5%A4%B1%E4%BA%86%EF%BC%8C%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%EF%BC%9F%20%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%94%B6%E5%88%B0%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%20SYN-ACK%20%E6%8A%A5%E6%96%87%E5%90%8E%EF%BC%8C%E5%B0%B1%E4%BC%9A%E7%BB%99%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%9B%9E%E4%B8%80%E4%B8%AA,ACK%20%E6%8A%A5%E6%96%87%EF%BC%8C%E4%B9%9F%E5%B0%B1%E6%98%AF%E7%AC%AC%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%EF%BC%8C%E6%AD%A4%E6%97%B6%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%8A%B6%E6%80%81%E8%BF%9B%E5%85%A5%E5%88%B0%20ESTABLISH%20%E7%8A%B6%E6%80%81%E3%80%82">三次握手&#x2F;四次挥手中的丢失情况及处理机制</a></h2><h1 id="滑窗-x2F-流控-x2F-拥塞"><a href="#滑窗-x2F-流控-x2F-拥塞" class="headerlink" title="滑窗&#x2F;流控&#x2F;拥塞"></a>滑窗&#x2F;流控&#x2F;拥塞</h1><h2 id="关于TCP乱序和重传的问题"><a href="#关于TCP乱序和重传的问题" class="headerlink" title="关于TCP乱序和重传的问题"></a><a href="https://blog.csdn.net/cws1214/article/details/52430554">关于TCP乱序和重传的问题</a></h2><h2 id="HTTP-与TCP中Keep-Alive机制的区别"><a href="#HTTP-与TCP中Keep-Alive机制的区别" class="headerlink" title="HTTP 与TCP中Keep-Alive机制的区别"></a><a href="https://cloud.tencent.com/developer/article/1430022">HTTP 与TCP中Keep-Alive机制的区别</a></h2><h2 id="HTTP-keep-alive和TCP-keepalive的区别"><a href="#HTTP-keep-alive和TCP-keepalive的区别" class="headerlink" title="HTTP keep-alive和TCP keepalive的区别"></a><a href="https://zhuanlan.zhihu.com/p/224595048">HTTP keep-alive和TCP keepalive的区别</a></h2><h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><h2 id="HTTP-x2F-2协议“多路复用”实现原理"><a href="#HTTP-x2F-2协议“多路复用”实现原理" class="headerlink" title="HTTP&#x2F;2协议“多路复用”实现原理"></a><a href="https://segmentfault.com/a/1190000016975064">HTTP&#x2F;2协议“多路复用”实现原理</a></h2><h2 id="Http发展历程-多路复用"><a href="#Http发展历程-多路复用" class="headerlink" title="Http发展历程-多路复用"></a><a href="https://juejin.cn/post/6844903935648497678">Http发展历程-多路复用</a></h2><h2 id="WebSocket-是什么原理？为什么可以实现持久连接？"><a href="#WebSocket-是什么原理？为什么可以实现持久连接？" class="headerlink" title="WebSocket 是什么原理？为什么可以实现持久连接？"></a><a href="https://www.zhihu.com/question/20215561">WebSocket 是什么原理？为什么可以实现持久连接？</a></h2><h2 id="POST-PUT和PATCH的区别"><a href="#POST-PUT和PATCH的区别" class="headerlink" title="POST,PUT和PATCH的区别"></a><a href="https://www.jianshu.com/p/bee85cf4e33a">POST,PUT和PATCH的区别</a></h2>]]></content>
     
     
+    <categories>
+      
+      <category>计算机网络</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Redis-url</title>
+    <link href="/2022/05/07/Redis-url/"/>
+    <url>/2022/05/07/Redis-url/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Redis面试题-笔经面经-牛客网"><a href="#Redis面试题-笔经面经-牛客网" class="headerlink" title="Redis面试题_笔经面经_牛客网"></a><a href="https://www.nowcoder.com/discuss/837063?type=post&order=recall&pos=&page=1&ncTraceId=&channel=-1&source_id=search_post_nctrack&subType=2&gio_id=8EE8A0C4A6BA130B861D79D1B84FBF1F-1651208767878">Redis面试题_笔经面经_牛客网</a></h2><h2 id="Redis超高频面试题和参考答案汇总！-笔经面经-牛客网"><a href="#Redis超高频面试题和参考答案汇总！-笔经面经-牛客网" class="headerlink" title="Redis超高频面试题和参考答案汇总！_笔经面经_牛客网"></a><a href="https://www.nowcoder.com/discuss/941154?type=post&order=recall&pos=&page=1&ncTraceId=&channel=-1&source_id=search_post_nctrack&subType=2&gio_id=8EE8A0C4A6BA130B861D79D1B84FBF1F-1651208767878">Redis超高频面试题和参考答案汇总！_笔经面经_牛客网</a></h2><h2 id="最全面的Redis缓存雪崩、击穿、穿透问题解决方案"><a href="#最全面的Redis缓存雪崩、击穿、穿透问题解决方案" class="headerlink" title="最全面的Redis缓存雪崩、击穿、穿透问题解决方案"></a><a href="https://segmentfault.com/a/1190000039300423">最全面的Redis缓存雪崩、击穿、穿透问题解决方案</a></h2><h2 id="Redis的缓存雪崩、缓存击穿、缓存穿透与缓存预热、缓存降级"><a href="#Redis的缓存雪崩、缓存击穿、缓存穿透与缓存预热、缓存降级" class="headerlink" title="Redis的缓存雪崩、缓存击穿、缓存穿透与缓存预热、缓存降级"></a><a href="https://blog.csdn.net/a745233700/article/details/88088669">Redis的缓存雪崩、缓存击穿、缓存穿透与缓存预热、缓存降级</a></h2><h2 id="Redis-主从、哨兵和集群-区别"><a href="#Redis-主从、哨兵和集群-区别" class="headerlink" title="Redis 主从、哨兵和集群 区别"></a><a href="https://blog.csdn.net/u014527619/article/details/88232178">Redis 主从、哨兵和集群 区别</a></h2><h2 id="Memcached与Redis有什么区别"><a href="#Memcached与Redis有什么区别" class="headerlink" title="Memcached与Redis有什么区别"></a><a href="https://segmentfault.com/a/1190000023217491">Memcached与Redis有什么区别</a></h2>]]></content>
+    
+    
+    <categories>
+      
+      <category>Redis</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Mysql-url</title>
+    <link href="/2022/05/07/Mysql-url/"/>
+    <url>/2022/05/07/Mysql-url/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Mysql索引"><a href="#Mysql索引" class="headerlink" title="Mysql索引"></a>Mysql索引</h1><h2 id="MySQL超高频面试题汇总！-笔经面经-牛客网"><a href="#MySQL超高频面试题汇总！-笔经面经-牛客网" class="headerlink" title="MySQL超高频面试题汇总！_笔经面经_牛客网"></a><a href="https://www.nowcoder.com/discuss/922991?type=post&order=jing&pos=&page=0&ncTraceId=&channel=-1&source_id=search_post_nctrack&gio_id=8EE8A0C4A6BA130B861D79D1B84FBF1F-1650335022589">MySQL超高频面试题汇总！_笔经面经_牛客网</a></h2><h2 id="B-树，B树，聚集索引，非聚集索引"><a href="#B-树，B树，聚集索引，非聚集索引" class="headerlink" title="B+树，B树，聚集索引，非聚集索引"></a><a href="https://blog.csdn.net/weixin_30565199/article/details/95851132">B+树，B树，聚集索引，非聚集索引</a></h2><h2 id="MySQL为什么用B-树存储索引？"><a href="#MySQL为什么用B-树存储索引？" class="headerlink" title="MySQL为什么用B+树存储索引？"></a><a href="https://blog.csdn.net/dl674756321/article/details/102987984">MySQL为什么用B+树存储索引？</a></h2><h2 id="高度为3的B-树能存多少行数据"><a href="#高度为3的B-树能存多少行数据" class="headerlink" title="高度为3的B+树能存多少行数据?"></a><a href="https://www.1024sou.com/article/40.html">高度为3的B+树能存多少行数据?</a></h2><h1 id="模糊查询与联合索引"><a href="#模糊查询与联合索引" class="headerlink" title="模糊查询与联合索引"></a>模糊查询与联合索引</h1><h2 id="LIKE-模糊查询概述"><a href="#LIKE-模糊查询概述" class="headerlink" title="LIKE%模糊查询概述"></a><a href="https://blog.csdn.net/weixin_34081595/article/details/93658047?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1.pc_relevant_default&utm_relevant_index=2">LIKE%模糊查询概述</a></h2><h2 id="LIKE-开头的模糊查询的解决方法"><a href="#LIKE-开头的模糊查询的解决方法" class="headerlink" title="LIKE%开头的模糊查询的解决方法"></a><a href="https://blog.csdn.net/qq_42539533/article/details/93137526?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1.pc_relevant_paycolumn_v3&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1.pc_relevant_paycolumn_v3&utm_relevant_index=2">LIKE%开头的模糊查询的解决方法</a></h2><h2 id="联合索引在B-树上的存储结构及数据查找方式"><a href="#联合索引在B-树上的存储结构及数据查找方式" class="headerlink" title="联合索引在B+树上的存储结构及数据查找方式"></a><a href="https://www.cnblogs.com/ibigboy/p/12373978.html">联合索引在B+树上的存储结构及数据查找方式</a></h2><h2 id="索引最左前缀匹配原则"><a href="#索引最左前缀匹配原则" class="headerlink" title="索引最左前缀匹配原则"></a><a href="https://blog.csdn.net/yuanchangliang/article/details/107798724">索引最左前缀匹配原则</a></h2><h1 id="事务与MVCC机制"><a href="#事务与MVCC机制" class="headerlink" title="事务与MVCC机制"></a>事务与MVCC机制</h1><h2 id="MySql解决幻读-x2F-不可重复读以及MVCC机制"><a href="#MySql解决幻读-x2F-不可重复读以及MVCC机制" class="headerlink" title="MySql解决幻读&#x2F;不可重复读以及MVCC机制"></a><a href="https://blog.csdn.net/qq_42799615/article/details/110942949">MySql解决幻读&#x2F;不可重复读以及MVCC机制</a></h2><h2 id="MySQL-如何解决幻读（MVCC-原理分析）"><a href="#MySQL-如何解决幻读（MVCC-原理分析）" class="headerlink" title="MySQL 如何解决幻读（MVCC 原理分析）"></a><a href="https://juejin.cn/post/7056583607929798692">MySQL 如何解决幻读（MVCC 原理分析）</a></h2><h2 id="从ReadView深入理解MySql-MVCC原理"><a href="#从ReadView深入理解MySql-MVCC原理" class="headerlink" title="从ReadView深入理解MySql MVCC原理"></a><a href="https://blog.csdn.net/qq_42651904/article/details/110622818">从ReadView深入理解MySql MVCC原理</a></h2><h2 id="MySQL间隙锁、Next-Key-Lock主要知识点"><a href="#MySQL间隙锁、Next-Key-Lock主要知识点" class="headerlink" title="MySQL间隙锁、Next-Key Lock主要知识点"></a><a href="https://www.jianshu.com/p/d5c2613cbb81">MySQL间隙锁、Next-Key Lock主要知识点</a></h2><h1 id="Innodb"><a href="#Innodb" class="headerlink" title="Innodb"></a>Innodb</h1><h2 id="MyISAM与InnoDB-的区别（9个不同点）"><a href="#MyISAM与InnoDB-的区别（9个不同点）" class="headerlink" title="MyISAM与InnoDB 的区别（9个不同点）"></a><a href="https://blog.csdn.net/qq_35642036/article/details/82820178">MyISAM与InnoDB 的区别（9个不同点）</a></h2><h2 id="Innodb-Purge简介"><a href="#Innodb-Purge简介" class="headerlink" title="Innodb Purge简介"></a><a href="https://juejin.cn/post/6844903686393561096">Innodb Purge简介</a></h2><h1 id="HBase"><a href="#HBase" class="headerlink" title="HBase"></a>HBase</h1><h2 id="我终于看懂了HBase"><a href="#我终于看懂了HBase" class="headerlink" title="我终于看懂了HBase"></a><a href="https://zhuanlan.zhihu.com/p/145551967">我终于看懂了HBase</a></h2><h2 id="入门HBase，看这一篇就够了"><a href="#入门HBase，看这一篇就够了" class="headerlink" title="入门HBase，看这一篇就够了"></a><a href="https://www.jianshu.com/p/b23800d9b227">入门HBase，看这一篇就够了</a></h2>]]></content>
+    
+    
+    <categories>
+      
+      <category>Mysql</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>C++-url</title>
+    <link href="/2022/05/07/C++-url/"/>
+    <url>/2022/05/07/C++-url/</url>
+    
+    <content type="html"><![CDATA[<h1 id="C-基础"><a href="#C-基础" class="headerlink" title="C++基础"></a>C++基础</h1><h2 id="C-多态与虚函数"><a href="#C-多态与虚函数" class="headerlink" title="C++多态与虚函数"></a><a href="http://c.biancheng.net/cplus/polymorphism/">C++多态与虚函数</a></h2><h1 id="C-高级特性"><a href="#C-高级特性" class="headerlink" title="C++高级特性"></a>C++高级特性</h1><h2 id="智能指针详解-博客园"><a href="#智能指针详解-博客园" class="headerlink" title="智能指针详解-博客园"></a><a href="https://www.cnblogs.com/linuxandmcu/p/10409723.html">智能指针详解-博客园</a></h2><h2 id="C-11右值引用"><a href="#C-11右值引用" class="headerlink" title="C++11右值引用"></a><a href="http://c.biancheng.net/view/7829.html">C++11右值引用</a></h2><h2 id="右值引用-amp-转移语义-amp-完美转发"><a href="#右值引用-amp-转移语义-amp-完美转发" class="headerlink" title="右值引用 &amp; 转移语义 &amp; 完美转发"></a><a href="https://www.irimsky.top/archives/296/">右值引用 &amp; 转移语义 &amp; 完美转发</a></h2><h1 id="STL原理"><a href="#STL原理" class="headerlink" title="STL原理"></a>STL原理</h1><h2 id="deque容器底层实现原理（深度剖析）"><a href="#deque容器底层实现原理（深度剖析）" class="headerlink" title="deque容器底层实现原理（深度剖析）"></a><a href="http://c.biancheng.net/view/6908.html">deque容器底层实现原理（深度剖析）</a></h2>]]></content>
+    
+    
+    <categories>
+      
+      <category>C++</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Linux-url</title>
+    <link href="/2022/05/07/Linux-url/"/>
+    <url>/2022/05/07/Linux-url/</url>
+    
+    <content type="html"><![CDATA[<p>[TOC]</p><h1 id="Linux项目"><a href="#Linux项目" class="headerlink" title="Linux项目"></a>Linux项目</h1><h2 id="WebServer项目概述-ZWiley的随记"><a href="#WebServer项目概述-ZWiley的随记" class="headerlink" title="WebServer项目概述 - ZWiley的随记"></a><a href="https://zwiley.github.io/mybook/webserver/0%20%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0/">WebServer项目概述 - ZWiley的随记</a></h2><h2 id="WebServer服务器项目可能会被问到的问题（一）"><a href="#WebServer服务器项目可能会被问到的问题（一）" class="headerlink" title="WebServer服务器项目可能会被问到的问题（一）"></a><a href="https://www.nowcoder.com/discuss/934904">WebServer服务器项目可能会被问到的问题（一）</a></h2><h2 id="WebServer服务器项目可能会被问到的问题（二）"><a href="#WebServer服务器项目可能会被问到的问题（二）" class="headerlink" title="WebServer服务器项目可能会被问到的问题（二）"></a><a href="https://www.nowcoder.com/discuss/939267?channel=-1&source_id=profile_follow_post_nctrack">WebServer服务器项目可能会被问到的问题（二）</a></h2><h2 id="WebServer服务器项目可能会被问到的问题-三-完结"><a href="#WebServer服务器项目可能会被问到的问题-三-完结" class="headerlink" title="WebServer服务器项目可能会被问到的问题(三)完结"></a><a href="https://www.nowcoder.com/discuss/945403?channel=-1&source_id=profile_follow_post_nctrack">WebServer服务器项目可能会被问到的问题(三)完结</a></h2><h2 id="Linux高性能服务器编程-游双-著-机械工业出版社-豆瓣阅读"><a href="#Linux高性能服务器编程-游双-著-机械工业出版社-豆瓣阅读" class="headerlink" title="Linux高性能服务器编程 - 游双 著 机械工业出版社 | 豆瓣阅读"></a><a href="https://read.douban.com/reader/ebook/15233070/?dcs=bookshelf">Linux高性能服务器编程 - 游双 著 机械工业出版社 | 豆瓣阅读</a></h2><h2 id="qinguoyi-x2F-TinyWebServer-Linux下C-轻量级Web服务器"><a href="#qinguoyi-x2F-TinyWebServer-Linux下C-轻量级Web服务器" class="headerlink" title="qinguoyi&#x2F;TinyWebServer: Linux下C++轻量级Web服务器"></a><a href="https://github.com/qinguoyi/TinyWebServer">qinguoyi&#x2F;TinyWebServer: Linux下C++轻量级Web服务器</a></h2><h2 id="彻底搞懂Reactor模型和Proactor模型-云-社区-腾讯云"><a href="#彻底搞懂Reactor模型和Proactor模型-云-社区-腾讯云" class="headerlink" title="彻底搞懂Reactor模型和Proactor模型 - 云+社区 - 腾讯云"></a><a href="https://cloud.tencent.com/developer/article/1488120">彻底搞懂Reactor模型和Proactor模型 - 云+社区 - 腾讯云</a></h2><h1 id="Linux基础"><a href="#Linux基础" class="headerlink" title="Linux基础"></a>Linux基础</h1><h2 id="虚拟地址空间、用户空间、内核空间、用户态与内核态-掘金"><a href="#虚拟地址空间、用户空间、内核空间、用户态与内核态-掘金" class="headerlink" title="虚拟地址空间、用户空间、内核空间、用户态与内核态 - 掘金"></a><a href="https://juejin.cn/post/6990237426903957540">虚拟地址空间、用户空间、内核空间、用户态与内核态 - 掘金</a></h2><h2 id="socket阻塞和非阻塞有哪些影响-CSDN"><a href="#socket阻塞和非阻塞有哪些影响-CSDN" class="headerlink" title="socket阻塞和非阻塞有哪些影响-CSDN"></a><a href="https://blog.csdn.net/mayue_web/article/details/82873115">socket阻塞和非阻塞有哪些影响-CSDN</a></h2><h2 id="句柄和文件描述符-简书"><a href="#句柄和文件描述符-简书" class="headerlink" title="句柄和文件描述符-简书"></a><a href="https://www.jianshu.com/p/0ff9ff1d108e">句柄和文件描述符-简书</a></h2><h2 id="Linux文件存储结构，包括目录项、inode、数据块-C语言中文网"><a href="#Linux文件存储结构，包括目录项、inode、数据块-C语言中文网" class="headerlink" title="Linux文件存储结构，包括目录项、inode、数据块-C语言中文网"></a><a href="http://c.biancheng.net/cpp/html/2780.html">Linux文件存储结构，包括目录项、inode、数据块-C语言中文网</a></h2><h1 id="Linux命令"><a href="#Linux命令" class="headerlink" title="Linux命令"></a>Linux命令</h1><h2 id="Linux命令与shell-菜鸟教程"><a href="#Linux命令与shell-菜鸟教程" class="headerlink" title="Linux命令与shell- 菜鸟教程"></a><a href="https://www.runoob.com/linux/linux-command-manual.html">Linux命令与shell- 菜鸟教程</a></h2><h2 id="Linux命令大全教程"><a href="#Linux命令大全教程" class="headerlink" title="Linux命令大全教程"></a><a href="https://www.yiibai.com/linux/lsof.html">Linux命令大全教程</a></h2><h2 id="shell脚本指南"><a href="#shell脚本指南" class="headerlink" title="shell脚本指南"></a><a href="http://c.biancheng.net/view/706.html">shell脚本指南</a></h2><h2 id="linux的top命令参数详解-博客园"><a href="#linux的top命令参数详解-博客园" class="headerlink" title="linux的top命令参数详解-博客园"></a><a href="https://www.cnblogs.com/ggjucheng/archive/2012/01/08/2316399.html">linux的top命令参数详解-博客园</a></h2>]]></content>
+    
+    
+    <categories>
+      
+      <category>Linux</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>校招面经-url</title>
+    <link href="/2022/05/07/%E6%A0%A1%E6%8B%9B%E9%9D%A2%E7%BB%8F-url/"/>
+    <url>/2022/05/07/%E6%A0%A1%E6%8B%9B%E9%9D%A2%E7%BB%8F-url/</url>
+    
+    <content type="html"><![CDATA[<h1 id="海量数据处理"><a href="#海量数据处理" class="headerlink" title="海量数据处理"></a>海量数据处理</h1><h2 id="十道海量数据处理面试题与十个方法大总结"><a href="#十道海量数据处理面试题与十个方法大总结" class="headerlink" title="十道海量数据处理面试题与十个方法大总结"></a><a href="https://blog.csdn.net/v_JULY_v/article/details/6279498?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1.pc_relevant_default&utm_relevant_index=1">十道海量数据处理面试题与十个方法大总结</a></h2><h2 id="面试题：从n个数中找出第K大的数"><a href="#面试题：从n个数中找出第K大的数" class="headerlink" title="面试题：从n个数中找出第K大的数"></a><a href="https://blog.csdn.net/orangefly0214/article/details/86527462">面试题：从n个数中找出第K大的数</a></h2><h1 id="智力题"><a href="#智力题" class="headerlink" title="智力题"></a>智力题</h1><h2 id="互联网大厂最爱问的智力题总结（带详细答案）"><a href="#互联网大厂最爱问的智力题总结（带详细答案）" class="headerlink" title="互联网大厂最爱问的智力题总结（带详细答案）"></a><a href="https://www.nowcoder.com/discuss/754712?type=1&channel=-1&source_id=discuss_terminal_discuss_hot_nctrack">互联网大厂最爱问的智力题总结（带详细答案）</a></h2><h1 id="常见排序方法实现"><a href="#常见排序方法实现" class="headerlink" title="常见排序方法实现"></a>常见排序方法实现</h1><h2 id="创建堆，堆排序的详细实现过程，C-完整代码"><a href="#创建堆，堆排序的详细实现过程，C-完整代码" class="headerlink" title="创建堆，堆排序的详细实现过程，C++完整代码"></a><a href="https://blog.csdn.net/ahfytao/article/details/47681221">创建堆，堆排序的详细实现过程，C++完整代码</a></h2><h2 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a><a href="https://www.cnblogs.com/bigsai/p/13396391.html">桶排序</a></h2>]]></content>
+    
+    
+    <categories>
+      
+      <category>校招面经</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>大厂笔试参考资料-url</title>
+    <link href="/2022/05/07/%E5%A4%A7%E5%8E%82%E7%AC%94%E8%AF%95%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99-url/"/>
+    <url>/2022/05/07/%E5%A4%A7%E5%8E%82%E7%AC%94%E8%AF%95%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99-url/</url>
+    
+    <content type="html"><![CDATA[<h1 id="ACM输入输出"><a href="#ACM输入输出" class="headerlink" title="ACM输入输出"></a>ACM输入输出</h1><h2 id="ACM输入方式-C-代码先锋网"><a href="#ACM输入方式-C-代码先锋网" class="headerlink" title="ACM输入方式-C++ - 代码先锋网"></a><a href="https://www.codeleading.com/article/50865910043/">ACM输入方式-C++ - 代码先锋网</a></h2><h2 id="C-使用stringstream与getline-分割字符串"><a href="#C-使用stringstream与getline-分割字符串" class="headerlink" title="C++使用stringstream与getline()分割字符串"></a><a href="https://blog.csdn.net/qq_36743440/article/details/91999615">C++使用stringstream与getline()分割字符串</a></h2><h2 id="C-中的cin以及stringstream"><a href="#C-中的cin以及stringstream" class="headerlink" title="C++中的cin以及stringstream"></a><a href="https://blog.csdn.net/flow_specter/article/details/116503515">C++中的cin以及stringstream</a></h2><h2 id="ACM模式数组构建二叉树"><a href="#ACM模式数组构建二叉树" class="headerlink" title="ACM模式数组构建二叉树"></a><a href="https://blog.csdn.net/m0_47240785/article/details/123406393">ACM模式数组构建二叉树</a></h2><h2 id="完全二叉树的顺序储存结构（C-完整代码）"><a href="#完全二叉树的顺序储存结构（C-完整代码）" class="headerlink" title="完全二叉树的顺序储存结构（C++完整代码）"></a><a href="https://blog.csdn.net/qq_52284035/article/details/118025460">完全二叉树的顺序储存结构（C++完整代码）</a></h2><h1 id="STL基础及模板"><a href="#STL基础及模板" class="headerlink" title="STL基础及模板"></a>STL基础及模板</h1><h2 id="C-STL标准库基础"><a href="#C-STL标准库基础" class="headerlink" title="C++ STL标准库基础"></a><a href="http://c.biancheng.net/stl/stl_basic/">C++ STL标准库基础</a></h2><h2 id="C-STL中Map的按Key排序和按Value排序"><a href="#C-STL中Map的按Key排序和按Value排序" class="headerlink" title="C++ STL中Map的按Key排序和按Value排序"></a><a href="https://blog.csdn.net/iicy266/article/details/11906189">C++ STL中Map的按Key排序和按Value排序</a></h2><h2 id="优先队列详解-ACM例题分析"><a href="#优先队列详解-ACM例题分析" class="headerlink" title="优先队列详解+ACM例题分析"></a><a href="https://blog.csdn.net/qq_38492462/article/details/78631091">优先队列详解+ACM例题分析</a></h2><h2 id="大厂笔试题解"><a href="#大厂笔试题解" class="headerlink" title="大厂笔试题解"></a>大厂笔试题解</h2><h2 id="4-6-华为笔试题解-笔经面经-牛客网"><a href="#4-6-华为笔试题解-笔经面经-牛客网" class="headerlink" title="4.6 华为笔试题解_笔经面经_牛客网"></a><a href="https://www.nowcoder.com/discuss/924780">4.6 华为笔试题解_笔经面经_牛客网</a></h2><h2 id="腾讯2022实习生笔试情况与题解-笔经面经-牛客网"><a href="#腾讯2022实习生笔试情况与题解-笔经面经-牛客网" class="headerlink" title="腾讯2022实习生笔试情况与题解_笔经面经_牛客网"></a><a href="https://www.nowcoder.com/discuss/940859">腾讯2022实习生笔试情况与题解_笔经面经_牛客网</a></h2><h2 id="拓扑排序-知乎"><a href="#拓扑排序-知乎" class="headerlink" title="拓扑排序 - 知乎"></a><a href="https://zhuanlan.zhihu.com/p/135094687">拓扑排序 - 知乎</a></h2>]]></content>
+    
+    
+    <categories>
+      
+      <category>大厂笔试参考资料</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>文件描述符及三种拷贝命令</title>
+    <link href="/2022/05/06/%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E5%8F%8A%E4%B8%89%E7%A7%8D%E6%8B%B7%E8%B4%9D%E5%91%BD%E4%BB%A4/"/>
+    <url>/2022/05/06/%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E5%8F%8A%E4%B8%89%E7%A7%8D%E6%8B%B7%E8%B4%9D%E5%91%BD%E4%BB%A4/</url>
+    
+    <content type="html"><![CDATA[<p>[TOC]</p><h1 id="一-文件描述符概念"><a href="#一-文件描述符概念" class="headerlink" title="一. 文件描述符概念"></a>一. 文件描述符概念</h1><blockquote><p>文件描述符在形式上是一个非负整数。实际上，它是一个索引值，指向内核为每一个进程所维护的该进程打开文件的记录表。Linux 系统中，把一切都看做是文件，当进程打开现有文件或创建新文件时，内核向进程返回一个文件描述符，文件描述符就是内核为了高效管理已被打开的文件所创建的索引，用来指向被打开的文件，所有执行I&#x2F;O操作的系统调用都会通过文件描述符</p></blockquote><p><strong>关于文件描述符，Linux内核维护了3个数据结构</strong></p><ul><li>进程级的文件描述符表</li><li>系统级的打开文件描述符表</li><li>文件系统的i-node表</li></ul><p><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205062137792.png"><br><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205062137233.gif"></p><ul><li>在进程 A 中，文件描述符 1 和 20 都指向了同一个打开文件表项，标号为 23（指向了打开文件表中下标为 23 的数组元素），这可能是通过调用 dup()、dup2()、fcntl() 或者对同一个文件多次调用了 open() 函数形成的</li><li>进程 A 的文件描述符 2 和进程 B 的文件描述符 2 都指向了同一个文件，这可能是在调用 fork() 后出现的（即进程 A、B 是父子进程关系），或者是不同的进程独自去调用 open() 函数打开了同一个文件，此时进程内部的描述符正好分配到与其他进程打开该文件的描述符一样(概率很低)</li><li>进程 A 的描述符 0 和进程 B 的描述符 3 分别指向不同的打开文件表项，但这些表项均指向 i-node 表的同一个条目（标号为 1976）；换言之，它们指向了同一个文件。发生这种情况是因为每个进程各自对同一个文件发起了 open() 调用。同一个进程两次打开同一个文件，也会发生类似情况</li></ul><hr><h1 id="二-Linux文件和目录"><a href="#二-Linux文件和目录" class="headerlink" title="二. Linux文件和目录"></a>二. Linux文件和目录</h1><p>Linux文件是树形结构，inode是平坦结构，通过inode-&gt;i_mode字段，即S_ISREG、S_ISDIR两个宏判断是哪个类型。</p><ul><li><p>普通文件：<strong>inode</strong>里面存储元数据，inode索引到block，block存储数据</p></li><li><p>目录文件：inode索引到block，block中存储许多dirent目录条目，即名字到inode number的映射表<br><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205062138975.webp"></p></li></ul><p>目录文件的block区域如下：<br><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205062138621.webp"></p><p>内存的树形结构：</p><ul><li>dentry 绑定到唯一一个 inode 结构体；</li><li>dentry 有父，子，兄弟的索引路径，有这个就足够在内存中构建一个树了，并且事实也确实如此；</li></ul><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">dentry</span> &#123;</span><br>   <span class="hljs-comment">// ...</span><br>   <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">dentry</span>  *<span class="hljs-title">d_parent</span>;</span>   <span class="hljs-comment">/* 父节点 */</span><br>   <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">qstr</span>     <span class="hljs-title">d_name</span>;</span>      <span class="hljs-comment">// 名字</span><br>   <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">inode</span>   *<span class="hljs-title">d_inode</span>;</span>    <span class="hljs-comment">// inode 结构体</span><br><br>   <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">list_head</span> <span class="hljs-title">d_child</span>;</span>     <span class="hljs-comment">/* 兄弟节点 */</span><br>   <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">list_head</span> <span class="hljs-title">d_subdirs</span>;</span>   <span class="hljs-comment">/* 子节点 */</span> <br>&#125;;<br></code></pre></td></tr></table></figure><hr><h1 id="三-ln命令"><a href="#三-ln命令" class="headerlink" title="三. ln命令"></a>三. ln命令</h1><ul><li><p>软链接：软链接文件是一个全新的文件，有独立的 inode，有自己的 block ，内容是一段 path 路径，这个路径直接指向源文件；</p><p><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205062139893.webp"></p></li><li><p>硬链接：</p><blockquote><p>硬链接文件其实并没有新建文件（也就是说，没有消耗 inode 和 文件所需的 block 块）；</p><p>硬链接其实是修改了当前目录所在的目录文件，加了一个 dirent 而已，这个 dirent 用一个新的 name 名字指向原来的 inode number；</p><p>由于新旧两个 dirent 都是指向同一个 inode，那么就导致了一个限制：<strong>不能跨文件系统。因为，不同文件系统的 inode 管理都是独立的。</strong></p></blockquote></li></ul><p><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205062139421.webp"></p><p>总结：<strong>硬链接只增加了一个 dirent 项，只修改了目录文件而已。不涉及到 inode 数量的变化。新的 name 指向原来的 inode。</strong></p><hr><h1 id="四-mv命令"><a href="#四-mv命令" class="headerlink" title="四. mv命令"></a>四. mv命令</h1><ul><li>源文件和目标文件在同一文件系统下：</li></ul><blockquote><p>mv 命令的核心操作是系统调用 rename ，rename 从内核实现来说只涉及到元数据的操作，只涉及到 dirent 的增删；</p><p><strong>inode number 不变，inode 不变，不增不减，还是原来的 inode 结构体，所以数据完全没有拷贝。</strong></p></blockquote><br><ul><li>源文件和目标文件不在同一文件系统下：</li></ul><blockquote><p> 系统调用 rename 的时候，如果<strong>源</strong>和<strong>目的</strong>不在同一文件系统时，会报告 EXDEV 的错误码，提示该调用不能跨文件系统。</p></blockquote><p><strong>这个时候操作分成两步走，先 copy ，后 remove：</strong></p><ol><li><p>走不了 rename ，那么就退化成 copy ，也就是真正的拷贝。读取源文件，写入目标位置，生成一个全新的目标文件副本；</p><blockquote><p>这里调用的 copy_reg 的函数封装；</p><p>ln，mv，cp 是在 coreutils 库里的命令，公用函数本身就是可以复用的；</p></blockquote></li><li><p>删除源文件，使用 rm 函数删除；</p></li></ol><hr><h1 id="五-cp命令"><a href="#五-cp命令" class="headerlink" title="五. cp命令"></a>五. cp命令</h1><p><a href="https://juejin.cn/post/6939328247922425869">深度剖析 Linux cp 的秘密-博客</a></p><h1 id="六-总结"><a href="#六-总结" class="headerlink" title="六. 总结"></a>六. 总结</h1><ol><li>目录文件是一种特殊的文件，可以理解成存储的是 dirent 列表。dirent 只是名字到 inode 的映射，这个是树形结构的基础；</li><li>常说目录树在内存中确实是一个树的结构，每个节点由 dentry 结构体表示；</li><li>ln -s 创建软链接文件，软链接文件是一个独立的新文件，有一个新的 inode ，有新的 dentry，文件类型为 link，文件内容就是<strong>一条指向源的路径</strong>，所以<strong>软链的创建可以无视文件系统，跨越山河；</strong></li><li>ln 默认创建硬连接，硬链接文件只在目录文件里添加了一个新 dirent 项 (新name:原inode)，文件 inode 还是和原文件同一个，<strong>所以硬链接不能跨文件系统（因为不同的文件系统是独立的一套 inode 管理方式，不同的文件系统实例对 inode number 的解释各有不同）；</strong></li><li>ln 命令貌似创建出了新文件，但其实不然，ln 只跟元数据相关，涉及到 dirent  的变动，<strong>不涉及到数据的拷贝</strong>，起不到数据备份的目的；</li><li>mv 其实是调用 rename 调用，<strong>在同一个文件系统中不涉及到数据拷贝，只涉及到元数据变更</strong>（ dirent 的增删 ），所以速度也很快。但如果 mv 的源和目的<strong>在不同的文件系统，那么就会退化成真正的 copy ，会涉及到数据拷贝</strong>，这个时候速度相对慢一些，慢成什么样子？就跟 cp 命令一样；</li><li>cp 命令才是真正的数据拷贝命令，速度可能相对慢一些，但是 cp 命令有 –spare 可以优化拷贝速度，针对空洞和全 0 数据，可以跳过，从而<strong>针对稀疏文件可以节省大量磁盘 IO</strong>；</li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>Linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>sss</tag>
+      
+    </tags>
     
   </entry>
   
