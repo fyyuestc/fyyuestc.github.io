@@ -16,20 +16,20 @@
   <meta name="author" content="Fyy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="三次握手&#x2F;四次挥手TCP的三次握手四次挥手理解及面试题三次握手&#x2F;四次挥手中的丢失情况及处理机制滑窗&#x2F;流控&#x2F;拥塞关于TCP乱序和重传的问题HTTP 与TCP中Keep-Alive机制的区别HTTP keep-alive和TCP keepalive的区别HTTPHTTP&#x2F;2协议“多路复用”实现原理Http发展历程-多路复用WebSocket 是什么原理">
+    <meta name="description" content="面试分布式事务面试题分布式技术面试题.md 分布式面试题啊">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计算机网络-url">
-<meta property="og:url" content="http://example.com/2022/05/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-url/index.html">
+<meta property="og:title" content="分布式">
+<meta property="og:url" content="http://example.com/2022/05/09/%E5%88%86%E5%B8%83%E5%BC%8F-url/index.html">
 <meta property="og:site_name" content="UESTC-Fyy">
-<meta property="og:description" content="三次握手&#x2F;四次挥手TCP的三次握手四次挥手理解及面试题三次握手&#x2F;四次挥手中的丢失情况及处理机制滑窗&#x2F;流控&#x2F;拥塞关于TCP乱序和重传的问题HTTP 与TCP中Keep-Alive机制的区别HTTP keep-alive和TCP keepalive的区别HTTPHTTP&#x2F;2协议“多路复用”实现原理Http发展历程-多路复用WebSocket 是什么原理">
+<meta property="og:description" content="面试分布式事务面试题分布式技术面试题.md 分布式面试题啊">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-05-07T01:58:56.000Z">
-<meta property="article:modified_time" content="2022-05-07T09:01:05.491Z">
+<meta property="article:published_time" content="2022-05-09T10:04:33.000Z">
+<meta property="article:modified_time" content="2022-05-10T05:21:01.340Z">
 <meta property="article:author" content="Fyy">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>计算机网络-url - UESTC-Fyy</title>
+  <title>分布式 - UESTC-Fyy</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -186,7 +186,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="计算机网络-url"></span>
+            <span id="subtitle" data-typed-text="分布式"></span>
           
         </div>
 
@@ -197,8 +197,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-05-07 09:58" pubdate>
-          2022年5月7日 上午
+        <time datetime="2022-05-09 18:04" pubdate>
+          2022年5月9日 晚上
         </time>
       </span>
     
@@ -209,7 +209,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          226 字
+          28 字
         
       </span>
     
@@ -220,7 +220,7 @@
         
         
         
-          2 分钟
+          1 分钟
         
       </span>
     
@@ -266,11 +266,11 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">计算机网络-url</h1>
+            <h1 style="display: none">分布式</h1>
             
             <div class="markdown-body">
               
-              <h1 id="三次握手-x2F-四次挥手"><a href="#三次握手-x2F-四次挥手" class="headerlink" title="三次握手&#x2F;四次挥手"></a>三次握手&#x2F;四次挥手</h1><h2 id="TCP的三次握手四次挥手理解及面试题"><a href="#TCP的三次握手四次挥手理解及面试题" class="headerlink" title="TCP的三次握手四次挥手理解及面试题"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xp1315458571/articles/11361140.html">TCP的三次握手四次挥手理解及面试题</a></h2><h2 id="三次握手-x2F-四次挥手中的丢失情况及处理机制"><a href="#三次握手-x2F-四次挥手中的丢失情况及处理机制" class="headerlink" title="三次握手&#x2F;四次挥手中的丢失情况及处理机制"></a><a target="_blank" rel="noopener" href="https://blog.51cto.com/u_14888059/3812405#:~:text=%E7%AC%AC%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%A2%E5%A4%B1%E4%BA%86%EF%BC%8C%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%EF%BC%9F%20%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%94%B6%E5%88%B0%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%20SYN-ACK%20%E6%8A%A5%E6%96%87%E5%90%8E%EF%BC%8C%E5%B0%B1%E4%BC%9A%E7%BB%99%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%9B%9E%E4%B8%80%E4%B8%AA,ACK%20%E6%8A%A5%E6%96%87%EF%BC%8C%E4%B9%9F%E5%B0%B1%E6%98%AF%E7%AC%AC%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%EF%BC%8C%E6%AD%A4%E6%97%B6%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%8A%B6%E6%80%81%E8%BF%9B%E5%85%A5%E5%88%B0%20ESTABLISH%20%E7%8A%B6%E6%80%81%E3%80%82">三次握手&#x2F;四次挥手中的丢失情况及处理机制</a></h2><h1 id="滑窗-x2F-流控-x2F-拥塞"><a href="#滑窗-x2F-流控-x2F-拥塞" class="headerlink" title="滑窗&#x2F;流控&#x2F;拥塞"></a>滑窗&#x2F;流控&#x2F;拥塞</h1><h2 id="关于TCP乱序和重传的问题"><a href="#关于TCP乱序和重传的问题" class="headerlink" title="关于TCP乱序和重传的问题"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/cws1214/article/details/52430554">关于TCP乱序和重传的问题</a></h2><h2 id="HTTP-与TCP中Keep-Alive机制的区别"><a href="#HTTP-与TCP中Keep-Alive机制的区别" class="headerlink" title="HTTP 与TCP中Keep-Alive机制的区别"></a><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1430022">HTTP 与TCP中Keep-Alive机制的区别</a></h2><h2 id="HTTP-keep-alive和TCP-keepalive的区别"><a href="#HTTP-keep-alive和TCP-keepalive的区别" class="headerlink" title="HTTP keep-alive和TCP keepalive的区别"></a><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/224595048">HTTP keep-alive和TCP keepalive的区别</a></h2><h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><h2 id="HTTP-x2F-2协议“多路复用”实现原理"><a href="#HTTP-x2F-2协议“多路复用”实现原理" class="headerlink" title="HTTP&#x2F;2协议“多路复用”实现原理"></a><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000016975064">HTTP&#x2F;2协议“多路复用”实现原理</a></h2><h2 id="Http发展历程-多路复用"><a href="#Http发展历程-多路复用" class="headerlink" title="Http发展历程-多路复用"></a><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903935648497678">Http发展历程-多路复用</a></h2><h2 id="WebSocket-是什么原理？为什么可以实现持久连接？"><a href="#WebSocket-是什么原理？为什么可以实现持久连接？" class="headerlink" title="WebSocket 是什么原理？为什么可以实现持久连接？"></a><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20215561">WebSocket 是什么原理？为什么可以实现持久连接？</a></h2><h2 id="POST-PUT和PATCH的区别"><a href="#POST-PUT和PATCH的区别" class="headerlink" title="POST,PUT和PATCH的区别"></a><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/bee85cf4e33a">POST,PUT和PATCH的区别</a></h2>
+              <h1 id="面试"><a href="#面试" class="headerlink" title="面试"></a>面试</h1><h1 id="分布式事务面试题"><a href="#分布式事务面试题" class="headerlink" title="分布式事务面试题"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/crazymakercircle/p/14375424.html">分布式事务面试题</a></h1><h1 id="分布式技术面试题-md"><a href="#分布式技术面试题-md" class="headerlink" title="分布式技术面试题.md "></a><a target="_blank" rel="noopener" href="https://github.com/wangxw2008168/javaweb/blob/master/docs/distributed/%E5%88%86%E5%B8%83%E5%BC%8F%E6%8A%80%E6%9C%AF%E9%9D%A2%E8%AF%95%E9%A2%98.md">分布式技术面试题.md </a></h1><h1 id="分布式面试题"><a href="#分布式面试题" class="headerlink" title="分布式面试题"></a><a target="_blank" rel="noopener" href="https://www.pch520.com/article/34#menu_0">分布式面试题</a></h1><h1 id="啊"><a href="#啊" class="headerlink" title="啊"></a>啊</h1>
               
             </div>
             <hr/>
@@ -287,7 +287,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="category-chain-item">计算机网络</a>
+  <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/" class="category-chain-item">分布式</a>
   
   
 
@@ -307,8 +307,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>计算机网络-url</div>
-      <div>http://example.com/2022/05/07/计算机网络-url/</div>
+      <div>分布式</div>
+      <div>http://example.com/2022/05/09/分布式-url/</div>
     </div>
     <div class="license-meta">
       
@@ -320,7 +320,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年5月7日</div>
+          <div>2022年5月9日</div>
         </div>
       
       
@@ -350,7 +350,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/05/09/%E5%88%86%E5%B8%83%E5%BC%8F-url/" title="分布式">
+                      <a href="/2022/05/09/%E5%88%86%E5%B8%83%E5%BC%8F/" title="分布式">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">分布式</span>
                         <span class="visible-mobile">上一篇</span>
@@ -360,8 +360,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/05/07/Redis-url/" title="Redis-url">
-                        <span class="hidden-mobile">Redis-url</span>
+                      <a href="/2022/05/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-url/" title="计算机网络-url">
+                        <span class="hidden-mobile">计算机网络-url</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
