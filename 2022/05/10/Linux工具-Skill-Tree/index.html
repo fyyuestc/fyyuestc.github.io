@@ -24,7 +24,7 @@
 <meta property="og:description" content="[TOC] Linux工具 Linux下还是有很多超棒的开发工具的。  在Linux日常使用中，最常用的命令自然是sudo, ls, cp, mv, cat等，但作为后台开发者，上述命令远远不够。从我的理解来看，合格的C&#x2F;C++开发者至少需要从开发及调试工具、文件处理、性能分析、网络工具四个方面针对性使用一些开发工具。这里我罗列了一些，大部分都是开发中经常需要使用的命令，有些功能比较简单">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-05-10T11:56:51.000Z">
-<meta property="article:modified_time" content="2022-05-10T11:57:43.405Z">
+<meta property="article:modified_time" content="2022-05-10T12:03:05.044Z">
 <meta property="article:author" content="Fyy">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -209,7 +209,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7.5k 字
+          8.5k 字
         
       </span>
     
@@ -220,7 +220,7 @@
         
         
         
-          63 分钟
+          71 分钟
         
       </span>
     
@@ -296,7 +296,8 @@
 </tr>
 </tbody></table>
 <ul>
-<li><h2 id="开发及调试"><a href="#开发及调试" class="headerlink" title="开发及调试"></a>开发及调试</h2><ul>
+<li><p>开发及调试</p>
+<ul>
 <li>编辑器：vim</li>
 <li>编译器：gcc&#x2F;g++</li>
 <li>调试工具：gdb</li>
@@ -308,7 +309,8 @@
 <li>进程内存映射：pmap</li>
 </ul>
 </li>
-<li><h2 id="文件处理"><a href="#文件处理" class="headerlink" title="文件处理"></a>文件处理</h2><ul>
+<li><p>文件处理</p>
+<ul>
 <li>文件查找：find</li>
 <li>文本搜索：grep</li>
 <li>排序：sort</li>
@@ -320,7 +322,8 @@
 <li>数据流处理：awk</li>
 </ul>
 </li>
-<li><h2 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h2><ul>
+<li><p>性能分析</p>
+<ul>
 <li>进程查询：ps</li>
 <li>进程监控：top</li>
 <li>打开文件查询：lsof</li>
@@ -328,7 +331,8 @@
 <li>监控性能指标：sar</li>
 </ul>
 </li>
-<li><h2 id="网络工具"><a href="#网络工具" class="headerlink" title="网络工具"></a>网络工具</h2><ul>
+<li><p>网络工具</p>
+<ul>
 <li>网卡配置：ifconfig </li>
 <li>查看当前网络连接：netstat</li>
 <li>查看路由表：route</li>
@@ -340,7 +344,8 @@
 <li>网络请求：curl</li>
 </ul>
 </li>
-<li><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
+<li><p>其他</p>
+<ul>
 <li>终止进程：kill</li>
 <li>修改文件权限：chmod</li>
 <li>创建链接：ln</li>
@@ -351,407 +356,272 @@
 </li>
 </ul>
 <hr>
-<h1 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h1><h3 id="开发及调试-1"><a href="#开发及调试-1" class="headerlink" title="开发及调试"></a><span id = "pro">开发及调试</span></h3><blockquote>
+<h1 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h1><h2 id="开发及调试"><a href="#开发及调试" class="headerlink" title="开发及调试"></a><span id = "pro">开发及调试</span></h2><blockquote>
 <p>开发工具大部分都提供了完善的功能，所以这里不一一列举用法。从技术层面来说，调试工具比开发工具更考验一个人的工程能力。</p>
 </blockquote>
-<ol>
-<li><p>编辑器：vim</p>
-<ul>
-<li>服务器端开发必知必会，功能强大，这里不一一列举，但基本的打开文件、保存退出要会。</li>
-<li><a target="_blank" rel="noopener" href="http://coolshell.cn/articles/5426.html">详见</a></li>
-</ul>
-</li>
-<li><p>编译器：gcc&#x2F;g++</p>
-<ul>
-<li>C&#x2F;C++编译器，必知必会，除此以外需要了解预处理-&gt; 编译 -&gt; 汇编 -&gt; 链接等一系列流程。</li>
-<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/lidan/archive/2011/05/25/2239517.html">详见</a></li>
-</ul>
-</li>
-<li><p>调试工具：gdb</p>
-<ul>
-<li>服务器端调试必备。</li>
-<li><a target="_blank" rel="noopener" href="http://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/gdb.html">详见</a></li>
-</ul>
-</li>
-<li><p>查看依赖库：ldd</p>
-<ul>
-<li>程序依赖库查询 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">ldd后接可执行文件</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">第一列为程序依赖什么库，第二列为系统提供的与程序需要的库所对应的库，第三列为库加载的开始地址</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">前两列可以判断系统提供的库和需要的库是否匹配，第三列可以知道当前库在进程地址空间中对应的开始位置</span><br><br>ldd a.out<br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>二进制文件分析：objdump</p>
-<ul>
-<li>反汇编，需要理解汇编语言</li>
-<li><a target="_blank" rel="noopener" href="http://man.linuxde.net/objdump">详见</a></li>
-</ul>
-</li>
-<li><p>ELF文件格式分析：readelf</p>
-<ul>
-<li>可以得到ELF文件各段内容，分析链接、符号表等需要用到</li>
-<li><a target="_blank" rel="noopener" href="http://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/readelf.html">详见</a></li>
-</ul>
-</li>
-<li><p>跟踪进程中系统调用：strace</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="http://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/strace.html">详见</a></li>
-</ul>
-</li>
-<li><p>跟踪进程栈：pstack</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="http://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/pstack.html#">详见</a></li>
-</ul>
-</li>
-<li><p>进程内存映射：pmap</p>
-<ul>
-<li>显示进程内存映射<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">-x显示扩展信息，后接进程pid</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">Address: 内存开始地址</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">显示信息：</span><br>    Kbytes: 占用内存的字节数<br>    RSS: 保留内存的字节数<br>    Dirty: 脏页的字节数（包括共享和私有的）<br>    Mode: 内存的权限：read、write、execute、shared、private<br>    Mapping: 占用内存的文件、或[anon]（分配的内存）、或[stack]（堆栈）<br>    Device: 设备名 (major:minor)<br><br>pmap -x 12345<br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ol>
+<h3 id="1-编辑器：vim"><a href="#1-编辑器：vim" class="headerlink" title="1.  编辑器：vim"></a>1.  编辑器：vim</h3><pre><code class="hljs">- 服务器端开发必知必会，功能强大，这里不一一列举，但基本的打开文件、保存退出要会。
+- [详见](http://coolshell.cn/articles/5426.html)
+</code></pre>
+<h3 id="2-编译器：gcc-x2F-g"><a href="#2-编译器：gcc-x2F-g" class="headerlink" title="2. 编译器：gcc&#x2F;g++"></a>2. 编译器：gcc&#x2F;g++</h3><pre><code class="hljs">- C/C++编译器，必知必会，除此以外需要了解预处理-&gt; 编译 -&gt; 汇编 -&gt; 链接等一系列流程。
+- [详见](http://www.cnblogs.com/lidan/archive/2011/05/25/2239517.html)
+</code></pre>
+<h3 id="3-调试工具：gdb"><a href="#3-调试工具：gdb" class="headerlink" title="3. 调试工具：gdb"></a>3. 调试工具：gdb</h3><pre><code class="hljs">- 服务器端调试必备。
+- [详见](http://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/gdb.html)
+</code></pre>
+<h3 id="4-查看依赖库：ldd"><a href="#4-查看依赖库：ldd" class="headerlink" title="4. 查看依赖库：ldd"></a>4. 查看依赖库：ldd</h3><pre><code class="hljs">- 程序依赖库查询
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">ldd后接可执行文件</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">第一列为程序依赖什么库，第二列为系统提供的与程序需要的库所对应的库，第三列为库加载的开始地址</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">前两列可以判断系统提供的库和需要的库是否匹配，第三列可以知道当前库在进程地址空间中对应的开始位置</span><br><br>ldd a.out<br></code></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="5-二进制文件分析：objdump"><a href="#5-二进制文件分析：objdump" class="headerlink" title="5. 二进制文件分析：objdump"></a>5. 二进制文件分析：objdump</h3><pre><code class="hljs">- 反汇编，需要理解汇编语言
+- [详见](http://man.linuxde.net/objdump)
+</code></pre>
+<h3 id="6-ELF文件格式分析：readelf"><a href="#6-ELF文件格式分析：readelf" class="headerlink" title="6. ELF文件格式分析：readelf"></a>6. ELF文件格式分析：readelf</h3><pre><code class="hljs">- 可以得到ELF文件各段内容，分析链接、符号表等需要用到
+- [详见](http://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/readelf.html)
+</code></pre>
+<h3 id="7-跟踪进程中系统调用：strace"><a href="#7-跟踪进程中系统调用：strace" class="headerlink" title="7. 跟踪进程中系统调用：strace"></a>7. 跟踪进程中系统调用：strace</h3><pre><code class="hljs">- [详见](http://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/strace.html)
+</code></pre>
+<h3 id="8-跟踪进程栈：pstack"><a href="#8-跟踪进程栈：pstack" class="headerlink" title="8. 跟踪进程栈：pstack"></a>8. 跟踪进程栈：pstack</h3><pre><code class="hljs">- [详见](http://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/pstack.html#)
+</code></pre>
+<h3 id="9-进程内存映射：pmap"><a href="#9-进程内存映射：pmap" class="headerlink" title="9. 进程内存映射：pmap"></a>9. 进程内存映射：pmap</h3><pre><code class="hljs">- 显示进程内存映射
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">-x显示扩展信息，后接进程pid</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">Address: 内存开始地址</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">显示信息：</span><br>    Kbytes: 占用内存的字节数<br>    RSS: 保留内存的字节数<br>    Dirty: 脏页的字节数（包括共享和私有的）<br>    Mode: 内存的权限：read、write、execute、shared、private<br>    Mapping: 占用内存的文件、或[anon]（分配的内存）、或[stack]（堆栈）<br>    Device: 设备名 (major:minor)<br><br>pmap -x 12345<br></code></pre></td></tr></table></figure>
+</code></pre>
 <hr>
-<h3 id="文件处理-1"><a href="#文件处理-1" class="headerlink" title="文件处理"></a><span id = "file">文件处理</span></h3><blockquote>
+<h2 id="文件处理"><a href="#文件处理" class="headerlink" title="文件处理"></a><span id = "file">文件处理</span></h2><blockquote>
 <p>Everything is file. 在Linux环境下，对文本处理相当频繁，所以有些命令的参数还是需要记忆的。另外其他很多命令的输出信息都需要通过文件处理命令来筛选有用信息。</p>
 </blockquote>
-<ol>
-<li><p>文件查找：find</p>
-<p> 按名查找：</p>
-<ul>
-<li><p>查找具体文件（一般方式）</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">find . -name *.cpp<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>查找具体文件（正则方式）</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">-regex为正则查找，-iregex为忽略大小写的正则查找</span> <br>  <br>find -regex &quot;.*.cpp$&quot;<br></code></pre></td></tr></table></figure></li>
-</ul>
-<p> 定制查找：</p>
-<ul>
-<li><p>按类型查找</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">f(file)为文件，d(dictionary)为目录，l(<span class="hljs-built_in">link</span>)为链接</span><br>  <br>find . -type f<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>按时间查找</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">atime为访问时间，x天内加参数<span class="hljs-string">&quot;-atime -x&quot;</span>，超过x天加<span class="hljs-string">&quot;-atime -x&quot;</span></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">mtime为修改时间</span><br>  <br>find . -type f -atime -7<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>按大小查找</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">-size后接文件大小，单位可以为k(kb)，m(MB)，g(GB)</span><br>  <br>find . -type f -size -1k<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>按权限查询</p>
-  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">-perm后接权限</span><br><br>find . -type -perm 644<br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>文本搜索：grep</p>
-<ul>
-<li><p>模式匹配</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">匹配test.cpp文件中含有<span class="hljs-string">&quot;iostream&quot;</span>串的内容</span><br><br>grep &quot;iostream&quot; test.cpp  <br></code></pre></td></tr></table></figure>
-</li>
-<li><p>多个模式匹配</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">匹配test.cpp文件中含有<span class="hljs-string">&quot;iostream&quot;</span>和<span class="hljs-string">&quot;using&quot;</span>串的内容</span><br><br>grep -e &quot;using&quot; -e &quot;iostream&quot; test.cpp  <br></code></pre></td></tr></table></figure>
-</li>
-<li><p>输出信息</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">-n为打印匹配的行号；-i搜索时忽略大小写；-c统计包含文本次数</span><br><br>grep -n &quot;iostream&quot; test.cpp  <br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>排序：sort</p>
-<ul>
-<li>文件内容行排序 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">排序在内存进行，不改变文件</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">-n(number)表示按数字排序，-d(dictionary)表示按字典序</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">-k N表示按各行第N列进行排序</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">-r(reverse)为逆序排序</span><br><br>sort -n -k 1 test<br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>转换：tr</p>
-<ul>
-<li><p>字符替换</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">转换在内存进行，不改变文件</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">将打开文件中所有目标字符替换</span><br><br>cat test | tr &#x27;1&#x27; &#x27;2&#x27;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>字符删除</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">转换在内存进行，不改变文件</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">-d删除(delete)</span><br><br>cat test | tr -d &#x27;1&#x27;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>字符压缩</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">转换在内存进行，不改变文件</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">-s位于后部</span><br><br>cat test | tr &#x27; &#x27; -s<br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>按列切分文本：cut</p>
-<ul>
-<li><p>截取特定列</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">截取的内存进行，不改变文件</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">-b(byte)以字节为单位，-c(character)以字符为单位，-f以字段为单位</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">数字为具体列范围</span><br><br>cut -f 1,2 test<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>指定界定符</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">截取的内存进行，不改变文件</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">-d后接界定符</span><br><br>cut -f 2 -d &#x27;,&#x27; new<br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>按列拼接文本：paste</p>
-<ul>
-<li>按列拼接 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">在内存中拼接，不改变文件</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">将两个文件按对应列拼接</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">最后加上-d <span class="hljs-string">&quot;x&quot;</span>会将x作为指定分隔符（<span class="hljs-built_in">paste</span> test1 test2 -d <span class="hljs-string">&quot;,&quot;</span>）</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">两文件列数可以不同</span> <br><br>paste test1 test2<br></code></pre></td></tr></table></figure></li>
-<li>指定界定符拼接 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">在内存中拼接，不改变文件</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">按照-d之后给出的界定符拼接</span><br><br>paste test1 test2 -d &quot;,&quot;<br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>统计行和字符：wc</p>
-<ul>
-<li>基本统计  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">-l统计行数(line)，-w统计单词数(word)，-c统计字符数(character)</span><br><br>wc -l test<br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>文本替换：sed</p>
-<ul>
-<li>区别于上面的命令，sed是可以直接改变被编辑文件内容的。</li>
-<li><a target="_blank" rel="noopener" href="http://coolshell.cn/articles/9104.html">详见</a></li>
-</ul>
-</li>
-<li><p>数据流处理：awk</p>
-<ul>
-<li>区别于上面的命令，awk是可以直接改变被编辑文件内容的。</li>
-<li><a target="_blank" rel="noopener" href="http://coolshell.cn/articles/9070.html">详见</a></li>
-</ul>
-</li>
-</ol>
+<h3 id="1-文件查找：find"><a href="#1-文件查找：find" class="headerlink" title="1. 文件查找：find"></a>1. 文件查找：find</h3><pre><code class="hljs">按名查找：
+
+- 查找具体文件（一般方式）
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">find . -name *.cpp<br></code></pre></td></tr></table></figure>
+
+- 查找具体文件（正则方式）
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">-regex为正则查找，-iregex为忽略大小写的正则查找</span> <br>  <br>find -regex &quot;.*.cpp$&quot;<br></code></pre></td></tr></table></figure>
+
+定制查找：
+- 按类型查找
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">f(file)为文件，d(dictionary)为目录，l(<span class="hljs-built_in">link</span>)为链接</span><br>  <br>find . -type f<br></code></pre></td></tr></table></figure>
+
+- 按时间查找
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">atime为访问时间，x天内加参数<span class="hljs-string">&quot;-atime -x&quot;</span>，超过x天加<span class="hljs-string">&quot;-atime -x&quot;</span></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">mtime为修改时间</span><br>  <br>find . -type f -atime -7<br></code></pre></td></tr></table></figure>
+
+- 按大小查找
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">-size后接文件大小，单位可以为k(kb)，m(MB)，g(GB)</span><br>  <br>find . -type f -size -1k<br></code></pre></td></tr></table></figure>
+
+- 按权限查询
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">-perm后接权限</span><br><br>find . -type -perm 644<br></code></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="2-文本搜索：grep"><a href="#2-文本搜索：grep" class="headerlink" title="2. 文本搜索：grep"></a>2. 文本搜索：grep</h3><pre><code class="hljs">- 模式匹配
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">匹配test.cpp文件中含有<span class="hljs-string">&quot;iostream&quot;</span>串的内容</span><br><br>grep &quot;iostream&quot; test.cpp  <br></code></pre></td></tr></table></figure>
+
+- 多个模式匹配
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">匹配test.cpp文件中含有<span class="hljs-string">&quot;iostream&quot;</span>和<span class="hljs-string">&quot;using&quot;</span>串的内容</span><br><br>grep -e &quot;using&quot; -e &quot;iostream&quot; test.cpp  <br></code></pre></td></tr></table></figure>
+
+- 输出信息
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">-n为打印匹配的行号；-i搜索时忽略大小写；-c统计包含文本次数</span><br><br>grep -n &quot;iostream&quot; test.cpp  <br></code></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="3-排序：sort"><a href="#3-排序：sort" class="headerlink" title="3. 排序：sort"></a>3. 排序：sort</h3><pre><code class="hljs">- 文件内容行排序
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">排序在内存进行，不改变文件</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">-n(number)表示按数字排序，-d(dictionary)表示按字典序</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">-k N表示按各行第N列进行排序</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">-r(reverse)为逆序排序</span><br><br>sort -n -k 1 test<br></code></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="4-转换：tr"><a href="#4-转换：tr" class="headerlink" title="4. 转换：tr"></a>4. 转换：tr</h3><pre><code class="hljs">- 字符替换
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">转换在内存进行，不改变文件</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">将打开文件中所有目标字符替换</span><br><br>cat test | tr &#x27;1&#x27; &#x27;2&#x27;<br></code></pre></td></tr></table></figure>
+
+- 字符删除
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">转换在内存进行，不改变文件</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">-d删除(delete)</span><br><br>cat test | tr -d &#x27;1&#x27;<br></code></pre></td></tr></table></figure>
+
+- 字符压缩
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">转换在内存进行，不改变文件</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">-s位于后部</span><br><br>cat test | tr &#x27; &#x27; -s<br></code></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="5-按列切分文本：cut"><a href="#5-按列切分文本：cut" class="headerlink" title="5. 按列切分文本：cut"></a>5. 按列切分文本：cut</h3><pre><code class="hljs">- 截取特定列
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">截取的内存进行，不改变文件</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">-b(byte)以字节为单位，-c(character)以字符为单位，-f以字段为单位</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">数字为具体列范围</span><br><br>cut -f 1,2 test<br></code></pre></td></tr></table></figure>
+
+- 指定界定符
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">截取的内存进行，不改变文件</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">-d后接界定符</span><br><br>cut -f 2 -d &#x27;,&#x27; new<br></code></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="6-按列拼接文本：paste"><a href="#6-按列拼接文本：paste" class="headerlink" title="6. 按列拼接文本：paste"></a>6. 按列拼接文本：paste</h3><pre><code class="hljs">- 按列拼接
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">在内存中拼接，不改变文件</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">将两个文件按对应列拼接</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">最后加上-d <span class="hljs-string">&quot;x&quot;</span>会将x作为指定分隔符（<span class="hljs-built_in">paste</span> test1 test2 -d <span class="hljs-string">&quot;,&quot;</span>）</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">两文件列数可以不同</span> <br><br>paste test1 test2<br></code></pre></td></tr></table></figure>
+- 指定界定符拼接
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">在内存中拼接，不改变文件</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">按照-d之后给出的界定符拼接</span><br><br>paste test1 test2 -d &quot;,&quot;<br></code></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="7-统计行和字符：wc"><a href="#7-统计行和字符：wc" class="headerlink" title="7. 统计行和字符：wc"></a>7. 统计行和字符：wc</h3><pre><code class="hljs"> - 基本统计
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">-l统计行数(line)，-w统计单词数(word)，-c统计字符数(character)</span><br><br>wc -l test<br></code></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="8-文本替换：sed"><a href="#8-文本替换：sed" class="headerlink" title="8. 文本替换：sed"></a>8. 文本替换：sed</h3><pre><code class="hljs">- 区别于上面的命令，sed是可以直接改变被编辑文件内容的。
+- [详见](http://coolshell.cn/articles/9104.html)
+</code></pre>
+<h3 id="9-数据流处理：awk"><a href="#9-数据流处理：awk" class="headerlink" title="9. 数据流处理：awk"></a>9. 数据流处理：awk</h3><pre><code class="hljs">- 区别于上面的命令，awk是可以直接改变被编辑文件内容的。
+- [详见](http://coolshell.cn/articles/9070.html)
+</code></pre>
 <hr>
-<h3 id="系统信息"><a href="#系统信息" class="headerlink" title="系统信息"></a><span id = "sysinfo">系统信息</span></h3><blockquote>
+<h2 id="系统信息"><a href="#系统信息" class="headerlink" title="系统信息"></a><span id = "sysinfo">系统信息</span></h2><blockquote>
 <p>性能监视工具对于程序员的作用就像是听诊器对于医生的作用一样。系统信息主要针对于服务器性能较低时的排查工作，主要包括CPU信息，文件I&#x2F;O和内存使用情况，通过进程为纽带得到系统运行的瓶颈。</p>
 </blockquote>
-<ol>
-<li><p>进程查询：ps</p>
-<ul>
-<li><p>查看正在运行进程</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">常结合grep筛选信息(e.g, ps -ef | grep xxx)</span><br><br>ps -ef<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>以完整格式显示所有进程</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">常结合grep筛选信息</span><br><br>ps -ajx<br></code></pre></td></tr></table></figure></li>
+<h3 id="1-进程查询：ps"><a href="#1-进程查询：ps" class="headerlink" title="1. 进程查询：ps"></a>1. 进程查询：ps</h3><pre><code class="hljs">- 查看正在运行进程
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">常结合grep筛选信息(e.g, ps -ef | grep xxx)</span><br><br>ps -ef<br></code></pre></td></tr></table></figure>
+
+- 以完整格式显示所有进程
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">常结合grep筛选信息</span><br><br>ps -ajx<br></code></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="2-进程监控：top"><a href="#2-进程监控：top" class="headerlink" title="2. 进程监控：top"></a>2. 进程监控：top</h3><pre><code class="hljs">- 显示实时进程信息
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">这是个大招，都不带参数的，具体信息通过grep筛选</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">交互模式下键入M进程列表按内存使用大小降序排列，键入P进程列表按CPU使用大小降序排列</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">%<span class="hljs-built_in">id</span>表示CPU空闲率，过低表示可能存在CPU存在瓶颈</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">%wa表示等待I/O的CPU时间百分比，过高则I/O存在瓶颈 &gt; 用iostat进一步分析</span><br><br>top<br></code></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="3-打开文件查询：lsof"><a href="#3-打开文件查询：lsof" class="headerlink" title="3. 打开文件查询：lsof"></a>3. 打开文件查询：lsof</h3><ul>
+<li>查看占用某端口的进程</li>
 </ul>
-</li>
-<li><p>进程监控：top</p>
-<ul>
-<li>显示实时进程信息 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">这是个大招，都不带参数的，具体信息通过grep筛选</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">交互模式下键入M进程列表按内存使用大小降序排列，键入P进程列表按CPU使用大小降序排列</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">%<span class="hljs-built_in">id</span>表示CPU空闲率，过低表示可能存在CPU存在瓶颈</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">%wa表示等待I/O的CPU时间百分比，过高则I/O存在瓶颈 &gt; 用iostat进一步分析</span><br><br>top<br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>打开文件查询：lsof</p>
-<ul>
-<li><p>查看占用某端口的进程</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">最常见的就是mysql端口被占用使用(lsof i:3307)</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">周知端口(ftp:20/21, ssh:22, telnet:23, smtp:25, dns:53, http:80, pop3:110, https:443)</span><br>   <br>lsof -i:53<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>查看某用户打开的文件 </p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">-u(user)为用户，后接用户名</span><br>   <br>lsof -u inx<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>查看指定进程打开的文件 </p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">-p(process)为进程，后接进程PID</span><br>   <br>lsof -p 12345<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>查看指定目录下被进程打开的文件 </p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">这里是<span class="hljs-string">&quot;+d&quot;</span>，需要注意，使用<span class="hljs-string">&quot;+D&quot;</span>递归目录</span><br>   <br>lsof +d /test<br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>内存使用量：free</p>
-<ul>
-<li>内存使用量 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">可获得内存及交换区的总量，已使用量，空闲量等信息</span><br><br>free<br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>监控性能指标：sar</p>
-<p> 监控CPU</p>
-<ul>
-<li><p>监控CPU负载</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">加上-q可以查看运行队列中进程数，系统上进程大小，平均负载等</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">这里<span class="hljs-string">&quot;1&quot;</span>表示采样时间间隔是1秒，这里<span class="hljs-string">&quot;2&quot;</span>表示采样次数为2</span><br><br>sar -q 1 2<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>监控CPU使用率</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">可以显示CPU使用情况</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">参数意义同上</span><br><br>sar -u 1 2<br></code></pre></td></tr></table></figure></li>
-</ul>
-<p> 监控内存</p>
-<ul>
-<li><p>查询内存</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">可以显示内存使用情况</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">参数意义同上</span> <br><br>sar -r 1 2<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>页面交换查询</p>
-  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"> # </span><span class="language-bash">可以查看是否发生大量页面交换，吞吐率大幅下降时可用</span><br><span class="hljs-meta prompt_"> # </span><span class="language-bash">参数意义同上</span><br><br>sar -W 1 2<br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ol>
+<pre><code class="hljs"><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">最常见的就是mysql端口被占用使用(lsof i:3307)</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">周知端口(ftp:20/21, ssh:22, telnet:23, smtp:25, dns:53, http:80, pop3:110, https:443)</span><br>   <br>lsof -i:53<br></code></pre></td></tr></table></figure>
+
+- 查看某用户打开的文件 
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">-u(user)为用户，后接用户名</span><br>   <br>lsof -u inx<br></code></pre></td></tr></table></figure>
+
+- 查看指定进程打开的文件 
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">-p(process)为进程，后接进程PID</span><br>   <br>lsof -p 12345<br></code></pre></td></tr></table></figure>
+
+- 查看指定目录下被进程打开的文件 
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">这里是<span class="hljs-string">&quot;+d&quot;</span>，需要注意，使用<span class="hljs-string">&quot;+D&quot;</span>递归目录</span><br>   <br>lsof +d /test<br></code></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="4-内存使用量：free"><a href="#4-内存使用量：free" class="headerlink" title="4. 内存使用量：free"></a>4. 内存使用量：free</h3><pre><code class="hljs">- 内存使用量
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">可获得内存及交换区的总量，已使用量，空闲量等信息</span><br><br>free<br></code></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="5-监控性能指标：sar"><a href="#5-监控性能指标：sar" class="headerlink" title="5. 监控性能指标：sar"></a>5. 监控性能指标：sar</h3><pre><code class="hljs">监控CPU
+- 监控CPU负载
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">加上-q可以查看运行队列中进程数，系统上进程大小，平均负载等</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">这里<span class="hljs-string">&quot;1&quot;</span>表示采样时间间隔是1秒，这里<span class="hljs-string">&quot;2&quot;</span>表示采样次数为2</span><br><br>sar -q 1 2<br></code></pre></td></tr></table></figure>
+
+- 监控CPU使用率
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">可以显示CPU使用情况</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">参数意义同上</span><br><br>sar -u 1 2<br></code></pre></td></tr></table></figure>
+
+监控内存
+- 查询内存
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">可以显示内存使用情况</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">参数意义同上</span> <br><br>sar -r 1 2<br></code></pre></td></tr></table></figure>
+
+- 页面交换查询
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"> # </span><span class="language-bash">可以查看是否发生大量页面交换，吞吐率大幅下降时可用</span><br><span class="hljs-meta prompt_"> # </span><span class="language-bash">参数意义同上</span><br><br>sar -W 1 2<br></code></pre></td></tr></table></figure>
+</code></pre>
 <hr>
-<h3 id="网络工具-1"><a href="#网络工具-1" class="headerlink" title="网络工具"></a><span id = "net">网络工具</span></h3><blockquote>
+<h2 id="网络工具"><a href="#网络工具" class="headerlink" title="网络工具"></a><span id = "net">网络工具</span></h2><blockquote>
 <p>网络工具部分只介绍基本功能，参数部分一笔带过。这部分重点不在于工具的使用而是对反馈的数据进行解读，并且这部分命令功能的重合度还是比较高的。</p>
 </blockquote>
-<ol>
-<li><p>网卡配置（链路层）：ifconfig </p>
-<ul>
-<li><p>显示设备信息</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">可以显示已激活的网络设备信息</span><br><br>ifconfig<br></code></pre></td></tr></table></figure></li>
-<li><p>启动关闭指定网卡</p>
+<h3 id="1-网卡配置（链路层）：ifconfig"><a href="#1-网卡配置（链路层）：ifconfig" class="headerlink" title="1. 网卡配置（链路层）：ifconfig"></a>1. 网卡配置（链路层）：ifconfig</h3><pre><code class="hljs">- 显示设备信息
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">可以显示已激活的网络设备信息</span><br><br>ifconfig<br></code></pre></td></tr></table></figure>
+- 启动关闭指定网卡
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">前一个参数为具体网卡，后一个为开关信息</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">up为打开，down为关闭</span><br><br>ifconfig eth0 up<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>配置IP地址</p>
+
+- 配置IP地址
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">前一个参数为具体网卡，后一个为配置的IP地址</span><br><br>ifconfig eth0 192.168.1.1<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>设置最大传输单元</p>
+
+- 设置最大传输单元
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">前一个参数为具体网卡，后面为MTU的大小<br><span class="hljs-meta prompt_"># </span><span class="language-bash">设置链路层MTU值，通常为1500</span><br><br>ifconfig eth0 mtu 1500<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>启用和关闭ARP协议</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-comment"># 开启arp如下，若关闭则-arp</span><br><br><span class="hljs-attribute">ifconfig</span> eth0 arp<br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>查看当前网络连接（链路层&#x2F;网络层&#x2F;传输层）：netstat</p>
-<ul>
-<li><p>网络接口信息</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">显示网卡信息，可结合ifconfig学习</span><br><br>netstat -i<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>列出端口</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">-a(all)表示所有端口，-t(tcp)表示所有使用中的TCP端口</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">-l(listening)表示正在监听的端口</span><br><br>netstat -at<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>显示端口统计信息</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">-s(status)显示各协议信息</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">-加上-t(tcp)显示tcp协议信息，加上-u(udp)显示udp协议信息</span><br><br>netstat -s<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>显示使用某协议的应用名</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">-p(progress)表示程序，可以显示使用tcp/udp协议的应用的名称</span><br><br>netstat -pt<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>查找指定进程、端口</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">互逆操作第一个显示某程序使用的端口号，第二个显示某端口号的使用进程</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">第二个操作可以用lsof替代</span><br><br>netstat -ap | grep ssh<br>netstat -an | grep &#x27;:80&#x27;<br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>查看路由表（网络层IP协议）：route</p>
-<ul>
-<li>查看路由信息 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">得到路由表信息，具体分析路由表工作需要网络知识</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">可以通过netstat -r(route)得到同样的路由表</span><br><br>route<br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>检查网络连通性（网络层ICMP协议）：ping</p>
-<ul>
-<li>检查是否连通 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">主要功能是检测网络连通性</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">可以额外得到网站的ip地址和连接最大/最小/平均耗时。</span><br><br>ping baidu.com<br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>转发路径（网络层ICMP协议）：traceroute</p>
-<ul>
-<li>文件包途径的IP <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash"></span><br><span class="language-bash"><span class="hljs-comment"># 可以打印从沿途经过的路由器IP地址</span></span><br><br>traceroute baidu.com<br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>网络Debug分析（网络层&#x2F;传输层）：nc</p>
-<ul>
-<li><p>端口扫描</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">黑客很喜欢</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">扫描某服务器端口使用情况</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">-v(view)显示指令执行过程，-w(<span class="hljs-built_in">wait</span>)设置超时时长</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">-z使用输入输出模式（只在端口扫描时使用）</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">数字为扫描的端口范围</span> <br><br>nc -v -w 1 baidu.com  -z 75-1000<br></code></pre></td></tr></table></figure>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.oschina.net/translate/linux-netcat-command">其他详见</a></p>
-</li>
-</ul>
-</li>
-<li><p>命令行抓包（网络层&#x2F;传输层）：tcpdump</p>
-<ul>
-<li>抓包利器，没有什么比数据更值得信赖。可以跟踪整个传输过程。</li>
-<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/ggjucheng/archive/2012/01/14/2322659.html">详见</a></li>
-</ul>
-</li>
-<li><p>域名解析工具（应用层DNS协议）：dig</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">应用层，DNS</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">打印域名解析结果</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">打印域名解析过程中涉及的各级DNS服务器地址</span><br><br>dig baidu.com<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>网络请求（应用层）：curl</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/gbyukg/p/3326825.html">详见</a></li>
-</ul>
-</li>
-</ol>
+
+- 启用和关闭ARP协议
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-comment"># 开启arp如下，若关闭则-arp</span><br><br><span class="hljs-attribute">ifconfig</span> eth0 arp<br></code></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="2-查看当前网络连接（链路层-x2F-网络层-x2F-传输层）：netstat"><a href="#2-查看当前网络连接（链路层-x2F-网络层-x2F-传输层）：netstat" class="headerlink" title="2. 查看当前网络连接（链路层&#x2F;网络层&#x2F;传输层）：netstat"></a>2. 查看当前网络连接（链路层&#x2F;网络层&#x2F;传输层）：netstat</h3><pre><code class="hljs">- 网络接口信息
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">显示网卡信息，可结合ifconfig学习</span><br><br>netstat -i<br></code></pre></td></tr></table></figure>
+
+- 列出端口
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">-a(all)表示所有端口，-t(tcp)表示所有使用中的TCP端口</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">-l(listening)表示正在监听的端口</span><br><br>netstat -at<br></code></pre></td></tr></table></figure>
+
+- 显示端口统计信息
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">-s(status)显示各协议信息</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">-加上-t(tcp)显示tcp协议信息，加上-u(udp)显示udp协议信息</span><br><br>netstat -s<br></code></pre></td></tr></table></figure>
+
+- 显示使用某协议的应用名
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">-p(progress)表示程序，可以显示使用tcp/udp协议的应用的名称</span><br><br>netstat -pt<br></code></pre></td></tr></table></figure>
+
+- 查找指定进程、端口
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">互逆操作第一个显示某程序使用的端口号，第二个显示某端口号的使用进程</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">第二个操作可以用lsof替代</span><br><br>netstat -ap | grep ssh<br>netstat -an | grep &#x27;:80&#x27;<br></code></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="3-查看路由表（网络层IP协议）：route"><a href="#3-查看路由表（网络层IP协议）：route" class="headerlink" title="3. 查看路由表（网络层IP协议）：route"></a>3. 查看路由表（网络层IP协议）：route</h3><pre><code class="hljs">- 查看路由信息
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">得到路由表信息，具体分析路由表工作需要网络知识</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">可以通过netstat -r(route)得到同样的路由表</span><br><br>route<br></code></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="4-检查网络连通性（网络层ICMP协议）：ping"><a href="#4-检查网络连通性（网络层ICMP协议）：ping" class="headerlink" title="4. 检查网络连通性（网络层ICMP协议）：ping"></a>4. 检查网络连通性（网络层ICMP协议）：ping</h3><pre><code class="hljs">- 检查是否连通
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">主要功能是检测网络连通性</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">可以额外得到网站的ip地址和连接最大/最小/平均耗时。</span><br><br>ping baidu.com<br></code></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="5-转发路径（网络层ICMP协议）：traceroute"><a href="#5-转发路径（网络层ICMP协议）：traceroute" class="headerlink" title="5. 转发路径（网络层ICMP协议）：traceroute"></a>5. 转发路径（网络层ICMP协议）：traceroute</h3><pre><code class="hljs">- 文件包途径的IP
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash"></span><br><span class="language-bash"><span class="hljs-comment"># 可以打印从沿途经过的路由器IP地址</span></span><br><br>traceroute baidu.com<br></code></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="6-网络Debug分析（网络层-x2F-传输层）：nc"><a href="#6-网络Debug分析（网络层-x2F-传输层）：nc" class="headerlink" title="6. 网络Debug分析（网络层&#x2F;传输层）：nc"></a>6. 网络Debug分析（网络层&#x2F;传输层）：nc</h3><pre><code class="hljs">- 端口扫描
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">黑客很喜欢</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">扫描某服务器端口使用情况</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">-v(view)显示指令执行过程，-w(<span class="hljs-built_in">wait</span>)设置超时时长</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">-z使用输入输出模式（只在端口扫描时使用）</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">数字为扫描的端口范围</span> <br><br>nc -v -w 1 baidu.com  -z 75-1000<br></code></pre></td></tr></table></figure>
+
+- [其他详见](https://www.oschina.net/translate/linux-netcat-command)
+</code></pre>
+<h3 id="7-命令行抓包（网络层-x2F-传输层）：tcpdump"><a href="#7-命令行抓包（网络层-x2F-传输层）：tcpdump" class="headerlink" title="7. 命令行抓包（网络层&#x2F;传输层）：tcpdump"></a>7. 命令行抓包（网络层&#x2F;传输层）：tcpdump</h3><pre><code class="hljs">- 抓包利器，没有什么比数据更值得信赖。可以跟踪整个传输过程。
+- [详见](http://www.cnblogs.com/ggjucheng/archive/2012/01/14/2322659.html)
+</code></pre>
+<h3 id="8-域名解析工具（应用层DNS协议）：dig"><a href="#8-域名解析工具（应用层DNS协议）：dig" class="headerlink" title="8. 域名解析工具（应用层DNS协议）：dig"></a>8. 域名解析工具（应用层DNS协议）：dig</h3><pre><code class="hljs"><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">应用层，DNS</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">打印域名解析结果</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">打印域名解析过程中涉及的各级DNS服务器地址</span><br><br>dig baidu.com<br></code></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="9-网络请求（应用层）：curl"><a href="#9-网络请求（应用层）：curl" class="headerlink" title="9. 网络请求（应用层）：curl"></a>9. 网络请求（应用层）：curl</h3><pre><code class="hljs">- [详见](http://www.cnblogs.com/gbyukg/p/3326825.html)
+</code></pre>
 <hr>
-<h3 id="其他-1"><a href="#其他-1" class="headerlink" title="其他"></a><span id = "other">其他</span></h3><blockquote>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a><span id = "other">其他</span></h2><blockquote>
 <p>这里都是日常开发中高频命令。</p>
 </blockquote>
-<ol>
-<li><p>终止进程：kill</p>
-<ul>
-<li><p>杀死具体进程</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">加具体进程PID</span><br><br>kill 12345<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>杀死某进程相关进程</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">加上<span class="hljs-string">&quot;-9&quot;</span>杀死某进程相关进程</span><br><br>kill -9 12345<br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>修改文件权限：chmod</p>
-<ul>
-<li>更改文件权限 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">可以对三种使用者设置权限，u(user, owner)，g(group)，o(other)</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">文件可以有三种权限，r(<span class="hljs-built_in">read</span>)，w(write)，x(execute)</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">这里u+r表示文件所有者在原有基础上增加文件读取权限</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">这里777分别对应，u=7，g=7，o=7，具体数字含义自行google</span><br><br>chmod u+r file<br>chmod 777 file<br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>创建链接：ln</p>
-<ul>
-<li><p>创建硬链接</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">文件inode中链接数会增加，只有链接数减为0时文件才真正被删除</span><br><br>ln file1 file2<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>创建软（符号链接）链接</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">-s(symbol)为符号链接，仅仅是引用路径</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">相比于硬链接最大特点是可以跨文件系统</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">类似于Windows创建快捷方式，实际文件删除则链接失效</span><br><br>ln -s file1 file2<br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>显示文件尾：tail</p>
-<ul>
-<li>查看文件尾部 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">-f参数可以不立即回传结束信号，当文件有新写入数据时会及时更新</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">查看日志时常用</span><br><br>tail -f test<br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>版本控制：git</p>
-<ul>
-<li>版本控制最好用的软件，没有之一。至少要知道”git init”，”git add”，”git commit”，”git pull”，”git push”几个命令。</li>
-<li><a target="_blank" rel="noopener" href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/">详见</a></li>
-</ul>
-</li>
-<li><p>设置别名：alias</p>
-<ul>
-<li>常用命令添加别名 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash"><span class="hljs-string">&quot;.bashrc&quot;</span>文件中配置常用命令别名，生效后在命令行只需要使用别名即可代替原先很长的命令</span><br><br>alias rm=&#x27;rm -i&#x27;<br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ol>
+<h3 id="1-终止进程：kill"><a href="#1-终止进程：kill" class="headerlink" title="1. 终止进程：kill"></a>1. 终止进程：kill</h3><pre><code class="hljs">- 杀死具体进程
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">加具体进程PID</span><br><br>kill 12345<br></code></pre></td></tr></table></figure>
+
+- 杀死某进程相关进程
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">加上<span class="hljs-string">&quot;-9&quot;</span>杀死某进程相关进程</span><br><br>kill -9 12345<br></code></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="2-修改文件权限：chmod"><a href="#2-修改文件权限：chmod" class="headerlink" title="2. 修改文件权限：chmod"></a>2. 修改文件权限：chmod</h3><pre><code class="hljs">- 更改文件权限
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">可以对三种使用者设置权限，u(user, owner)，g(group)，o(other)</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">文件可以有三种权限，r(<span class="hljs-built_in">read</span>)，w(write)，x(execute)</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">这里u+r表示文件所有者在原有基础上增加文件读取权限</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">这里777分别对应，u=7，g=7，o=7，具体数字含义自行google</span><br><br>chmod u+r file<br>chmod 777 file<br></code></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="3-创建链接：ln"><a href="#3-创建链接：ln" class="headerlink" title="3. 创建链接：ln"></a>3. 创建链接：ln</h3><pre><code class="hljs">- 创建硬链接
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">文件inode中链接数会增加，只有链接数减为0时文件才真正被删除</span><br><br>ln file1 file2<br></code></pre></td></tr></table></figure>
+
+- 创建软（符号链接）链接
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">-s(symbol)为符号链接，仅仅是引用路径</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">相比于硬链接最大特点是可以跨文件系统</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">类似于Windows创建快捷方式，实际文件删除则链接失效</span><br><br>ln -s file1 file2<br></code></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="4-显示文件尾：tail"><a href="#4-显示文件尾：tail" class="headerlink" title="4. 显示文件尾：tail"></a>4. 显示文件尾：tail</h3><pre><code class="hljs">- 查看文件尾部
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">-f参数可以不立即回传结束信号，当文件有新写入数据时会及时更新</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">查看日志时常用</span><br><br>tail -f test<br></code></pre></td></tr></table></figure>
+</code></pre>
+<h3 id="5-版本控制：git"><a href="#5-版本控制：git" class="headerlink" title="5. 版本控制：git"></a>5. 版本控制：git</h3><pre><code class="hljs">- 版本控制最好用的软件，没有之一。至少要知道&quot;git init&quot;，&quot;git add&quot;，&quot;git commit&quot;，&quot;git pull&quot;，&quot;git push&quot;几个命令。
+- [详见](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/)
+</code></pre>
+<h3 id="6-设置别名：alias"><a href="#6-设置别名：alias" class="headerlink" title="6. 设置别名：alias"></a>6. 设置别名：alias</h3><pre><code class="hljs">- 常用命令添加别名
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash"><span class="hljs-string">&quot;.bashrc&quot;</span>文件中配置常用命令别名，生效后在命令行只需要使用别名即可代替原先很长的命令</span><br><br>alias rm=&#x27;rm -i&#x27;<br></code></pre></td></tr></table></figure>
+</code></pre>
 <hr>
-<h3 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h3><p>假设已经通过vim编辑，gcc编译得到可执行文件server，这时就可以使用一些开发者常用的工具来进行后期调试。这里都是给出最简单的用法，意在快速掌握一些基本开发工具。</p>
+<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><p>假设已经通过vim编辑，gcc编译得到可执行文件server，这时就可以使用一些开发者常用的工具来进行后期调试。这里都是给出最简单的用法，意在快速掌握一些基本开发工具。</p>
 <p>先clone这个项目，然后使用src_code下代码编译通过后通过下面命令调试。<a target="_blank" rel="noopener" href="https://github.com/linw7/TKeed">代码</a></p>
-<ol>
-<li>单步调试：gdb</li>
-</ol>
-<ul>
+<h3 id="1-单步调试：gdb"><a href="#1-单步调试：gdb" class="headerlink" title="1. 单步调试：gdb"></a>1. 单步调试：gdb</h3><ul>
 <li>运行得不到正确结果可以通过gdb设置断点来查看每个中间变量值，以此来确定哪里出了问题。因为gdb调试内容较多，这里不详细说明。另外，gdb出了可以单步查看变量值，还可以分析coredump文件来排查错误。</li>
 </ul>
-<ol start="2">
-<li>动态库依赖：ldd</li>
-</ol>
-<ul>
+<h3 id="2-动态库依赖：ldd"><a href="#2-动态库依赖：ldd" class="headerlink" title="2. 动态库依赖：ldd"></a>2. 动态库依赖：ldd</h3><ul>
 <li><p>命令：ldd .&#x2F;server</p>
 </li>
 <li><p>可以查看可执行文件server所需的所有动态库，动态库所在目录及其被映射到的虚拟地址空间。</p>
 </li>
 </ul>
-<ol start="3">
-<li>性能分析：top</li>
-</ol>
-<ul>
+<h3 id="3-性能分析：top"><a href="#3-性能分析：top" class="headerlink" title="3. 性能分析：top"></a>3. 性能分析：top</h3><ul>
 <li>top可以查看当前系统很多信息，比如1,5,15分钟内负载，运行、休眠、僵尸进程数，用户、内核程序占CPU百分比，存储信息等。top可以定位具体哪个进程CPU占用率高和内存使用率高。我们可以以此定位性能问题出在什么程序上（比如你后台执行TKeed server之后，可以看到CPU占用率为99%，这时候我们就需要从这个程序入手了）。</li>
 </ul>
-<ol start="4">
-<li>系统调用：strace</li>
-</ol>
-<ul>
+<h3 id="4-系统调用：strace"><a href="#4-系统调用：strace" class="headerlink" title="4. 系统调用：strace"></a>4. 系统调用：strace</h3><ul>
 <li><p>命令：strace .&#x2F;server</p>
 </li>
 <li><p>上面已经提到TKeed server的CPU占用率为99%，那么问题通常一定是出在了死循环上。我们接下来在代码中找到死循环位置。因为程序中epoll_wait需要阻塞进程，我们怀疑是不是这里没有阻塞，这时就可以通过上面的方式运行server程序。此时可以打印出没次系统调用及其参数等，我们也可以加-o filename将系统调用信息保存下来。</p>
 </li>
 </ul>
-<ol start="5">
-<li>打印进程：ps</li>
-</ol>
-<ul>
+<h3 id="5-打印进程：ps"><a href="#5-打印进程：ps" class="headerlink" title="5. 打印进程：ps"></a>5. 打印进程：ps</h3><ul>
 <li><p>命令：ps -ejH</p>
 </li>
 <li><p>我们在命令行下打开的程序的父进程是shell程序，之前用strace打开server程序，strace也是server的父进程。我们有时候需要知道进程间的层级关系就需要打印进程树，上面的ps命令可以做到。当出现僵尸进程时就可以通过进程树定位具体是哪个进程出了问题。另外当想要知道进程pid时，ps -el | grep XXX也是很常用的。</p>
 </li>
 </ul>
-<ol start="6">
-<li>打开文件：lsof</li>
-</ol>
-<ul>
+<h3 id="6-打开文件：lsof"><a href="#6-打开文件：lsof" class="headerlink" title="6. 打开文件：lsof"></a>6. 打开文件：lsof</h3><ul>
 <li><p>lsof -i:3000</p>
 </li>
 <li><p>比如在运行server时发现端口被占用了，可以通过lsof -i:port来查看对应端口号正在被哪个进程所占用。端口占用是非常常见的问题，比如3306被占用我遇到过好几次，要么是某个程序正好占用了要么是之前没能结束进程，这些都可以借助lsof帮助查看端口。</p>
 </li>
 </ul>
-<ol start="7">
-<li>修改权限：chmod</li>
-</ol>
-<ul>
+<h3 id="7-修改权限：chmod"><a href="#7-修改权限：chmod" class="headerlink" title="7. 修改权限：chmod"></a>7. 修改权限：chmod</h3><ul>
 <li><p>chmod 000 .&#x2F;index.html</p>
 </li>
 <li><p>可以修改文件权限，这里设为000，这样任何人都无法访问，重新在浏览器请求127.0.0.1:3000&#x2F;index.html就会因为文件权限不够而无法展示，服务器返回状态码为403，符合我们预期。修改权限后再请求一次可得到状态码200。</p>
 </li>
 </ul>
-<ol start="8">
-<li>网卡信息：ifconfig</li>
-</ol>
-<ul>
+<h3 id="8-网卡信息：ifconfig"><a href="#8-网卡信息：ifconfig" class="headerlink" title="8. 网卡信息：ifconfig"></a>8. 网卡信息：ifconfig</h3><ul>
 <li><p>ifconfig</p>
 </li>
 <li><p>如果想看一下整个传输过程，可以使用tcpdump来抓包，但是抓包时参数需要加上网卡信息，这时候可以通过ifconfig来获得网卡信息。</p>
 </li>
 </ul>
-<ol start="9">
-<li>抓包分析：tcpdump</li>
-</ol>
-<ul>
+<h3 id="9-抓包分析：tcpdump"><a href="#9-抓包分析：tcpdump" class="headerlink" title="9. 抓包分析：tcpdump"></a>9. 抓包分析：tcpdump</h3><ul>
 <li><p>tcpdump -i eth0 port 3000</p>
 </li>
 <li><p>可以用tcpdump来抓包分析三次握手及数据传输过程，-i之后加上上一步得到的网卡地址，port可以指定监听的端口号。</p>
