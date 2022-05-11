@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>海量数据处理-Skill-Tree</title>
+    <link href="/2022/05/11/%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86-Skill-Tree/"/>
+    <url>/2022/05/11/%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86-Skill-Tree/</url>
+    
+    <content type="html"><![CDATA[<p>[TOC]</p><h1 id="海量数据处理"><a href="#海量数据处理" class="headerlink" title="海量数据处理"></a>海量数据处理</h1><h2 id="TOP-N问题"><a href="#TOP-N问题" class="headerlink" title="TOP N问题"></a>TOP N问题</h2><h3 id="1-如何在海量数据中找出重复最多一个。"><a href="#1-如何在海量数据中找出重复最多一个。" class="headerlink" title="1. 如何在海量数据中找出重复最多一个。"></a>1. 如何在海量数据中找出重复最多一个。</h3><ul><li><p>通过hash映射为小文件</p></li><li><p>通过hash_map统计各个小文件重读最多的并记录次数</p></li><li><p>对每个小文件重复最多的进行建立大根堆</p></li></ul><h3 id="2-上亿有重数据，统计最多前N个。"><a href="#2-上亿有重数据，统计最多前N个。" class="headerlink" title="2. 上亿有重数据，统计最多前N个。"></a>2. 上亿有重数据，统计最多前N个。</h3><ul><li><p>内存存不下</p><ul><li><p>通过hash映射为小文件</p></li><li><p>通过hash_map统计各个小文件重读最多的并记录次数</p></li><li><p>对每个小文件重复最多的进行建立大根堆并重复N次取走堆顶并重建堆操作</p></li></ul></li><li><p>内存存得下</p><ul><li><p>直接内存通过hash_map统计并建大根堆</p></li><li><p>重复N次取走堆顶并重建堆操作</p></li></ul></li></ul><h3 id="3-海量日志数据，提取出某日访问百度次数最多的那个IP（同1）。"><a href="#3-海量日志数据，提取出某日访问百度次数最多的那个IP（同1）。" class="headerlink" title="3. 海量日志数据，提取出某日访问百度次数最多的那个IP（同1）。"></a>3. 海量日志数据，提取出某日访问百度次数最多的那个IP（同1）。</h3><ul><li><p>将IP % 1000映射到1000个小文件中</p><ul><li><p>相同IP会被映射到同一个文件</p></li><li><p>不会出现累加和更大情况</p></li></ul></li><li><p>分1000次在内存处理小文件，得到频率最大IP（使用map统计）</p></li><li><p>对这1000个IP建立大根堆</p></li></ul><h3 id="4-1000w查询串统计最热门10个（同2）。"><a href="#4-1000w查询串统计最热门10个（同2）。" class="headerlink" title="4. 1000w查询串统计最热门10个（同2）。"></a>4. 1000w查询串统计最热门10个（同2）。</h3><ul><li>同上</li></ul><h3 id="5-1G的文件，里面1行1个不超过16字节的词。内存限制1M，返回频数最高前100（同2）。"><a href="#5-1G的文件，里面1行1个不超过16字节的词。内存限制1M，返回频数最高前100（同2）。" class="headerlink" title="5. 1G的文件，里面1行1个不超过16字节的词。内存限制1M，返回频数最高前100（同2）。"></a>5. 1G的文件，里面1行1个不超过16字节的词。内存限制1M，返回频数最高前100（同2）。</h3><ul><li><p>将单词 % 5000存入5000小文件</p><ul><li><p>平均各文件约200K</p></li><li><p>对超过1M的文件继续分割直到小于200K</p></li></ul></li><li><p>使用map统计各个词出现的频率</p></li><li><p>对5000词使用堆排序或归并排序</p></li></ul><h2 id="分布式TOP-N问题"><a href="#分布式TOP-N问题" class="headerlink" title="分布式TOP N问题"></a>分布式TOP N问题</h2><h3 id="6-分布在100台电脑的海量数据，统计前十。"><a href="#6-分布在100台电脑的海量数据，统计前十。" class="headerlink" title="6. 分布在100台电脑的海量数据，统计前十。"></a>6. 分布在100台电脑的海量数据，统计前十。</h3><ul><li><p>各数据只出现在一台机器中</p><ul><li><p>先在独立机器得到前十</p><ul><li><p>若可以放入内存直接堆排序</p></li><li><p>若不可全放入内存：哈希分块 -&gt; map统计 -&gt; 归总堆排</p></li></ul></li><li><p>再将100台计算机的TOP10组合起来堆排序</p></li></ul></li><li><p>同一元素可同时出现在不同机器中</p><ul><li>遍历所有数据，重新hash取模，使同一个元素只出现在单独的一台电脑中，然后采用上面方法先统计每台电脑TOP10再汇总起来</li></ul></li></ul><h2 id="快速外排序问题"><a href="#快速外排序问题" class="headerlink" title="快速外排序问题"></a>快速外排序问题</h2><h3 id="7-有10个1G文件，每行都是一个可重复用户query，按query频度排序。"><a href="#7-有10个1G文件，每行都是一个可重复用户query，按query频度排序。" class="headerlink" title="7. 有10个1G文件，每行都是一个可重复用户query，按query频度排序。"></a>7. 有10个1G文件，每行都是一个可重复用户query，按query频度排序。</h3><ul><li><p>顺序读取十个文件并采取哈希，将query写入10个文件中</p></li><li><p>通过hash_map(query, count)统计每个query出现次数，至少2G内存</p></li><li><p>通过得到的hash_map中query和query_count，对query_count排序并将重新输出到文件中，得到已排序好的文件</p></li><li><p>对十个文件进行归并排序（外排序）</p></li></ul><h2 id="公共数据问题"><a href="#公共数据问题" class="headerlink" title="公共数据问题"></a>公共数据问题</h2><h3 id="8-A-B两个文件各存放50亿url，每个为64Byte，限制内存4G找出公共url。"><a href="#8-A-B两个文件各存放50亿url，每个为64Byte，限制内存4G找出公共url。" class="headerlink" title="8. A,B两个文件各存放50亿url，每个为64Byte，限制内存4G找出公共url。"></a>8. A,B两个文件各存放50亿url，每个为64Byte，限制内存4G找出公共url。</h3><ul><li><p>对A和B两个大文件，先通过url % 1000将数据映射到1000个文件中，单个文件大小约320M（我们只需要检查对应小文件A1 V B1……，不对应小文件不会有相同url）</p></li><li><p>通过hash_set统计，把A1的url存储到hash_set中，再遍历对应的B1小文件，检查是否在hash_set中，若存在则写入外存。重复循环处理对应的1000个对。</p></li></ul><h3 id="9-1000w有重字符串，对字符串去重。"><a href="#9-1000w有重字符串，对字符串去重。" class="headerlink" title="9. 1000w有重字符串，对字符串去重。"></a>9. 1000w有重字符串，对字符串去重。</h3><ul><li><p>先hash分为多个文件</p></li><li><p>逐个文件检查并插入set中</p></li><li><p>多个set取交集</p></li></ul><h2 id="内存内TOP-N问题"><a href="#内存内TOP-N问题" class="headerlink" title="内存内TOP N问题"></a>内存内TOP N问题</h2><h3 id="10-100w个数字找出最大100个。"><a href="#10-100w个数字找出最大100个。" class="headerlink" title="10. 100w个数字找出最大100个。"></a>10. 100w个数字找出最大100个。</h3><ul><li><p>堆排序法</p><ul><li>建大根堆，取走堆顶并重建堆，重复100次</li></ul></li><li><p>快排法</p><ul><li>使用快速排序划分，若某次枢纽元在后10000时（具体情况具体分析），对后10000数据排序后取前100</li></ul></li></ul><h2 id="位图法"><a href="#位图法" class="headerlink" title="位图法"></a>位图法</h2><h3 id="11-在2-5亿数字中找出不重复的整数。"><a href="#11-在2-5亿数字中找出不重复的整数。" class="headerlink" title="11. 在2.5亿数字中找出不重复的整数。"></a>11. 在2.5亿数字中找出不重复的整数。</h3><ul><li><p>使用2-Bit位图法，00表示不存在，01表示出现一次，10表示出现多次，11无意义。这样只需要1G内存。</p></li><li><p>或者hash划分小文件，小文件使用hash_set检查各个元素，得到的。</p></li></ul><h3 id="12-如何在40亿数字中快速判断是否有某个数？"><a href="#12-如何在40亿数字中快速判断是否有某个数？" class="headerlink" title="12. 如何在40亿数字中快速判断是否有某个数？"></a>12. 如何在40亿数字中快速判断是否有某个数？</h3><ul><li>位图法标记某个数字是否存在，check标记数组。</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>校招面经</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Skill-Tree</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>操作系统-Skill-Tree</title>
     <link href="/2022/05/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-Skill-Tree/"/>
     <url>/2022/05/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-Skill-Tree/</url>
