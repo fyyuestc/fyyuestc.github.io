@@ -24,7 +24,7 @@
 <meta property="og:description" content="[TOC] 1. 语言基础 (C&#x2F;C++)（0） 指针和引用的区别 指针是一个新的变量，指向另一个变量的地址，我们可以通过访问这个地址来修改另一个变量；而引用是一个别名，对引用的操作就是对变量的本身进行操作 指针可以有多级，引用只有一级 传参的时候，使用指针的话需要解引用才能对参数进行修改，而使用引用可以直接对参数进行修改 指针的大小一般是4个字节，引用的大小取决于被引用对象的大小 指针">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="e:/百度云盘下载/面经源文件/fig/三次握手.png">
-<meta property="og:image" content="e:/百度云盘下载/面经源文件/fig/四次挥手.png">
+<meta property="og:image" content="http://example.com/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png">
 <meta property="og:image" content="e:/百度云盘下载/面经源文件/fig/拥塞控制.png">
 <meta property="og:image" content="e:/百度云盘下载/面经源文件/fig/数字证书.jpg">
 <meta property="og:image" content="e:/百度云盘下载/面经源文件/fig/DNS查询图解.png">
@@ -44,7 +44,7 @@
 <meta property="og:image" content="e:/百度云盘下载/面经源文件/fig/spark内存一.png">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/195230-f119edabb5683f38.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp">
 <meta property="article:published_time" content="2022-05-23T05:45:03.000Z">
-<meta property="article:modified_time" content="2022-05-23T05:46:59.016Z">
+<meta property="article:modified_time" content="2022-05-23T05:51:10.178Z">
 <meta property="article:author" content="Fyy">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="e:/百度云盘下载/面经源文件/fig/三次握手.png">
@@ -721,7 +721,7 @@ close(), shutdown() 关闭套接字
 <p>TCP断开连接通常是由一方主动，一方被动的，这里我们假设client主动，server被动<br>第一次挥手：当client没有数据要发送给server了，他会给server发送一个FIN报文，告诉server：“我已经没有数据要发给你了，但是你要是还想给我发数据的话，你就接着发，但是你得告诉我你收到我的关闭信息了”，这是第一次挥手，挥手之后client进入FIN_WAIT_1的第一阶段</p>
 <p>第二次挥手：当server收到client发来的FIN报文后，告诉client：“我收到你的FIN消息了，但是你等我发完的”此时给client返回一个ACK信息，并且呢ack&#x3D;seq+1，这是第二次挥手，挥手之后呢server进入CLOSE_WAIT阶段，而client收到之后处于FIN_WAIT_2第二阶段</p>
 <p>第三次挥手：当server发完所有数据时，他会给client发送一个FIN报文，告诉client说“我传完数据了，现在要关闭连接了”，然后呢server变成LAST_ACK状态，等着client最后的ACK信息，这是第三次挥手</p>
-<p>第四次挥手：当client收到这个FIN报文时，他会对这个消息进行确认，即给server发ACK信息，但是它不相信网络，怕server收不到信息，它会进入TIME_WAIT状态，万一server没收到ACK消息它可以可以重传，而当server收到这个ACK信息后，就正式关闭了tcp连接，处于CLOSED状态，而client等待了2MSL这样长时间后还没等到消息，它知道server已经关闭连接了，于是乎他自己也断开了，这是第四次挥手，这样tcp连接就断开了<br><img src="E:/百度云盘下载/面经源文件/fig/四次挥手.png" srcset="/img/loading.gif" lazyload alt="fig/四次挥手.png"></p>
+<p>第四次挥手：当client收到这个FIN报文时，他会对这个消息进行确认，即给server发ACK信息，但是它不相信网络，怕server收不到信息，它会进入TIME_WAIT状态，万一server没收到ACK消息它可以可以重传，而当server收到这个ACK信息后，就正式关闭了tcp连接，处于CLOSED状态，而client等待了2MSL这样长时间后还没等到消息，它知道server已经关闭连接了，于是乎他自己也断开了，这是第四次挥手，这样tcp连接就断开了<br><img src="/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png" srcset="/img/loading.gif" lazyload alt="四次挥手.png"></p>
 <h4 id="（12）-TCP握手以及每一次握手客户端和服务器端处于哪个状态"><a href="#（12）-TCP握手以及每一次握手客户端和服务器端处于哪个状态" class="headerlink" title="（12） TCP握手以及每一次握手客户端和服务器端处于哪个状态"></a>（12） TCP握手以及每一次握手客户端和服务器端处于哪个状态</h4><p>见上</p>
 <h4 id="（13）-为什么使用三次握手，两次握手可不可以？"><a href="#（13）-为什么使用三次握手，两次握手可不可以？" class="headerlink" title="（13） 为什么使用三次握手，两次握手可不可以？"></a>（13） 为什么使用三次握手，两次握手可不可以？</h4><p>如果使用两次握手的话，三次握手中的最后一次缺失，服务器不能确认客户端的接收能力。</p>
 <p>举两个例子，第一种是黑客会伪造大量SYN请求发送给服务器，服务器立即确认并建立连接，分配资源，但是这一系列连接并不是真实存在的，这大大浪费了服务器的资源并且阻塞了正常用户的连接，这种也叫SYN洪泛攻击。第二种是服务器返回给客户端的ACK数据包可能会在传输的过程中丢失，而客户端没有收到该ACK数据包而拒绝接收服务器接下来发送的数据，于是服务器一直在发送，客户端一直在拒绝，形成死锁。</p>
