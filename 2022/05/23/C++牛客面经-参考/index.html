@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="UESTC-Fyy">
 <meta property="og:description" content="[TOC] 1. 语言基础 (C&#x2F;C++)（0） 指针和引用的区别 指针是一个新的变量，指向另一个变量的地址，我们可以通过访问这个地址来修改另一个变量；而引用是一个别名，对引用的操作就是对变量的本身进行操作 指针可以有多级，引用只有一级 传参的时候，使用指针的话需要解引用才能对参数进行修改，而使用引用可以直接对参数进行修改 指针的大小一般是4个字节，引用的大小取决于被引用对象的大小 指针">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231434416.png">
 <meta property="og:image" content="http://example.com/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png">
 <meta property="og:image" content="http://example.com/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6.png">
 <meta property="og:image" content="http://example.com/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6.jpg">
@@ -44,10 +44,10 @@
 <meta property="og:image" content="http://example.com/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/spark%E5%86%85%E5%AD%98%E4%B8%80.png">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/195230-f119edabb5683f38.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp">
 <meta property="article:published_time" content="2022-05-23T05:45:03.000Z">
-<meta property="article:modified_time" content="2022-05-23T06:30:43.507Z">
+<meta property="article:modified_time" content="2022-05-23T06:34:36.521Z">
 <meta property="article:author" content="Fyy">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231434416.png">
   
   
   <title>C++牛客面经-参考 - UESTC-Fyy</title>
@@ -714,7 +714,7 @@ close(), shutdown() 关闭套接字
 </ul>
 <p>第一次握手：首先client给server发送连接请求报文，在这个报文中，包含了SYN&#x3D;1，client_seq&#x3D;任意值i，发送之后处于SYN-SENT状态，这是第一次握手</p>
 <p>第二次握手：server端接收到了这个请求，并分配资源，同时给client返回一个ACK报文，这个报文中呢包含了这些字段，标志位SYN和ACK都为1，而小ack为i+1，此时位于SYN-RCVD状态，这是第二次握手</p>
-<p>第三次握手：client收到server发来的ACK信息后呢，他会看到server发过来的小ack是i+1，这时他知道了server收到了消息，也给server回一个ACK报文，报文中同样包含了ACK&#x3D;1这样的消息，同时呢，还包括了client_ack&#x3D;k+1这样的字段，这样呢三次握手之后，连接就建立了，client进入established（已建立连接）状态<br><img src="/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png" srcset="/img/loading.gif" lazyload alt="三次握手.png"></p>
+<p>第三次握手：client收到server发来的ACK信息后呢，他会看到server发过来的小ack是i+1，这时他知道了server收到了消息，也给server回一个ACK报文，报文中同样包含了ACK&#x3D;1这样的消息，同时呢，还包括了client_ack&#x3D;k+1这样的字段，这样呢三次握手之后，连接就建立了，client进入established（已建立连接）状态<br><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231434416.png" srcset="/img/loading.gif" lazyload alt="三次握手.png"></p>
 <ul>
 <li>四次挥手断开连接：</li>
 </ul>
