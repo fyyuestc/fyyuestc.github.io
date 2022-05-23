@@ -24,27 +24,27 @@
 <meta property="og:description" content="[TOC] 1. 语言基础 (C&#x2F;C++)（0） 指针和引用的区别 指针是一个新的变量，指向另一个变量的地址，我们可以通过访问这个地址来修改另一个变量；而引用是一个别名，对引用的操作就是对变量的本身进行操作 指针可以有多级，引用只有一级 传参的时候，使用指针的话需要解引用才能对参数进行修改，而使用引用可以直接对参数进行修改 指针的大小一般是4个字节，引用的大小取决于被引用对象的大小 指针">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231434416.png">
-<meta property="og:image" content="http://example.com/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png">
-<meta property="og:image" content="http://example.com/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6.png">
-<meta property="og:image" content="http://example.com/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6.jpg">
-<meta property="og:image" content="http://example.com/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/DNS%E6%9F%A5%E8%AF%A2%E5%9B%BE%E8%A7%A3.png">
-<meta property="og:image" content="e:/百度云盘下载/面经源文件/fig/网络协议层.png">
-<meta property="og:image" content="http://example.com/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/Bptree.png">
-<meta property="og:image" content="http://example.com/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/select.png">
-<meta property="og:image" content="http://example.com/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/epoll.png">
-<meta property="og:image" content="http://example.com/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/%E7%AE%A1%E9%81%93%E9%80%9A%E4%BF%A1.png">
-<meta property="og:image" content="https://img-blog.csdn.net/20140904215636015?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvemhhbmd6aGVianV0/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
-<meta property="og:image" content="http://example.com/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/%E4%B8%89%E6%80%81%E6%A8%A1%E5%9E%8B.png">
-<meta property="og:image" content="http://example.com/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/%E4%BA%94%E6%80%81%E6%A8%A1%E5%9E%8B.png">
-<meta property="og:image" content="http://example.com/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/%E4%B8%83%E6%80%81%E6%A8%A1%E5%9E%8B.png">
-<meta property="og:image" content="http://example.com/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%99%BB%E5%BD%95%E6%B5%81%E7%A8%8B.png">
-<meta property="og:image" content="http://example.com/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/bitmap1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231437354.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231437398.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231437935.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231437025.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231437119.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231437608.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231437994.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231437094.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231438995.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231438071.jpeg">
+<meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231438462.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231438885.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231438793.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231438984.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231438074.png">
 <meta property="og:image" content="e:/百度云盘下载/面经源文件/fig/布隆过滤器.png">
-<meta property="og:image" content="https://img-blog.csdn.net/20170206221148299?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYTEwNDM0OTg3NzY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://example.com/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/spark%E5%86%85%E5%AD%98%E4%B8%80.png">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/195230-f119edabb5683f38.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp">
+<meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231438568.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231438752.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231438845.webp">
 <meta property="article:published_time" content="2022-05-23T05:45:03.000Z">
-<meta property="article:modified_time" content="2022-05-23T06:34:36.521Z">
+<meta property="article:modified_time" content="2022-05-23T06:38:54.002Z">
 <meta property="article:author" content="Fyy">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231434416.png">
@@ -721,7 +721,7 @@ close(), shutdown() 关闭套接字
 <p>TCP断开连接通常是由一方主动，一方被动的，这里我们假设client主动，server被动<br>第一次挥手：当client没有数据要发送给server了，他会给server发送一个FIN报文，告诉server：“我已经没有数据要发给你了，但是你要是还想给我发数据的话，你就接着发，但是你得告诉我你收到我的关闭信息了”，这是第一次挥手，挥手之后client进入FIN_WAIT_1的第一阶段</p>
 <p>第二次挥手：当server收到client发来的FIN报文后，告诉client：“我收到你的FIN消息了，但是你等我发完的”此时给client返回一个ACK信息，并且呢ack&#x3D;seq+1，这是第二次挥手，挥手之后呢server进入CLOSE_WAIT阶段，而client收到之后处于FIN_WAIT_2第二阶段</p>
 <p>第三次挥手：当server发完所有数据时，他会给client发送一个FIN报文，告诉client说“我传完数据了，现在要关闭连接了”，然后呢server变成LAST_ACK状态，等着client最后的ACK信息，这是第三次挥手</p>
-<p>第四次挥手：当client收到这个FIN报文时，他会对这个消息进行确认，即给server发ACK信息，但是它不相信网络，怕server收不到信息，它会进入TIME_WAIT状态，万一server没收到ACK消息它可以可以重传，而当server收到这个ACK信息后，就正式关闭了tcp连接，处于CLOSED状态，而client等待了2MSL这样长时间后还没等到消息，它知道server已经关闭连接了，于是乎他自己也断开了，这是第四次挥手，这样tcp连接就断开了<br><img src="/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png" srcset="/img/loading.gif" lazyload alt="四次挥手.png"></p>
+<p>第四次挥手：当client收到这个FIN报文时，他会对这个消息进行确认，即给server发ACK信息，但是它不相信网络，怕server收不到信息，它会进入TIME_WAIT状态，万一server没收到ACK消息它可以可以重传，而当server收到这个ACK信息后，就正式关闭了tcp连接，处于CLOSED状态，而client等待了2MSL这样长时间后还没等到消息，它知道server已经关闭连接了，于是乎他自己也断开了，这是第四次挥手，这样tcp连接就断开了<br><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231437354.png" srcset="/img/loading.gif" lazyload alt="四次挥手.png"></p>
 <h4 id="（12）-TCP握手以及每一次握手客户端和服务器端处于哪个状态"><a href="#（12）-TCP握手以及每一次握手客户端和服务器端处于哪个状态" class="headerlink" title="（12） TCP握手以及每一次握手客户端和服务器端处于哪个状态"></a>（12） TCP握手以及每一次握手客户端和服务器端处于哪个状态</h4><p>见上</p>
 <h4 id="（13）-为什么使用三次握手，两次握手可不可以？"><a href="#（13）-为什么使用三次握手，两次握手可不可以？" class="headerlink" title="（13） 为什么使用三次握手，两次握手可不可以？"></a>（13） 为什么使用三次握手，两次握手可不可以？</h4><p>如果使用两次握手的话，三次握手中的最后一次缺失，服务器不能确认客户端的接收能力。</p>
 <p>举两个例子，第一种是黑客会伪造大量SYN请求发送给服务器，服务器立即确认并建立连接，分配资源，但是这一系列连接并不是真实存在的，这大大浪费了服务器的资源并且阻塞了正常用户的连接，这种也叫SYN洪泛攻击。第二种是服务器返回给客户端的ACK数据包可能会在传输的过程中丢失，而客户端没有收到该ACK数据包而拒绝接收服务器接下来发送的数据，于是服务器一直在发送，客户端一直在拒绝，形成死锁。</p>
@@ -747,7 +747,7 @@ close(), shutdown() 关闭套接字
 <p>TCP的滑动窗口用来控制接收方和发送方的发送速率，避免拥塞的发生。滑动窗口其实就是接收端的缓冲区大小，用来告诉发送方对它发送的数据有多大的缓冲空间。在接收方的滑动窗口已知的情况下，当接收方确认了连续的数据序列之后，发送方的滑动窗口向后滑动，发送下一个数据序列。</p>
 <p>接收方会在每个ACK数据包中附带自己当前的接受窗口（滑动窗口）的大小，方便发送方进行控制。</p>
 <h4 id="（19）-拥塞控制和流量控制的区别"><a href="#（19）-拥塞控制和流量控制的区别" class="headerlink" title="（19） 拥塞控制和流量控制的区别"></a>（19） 拥塞控制和流量控制的区别</h4><p>拥塞控制是防止过多的数据注入到网络中，导致网络发生拥塞；而流量控制是防止发送方一下子发送过多的数据到接收方，导致接收方缓存放不下。两种算法都是对发送方的行为进行控制的。</p>
-<h4 id="（20）-TCP拥塞控制，算法名字？（极其重要）"><a href="#（20）-TCP拥塞控制，算法名字？（极其重要）" class="headerlink" title="（20） TCP拥塞控制，算法名字？（极其重要）"></a>（20） TCP拥塞控制，算法名字？（极其重要）</h4><p><img src="/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6.png" srcset="/img/loading.gif" lazyload alt="拥塞控制.png"><br>防止过多的数据注入到网络中，这样可以使网络中的路由器或链路不致过载，拥塞控制自然也是控制发送者的流量，拥塞控制有四种算法，<strong>慢启动、拥塞避免，快速重传和快速恢复</strong></p>
+<h4 id="（20）-TCP拥塞控制，算法名字？（极其重要）"><a href="#（20）-TCP拥塞控制，算法名字？（极其重要）" class="headerlink" title="（20） TCP拥塞控制，算法名字？（极其重要）"></a>（20） TCP拥塞控制，算法名字？（极其重要）</h4><p><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231437398.png" srcset="/img/loading.gif" lazyload alt="拥塞控制.png"><br>防止过多的数据注入到网络中，这样可以使网络中的路由器或链路不致过载，拥塞控制自然也是控制发送者的流量，拥塞控制有四种算法，<strong>慢启动、拥塞避免，快速重传和快速恢复</strong></p>
 <p>发送方维持一个拥塞窗口 cwnd ( congestion window )的状态变量。拥塞窗口的大小取决于网络的拥塞程度，并且动态地在变化。发送方让自己的发送窗口等于拥塞窗口和接受窗口的较小值。</p>
 <p>（1）<strong>慢启动</strong>。慢启动算法的思路是当主机开始发送数据时，先以比较小的拥塞窗口进行发送，然后每次翻倍，也就是说，由小到大逐渐增加拥塞窗口的大小，而这个大小是指数增长的，即1、2、4、8、16<br>*为了防止拥塞窗口cwnd增长过大引起网络拥塞，还要另外设置一个慢启动阈值ssthresh状态变量，当拥塞窗口的大小超过慢启动阈值的时候（ cwnd &gt; ssthresh 时），停止使用慢开始算法而改用拥塞避免算法</p>
 <p>（2）<strong>拥塞避免</strong>。拥塞避免算法的思路是让拥塞窗口cwnd缓慢地增大，即每经过一个往返时间RTT就把发送方的拥塞窗口cwnd加1，而不是加倍。</p>
@@ -806,7 +806,7 @@ close(), shutdown() 关闭套接字
 </ul>
 </li>
 </ul>
-<h4 id="（30）-数字证书的了解（高频）"><a href="#（30）-数字证书的了解（高频）" class="headerlink" title="（30） 数字证书的了解（高频）"></a>（30） 数字证书的了解（高频）</h4><p><img src="/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6.jpg" srcset="/img/loading.gif" lazyload alt="数字证书.jpg"></p>
+<h4 id="（30）-数字证书的了解（高频）"><a href="#（30）-数字证书的了解（高频）" class="headerlink" title="（30） 数字证书的了解（高频）"></a>（30） 数字证书的了解（高频）</h4><p><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231437935.jpg" srcset="/img/loading.gif" lazyload alt="数字证书.jpg"></p>
 <p>权威CA使用私钥将网站A的信息和消息摘要（签名S）进行加密打包形成数字证书。公钥给客户端。</p>
 <p>网站A将自己的信息和数字证书发给客户端，客户端用CA的公钥对数字证书进行解密，得到签名S，与手动将网站的信息进行消息摘要得到的结果S*进行对比，如果签名一致就证明网站A可以信任。</p>
 <h4 id="（31）-服务器出现大量close-wait的连接的原因以及解决方法"><a href="#（31）-服务器出现大量close-wait的连接的原因以及解决方法" class="headerlink" title="（31） 服务器出现大量close_wait的连接的原因以及解决方法"></a>（31） 服务器出现大量close_wait的连接的原因以及解决方法</h4><p>close_wait状态是在TCP四次挥手的时候收到FIN但是没有发送自己的FIN时出现的，服务器出现大量close_wait状态的原因有两种：</p>
@@ -882,14 +882,14 @@ close(), shutdown() 关闭套接字
 <li>靠host主机名区分</li>
 <li>靠端口号区分</li>
 </ul>
-<h4 id="（38）-服务器攻击（DDos攻击）"><a href="#（38）-服务器攻击（DDos攻击）" class="headerlink" title="（38） 服务器攻击（DDos攻击）"></a>（38） 服务器攻击（DDos攻击）</h4><h4 id="（39）DNS的工作过程和原理"><a href="#（39）DNS的工作过程和原理" class="headerlink" title="（39）DNS的工作过程和原理"></a>（39）DNS的工作过程和原理</h4><p><img src="/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/DNS%E6%9F%A5%E8%AF%A2%E5%9B%BE%E8%A7%A3.png" srcset="/img/loading.gif" lazyload alt="DNS查询图解"><br>DNS解析有两种方式：递归查询和迭代查询</p>
+<h4 id="（38）-服务器攻击（DDos攻击）"><a href="#（38）-服务器攻击（DDos攻击）" class="headerlink" title="（38） 服务器攻击（DDos攻击）"></a>（38） 服务器攻击（DDos攻击）</h4><h4 id="（39）DNS的工作过程和原理"><a href="#（39）DNS的工作过程和原理" class="headerlink" title="（39）DNS的工作过程和原理"></a>（39）DNS的工作过程和原理</h4><p><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231437025.png" srcset="/img/loading.gif" lazyload alt="DNS查询图解"><br>DNS解析有两种方式：递归查询和迭代查询</p>
 <ul>
 <li>递归查询 用户先向本地域名服务器查询，如果本地域名服务器的缓存没有IP地址映射记录，就向根域名服务器查询，根域名服务器就会向顶级域名服务器查询，顶级域名服务器向权限域名服务器查询，查到结果后依次返回。</li>
 <li>迭代查询 用户向本地域名服务器查询，如果没有缓存，本地域名服务器会向根域名服务器查询，根域名服务器返回顶级域名服务器的地址，本地域名服务器再向顶级域名服务器查询，得到权限域名服务器的地址，本地域名服务器再向权限域名服务器查询得到结果</li>
 </ul>
 <h4 id="（41）OSA七层协议和五层协议，分别有哪些"><a href="#（41）OSA七层协议和五层协议，分别有哪些" class="headerlink" title="（41）OSA七层协议和五层协议，分别有哪些"></a>（41）OSA七层协议和五层协议，分别有哪些</h4><p>OSI七层协议模型主要是：应用层（Application）、表示层（Presentation）、会话层（Session）、传输层（Transport）、网络层（Network）、数据链路层（Data Link）、物理层（Physical）。</p>
 <p>五层体系结构包括：应用层、传输层、网络层、数据链路层和物理层。</p>
-<p><img src="E:/百度云盘下载/面经源文件/fig/网络协议层.png" srcset="/img/loading.gif" lazyload alt="(fig/网络协议层.png"></p>
+<p><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231437119.png" srcset="/img/loading.gif" lazyload alt="(fig/网络协议层.png"></p>
 <h4 id="（42）IP寻址和MAC寻址有什么不同，怎么实现的"><a href="#（42）IP寻址和MAC寻址有什么不同，怎么实现的" class="headerlink" title="（42）IP寻址和MAC寻址有什么不同，怎么实现的"></a>（42）IP寻址和MAC寻址有什么不同，怎么实现的</h4><p>通过MAC地址寻找主机是MAC地址寻址，通过IP地址寻找主机叫IP地址寻址。它们适用于不同的协议层，IP寻址是网络层，Mac寻址是数据链路层。</p>
 <p><a target="_blank" rel="noopener" href="http://c.biancheng.net/view/6388.html">http://c.biancheng.net/view/6388.html</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wxy_nick/article/details/9190693">https://blog.csdn.net/wxy_nick/article/details/9190693</a></p>
@@ -970,7 +970,7 @@ close(), shutdown() 关闭套接字
 <h4 id="（8）-索引的底层实现（重点）"><a href="#（8）-索引的底层实现（重点）" class="headerlink" title="（8） 索引的底层实现（重点）"></a>（8） 索引的底层实现（重点）</h4><p>数据库的索引是使用B+树来实现的。</p>
 <p>（为什么要用B+树，为什么不用红黑树和B树）<br><br>B+树是一种特殊的平衡多路树，是B树的优化改进版本，它把所有的数据都存放在叶节点上，中间节点保存的是索引。这样一来相对于B树来说，减少了数据对中间节点的空间占用，使得中间节点可以存放更多的指针，使得树变得更矮，深度更小，从而减少查询的磁盘IO次数，提高查询效率。另一个是由于叶节点之间有指针连接，所以可以进行范围查询，方便区间访问。</p>
 <p>而红黑树是二叉的，它的深度相对B+树来说更大，更大的深度意味着查找次数更多，更频繁的磁盘IO，所以红黑树更适合在内存中进行查找。</p>
-<h4 id="（9）-B树和B-树的区别（重点）"><a href="#（9）-B树和B-树的区别（重点）" class="headerlink" title="（9） B树和B+树的区别（重点）"></a>（9） B树和B+树的区别（重点）</h4><p><img src="/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/Bptree.png" srcset="/img/loading.gif" lazyload alt="Bptree.png"></p>
+<h4 id="（9）-B树和B-树的区别（重点）"><a href="#（9）-B树和B-树的区别（重点）" class="headerlink" title="（9） B树和B+树的区别（重点）"></a>（9） B树和B+树的区别（重点）</h4><p><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231437608.png" srcset="/img/loading.gif" lazyload alt="Bptree.png"></p>
 <p>这都是由于B+树和B具有不同的存储结构所造成的区别，以一个m阶树为例。</p>
 <ol>
 <li>关键字的数量不同；B+树中分支结点有m个关键字，其叶子结点也有m个，其关键字只是起到了一个索引的作用，但是B树虽然也有m个子结点，但是其只拥有m-1个关键字。</li>
@@ -1118,8 +1118,8 @@ close(), shutdown() 关闭套接字
 <li><p>epoll_wait()会将进程放到eventpoll的等待队列中，将进程阻塞，当某个文件描述符IO可用时，内核通过回调函数将该文件描述符放到就绪链表里，epoll_wait()会将就绪链表里的文件描述符返回到用户空间。</p>
 </li>
 </ul>
-<h4 id="（4）-IO复用的三种方法（select-poll-epoll）深入理解，包括三者区别，内部原理实现？"><a href="#（4）-IO复用的三种方法（select-poll-epoll）深入理解，包括三者区别，内部原理实现？" class="headerlink" title="（4） IO复用的三种方法（select,poll,epoll）深入理解，包括三者区别，内部原理实现？"></a>（4） IO复用的三种方法（select,poll,epoll）深入理解，包括三者区别，内部原理实现？</h4><p>（1）select的方法介绍：select把所有监听的文件描述符拷贝到内核中，挂起进程。当某个文件描述符可读或可写的时候，中断程序唤起进程，select将监听的文件描述符再次拷贝到用户空间，然select后遍历这些文件描述符找到IO可用的文件。下次监控的时候需要再次拷贝这些文件描述符到内核空间。select支持监听的描述符最大数量是1024.<br><img src="/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/select.png" srcset="/img/loading.gif" lazyload alt="select"><br>（2)poll使用链表保存文件描述符，其他的跟select没有什么不同。</p>
-<p>（3）epoll将文件描述符拷贝到内核空间后使用红黑树进行维护，同时向内核注册每个文件描述符的回调函数，当某个文件描述符可读可写的时候，将这个文件描述符加入到就绪链表里，并唤起进程，返回就绪链表到用户空间。<br><img src="/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/epoll.png" srcset="/img/loading.gif" lazyload alt="epoll"><br>详见 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/Anker/p/3265058.html">https://www.cnblogs.com/Anker/p/3265058.html</a></p>
+<h4 id="（4）-IO复用的三种方法（select-poll-epoll）深入理解，包括三者区别，内部原理实现？"><a href="#（4）-IO复用的三种方法（select-poll-epoll）深入理解，包括三者区别，内部原理实现？" class="headerlink" title="（4） IO复用的三种方法（select,poll,epoll）深入理解，包括三者区别，内部原理实现？"></a>（4） IO复用的三种方法（select,poll,epoll）深入理解，包括三者区别，内部原理实现？</h4><p>（1）select的方法介绍：select把所有监听的文件描述符拷贝到内核中，挂起进程。当某个文件描述符可读或可写的时候，中断程序唤起进程，select将监听的文件描述符再次拷贝到用户空间，然select后遍历这些文件描述符找到IO可用的文件。下次监控的时候需要再次拷贝这些文件描述符到内核空间。select支持监听的描述符最大数量是1024.<br><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231437994.png" srcset="/img/loading.gif" lazyload alt="select"><br>（2)poll使用链表保存文件描述符，其他的跟select没有什么不同。</p>
+<p>（3）epoll将文件描述符拷贝到内核空间后使用红黑树进行维护，同时向内核注册每个文件描述符的回调函数，当某个文件描述符可读可写的时候，将这个文件描述符加入到就绪链表里，并唤起进程，返回就绪链表到用户空间。<br><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231437094.png" srcset="/img/loading.gif" lazyload alt="epoll"><br>详见 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/Anker/p/3265058.html">https://www.cnblogs.com/Anker/p/3265058.html</a></p>
 <h4 id="（5）-Epoll的ET模式和LT模式（ET的非阻塞）"><a href="#（5）-Epoll的ET模式和LT模式（ET的非阻塞）" class="headerlink" title="（5） Epoll的ET模式和LT模式（ET的非阻塞）"></a>（5） Epoll的ET模式和LT模式（ET的非阻塞）</h4><ul>
 <li>ET是边缘触发模式，在这种模式下，只有当描述符从未就绪变成就绪时，内核才会通过epoll进行通知。然后直到下一次变成就绪之前，不会再次重复通知。也就是说，如果一次就绪通知之后不对这个描述符进行IO操作导致它变成未就绪，内核也不会再次发送就绪通知。优点就是只通知一次，减少内核资源浪费，效率高。缺点就是不能保证数据的完整，有些数据来不及读可能就会无法取出。</li>
 <li>LT是水平触发模式，在这个模式下，如果文件描述符IO就绪，内核就会进行通知，如果不对它进行IO操作，只要还有未操作的数据，内核都会一直进行通知。优点就是可以确保数据可以完整输出。缺点就是由于内核会一直通知，会不停从内核空间切换到用户空间，资源浪费严重。</li>
@@ -1223,7 +1223,7 @@ close(), shutdown() 关闭套接字
 </ul>
 <h4 id="（4）-进程之间的通信方法有哪几种-（重点）"><a href="#（4）-进程之间的通信方法有哪几种-（重点）" class="headerlink" title="（4） 进程之间的通信方法有哪几种 （重点）"></a>（4） 进程之间的通信方法有哪几种 （重点）</h4><p>进程之间的通信方式主要有六种，包括<strong>管道，信号量，消息队列，信号，共享内存，套接字</strong>。</p>
 <ul>
-<li><p>管道：管道是半双工的，双方需要通信的时候，需要建立两个管道。管道的实质是一个内核缓冲区，进程以先进先出的方式从缓冲区存取数据：管道一端的进程顺序地将进程数据写入缓冲区，另一端的进程则顺序地读取数据，该缓冲区可以看做一个循环队列，读和写的位置都是自动增加的，一个数据只能被读一次，读出以后再缓冲区都不复存在了。当缓冲区读空或者写满时，有一定的规则控制相应的读进程或写进程是否进入等待队列，当空的缓冲区有新数据写入或慢的缓冲区有数据读出时，就唤醒等待队列中的进程继续读写。管道是最容易实现的<br><img src="/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/%E7%AE%A1%E9%81%93%E9%80%9A%E4%BF%A1.png" srcset="/img/loading.gif" lazyload alt="管道通信.png"></p>
+<li><p>管道：管道是半双工的，双方需要通信的时候，需要建立两个管道。管道的实质是一个内核缓冲区，进程以先进先出的方式从缓冲区存取数据：管道一端的进程顺序地将进程数据写入缓冲区，另一端的进程则顺序地读取数据，该缓冲区可以看做一个循环队列，读和写的位置都是自动增加的，一个数据只能被读一次，读出以后再缓冲区都不复存在了。当缓冲区读空或者写满时，有一定的规则控制相应的读进程或写进程是否进入等待队列，当空的缓冲区有新数据写入或慢的缓冲区有数据读出时，就唤醒等待队列中的进程继续读写。管道是最容易实现的<br><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231438995.png" srcset="/img/loading.gif" lazyload alt="管道通信.png"></p>
 <p>匿名管道pipe和命名管道除了建立，打开，删除的方式不同外，其余都是一样的。匿名管道只允许有亲缘关系的进程之间通信，也就是父子进程之间的通信，命名管道允许具有非亲缘关系的进程间通信。</p>
 <p>管道的底层实现 <a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000009528245">https://segmentfault.com/a/1190000009528245</a></p>
 </li>
@@ -1313,7 +1313,7 @@ close(), shutdown() 关闭套接字
 <h4 id="（16）-说一下PCB-x2F-说一下进程地址空间-x2F"><a href="#（16）-说一下PCB-x2F-说一下进程地址空间-x2F" class="headerlink" title="（16） 说一下PCB&#x2F;说一下进程地址空间&#x2F;"></a>（16） 说一下PCB&#x2F;说一下进程地址空间&#x2F;</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38499859/article/details/80057427">https://blog.csdn.net/qq_38499859/article/details/80057427</a></p>
 <p>PCB就是进程控制块，是操作系统中的一种数据结构，用于表示进程状态，操作系统通过PCB对进程进行管理。</p>
 <p>PCB中包含有：进程标识符，处理器状态，进程调度信息，进程控制信息</p>
-<p><img src="https://img-blog.csdn.net/20140904215636015?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvemhhbmd6aGVianV0/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231438071.jpeg" srcset="/img/loading.gif" lazyload></p>
 <p>进程地址空间内有：</p>
 <ul>
 <li>代码段text：存放程序的二进制代码</li>
@@ -1358,7 +1358,7 @@ close(), shutdown() 关闭套接字
 <ol>
 <li>执行：进程分到CPU时间片，可以执行</li>
 <li>就绪：进程已经就绪，只要分配到CPU时间片，随时可以执行</li>
-<li>阻塞：有IO事件或者等待其他资源<br><img src="/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/%E4%B8%89%E6%80%81%E6%A8%A1%E5%9E%8B.png" srcset="/img/loading.gif" lazyload alt="三态模型"></li>
+<li>阻塞：有IO事件或者等待其他资源<br><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231438462.png" srcset="/img/loading.gif" lazyload alt="三态模型"></li>
 </ol>
 </li>
 <li><p>五态模型</p>
@@ -1367,7 +1367,7 @@ close(), shutdown() 关闭套接字
 <li>就绪态：</li>
 <li>运行态：</li>
 <li>等待态：出现等待事件</li>
-<li>终止态：进程结束<br><img src="/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/%E4%BA%94%E6%80%81%E6%A8%A1%E5%9E%8B.png" srcset="/img/loading.gif" lazyload alt="五态模型"></li>
+<li>终止态：进程结束<br><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231438885.png" srcset="/img/loading.gif" lazyload alt="五态模型"></li>
 </ol>
 </li>
 <li><p>七态模型</p>
@@ -1378,7 +1378,7 @@ close(), shutdown() 关闭套接字
 <li>运行态</li>
 <li>等待态</li>
 <li>挂起等待态</li>
-<li>终止态<br><img src="/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/%E4%B8%83%E6%80%81%E6%A8%A1%E5%9E%8B.png" srcset="/img/loading.gif" lazyload alt="七态模型"></li>
+<li>终止态<br><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231438793.png" srcset="/img/loading.gif" lazyload alt="七态模型"></li>
 </ol>
 </li>
 </ul>
@@ -1400,7 +1400,7 @@ close(), shutdown() 关闭套接字
 
 <h4 id="（3）-写三个线程交替打印ABC"><a href="#（3）-写三个线程交替打印ABC" class="headerlink" title="（3） 写三个线程交替打印ABC"></a>（3） 写三个线程交替打印ABC</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;thread&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;mutex&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;condition_variable&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br>mutex mymutex;<br>condition_variable cv;<br><span class="hljs-type">int</span> flag=<span class="hljs-number">0</span>;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">printa</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-function">unique_lock&lt;mutex&gt; <span class="hljs-title">lk</span><span class="hljs-params">(mymutex)</span></span>;<br>    <span class="hljs-type">int</span> count=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span>(count&lt;<span class="hljs-number">10</span>)&#123;<br>        <span class="hljs-keyword">while</span>(flag!=<span class="hljs-number">0</span>) cv.<span class="hljs-built_in">wait</span>(lk);<br>        cout&lt;&lt;<span class="hljs-string">&quot;thread 1: a&quot;</span>&lt;&lt;endl;<br>        flag=<span class="hljs-number">1</span>;<br>        cv.<span class="hljs-built_in">notify_all</span>();<br>        count++;<br>    &#125;<br>    cout&lt;&lt;<span class="hljs-string">&quot;my thread 1 finish&quot;</span>&lt;&lt;endl;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">printb</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-function">unique_lock&lt;mutex&gt; <span class="hljs-title">lk</span><span class="hljs-params">(mymutex)</span></span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;i++)&#123;<br>        <span class="hljs-keyword">while</span>(flag!=<span class="hljs-number">1</span>) cv.<span class="hljs-built_in">wait</span>(lk);<br>        cout&lt;&lt;<span class="hljs-string">&quot;thread 2: b&quot;</span>&lt;&lt;endl;<br>        flag=<span class="hljs-number">2</span>;<br>        cv.<span class="hljs-built_in">notify_all</span>();<br>    &#125;<br>    cout&lt;&lt;<span class="hljs-string">&quot;my thread 2 finish&quot;</span>&lt;&lt;endl;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">printc</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-function">unique_lock&lt;mutex&gt; <span class="hljs-title">lk</span><span class="hljs-params">(mymutex)</span></span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;i++)&#123;<br>        <span class="hljs-keyword">while</span>(flag!=<span class="hljs-number">2</span>) cv.<span class="hljs-built_in">wait</span>(lk);<br>        cout&lt;&lt;<span class="hljs-string">&quot;thread 3: c&quot;</span>&lt;&lt;endl;<br>        flag=<span class="hljs-number">0</span>;<br>        cv.<span class="hljs-built_in">notify_all</span>();<br>    &#125;<br>    cout&lt;&lt;<span class="hljs-string">&quot;my thread 3 finish&quot;</span>&lt;&lt;endl;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-function">thread <span class="hljs-title">th2</span><span class="hljs-params">(printa)</span></span>;<br>    <span class="hljs-function">thread <span class="hljs-title">th1</span><span class="hljs-params">(printb)</span></span>;<br>    <span class="hljs-function">thread <span class="hljs-title">th3</span><span class="hljs-params">(printc)</span></span>;<br><br>    th1.<span class="hljs-built_in">join</span>();<br>    th2.<span class="hljs-built_in">join</span>();<br>    th3.<span class="hljs-built_in">join</span>();<br>    cout&lt;&lt;<span class="hljs-string">&quot; main thread &quot;</span>&lt;&lt;endl;<br><br><br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h4 id="（4）-二维码登录的实现过程-场景题"><a href="#（4）-二维码登录的实现过程-场景题" class="headerlink" title="（4） 二维码登录的实现过程 场景题"></a>（4） 二维码登录的实现过程 场景题</h4><p><img src="/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%99%BB%E5%BD%95%E6%B5%81%E7%A8%8B.png" srcset="/img/loading.gif" lazyload alt="二维码登录流程"></p>
+<h4 id="（4）-二维码登录的实现过程-场景题"><a href="#（4）-二维码登录的实现过程-场景题" class="headerlink" title="（4） 二维码登录的实现过程 场景题"></a>（4） 二维码登录的实现过程 场景题</h4><p><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231438984.png" srcset="/img/loading.gif" lazyload alt="二维码登录流程"></p>
 <h4 id="（5）-不使用临时变量实现swap函数"><a href="#（5）-不使用临时变量实现swap函数" class="headerlink" title="（5） 不使用临时变量实现swap函数"></a>（5） 不使用临时变量实现swap函数</h4><ul>
 <li>使用异或&#x2F;加减等方式，下面给出使用异或的实现方法</li>
 </ul>
@@ -1496,7 +1496,7 @@ close(), shutdown() 关闭套接字
 <h4 id="（18）-N个骰子出现和为m的概率"><a href="#（18）-N个骰子出现和为m的概率" class="headerlink" title="（18） N个骰子出现和为m的概率"></a>（18） N个骰子出现和为m的概率</h4><h4 id="（19）-海量数据问题（可参考左神的书）"><a href="#（19）-海量数据问题（可参考左神的书）" class="headerlink" title="（19） 海量数据问题（可参考左神的书）"></a>（19） 海量数据问题（可参考左神的书）</h4><h4 id="（20）-一致性哈希"><a href="#（20）-一致性哈希" class="headerlink" title="（20） 一致性哈希"></a>（20） 一致性哈希</h4><h4 id="（21）希尔排序说一下-x2F-手撕"><a href="#（21）希尔排序说一下-x2F-手撕" class="headerlink" title="（21）希尔排序说一下&#x2F;手撕"></a>（21）希尔排序说一下&#x2F;手撕</h4><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/chengxiao/p/6104371.html">https://www.cnblogs.com/chengxiao/p/6104371.html</a><br>希尔排序是把记录按下标的一定增量分组，对每组使用直接插入排序算法排序；随着增量逐渐减少，每组包含的关键词越来越多，当增量减至1时，整个文件恰被分成一组，算法便终止。</p>
 <h4 id="（22）Dijkstra算法说一下"><a href="#（22）Dijkstra算法说一下" class="headerlink" title="（22）Dijkstra算法说一下"></a>（22）Dijkstra算法说一下</h4><h4 id="（23）实现一个动态数组要怎么实现，说思路（腾讯teg一面）"><a href="#（23）实现一个动态数组要怎么实现，说思路（腾讯teg一面）" class="headerlink" title="（23）实现一个动态数组要怎么实现，说思路（腾讯teg一面）"></a>（23）实现一个动态数组要怎么实现，说思路（腾讯teg一面）</h4><p>模拟STL中vector的实现即可，去看一下vector的源码。</p>
 <h4 id="（24）最小生成树算法说一下"><a href="#（24）最小生成树算法说一下" class="headerlink" title="（24）最小生成树算法说一下"></a>（24）最小生成树算法说一下</h4><h4 id="（25）-海量数据的bitmap使用原理"><a href="#（25）-海量数据的bitmap使用原理" class="headerlink" title="（25） 海量数据的bitmap使用原理"></a>（25） 海量数据的bitmap使用原理</h4><p>bitmap算法就是使用一个比特映射一个值，它可以用在整数排序和数据压缩上，因为使用一个比特位去存储一个数，所以它可以大大节省空间。</p>
-<p>它的具体过程是：先根据数组中元素最大的数N计算需要分配多大的空间。<br>如果使用int型数组的形式来保存的话，一个int &#x3D; 4字节  &#x3D;4*8比特 &#x3D; 32比特。也就是一个int数可以映射32个数据（图1），然后需要找到最大的数Max，表示最多需要的位数，所以需要开辟的数组空间为int a[1+Max&#x2F;32]。<br>然后需要推导一个整数a内如何映射32个数据，方法是将待存储的数据模32，然后将a中相应位置的比特置为1。<br>依此方法映射每一个元素，待读取的时候扫描每个比特位，遇到值为1的就还原该数字。<br><img src="/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/bitmap1.png" srcset="/img/loading.gif" lazyload></p>
+<p>它的具体过程是：先根据数组中元素最大的数N计算需要分配多大的空间。<br>如果使用int型数组的形式来保存的话，一个int &#x3D; 4字节  &#x3D;4*8比特 &#x3D; 32比特。也就是一个int数可以映射32个数据（图1），然后需要找到最大的数Max，表示最多需要的位数，所以需要开辟的数组空间为int a[1+Max&#x2F;32]。<br>然后需要推导一个整数a内如何映射32个数据，方法是将待存储的数据模32，然后将a中相应位置的比特置为1。<br>依此方法映射每一个元素，待读取的时候扫描每个比特位，遇到值为1的就还原该数字。<br><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231438074.png" srcset="/img/loading.gif" lazyload></p>
 <p><strong>移位计算公式：</strong><br>N&#x2F;32就是将N的二进制右移log32（也就是5）位 ： N&gt;&gt;5<br><br>N%32就是求N的后5位：N&amp; 0x1F  (0x1F &#x3D; 00011111)<br><br>模32然后相应位置置为1： a[i] |&#x3D; 1&lt;&lt; N &amp; 0x1F<br></p>
 <p>所以总的公式为： a[ N&gt;&gt;5 ] |&#x3D; 1&lt;&lt; N &amp; 0x1F<br></p>
 <p><strong>BitMap算法评价</strong></p>
@@ -1596,7 +1596,7 @@ close(), shutdown() 关闭套接字
 <h4 id="11-说下spark中的宽依赖和窄依赖"><a href="#11-说下spark中的宽依赖和窄依赖" class="headerlink" title="11. 说下spark中的宽依赖和窄依赖"></a>11. 说下spark中的宽依赖和窄依赖</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/a1043498776/article/details/54889922">https://blog.csdn.net/a1043498776/article/details/54889922</a></p>
 <ul>
 <li>宽依赖：指子RDD的分区依赖于父RDD的所有分区，举例：groupbykey,join</li>
-<li>窄依赖：指父RDD的每个分区被最多一个子RDD的分区所依赖,举例：map，filter<br><img src="https://img-blog.csdn.net/20170206221148299?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYTEwNDM0OTg3NzY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" srcset="/img/loading.gif" lazyload></li>
+<li>窄依赖：指父RDD的每个分区被最多一个子RDD的分区所依赖,举例：map，filter<br><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231438568.png" srcset="/img/loading.gif" lazyload></li>
 </ul>
 <h4 id="12-说下spark中stage是依照什么划分的"><a href="#12-说下spark中stage是依照什么划分的" class="headerlink" title="12. 说下spark中stage是依照什么划分的"></a>12. 说下spark中stage是依照什么划分的</h4><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/57124273">https://zhuanlan.zhihu.com/p/57124273</a></p>
 <p>spark中的stage其实是一组并行的任务，spark会将多个RDD根据依赖关系划分成有向无环图DAG，DAG会被划分成多个stage，划分的依据是RDD之间的宽窄依赖。遇到宽依赖就划分stage。因为宽依赖与窄依赖的区别之一就是宽依赖会发生shuffle操作，所以也可以说stage的划分依据是是否发生shuffle操作。</p>
@@ -1606,9 +1606,9 @@ close(), shutdown() 关闭套接字
 <ul>
 <li>静态内存管理：静态内存管理机制下堆内内存包括安全内存，存储内存，shuffle内存和unroll内存</li>
 </ul>
-<p><img src="/C++%E7%89%9B%E5%AE%A2%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/spark%E5%86%85%E5%AD%98%E4%B8%80.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231438752.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
-<li>统一内存管理：统一内存管理机制下内存分为spark内存，用户内存和保留内存三部分。用户内存存放用户代码逻辑和自定义数据结构等，保留内存存放的是spark的内部对象和逻辑。<br><img src="https://upload-images.jianshu.io/upload_images/195230-f119edabb5683f38.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" srcset="/img/loading.gif" lazyload></li>
+<li>统一内存管理：统一内存管理机制下内存分为spark内存，用户内存和保留内存三部分。用户内存存放用户代码逻辑和自定义数据结构等，保留内存存放的是spark的内部对象和逻辑。<br><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202205231438845.webp" srcset="/img/loading.gif" lazyload></li>
 </ul>
 <h4 id="14-spark的容错机制是什么样的"><a href="#14-spark的容错机制是什么样的" class="headerlink" title="14. spark的容错机制是什么样的"></a>14. spark的容错机制是什么样的</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dengxing1234/article/details/73613484">https://blog.csdn.net/dengxing1234/article/details/73613484</a></p>
 <p>spark的容错机制是通过血统（lineage）和checkpoint来实现的 。</p>
