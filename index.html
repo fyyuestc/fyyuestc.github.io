@@ -407,7 +407,7 @@
       <a class="index-excerpt" href="/2022/07/09/C++-%E9%9D%A2%E7%BB%8F-%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/" target="_self">
         <div>
           
-          一、C++基础二、C++高级特性三、STL原理
+          一、C++基础1.1 数组和指针的区别 概念不同.  指针相当于一个变量，它存放的是数据在内存中的地址 数组是用于储存多个相同类型数据的集合   赋值不同.  同类型指针变量可以相互赋值，数组不行，只能一个一个元素的赋值或拷贝   访问数据不同.  指针是间接访问数据，获取指针，先解引用，再访问指针指向的地址中的内容 数组是直接访问   sizeof意义不同.  数组所占存储空间的内存：sizeo
         </div>
       </a>
 
@@ -468,7 +468,7 @@
       <a class="index-excerpt" href="/2022/07/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F-%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/" target="_self">
         <div>
           
-          一、三次握手&#x2F;四次挥手二、滑窗&#x2F;流控&#x2F;拥塞三、HTTP
+          一、网络模型概述1. OSI七层模型ISO为了更好的使网络应用更为普及，推出了OSI参考模型 （1）应用层OSI参考模型中最靠近用户的一层，是为计算机用户提供应用接口，也为用户直接提供各种网络服务。我们常见应用层的网络服务协议有：HTTP，HTTPS，FTP，POP3、SMTP等  在客户端与服务器中经常会有数据的请求，这个时候就是会用到http(hyper text transfer proto
         </div>
       </a>
 
@@ -529,7 +529,7 @@
       <a class="index-excerpt" href="/2022/07/09/Linux%E9%9D%A2%E7%BB%8F-%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/" target="_self">
         <div>
           
-          一、Linux基础二、Linux网络编程三、Linux命令
+          一、OS基础1. 硬件结构2. 操作系统结构2.1 用户态和内核态 概念 用户态和内核态是操作系统的两种运行级别，两者最大的区别就是特权级不同 用户态拥有最低的特权级，内核态拥有较高的特权级 运行在用户态的程序不能直接访问操作系统内核数据结构和程序 操作系统的数据都是存放于系统空间的，用户进程的数据是存放于用户空间的 分开来存放，就让系统的数据和用户的数据互不干扰，保证系统的稳定性 分开存放，管理
         </div>
       </a>
 
@@ -615,67 +615,6 @@
       <span class="category-chain">
         
   <a href="/categories/%E6%A0%A1%E6%8B%9B%E9%9D%A2%E7%BB%8F/" class="category-chain-item">校招面经</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Reference/">#Reference</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/07/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/" target="_self">
-          计算机网络面经-参考
-        </a>
-      </h1>
-
-      <a class="index-excerpt" href="/2022/07/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E7%BB%8F-%E5%8F%82%E8%80%83/" target="_self">
-        <div>
-          
-          一、HTTP协议1. GET和POST的请求的区别Post 和 Get 是 HTTP 请求的两种方法，其区别如下：  应用场景： GET 请求是一个幂等的请求，一般 Get 请求用于对服务器资源不会产生影响的场景，比如说请求一个网页的资源。而 Post 不是一个幂等的请求，一般用于对服务器资源会产生影响的情景，比如注册用户这一类的操作。 是否缓存： 因为两者应用场景不同，浏览器一般会对 Get 请
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-07-09 14:22" pubdate>
-              2022-07-09
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="category-chain-item">计算机网络</a>
   
   
 
@@ -798,6 +737,67 @@
       <span class="category-chain">
         
   <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Skill-Tree/">#Skill-Tree</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/05/11/%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86-Skill-Tree/" target="_self">
+          海量数据处理-Skill-Tree
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2022/05/11/%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86-Skill-Tree/" target="_self">
+        <div>
+          
+          [TOC] 海量数据处理TOP N问题1. 如何在海量数据中找出重复最多一个。 通过hash映射为小文件  通过hash_map统计各个小文件重读最多的并记录次数  对每个小文件重复最多的进行建立大根堆   2. 上亿有重数据，统计最多前N个。 内存存不下  通过hash映射为小文件  通过hash_map统计各个小文件重读最多的并记录次数  对每个小文件重复最多的进行建立大根堆并重复N次取走堆顶
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-11 14:00" pubdate>
+              2022-05-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%A0%A1%E6%8B%9B%E9%9D%A2%E7%BB%8F/" class="category-chain-item">校招面经</a>
   
   
 
