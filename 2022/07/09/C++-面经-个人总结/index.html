@@ -16,15 +16,15 @@
   <meta name="author" content="Fyy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一、C++基础1.1 数组和指针的区别 概念不同.  指针相当于一个变量，它存放的是数据在内存中的地址 数组是用于储存多个相同类型数据的集合   赋值不同.  同类型指针变量可以相互赋值，数组不行，只能一个一个元素的赋值或拷贝   访问数据不同.  指针是间接访问数据，获取指针，先解引用，再访问指针指向的地址中的内容 数组是直接访问   sizeof意义不同.  数组所占存储空间的内存：sizeo">
+    <meta name="description" content="一、C++基础1.1 数组和指针的区别 概念不同  指针相当于一个变量，它存放的是数据在内存中的地址 数组是用于储存多个相同类型数据的集合   赋值不同  同类型指针变量可以相互赋值，数组不行，只能一个一个元素的赋值或拷贝   访问数据不同  指针是间接访问数据，获取指针，先解引用，再访问指针指向的地址中的内容 数组是直接访问   sizeof意义不同  数组所占存储空间的内存：sizeof（数组">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++面经-个人总结">
 <meta property="og:url" content="http://example.com/2022/07/09/C++-%E9%9D%A2%E7%BB%8F-%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="UESTC-Fyy">
-<meta property="og:description" content="一、C++基础1.1 数组和指针的区别 概念不同.  指针相当于一个变量，它存放的是数据在内存中的地址 数组是用于储存多个相同类型数据的集合   赋值不同.  同类型指针变量可以相互赋值，数组不行，只能一个一个元素的赋值或拷贝   访问数据不同.  指针是间接访问数据，获取指针，先解引用，再访问指针指向的地址中的内容 数组是直接访问   sizeof意义不同.  数组所占存储空间的内存：sizeo">
+<meta property="og:description" content="一、C++基础1.1 数组和指针的区别 概念不同  指针相当于一个变量，它存放的是数据在内存中的地址 数组是用于储存多个相同类型数据的集合   赋值不同  同类型指针变量可以相互赋值，数组不行，只能一个一个元素的赋值或拷贝   访问数据不同  指针是间接访问数据，获取指针，先解引用，再访问指针指向的地址中的内容 数组是直接访问   sizeof意义不同  数组所占存储空间的内存：sizeof（数组">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-07-09T07:15:45.000Z">
-<meta property="article:modified_time" content="2022-07-21T11:36:37.072Z">
+<meta property="article:modified_time" content="2022-07-24T09:22:52.613Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          20k 字
+          24k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          164 分钟
+          203 分钟
         
       </span>
     
@@ -272,31 +272,31 @@
             <div class="markdown-body">
               
               <h1 id="一、C-基础"><a href="#一、C-基础" class="headerlink" title="一、C++基础"></a>一、C++基础</h1><h2 id="1-1-数组和指针的区别"><a href="#1-1-数组和指针的区别" class="headerlink" title="1.1 数组和指针的区别"></a>1.1 数组和指针的区别</h2><ul>
-<li><strong>概念不同.</strong> <ul>
+<li><strong>概念不同</strong> <ul>
 <li>指针相当于一个变量，它存放的是数据在内存中的地址</li>
 <li>数组是用于储存多个相同类型数据的集合</li>
 </ul>
 </li>
-<li><strong>赋值不同.</strong> <ul>
+<li><strong>赋值不同</strong> <ul>
 <li>同类型指针变量可以相互赋值，数组不行，只能一个一个元素的赋值或拷贝</li>
 </ul>
 </li>
-<li><strong>访问数据不同.</strong> <ul>
+<li><strong>访问数据不同</strong> <ul>
 <li>指针是间接访问数据，获取指针，先解引用，再访问指针指向的地址中的内容</li>
 <li>数组是直接访问</li>
 </ul>
 </li>
-<li><strong>sizeof意义不同.</strong> <ul>
+<li><strong>sizeof意义不同</strong> <ul>
 <li>数组所占存储空间的内存：sizeof（数组名） ,数组的大小：sizeof（数组名）&#x2F;sizeof（数据类型） </li>
 <li>在32位平台下，sizeof（指针名）是4，在64位平台下，sizeof（指针名）是8</li>
 </ul>
 </li>
-<li><strong>指针和数组名异同.</strong> <ul>
+<li><strong>指针和数组名异同</strong> <ul>
 <li>指针和数组名都可以表示地址，但指针是变量，可以修改</li>
 <li>数组名是常量，不可修改赋值</li>
 </ul>
 </li>
-<li><strong>传参.</strong> 数组传参时会退化成指针 <ul>
+<li><strong>传参：</strong> 数组传参时会退化成指针 <ul>
 <li>退化的意义：C语言只会以值拷贝的方式传递参数，参数传递时，如果只拷贝整个数组，效率会大大降低，并且在参数位于栈上，太大的数组拷贝将会导致栈溢出。 </li>
 <li>因此，C语言将数组的传参进行了退化。将整个数组拷贝一份传入函数时，将数组名看做常量指针，传数组首元素的地址。</li>
 </ul>
@@ -335,29 +335,29 @@
 </li>
 </ul>
 <h2 id="1-4-引用和指针的区别"><a href="#1-4-引用和指针的区别" class="headerlink" title="1.4 引用和指针的区别"></a>1.4 引用和指针的区别</h2><ul>
-<li><strong>指针有内存分配，而引用只是一个别名.</strong> <ul>
+<li><strong>指针有内存分配，而引用只是一个别名</strong> <ul>
 <li>引用声明时必须初始化，从而指向一个已经存在的对象</li>
 </ul>
 </li>
-<li><strong>引用可以看做常量指针，指针是一个存储地址的变量.</strong> <ul>
+<li><strong>引用可以看做常量指针，指针是一个存储地址的变量</strong> <ul>
 <li>指针在运行时可以改变其所指向的值，而引用一旦和某个对象绑定后就不再改变</li>
 <li>这句话可以理解为：指针可以被重新赋值以指向另一个不同的对象，但是引用则总是指向在初始化时被指定的对象，以后不能改变，但是指定的对象其内容可以改变</li>
 </ul>
 </li>
-<li><strong>引用创建时必须初始化，且不为空，指针创建时可以为空.</strong> <ul>
+<li><strong>引用创建时必须初始化，且不为空，指针创建时可以为空</strong> <ul>
 <li>不存在指向空值的引用这个事实，意味着使用引用的代码效率比使用指针的要高</li>
 <li>因为在使用引用之前不需要测试它的合法性。相反，指针则应该总是被测试，防止其为空</li>
 </ul>
 </li>
-<li><strong>指针和引用的自增运算符意义不同.</strong> <ul>
+<li><strong>指针和引用的自增运算符意义不同</strong> <ul>
 <li>指针是对内存地址的自增，引用是对值的自增</li>
 </ul>
 </li>
-<li><strong>sizeof的意义不同.</strong> <ul>
+<li><strong>sizeof的意义不同</strong> <ul>
 <li>使用sizeof看一个指针的大小是4，而引用则是被引用对象的大小</li>
 </ul>
 </li>
-<li><strong>没有引用常量，有指针常量.</strong> <ul>
+<li><strong>没有引用常量，有指针常量</strong> <ul>
 <li>没有int&amp; const p,有int* const p. 常量指针和常量引用是存在的，const int *p和cosnt int &amp;p，都表示指向的对象为常量常量引用形参的好处：<ul>
 <li>（1）使用引用作为形参，不会产生新的变量，减少形参和实参传递的开销</li>
 <li>（2）使用引用可能会导致实参随着形参的改变而改变。声明为const之后就会消除这种副作用</li>
@@ -365,11 +365,11 @@
 </li>
 </ul>
 </li>
-<li><strong>参数传递.</strong> <ul>
+<li><strong>参数传递</strong> <ul>
 <li>作为参数传递时，指针需要被解引用才可以对对象进行操作，而直接对引 用的修改都会改变引用所指向的对象</li>
 </ul>
 </li>
-<li><strong>多级指针，一级引用.</strong> <ul>
+<li><strong>多级指针，一级引用</strong> <ul>
 <li>指针可以有多级指针（**p），而引用只有一级</li>
 </ul>
 </li>
@@ -390,45 +390,45 @@
 </li>
 <li><p>C++中的struct对C中的struct进行了扩充，它已经不再只是一个包含不同数据类型的数据结构了，它能包含<strong>成员函数，能继承与实现多态</strong></p>
 </li>
-<li><p><strong>默认的继承访问权限.</strong> </p>
+<li><p><strong>默认的继承访问权限</strong> </p>
 <ul>
 <li>struct是public的，class是private的 class B : public A就是为了指明是public继承，而不是用默认的private继承，若class B : A则是private继承</li>
 </ul>
 </li>
-<li><p><strong>定义模板参数.</strong> </p>
+<li><p><strong>定义模板参数</strong> </p>
 <ul>
 <li>class这个关键字还用于定义模板参数，就像typename。但关键字struct不用于定义模板参数</li>
 </ul>
 </li>
 </ul>
 <h2 id="1-7-new-x2F-delete和malloc-x2F-free的区别"><a href="#1-7-new-x2F-delete和malloc-x2F-free的区别" class="headerlink" title="1.7 new&#x2F;delete和malloc&#x2F;free的区别"></a>1.7 new&#x2F;delete和malloc&#x2F;free的区别</h2><ul>
-<li><p><strong>主要区别.</strong></p>
+<li><p><strong>主要区别</strong></p>
 <ul>
 <li>calloc在返回指向内存的指针之前把它初始化为0，calloc的参数包括所需的元素的数量和每个元素的字节数</li>
 </ul>
 </li>
-<li><p><strong>属性不同.</strong> </p>
+<li><p><strong>属性不同</strong> </p>
 <ul>
 <li>new&#x2F;delete是C++关键字，需要编译器支持。malloc&#x2F;free是库函数，需要头文件支持c</li>
 </ul>
 </li>
-<li><p><strong>申请的内存所在位置.</strong> </p>
+<li><p><strong>申请的内存所在位置</strong> </p>
 <ul>
 <li>new操作符从自由存储区（free store）上为对象动态分配内存空间，而malloc函数从堆上动态分配内存</li>
 </ul>
 </li>
-<li><p><strong>返回类型安全性.</strong> </p>
+<li><p><strong>返回类型安全性</strong> </p>
 <ul>
 <li>new操作符内存分配成功时，返回的是对象类型的指针，类型严格与对象匹配，无须进行类型转换，故new是符合类型安全性的操作符</li>
 <li>malloc内存分配成功则是返回void*类型，需要通过强制类型转换将空类型指针转换成我们需要的类型</li>
 </ul>
 </li>
-<li><p><strong>内存分配失败时的返回值.</strong></p>
+<li><p><strong>内存分配失败时的返回值</strong></p>
 <ul>
 <li>new内存分配失败时，会抛出bac_alloc异常，它不会返回NULL；malloc分配内存失败时返回NULL</li>
 </ul>
 </li>
-<li><p><strong>是否需要指定内存大小.</strong> </p>
+<li><p><strong>是否需要指定内存大小</strong> </p>
 <ul>
 <li>使用new操作符申请内存分配时无须指定内存块的大小，编译器会根据类型信息自行计算<ul>
 <li>int *pi&#x3D;new int;	&#x2F;&#x2F;在自由存储区中分配创建了一个整形对象，并返回一个指向该对象的地址来初始化指针pi</li>
@@ -443,7 +443,7 @@
 </li>
 </ul>
 </li>
-<li><p><strong>数组分配内存（与前一个特点类似）.</strong></p>
+<li><p><strong>数组分配内存（与前一个特点类似）</strong></p>
 <ul>
 <li>new中分配内存对于变量和数组不同，malloc分配内存则相同 </li>
 <li>int *pi&#x3D;new int[];	&#x2F;&#x2F;指针pi所指向的数组未初始化 </li>
@@ -451,23 +451,23 @@
 <li>int *pi&#x3D;new int;	&#x2F;&#x2F;指针pi所指向的地址初始化为0</li>
 </ul>
 </li>
-<li><p><strong>是否调用构造函数&#x2F;析构函数.</strong> </p>
+<li><p><strong>是否调用构造函数&#x2F;析构函数</strong> </p>
 <ul>
 <li>new会先调用operator_ new函数，申请足够的内存（通常底层使用malloc实现）。然后调用类型的构造函数，初始化成员变量，最后返回自定义类型指针。delete先调用析构函数，然后调用operator_ delete函数释放内存（通常底层使用free实现）</li>
 <li>malloc&#x2F;free是库函数，只能动态的申请和释放内存，无法强制要求其做自定义类型对象构造和析构工作</li>
 </ul>
 </li>
-<li><p><strong>能否重载.</strong> </p>
+<li><p><strong>能否重载</strong> </p>
 <ul>
 <li>opeartor_new&#x2F;operator_delete允许重载,malloc&#x2F;free不允许重载</li>
 </ul>
 </li>
-<li><p><strong>已分配内存的扩充.</strong> </p>
+<li><p><strong>已分配内存的扩充</strong> </p>
 <ul>
 <li>malloc&#x2F;free可以通过realloc函数扩充，new&#x2F;free无法直观地处理</li>
 </ul>
 </li>
-<li><p><strong>能否相互调用.</strong></p>
+<li><p><strong>能否相互调用</strong></p>
 <ul>
 <li>operator_new &#x2F;operator _delete的实现可以基于malloc&#x2F;free，而malloc的实现不可以去调用new</li>
 </ul>
@@ -486,7 +486,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="1-9-malloc的内存分配机制"><a href="#1-9-malloc的内存分配机制" class="headerlink" title="1.9 malloc的内存分配机制"></a>1.9 malloc的内存分配机制</h2><p>malloc内存分配机制是怎么样的,在哪里分配内存，最大可以申请多大的内存？</p>
+<h2 id="1-9-malloc的内存分配机制"><a href="#1-9-malloc的内存分配机制" class="headerlink" title="1.9 malloc的内存分配机制"></a>1.9 malloc的内存分配机制</h2><p><strong>malloc内存分配机制是怎么样的,在哪里分配内存，最大可以申请多大的内存？</strong></p>
 <ul>
 <li>首先会扫描之前由free()所释放的空闲内存块列表，以求找到尺寸大于或等于要求的一块空闲内存</li>
 <li>如果这一内存块的尺寸正好与要求相当，就将它返回给调用者，如果是一块较大的内存，那么将对其进行分割，在将一块大小相当的内存返回给调用者的同时，把较小的那块空闲内存块保留在空闲列表中</li>
@@ -511,27 +511,27 @@
 </li>
 </ul>
 <h2 id="1-11-const关键字"><a href="#1-11-const关键字" class="headerlink" title="1.11 const关键字"></a>1.11 const关键字</h2><ul>
-<li><strong>修饰变量</strong>，说明该变量不可以被改变</li>
-<li><strong>修饰指针</strong>，分为指向常量的指针和指针常量；int *const p和const int *p</li>
-<li><strong>常量引用</strong>，经常用于形参类型，即避免了拷贝，又避免了函数对值的修改</li>
-<li><strong>修饰成员函数</strong>，说明该成员函数内不能修改成员变量，本质是const this指针</li>
+<li><strong>修饰变量：</strong>说明该变量不可以被改变</li>
+<li><strong>修饰指针：</strong>分为指向常量的指针和指针常量；int *const p和const int *p</li>
+<li><strong>常量引用：</strong>经常用于形参类型，即避免了拷贝，又避免了函数对值的修改</li>
+<li><strong>修饰成员函数：</strong>说明该成员函数内不能修改成员变量，本质是const this指针</li>
 </ul>
 <h2 id="1-12-static关键字"><a href="#1-12-static关键字" class="headerlink" title="1.12 static关键字"></a>1.12 static关键字</h2><ul>
-<li><strong>修饰普通变量，</strong> 修改变量的存储区域和生命周期，使变量存储在静态区，在main函数运行前就分配了空间，在整个程序运行期间一直存在，如果有初始值就用初始值初始化它，如果没有初始值系统用默认值初始化它，自动初始化为0<ul>
+<li><strong>修饰普通变量：</strong> 修改变量的存储区域和生命周期，使变量存储在静态区，在main函数运行前就分配了空间，在整个程序运行期间一直存在，如果有初始值就用初始值初始化它，如果没有初始值系统用默认值初始化它，自动初始化为0<ul>
 <li><strong>全局变量作用域：</strong>全局静态变量在声明他的文件之外是不可见的，准确地说是从定义之处开始，到文件结尾</li>
 <li><strong>局部变量作用域：</strong>仍为局部作用域，当定义它的函数或者语句块结束的时候，作用域结束。但是当局部静态变量离开作用域后，并没有销毁，而是仍然驻留在内存当中，只不过我们不能再对它进行访问，直到该函数再次被调用，并且值不变</li>
 </ul>
 </li>
-<li><strong>修饰普通函数，</strong> 其只能在定义它的源文件中使用，不能在其他源文件中被引用</li>
-<li><strong>修饰类成员变量和成员函数，</strong> 它们是属于类的，而不是某个对象，所有对象共享一个静态成员。静态成员通过&lt;类名&gt;::&lt;静态成员&gt;来使用。在 static 函数内不能访问非静态成员</li>
+<li><strong>修饰普通函数：</strong>其只能在定义它的源文件中使用，不能在其他源文件中被引用</li>
+<li><strong>修饰类成员变量和成员函数：</strong> 它们是属于类的，而不是某个对象，所有对象共享一个静态成员。静态成员通过&lt;类名&gt;::&lt;静态成员&gt;来使用。在 static 函数内不能访问非静态成员</li>
 </ul>
 <h2 id="1-13-extern关键字"><a href="#1-13-extern关键字" class="headerlink" title="1.13 extern关键字"></a>1.13 extern关键字</h2><p>extern关键字主要修饰变量或函数，表示该函数可以跨文件访问，或者表明该变量在其他文件定义，在此处引用</p>
 <ul>
-<li><strong>修饰变量或函数.</strong><ul>
+<li><strong>修饰变量或函数</strong><ul>
 <li>被 extern 限定的函数或变量是 extern 类型的</li>
 </ul>
 </li>
-<li><strong>extern “C”.</strong><ul>
+<li><strong>extern “C”</strong><ul>
 <li>extern “C” 的作用是让 C++ 编译器将 extern “C” 声明的代码当作 C 语言代码处理，可以避免 C++ 因符号修饰导致代码不能和C语言库中的符号进行链接的问题<ul>
 <li><ol>
 <li>在c头文件中通过#ifdef __cplusplus extern “C” { #endif来定义</li>
@@ -546,8 +546,8 @@
 </li>
 </ul>
 <h2 id="1-14-volatile关键字"><a href="#1-14-volatile关键字" class="headerlink" title="1.14 volatile关键字"></a>1.14 volatile关键字</h2><ul>
-<li><strong>不可优化性.</strong> volatile 关键字是一种类型修饰符，用它声明的类型变量表示不可以被某些编译器未知的因素（操作系统、硬件、其它线程等）更改。所以使用 volatile 告诉编译器不应对这样的对象进行优化</li>
-<li><strong>易变性.</strong> volatile 关键字声明的变量，每次访问时都必须从内存中取出值（没有被 volatile 修饰的变量，可能由于编译器的优化，从 CPU 寄存器中取值）</li>
+<li><strong>不可优化性：</strong> volatile 关键字是一种类型修饰符，用它声明的类型变量表示不可以被某些编译器未知的因素（操作系统、硬件、其它线程等）更改。所以使用 volatile 告诉编译器不应对这样的对象进行优化</li>
+<li><strong>易变性：</strong> volatile 关键字声明的变量，每次访问时都必须从内存中取出值（没有被 volatile 修饰的变量，可能由于编译器的优化，从 CPU 寄存器中取值）</li>
 </ul>
 <h2 id="1-15-explicit关键字"><a href="#1-15-explicit关键字" class="headerlink" title="1.15 explicit关键字"></a>1.15 explicit关键字</h2><p>explicit关键字的作用就是<strong>防止对象间实现&#x3D;赋值</strong>，<strong>防止类构造函数的隐式自动转换</strong>，类构造函数默认情况下即声明为implicit(隐式)，另外<strong>explicit只用于单参数的构造函数</strong>，或者除了第一个参数以外的其他参数都有默认值</p>
 <ul>
@@ -627,7 +627,7 @@
 <ul>
 <li>构造函数<ul>
 <li>系统会默认给一个类提供三个函数：默认构造函数（无参，函数体为空）、默认拷贝构造和析构函数（无参，函数体为空），其中默认拷贝构造可以实现简单的值拷贝</li>
-<li>提供了有参构造函数，就不提供默认构造函数；提供了拷贝构造函数，就不会提供其他构造函数，若自己定义可有参构造，也需要自定义无参构造函数</li>
+<li>提供了有参构造函数，就不提供默认构造函数；提供了拷贝构造函数，就不会提供其他构造函数；若自己定义了有参构造，还想要无参构造函数，就必须再自定义无参构造函数</li>
 </ul>
 </li>
 <li>析构函数<ul>
@@ -652,17 +652,28 @@
 </ul>
 <p>我们在定义类或者结构体，这些结构的时候，<strong>最后都重写拷贝函数，避免浅拷贝</strong>这类不易发现但后果严重的错误产生</p>
 <h2 id="2-7-只在堆上-x2F-栈上创建对象"><a href="#2-7-只在堆上-x2F-栈上创建对象" class="headerlink" title="2.7 只在堆上&#x2F;栈上创建对象"></a>2.7 只在堆上&#x2F;栈上创建对象</h2><ul>
-<li><strong>只能在堆上生成对象：将析构函数设置为私有。</strong> 原因：C++是静态绑定语言，编译器管理栈上对象的生命周期，编译器在为类对象分配栈空间时，会先检查类的析构函数的访问性。若析构函数不可访问，则不能在栈上创建对象</li>
-<li><strong>只能在栈上生成对象：将new 和 delete 重载为私有。</strong> 原因：在堆上生成对象，使用new关键词操作，其过程分为两阶段：第一阶段，使用new在堆上寻找可用内存，分配给对象；第二阶段，调用构造函数生成对象。 将new操作设置为私有，那么第一阶段就无法完成，就不能够再堆上生成对象</li>
+<li><p><strong>只能在堆上生成对象：将析构函数设置为私有</strong> </p>
+<ul>
+<li><strong>原因：</strong>C++是静态绑定语言，编译器管理栈上对象的生命周期，编译器在为类对象分配栈空间时，会先检查类的析构函数的访问性。若析构函数不可访问，则不能在栈上创建对象</li>
+</ul>
+</li>
+<li><p><strong>只能在栈上生成对象：将new 和 delete 重载为私有</strong></p>
+<ul>
+<li><strong>原因：</strong>在堆上生成对象，使用new关键词操作，其过程分为两阶段：第一阶段，使用new在堆上寻找可用内存，分配给对象；第二阶段，调用构造函数生成对象。 将new操作设置为私有，那么第一阶段就无法完成，就不能够再堆上生成对象</li>
+</ul>
+</li>
 </ul>
 <h2 id="2-8-this指针"><a href="#2-8-this指针" class="headerlink" title="2.8 this指针"></a>2.8 this指针</h2><ul>
-<li><p><strong>为什么会有this指针</strong>：在类实例化对象时，只有非静态成员变量属于对象本身，剩余的静态成员变量，静态函数，非静态函数都不属于对象本身，因此非静态成员函数只会实例一份，多个同类型对象会共用一块代码，由于类中每个实例后的对象都有独一无二的地址，因此不同的实例对象调用成员函数时，函数需要知道是谁在调用它，因此引入了this指针</p>
+<li><p><strong>为什么会有this指针</strong>：</p>
+<ul>
+<li>在类实例化对象时，只有非静态成员变量属于对象本身，剩余的静态成员变量，静态函数，非静态函数都不属于对象本身，因此非静态成员函数只会实例一份，多个同类型对象会共用一块代码，由于类中每个实例后的对象都有独一无二的地址，因此不同的实例对象调用成员函数时，函数需要知道是谁在调用它，因此引入了this指针</li>
+</ul>
 </li>
 <li><p><strong>this指针的作用：</strong></p>
 <ul>
 <li><p>this指针是隐含在对象成员函数内的一种指针。当一个对象被创建后，它的每一个成员函数都会含有一个系统自动生成的隐含指针this。this指针指向被调用的成员函数所属的对象（谁调用成员函数，this指向谁），this表示对象本身，<strong>非静态成员函数中才有this，静态成员函数内部没有</strong></p>
 </li>
-<li><p>this 并不是一个常规变量，而是个右值，所以不能取得 this 的地址（不能 &amp;this）。</p>
+<li><p>this 并不是一个常规变量，而是个右值，所以不能取得 this 的地址（不能 &amp;this）</p>
 </li>
 <li><p>对非静态成员函数默认添加了this指针，类型为classname *const this</p>
 </li>
@@ -684,14 +695,14 @@
 </ul>
 <h2 id="2-10-静态成员变量和静态成员函数"><a href="#2-10-静态成员变量和静态成员函数" class="headerlink" title="2.10 静态成员变量和静态成员函数"></a>2.10 静态成员变量和静态成员函数</h2><p>若将成员变量声明为static，则为静态成员变量，与一般的成员变量不同，无论建立多少对象，都只有一个静态成员变量的拷贝，静态成员变量属于一个类，所有对象共享。<strong>静态变量在编译阶段就分配了空间，对象还没创建时就已经分配了空间，放到全局静态区</strong></p>
 <ul>
-<li>静态成员变量<ul>
+<li><strong>静态成员变量</strong><ul>
 <li>最好是类内声明，类外初始化（以免类名访问静态成员访问不到）</li>
 <li>无论公有，私有，静态成员都可以在类外定义，但私有成员仍有访问权限</li>
 <li>非静态成员类外不能初始化</li>
 <li>静态成员数据是共享的</li>
 </ul>
 </li>
-<li>静态成员函数<ul>
+<li><strong>静态成员函数</strong><ul>
 <li>静态成员函数可以直接访问静态成员变量，不能直接访问普通成员变量，但可以通过参数传递的方式访问</li>
 <li>普通成员函数可以访问普通成员变量，也可以访问静态成员变量</li>
 <li>静态成员函数没有this指针。非静态数据成员为对象单独维护，但静态成员函数为共享函数，无法区分是哪个对象，因此不能直接访问普通变量成员，也没有this指针</li>
@@ -736,12 +747,12 @@
 </ul>
 </li>
 <li><p><strong>i++和++i实现</strong></p>
+<p>C++内置类型的后置++返回的是变量的拷贝，也就是不可修改的值；前置++返回的是变量的引用，因此可以作为修改的左值。即++（++a）或（++a）++都可以，但++（a++）不可以，（C++默认必须修改a的值，如果不修改则报错</p>
 </li>
 </ul>
-<p>C++内置类型的后置++返回的是变量的拷贝，也就是不可修改的值；前置++返回的是变量的引用，因此可以作为修改的左值。即++（++a）或（++a）++都可以，但++（a++）不可以，（C++默认必须修改a的值，如果不修改则报错</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//++i</span><br><span class="hljs-type">int</span>&amp;  <span class="hljs-type">int</span>::<span class="hljs-keyword">operator</span>++()<br>&#123;<br>    *<span class="hljs-keyword">this</span> +=<span class="hljs-number">1</span>；<br>    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>；<br>&#125;<br><br><span class="hljs-comment">//i++，注意后置++有占位参数以区分跟前置++不同</span><br><span class="hljs-type">const</span> <span class="hljs-type">int</span>  <span class="hljs-type">int</span>::<span class="hljs-keyword">operator</span>++(<span class="hljs-type">int</span>)<br>&#123;<br>    <span class="hljs-type">int</span> oldValue = *<span class="hljs-keyword">this</span>；<br>    ++（*<span class="hljs-keyword">this</span>）；<br>    <span class="hljs-keyword">return</span> oldValue；<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h2 id="2-13-继承方式、对象模型、同名处理"><a href="#2-13-继承方式、对象模型、同名处理" class="headerlink" title="2.13 继承方式、对象模型、同名处理"></a>2.13 继承方式、对象模型、同名处理</h2><p>继承主要是为了减少代码的重复内容，解决代码复用问题。通过抽象出一个基类（父类），将重复代码写到基类中，在派生类（子类）中实现不同的方法</p>
+<h2 id="2-13-继承方式、对象模型、同名处理"><a href="#2-13-继承方式、对象模型、同名处理" class="headerlink" title="2.13 继承方式、对象模型、同名处理"></a>2.13 继承方式、对象模型、同名处理</h2><p><strong>继承主要是为了减少代码的重复内容，解决代码复用问题。通过抽象出一个基类（父类），将重复代码写到基类中，在派生类（子类）中实现不同的方法</strong></p>
 <ul>
 <li><p><strong>继承方式</strong></p>
 <ul>
@@ -755,7 +766,7 @@
 </li>
 <li><p><strong>继承的对象模型</strong></p>
 <ul>
-<li><p>子类中会继承父类的私有成员，只是被编译器隐藏起来了，无法访问到，通过sizeof(子类class)可以检查出。</p>
+<li><p>子类中会继承父类的私有成员，只是被编译器隐藏起来了，无法访问到，通过sizeof(子类class)可以检查出</p>
 </li>
 <li><p>子类创建对象时，先调用父类的构造函数，然后再调用自身的构造，析构顺序与构造顺序相反</p>
 <ul>
@@ -792,21 +803,22 @@
 <ul>
 <li><p><strong>菱形继承会产生问题</strong></p>
 <ul>
-<li><p><strong>浪费空间：</strong>羊驼继承了两份动物类中的某些数据和函数，但只需要一份即可</p>
+<li><strong>浪费空间：</strong>羊驼继承了两份动物类中的某些数据和函数，但只需要一份即可</li>
+</ul>
 </li>
-<li><p><strong>二义性：从不同途径继承来的同名的数据成员在内存中有不同的拷贝造成数据不一致问题。</strong> 羊驼调用数据和函数时，会出现二义性，通过sheep类得到一个age，通过carmel类得到一个age，两个数据不会相互影响，相互修改，导致同一份数据不一致</p>
-</li>
+<li><p><strong>二义性：从不同途径继承来的同名的数据成员在内存中有不同的拷贝造成数据不一致问题</strong></p>
+<ul>
+<li>羊驼调用数据和函数时，会出现二义性，通过sheep类得到一个age，通过carmel类得到一个age，两个数据不会相互影响，相互修改，导致同一份数据不一致</li>
 </ul>
 </li>
 <li><p><strong>解决菱形继承的问题</strong></p>
+<p><strong>使用虚继承</strong>，在<strong>继承方式前加virtual</strong>，这样的话羊驼可以直接访问m_Age，不用添加作用域，且这样操作的是共享的一份数据</p>
 </li>
 </ul>
-<p><strong>使用虚继承</strong>，在<strong>继承方式前加virtual</strong>，这样的话羊驼可以直接访问m_Age，不用添加作用域，且这样操作的是共享的一份数据</p>
 <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">class</span> <span class="hljs-symbol">Animal</span>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">int</span> m_Age;<br>&#125;;<br><span class="hljs-keyword">class</span> <span class="hljs-symbol">Sheep:<span class="hljs-symbol">virtual</span></span> <span class="hljs-symbol">public</span> <span class="hljs-symbol">Animal</span>&#123;<br>    <span class="hljs-built_in">int</span> m_sheep;<br>&#125;;<br><span class="hljs-keyword">class</span> <span class="hljs-symbol">Camel</span> :<span class="hljs-symbol">virtual</span> <span class="hljs-symbol">public</span> <span class="hljs-symbol">Animal</span>&#123;<br>    <span class="hljs-built_in">int</span> m_camel;<br>&#125;;<br><br><span class="hljs-keyword">class</span> <span class="hljs-symbol">Son</span> :<span class="hljs-symbol">public</span> <span class="hljs-symbol">Sheep, <span class="hljs-symbol">public</span></span> <span class="hljs-symbol">Camel</span>&#123;<br>    <span class="hljs-built_in">int</span> m_son<br>&#125;;<br><span class="hljs-built_in">void</span> test01()&#123;<br>    Son son;<br>    son.m_Age = <span class="hljs-number">10</span>;<br>    cout &lt;&lt; sizeof(Animal) &lt;&lt; endl; <span class="hljs-comment">//m_Age</span><br>    cout &lt;&lt; sizeof(Sheep) &lt;&lt; endl;  <span class="hljs-comment">//sheep-Vbptr,m_sheep,m_Age</span><br>    cout &lt;&lt; sizeof(Camel) &lt;&lt; endl;  <span class="hljs-comment">//camel-Vbptr,m_camel,m_Age</span><br>    cout &lt;&lt; sizeof(Son) &lt;&lt; endl;    <span class="hljs-comment">//sheep-Vbptr,m_sheep,camel-Vbptr,m_camel,m_son,m_Age</span><br>&#125;<br>- 此时son没有自己的虚基类表和虚基类指针，只是继承了sheep和camel的虚基类指针和虚基类表，只是修改了两个虚基类表中的值，修改为当前类中，如何通过继承的虚基类指针查找虚基类数据<br>- Son继承Sheep父类，父类中有虚基类指针vbptr(virtual base pointer)，对象结构类似结构体，首元素是虚基类指针，其余为自身数据（不包括静态成员和成员函数）<br>- Sheep的虚指针指向下面Sheep的虚基类表<span class="hljs-symbol">vbtale@</span>Sheep(virtual base table)，虚基类表是一个整型数组，数组第二个元素值为<span class="hljs-number">20</span>，即Sheep的虚指针地址偏移<span class="hljs-number">20</span>指向Animal的m_Age地址。Camel父类同理，因此，类中只有一个m_Age元素<br>- Son中包含了两个指针和四个<span class="hljs-built_in">int</span>类型，所以大小为<span class="hljs-number">24</span><br></code></pre></td></tr></table></figure>
 
 <ul>
-<li><p><strong>虚继承</strong></p>
-<ul>
+<li><strong>虚继承</strong><ul>
 <li><p>一般通过虚基类指针和虚基类表实现，将共同基类设置为虚基类</p>
 </li>
 <li><p><strong>每个虚继承的子类（虚基类本身没有）都有一个虚基类指针（占用一个指针的存储空间）和虚基类表（不占用类对象的存储空间），虚基类指针属于对象，虚基类表属于类</strong></p>
@@ -870,39 +882,44 @@
 </ul>
 <h2 id="2-19-抽象类和纯虚函数"><a href="#2-19-抽象类和纯虚函数" class="headerlink" title="2.19 抽象类和纯虚函数"></a>2.19 抽象类和纯虚函数</h2><p>在程序设计中，如果仅仅为了设计一些虚函数接口，打算在子类中对其进行重写，那么不需要在父类中对虚函数的函数体提供无意义的代码，可以通过纯虚函数满足需求</p>
 <ul>
-<li>纯虚函数的语法格式：<code>virtual 返回值类型 函数名 () = 0;</code>只需要将函数体完全替换为 &#x3D;0即可，<strong>纯虚函数必须在子类中进行实现</strong>，在子类外实现是无效的</li>
+<li><strong>纯虚函数的语法格式：<code>virtual 返回值类型 函数名 () = 0;</code>只需要将函数体完全替换为 &#x3D;0即可，纯虚函数必须在子类中进行实现，在子类外实现是无效的</strong></li>
 <li>注意<ul>
 <li>如果父类中出现了一个纯虚函数，则这个类变为了抽象类，抽象类不可实例对象</li>
-<li>如果父类为抽象类，子类继承父类后，必须实现父类所有的纯虚函数，否则子类也为抽象类，也无法实例对象<strong>但纯虚析构函数例外，因为子类不会继承父类的析构函数</strong></li>
+<li><strong>如果父类为抽象类，子类继承父类后，必须实现父类所有的纯虚函数，否则子类也为抽象类，也无法实例对象但纯虚析构函数例外，因为子类不会继承父类的析构函数</strong></li>
 </ul>
 </li>
 </ul>
-<h2 id="2-20-虚析构和纯虚析构"><a href="#2-20-虚析构和纯虚析构" class="headerlink" title="2.20 虚析构和纯虚析构"></a>2.20 虚析构和纯虚析构</h2><blockquote>
+<h2 id="2-20-虚析构和纯虚析构"><a href="#2-20-虚析构和纯虚析构" class="headerlink" title="2.20 虚析构和纯虚析构"></a>2.20 虚析构和纯虚析构</h2><ul>
+<li><p><strong>内存泄漏：当一个对象已经不需要再使用本该被回收时，另外一个正在使用的对象持有它的引用从而导致它不能被回收，这导致本该被回收的对象不能被回收而停留在堆内存中，这就产生了内存泄漏</strong></p>
 <ul>
 <li>仅仅发生继承时，创建子类对象后销毁，函数调用流程为：父类构造函数-&gt;子类构造函数-&gt;子类析构函数-&gt;父类析构函数</li>
 <li>当发生多态时（父类指针或引用指向子类对象），通过父类指针在堆上创建子类对象，然后销毁，调用流程为：父类构造函数-&gt;子类构造函数-&gt;父类析构函数，不会调用子类析构函数，因此子类中会出现内存泄漏问题</li>
-<li>内存泄漏：当一个对象已经不需要再使用本该被回收时，另外一个正在使用的对象持有它的引用从而导致它不能被回收，这导致本该被回收的对象不能被回收而停留在堆内存中，这就产生了内存泄漏</li>
-</ul>
-</blockquote>
-<p><strong>解决方法：将父类中的析构函数设置为虚函数，设置后会先调用子类析构函数，再调用父类析构函数</strong></p>
-<ul>
-<li><strong>纯虚析构</strong><ul>
-<li>纯虚析构需要类内声明，类外实现</li>
-<li>纯虚析构也是虚函数，该类也为抽象类</li>
-<li>子类不会继承父类的析构函数，当父类纯虚析构没有实现时，子类不是抽象类，可以创建创建对象</li>
 </ul>
 </li>
-<li><strong>C++默认的析构函数不是虚函数：因为虚函数需要额外的虚函数表和虚表指针，占用额外的内存。而对于不会被继承的类来说，其析构函数如果是虚函数，就会浪费内存</strong></li>
+<li><p><strong>内存泄漏的解决方法</strong></p>
+<ul>
+<li><strong>将父类中的析构函数设置为虚函数，设置后会先调用子类析构函数，再调用父类析构函数</strong></li>
+</ul>
+</li>
+<li><p><strong>纯虚析构</strong></p>
+<ul>
+<li>纯虚析构需要类内声明，类外实现</li>
+<li>纯虚析构也是虚函数，该类也为抽象类</li>
+<li><strong>子类不会继承父类的析构函数，当父类纯虚析构没有实现时，子类不是抽象类，可以创建创建对象</strong></li>
+</ul>
+</li>
+<li><p><strong>C++默认的析构函数不是虚函数：因为虚函数需要额外的虚函数表和虚表指针，占用额外的内存。而对于不会被继承的类来说，其析构函数如果是虚函数，就会浪费内存</strong></p>
+</li>
 </ul>
 <h2 id="2-21-类模版和函数模版"><a href="#2-21-类模版和函数模版" class="headerlink" title="2.21 类模版和函数模版"></a>2.21 类模版和函数模版</h2><p><strong>通过template或template实现，主要用于数据的类型参数化，简化代码，有类模板和函数模板，函数模板是用于生成函数的，类模板则是用于生成类的</strong></p>
 <ul>
 <li><p>类模板和函数模板定义</p>
-<blockquote>
 <ul>
-<li>template声明下面是函数定义，则为函数模板，否则为类模板</li>
-<li>注意：每个函数模板前必须有且仅有一个template声明，不允许多个template声明后只有一个函数模板，也不允许一个template声明后有多个函数模板(类模板同理)</li>
+<li><p>template声明下面是函数定义，则为函数模板，否则为类模板</p>
+</li>
+<li><p>注意：每个函数模板前必须有且仅有一个template声明，不允许多个template声明后只有一个函数模板，也不允许一个template声明后有多个函数模板(类模板同理)</p>
+</li>
 </ul>
-</blockquote>
 </li>
 <li><p>类模板与函数模板的区别</p>
 <ul>
@@ -936,7 +953,56 @@
 <li>在析构函数中catch捕获异常并作处理，吞下异常</li>
 <li>如果客户需要对某个操作函数运次期间抛出的异常做出反应，class应该提供普通函数执行该操作，而非在析构函数中</li>
 </ul>
-<h2 id="3-5-智能指针"><a href="#3-5-智能指针" class="headerlink" title="3.5 智能指针"></a>3.5 智能指针</h2><h2 id="3-6-野指针"><a href="#3-6-野指针" class="headerlink" title="3.6 野指针"></a>3.6 野指针</h2><p><strong>野指针指向一个已删除的对象或 申请访问受限内存区域的指针</strong></p>
+<h2 id="3-5-智能指针"><a href="#3-5-智能指针" class="headerlink" title="3.5 智能指针"></a>3.5 智能指针</h2><ul>
+<li><p><strong>原始指针在引入了异常机制后容易发生内存泄漏、二次释放等问题</strong></p>
+</li>
+<li><p>C++11 中引入了智能指针（Smart Pointer），它利用了一种叫做 RAII（资源获取即初始化）的技术将普通的指针封装为一个栈对象。当栈对象的生存周期结束后，会在析构函数中释放掉申请的内存，从而防止内存泄漏。这使得智能指针实质是一个对象，行为表现的却像一个指针</p>
+</li>
+<li><p><strong>shared_ptr共享的智能指针</strong></p>
+<ul>
+<li><p>share_ptr的初始化</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 指向一个值为42的int的shared_ptr</span><br>shared_ptr&lt;<span class="hljs-type">int</span>&gt; p3 = <span class="hljs-built_in">make_shared</span>&lt;<span class="hljs-type">int</span>&gt;(<span class="hljs-number">42</span>);<br><br><span class="hljs-comment">// p4 指向一个值为&quot;9999999999&quot;的string</span><br>shared_ptr&lt;string&gt; p4 = <span class="hljs-built_in">make_shared</span>&lt;string&gt;(<span class="hljs-number">10</span>,<span class="hljs-string">&#x27;9&#x27;</span>);<br><br><span class="hljs-comment">// p5指向一个值初始化的int</span><br>shared_ptr&lt;<span class="hljs-type">int</span>&gt; p5 = <span class="hljs-built_in">make_shared</span>&lt;<span class="hljs-type">int</span>&gt;();<br><br><span class="hljs-function">shared_ptr&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">p2</span><span class="hljs-params">(<span class="hljs-keyword">new</span> <span class="hljs-type">int</span>(<span class="hljs-number">1024</span>))</span></span>;	<span class="hljs-comment">// 正确：使用了直接初始化形式</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>shared_ptr常用操作</strong></p>
+<ul>
+<li>&#96;&#96;&#96;<br>make_shared<T>(args) &#x2F;&#x2F; 返回一个shared_ptr，指向一个动态分配的类型为T的对象。使用args初始化此对象<br>shared_ptr<T> p(q) &#x2F;&#x2F; p是shared_ptr q的拷贝；此操作会递增q中的引用计数。q中的指针必须能转换成T*<br>p &#x3D; q &#x2F;&#x2F; p和q都是shared_ptr，所保存的指针必须能相互转换。此操作会递减p中的引用计数，递增q中的引用计数。若p中的引用计数变为0，则将其管理的原内存释放<br>p.unique() &#x2F;&#x2F; 若p.use_count()为1，返回true；否则返回false<br>p.use_count() &#x2F;&#x2F; 返回与p共享对象的智能指针数量；可能很慢，主要用于调试<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs css"><br>- **shared_ptr的其他方法**<br><br>  - ```<br>    <span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.reset</span> () //若<span class="hljs-selector-tag">p</span>是唯一指向其对象的shared_ptr，reset会释放此对象。<br>    <span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.reset</span>(<span class="hljs-selector-tag">q</span>) //若传递了可选的参数内置指针<span class="hljs-selector-tag">q</span>，会令<span class="hljs-selector-tag">P</span>指向<span class="hljs-selector-tag">q</span>，否则会将<span class="hljs-selector-tag">P</span>置为空。<br>    <span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.reset</span>(<span class="hljs-selector-tag">q</span>, d) //若还传递了参数d,将会调用d而不是delete 来释放<span class="hljs-selector-tag">q</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>weak_ptr弱引用的智能指针</strong></p>
+<ul>
+<li><p><code>shared_ptr</code>的一个最大的陷阱是循环引用，循环引用会导致堆内存无法正确释放，导致内存泄漏</p>
+</li>
+<li><p>要想解决上面循环引用的问题，只能引入新的智能指针<code>std::weak_ptr</code>。<code>std::weak_ptr</code>有什么特点呢？与<code>std::shared_ptr</code>最大的差别是在赋值的时候，不会引起智能指针计数增加</p>
+<ul>
+<li><code>weak_ptr</code>被设计为与<code>shared_ptr</code>共同工作，可以从一个<code>shared_ptr</code>或者另一个<code>weak_ptr</code>对象构造，获得资源的观测权。但<code>weak_ptr</code>没有共享资源，它的构造不会引起指针引用计数的增加</li>
+<li>同样，在<code>weak_ptr</code>析构时也不会导致引用计数的减少，它只是一个静静地观察者。<code>weak_ptr</code>没有重载<code>operator*</code>和<code>-&gt;</code>，这是特意的，因为它不共享指针，不能操作资源，这是它弱的原因</li>
+<li>如要操作资源，则必须使用一个非常重要的成员函数<code>lock()</code>从被观测的<code>shared_ptr</code>获得一个可用的<code>shared_ptr</code>对象，从而操作资源</li>
+</ul>
+</li>
+<li><p>当我们创建一个<code>weak_ptr</code>时，要用一个<code>shared_ptr</code>来初始化它：</p>
+<ul>
+<li>&#96;&#96;&#96;<br>auto p &#x3D; make_shared<int>(42);<br>weak_ptr<int> wp(p); &#x2F;&#x2F; wp弱共享p; p的引用计数未改变<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs awk"><br>- **weak_ptr常用操作**<br><br>  - ```<br>    weak_ptr&lt;T&gt; w;	<span class="hljs-regexp">//</span> 空weak_ptr可以指向类型为T的对象<br>    weak_ptr&lt;T&gt; w(shared_ptr p);	<span class="hljs-regexp">//</span> 与p指向相同对象的weak_ptr, T必须能转换为sp指向的类型<br>    w = p;	<span class="hljs-regexp">//</span> p可以是shared_ptr或者weak_ptr，赋值后w和p共享对象<br>    w.reset();	<span class="hljs-regexp">//</span> weak_ptr置为空<br>    w.use_count();	<span class="hljs-regexp">//</span> 与w共享对象的shared_ptr的计数<br>    w.expired();	<span class="hljs-regexp">//</span> w.use_count()为<span class="hljs-number">0</span>则返回true，否则返回false<br>    w.lock();	<span class="hljs-regexp">//</span> w.expired()为true，返回空的shared_ptr;否则返回指向w的shared_ptr<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>unique_ptr的基本使用</strong></p>
+<ul>
+<li><p><code>unique_ptr</code>相对于其他两个智能指针更加简单，它和<code>shared_ptr</code>使用差不多，但是功能更为单一，它是一个独占型的智能指针，不允许其他的智能指针共享其内部的指针，更像原生的指针（但更为安全，能够自己释放内存）。<strong>不允许赋值和拷贝操作，只能够移动</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function">std::unique_ptr&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">ptr1</span><span class="hljs-params">(<span class="hljs-keyword">new</span> <span class="hljs-type">int</span>(<span class="hljs-number">0</span>))</span></span>;<br>std::unique_ptr&lt;<span class="hljs-type">int</span>&gt; ptr2 = ptr1; <span class="hljs-comment">// 错误，不能复制</span><br>std::unique_ptr&lt;<span class="hljs-type">int</span>&gt; ptr3 = std::<span class="hljs-built_in">move</span>(ptr1); <span class="hljs-comment">// 可以移动</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>性能与安全的权衡</strong></p>
+<ul>
+<li><code>shared_ptr</code>的大小是原始指针的两倍，因为它的内部有一个原始指针指向资源，同时有个指针指向引用计数</li>
+<li>引用计数的内存必须动态分配。虽然一点可以使用<code>make_shared()</code>来避免，但也存在一些情况下不能够使用<code>make_shared()</code></li>
+<li>增加和减小引用计数必须是原子操作，因为可能会有读写操作在不同的线程中同时发生。比如在一个线程里有一个指向一块资源的<code>shared_ptr</code>可能调用了析构（因此所指向的资源的引用计数减一），同时，在另一线程里，指向相同对象的一个<code>shared_ptr</code>可能执行了拷贝操作（因此，引用计数加一）。原子操作一般会比非原子操作慢。但是为了线程安全，又不得不这么做，这就给单线程使用环境带来了不必要的困扰</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-6-野指针"><a href="#3-6-野指针" class="headerlink" title="3.6 野指针"></a>3.6 野指针</h2><p><strong>野指针指向一个已删除的对象或 申请访问受限内存区域的指针</strong></p>
 <p><strong>产生原因：</strong></p>
 <ul>
 <li>指针变量未初始化</li>
@@ -1033,7 +1099,64 @@
 <li>除了数组，其他容器在交换后本质上是将内存地址进行了交换，而元素本身在内存中的位置是没有变化</li>
 <li>swap在交换的时候并不是完全将2个容器的元素互换，而是交换了2个容器内的内存地址</li>
 </ul>
-<h2 id="4-2-STL中的哈希表扩容"><a href="#4-2-STL中的哈希表扩容" class="headerlink" title="4.2 STL中的哈希表扩容"></a>4.2 STL中的哈希表扩容</h2>
+<h2 id="4-2-STL中的哈希表扩容"><a href="#4-2-STL中的哈希表扩容" class="headerlink" title="4.2 STL中的哈希表扩容"></a>4.2 STL中的哈希表扩容</h2><ul>
+<li>这里需要知道STL中的swap底层，其实扩容也是vector扩容<ul>
+<li>创建一个新桶，该桶是原来桶两倍大最接近的质数(判断n是不是质数的方法：用n除2到sqrt(n)范围内的数) </li>
+<li>将原来桶里的数通过指针的转换，插入到新桶中(注意STL这里做的很精细，没有直接将数据从旧桶遍历拷贝数据插入到新桶，而是通过指针转换两个桶的地址)</li>
+<li>通过swap函数将新桶和旧桶交换，销毁新桶</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-3-STL迭代器失效的几种情况总结"><a href="#4-3-STL迭代器失效的几种情况总结" class="headerlink" title="4.3 STL迭代器失效的几种情况总结"></a>4.3 STL迭代器失效的几种情况总结</h2><ul>
+<li><p><strong>迭代器的失效问题：</strong>对容器的操作影响了元素的存放位置，称为迭代器失效</p>
+</li>
+<li><p><strong>失效情况</strong></p>
+<ul>
+<li>当容器调用<code>erase()</code>方法后，当前位置到容器末尾元素的所有迭代器全部失效</li>
+<li>当容器调用<code>insert()</code>方法后，当前位置到容器末尾元素的所有迭代器全部失效</li>
+<li>如果容器扩容，在其他地方重新又开辟了一块内存。原来容器底层的内存上所保存的迭代器全都失效了</li>
+</ul>
+</li>
+<li><p><strong>序列式容器</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;vector&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br><br>	vector&lt;<span class="hljs-type">int</span>&gt; q&#123; <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span> &#125;;<br>	<span class="hljs-comment">// 在这里想把大于2的元素都删除</span><br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> it = q.<span class="hljs-built_in">begin</span>(); it != q.<span class="hljs-built_in">end</span>(); it++) &#123;<br>		<span class="hljs-keyword">if</span> (*it &gt; <span class="hljs-number">2</span>)<br>			q.<span class="hljs-built_in">erase</span>(it); <span class="hljs-comment">// 这里就会发生迭代器失效</span><br>	&#125;<br>	<span class="hljs-comment">// 打印结果</span><br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> it = q.<span class="hljs-built_in">begin</span>(); it != q.<span class="hljs-built_in">end</span>(); it++) &#123;<br>		cout &lt;&lt; *it &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>	&#125;<br>	cout &lt;&lt; endl;<br><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>迭代器失效的原因是：因为 vetor、deque 使用了连续分配的内存，<code>erase</code>操作删除一个元素导致后面所有的元素都会向前移动一个位置，这些元素的地址发生了变化，所以当前位置到容器末尾元素的所有迭代器全部失效</p>
+</li>
+<li><p>解决方法是利用<code>erase</code>方法可以返回下一个有效的 iterator，所以代码做如下修改即可：</p>
+</li>
+</ul>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">//</span> 在这里想把大于<span class="hljs-number">2</span>的元素都删除<br><span class="hljs-keyword">for</span>(auto it=q.begin();it!=q.end();)<br>&#123;<br>    <span class="hljs-keyword">if</span>(*it&gt;<span class="hljs-number">2</span>)<br>    &#123;<br>    	it=q.erase(it); <span class="hljs-regexp">//</span> 这里会返回指向下一个元素的迭代器，因此不需要再自加了<br>    &#125;<br>    <span class="hljs-keyword">else</span><br>    &#123;<br>    	it++;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>链表式容器</strong></p>
+<ul>
+<li>对于链表式容器(如 list)，删除当前的 iterator，仅仅会使当前的 iterator 失效，这是因为 list 之类的容器，<strong>使用了链表来实现，插入、删除一个结点不会对其他结点造成影响</strong></li>
+<li>只要在 erase 时，递增当前 iterator 即可，并且 erase 方法可以返回下一个有效的 iterator</li>
+</ul>
+</li>
+</ul>
+<p><strong>方式一：递增当前 iterator</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span> (iter = cont.<span class="hljs-built_in">begin</span>(); it != cont.<span class="hljs-built_in">end</span>();)<br>&#123;<br>   (*iter)-&gt;<span class="hljs-built_in">doSomething</span>();<br>   <span class="hljs-keyword">if</span> (<span class="hljs-built_in">shouldDelete</span>(*iter))<br>      cont.<span class="hljs-built_in">erase</span>(iter++);<br>   <span class="hljs-keyword">else</span><br>      iter++;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>方式二：通过 erase 获得下一个有效的 iterator</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span> (iter = cont.<span class="hljs-built_in">begin</span>(); iter != cont.<span class="hljs-built_in">end</span>();)<br>&#123;<br>   (*it)-&gt;<span class="hljs-built_in">doSomething</span>();<br>   <span class="hljs-keyword">if</span> (<span class="hljs-built_in">shouldDelete</span>(*iter))<br>      iter = cont.<span class="hljs-built_in">erase</span>(iter);  <span class="hljs-comment">//erase删除元素，返回下一个迭代器</span><br>   <span class="hljs-keyword">else</span><br>      ++iter;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>关联式容器</strong></p>
+<ul>
+<li>对于关联容器(如 map, set,multimap,multiset)，删除当前的 iterator，仅仅会使当前的 iterator 失效，只要在 erase 时，递增当前 iterator 即可</li>
+<li>这是因为 map 之类的容器，使用了红黑树来实现，插入、删除一个结点不会对其他结点造成影响</li>
+<li><strong>erase 迭代器只是被删元素的迭代器失效，但是返回值为 void，所以要采用<code>erase(iter++)</code>的方式删除迭代器</strong></li>
+</ul>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs ocaml"><span class="hljs-keyword">for</span> (iter = dataMap.<span class="hljs-keyword">begin</span><span class="hljs-literal">()</span>; iter != dataMap.<span class="hljs-keyword">end</span><span class="hljs-literal">()</span>; )<br>&#123;<br>         <span class="hljs-built_in">int</span> nKey = iter-&gt;first;<br>         <span class="hljs-built_in">string</span> strValue = iter-&gt;second;<br><br>         <span class="hljs-keyword">if</span> (nKey % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>)<br>         &#123;<br>               dataMap.erase(iter++);<br>               auto a = iter;<br>         &#125;<span class="hljs-keyword">else</span><br>     		 &#123;<br>          iter++;<br>         &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>dataMap.erase(iter++); <strong>这句话分三步走，先把 iter 传值到 erase 里面，然后 iter 自增，然后执行 erase，所以 iter 在失效前已经自增了</strong></li>
+<li>map 是关联容器，以红黑树或者平衡二叉树组织数据，虽然删除了一个元素，整棵树也会调整，以符合红黑树或者二叉树的规范，但是单个节点在内存中的地址没有变化，变化的是各节点之间的指向关系</li>
+</ul>
+</li>
+</ul>
+
               
             </div>
             <hr/>
