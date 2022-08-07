@@ -16,15 +16,15 @@
   <meta name="author" content="Fyy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一、C++基础1.1 数组和指针的区别 概念不同  指针相当于一个变量，它存放的是数据在内存中的地址 数组是用于储存多个相同类型数据的集合   赋值不同  同类型指针变量可以相互赋值，数组不行，只能一个一个元素的赋值或拷贝   访问数据不同  指针是间接访问数据，获取指针，先解引用，再访问指针指向的地址中的内容 数组是直接访问   sizeof意义不同  数组所占存储空间的内存：sizeof（数组">
+    <meta name="description" content="一、C++基础1.数组和指针的区别 概念不同  指针相当于一个变量，它存放的是数据在内存中的地址 数组是用于储存多个相同类型数据的集合   赋值不同  同类型指针变量可以相互赋值，数组不行，只能一个一个元素的赋值或拷贝   访问数据不同  指针是间接访问数据，获取指针，先解引用，再访问指针指向的地址中的内容 数组是直接访问   sizeof意义不同  数组所占存储空间的内存：sizeof（数组名）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++面经-个人总结">
 <meta property="og:url" content="http://example.com/2022/07/09/C++-%E9%9D%A2%E7%BB%8F-%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="UESTC-Fyy">
-<meta property="og:description" content="一、C++基础1.1 数组和指针的区别 概念不同  指针相当于一个变量，它存放的是数据在内存中的地址 数组是用于储存多个相同类型数据的集合   赋值不同  同类型指针变量可以相互赋值，数组不行，只能一个一个元素的赋值或拷贝   访问数据不同  指针是间接访问数据，获取指针，先解引用，再访问指针指向的地址中的内容 数组是直接访问   sizeof意义不同  数组所占存储空间的内存：sizeof（数组">
+<meta property="og:description" content="一、C++基础1.数组和指针的区别 概念不同  指针相当于一个变量，它存放的是数据在内存中的地址 数组是用于储存多个相同类型数据的集合   赋值不同  同类型指针变量可以相互赋值，数组不行，只能一个一个元素的赋值或拷贝   访问数据不同  指针是间接访问数据，获取指针，先解引用，再访问指针指向的地址中的内容 数组是直接访问   sizeof意义不同  数组所占存储空间的内存：sizeof（数组名）">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-07-09T07:15:45.000Z">
-<meta property="article:modified_time" content="2022-07-24T09:22:52.613Z">
+<meta property="article:modified_time" content="2022-08-07T06:43:58.570Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          24k 字
+          26k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          203 分钟
+          219 分钟
         
       </span>
     
@@ -271,7 +271,7 @@
             
             <div class="markdown-body">
               
-              <h1 id="一、C-基础"><a href="#一、C-基础" class="headerlink" title="一、C++基础"></a>一、C++基础</h1><h2 id="1-1-数组和指针的区别"><a href="#1-1-数组和指针的区别" class="headerlink" title="1.1 数组和指针的区别"></a>1.1 数组和指针的区别</h2><ul>
+              <h1 id="一、C-基础"><a href="#一、C-基础" class="headerlink" title="一、C++基础"></a>一、C++基础</h1><h2 id="1-数组和指针的区别"><a href="#1-数组和指针的区别" class="headerlink" title="1.数组和指针的区别"></a>1.数组和指针的区别</h2><ul>
 <li><strong>概念不同</strong> <ul>
 <li>指针相当于一个变量，它存放的是数据在内存中的地址</li>
 <li>数组是用于储存多个相同类型数据的集合</li>
@@ -302,7 +302,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="1-2-指针数组和数组指针"><a href="#1-2-指针数组和数组指针" class="headerlink" title="1.2 指针数组和数组指针"></a>1.2 指针数组和数组指针</h2><ul>
+<h2 id="2-指针数组和数组指针"><a href="#2-指针数组和数组指针" class="headerlink" title="2.指针数组和数组指针"></a>2.指针数组和数组指针</h2><ul>
 <li><strong>指针数组：</strong>它实际上是一个数组，数组的每个元素存放的是一个指针类型的元素。 int* arr[8]<ul>
 <li><ol>
 <li>优先级问题：[]的优先级比高 </li>
@@ -322,7 +322,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="1-3-字符数组和字符串常量"><a href="#1-3-字符数组和字符串常量" class="headerlink" title="1.3 字符数组和字符串常量"></a>1.3 字符数组和字符串常量</h2><ul>
+<h2 id="3-字符数组和字符串常量"><a href="#3-字符数组和字符串常量" class="headerlink" title="3.字符数组和字符串常量"></a>3.字符数组和字符串常量</h2><ul>
 <li><strong>字符数组：</strong>char arr[] &#x3D; “hello”;<ul>
 <li>此处的赋值是将常量区的字符串”hello”拷贝到了堆栈区的数arr的空间了</li>
 <li>数组arr是在堆栈区开辟了空间，此时是可以修改字符串的值，因为修改的是堆栈区的字符串的值</li>
@@ -334,7 +334,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="1-4-引用和指针的区别"><a href="#1-4-引用和指针的区别" class="headerlink" title="1.4 引用和指针的区别"></a>1.4 引用和指针的区别</h2><ul>
+<h2 id="4-引用和指针的区别"><a href="#4-引用和指针的区别" class="headerlink" title="4.引用和指针的区别"></a>4.引用和指针的区别</h2><ul>
 <li><strong>指针有内存分配，而引用只是一个别名</strong> <ul>
 <li>引用声明时必须初始化，从而指向一个已经存在的对象</li>
 </ul>
@@ -374,7 +374,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="1-5-函数指针与指针函数"><a href="#1-5-函数指针与指针函数" class="headerlink" title="1.5 函数指针与指针函数"></a>1.5 函数指针与指针函数</h2><ul>
+<h2 id="5-函数指针与指针函数"><a href="#5-函数指针与指针函数" class="headerlink" title="5.函数指针与指针函数"></a>5.函数指针与指针函数</h2><ul>
 <li>指针函数<code>int* f(int x, int y)</code>本质是函数，返回值为指针，函数指针<code>int (*f)(int x)</code>本质是指针，指向函数的指针</li>
 <li>通常我们可以将指针指向某类型的变量，称为类型指针（如，整型指针）。若将一个指针指向函数，则称为函数指针</li>
 <li>函数名代表函数的入口地址，同样的，我们可以通过根据该地址进行函数调用，而非直接调用函数名</li>
@@ -385,7 +385,7 @@
 <ul>
 <li>函数指针多用于回调函数，回调函数最大的优势在于灵活操作，可以实现用户定制的函数，降低耦合性，实现多样性，如STL中</li>
 </ul>
-<h2 id="1-6-C-中class和struct的区别"><a href="#1-6-C-中class和struct的区别" class="headerlink" title="1.6 C++中class和struct的区别"></a>1.6 C++中class和struct的区别</h2><ul>
+<h2 id="6-C-中class和struct的区别"><a href="#6-C-中class和struct的区别" class="headerlink" title="6.C++中class和struct的区别"></a>6.C++中class和struct的区别</h2><ul>
 <li><p>C中的strcut不能有函数，但C++中可以</p>
 </li>
 <li><p>C++中的struct对C中的struct进行了扩充，它已经不再只是一个包含不同数据类型的数据结构了，它能包含<strong>成员函数，能继承与实现多态</strong></p>
@@ -401,7 +401,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="1-7-new-x2F-delete和malloc-x2F-free的区别"><a href="#1-7-new-x2F-delete和malloc-x2F-free的区别" class="headerlink" title="1.7 new&#x2F;delete和malloc&#x2F;free的区别"></a>1.7 new&#x2F;delete和malloc&#x2F;free的区别</h2><ul>
+<h2 id="7-new-x2F-delete和malloc-x2F-free的区别"><a href="#7-new-x2F-delete和malloc-x2F-free的区别" class="headerlink" title="7.new&#x2F;delete和malloc&#x2F;free的区别"></a>7.new&#x2F;delete和malloc&#x2F;free的区别</h2><ul>
 <li><p><strong>主要区别</strong></p>
 <ul>
 <li>calloc在返回指向内存的指针之前把它初始化为0，calloc的参数包括所需的元素的数量和每个元素的字节数</li>
@@ -473,7 +473,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="1-8-new运算符的原理"><a href="#1-8-new运算符的原理" class="headerlink" title="1.8 new运算符的原理"></a>1.8 new运算符的原理</h2><ul>
+<h2 id="8-new运算符的原理"><a href="#8-new运算符的原理" class="headerlink" title="8.new运算符的原理"></a>8.new运算符的原理</h2><ul>
 <li><strong>内存分配</strong><ul>
 <li>调用相应的 operator new(size_t) 函数，动态分配内存</li>
 <li>如果 operator new(size_t) 不能成功获得内存，则调用 new_handler()函数用于处理new失败问题</li>
@@ -486,12 +486,12 @@
 </ul>
 </li>
 </ul>
-<h2 id="1-9-malloc的内存分配机制"><a href="#1-9-malloc的内存分配机制" class="headerlink" title="1.9 malloc的内存分配机制"></a>1.9 malloc的内存分配机制</h2><p><strong>malloc内存分配机制是怎么样的,在哪里分配内存，最大可以申请多大的内存？</strong></p>
+<h2 id="9-malloc的内存分配机制"><a href="#9-malloc的内存分配机制" class="headerlink" title="9.malloc的内存分配机制"></a>9.malloc的内存分配机制</h2><p><strong>malloc内存分配机制是怎么样的,在哪里分配内存，最大可以申请多大的内存？</strong></p>
 <ul>
 <li>首先会扫描之前由free()所释放的空闲内存块列表，以求找到尺寸大于或等于要求的一块空闲内存</li>
 <li>如果这一内存块的尺寸正好与要求相当，就将它返回给调用者，如果是一块较大的内存，那么将对其进行分割，在将一块大小相当的内存返回给调用者的同时，把较小的那块空闲内存块保留在空闲列表中</li>
 </ul>
-<h2 id="1-10-堆和栈的区别"><a href="#1-10-堆和栈的区别" class="headerlink" title="1.10 堆和栈的区别"></a>1.10 堆和栈的区别</h2><ul>
+<h2 id="10-堆和栈的区别"><a href="#10-堆和栈的区别" class="headerlink" title="10.堆和栈的区别"></a>10.堆和栈的区别</h2><ul>
 <li>管理方式不同<ul>
 <li>对于栈来讲，是由编译器自动管理，无需我们手工控制；对于堆来说，释放工作由程序员控制，容易产生memory leak</li>
 </ul>
@@ -510,13 +510,13 @@
 </ul>
 </li>
 </ul>
-<h2 id="1-11-const关键字"><a href="#1-11-const关键字" class="headerlink" title="1.11 const关键字"></a>1.11 const关键字</h2><ul>
+<h2 id="11-const关键字"><a href="#11-const关键字" class="headerlink" title="11.const关键字"></a>11.const关键字</h2><ul>
 <li><strong>修饰变量：</strong>说明该变量不可以被改变</li>
 <li><strong>修饰指针：</strong>分为指向常量的指针和指针常量；int *const p和const int *p</li>
 <li><strong>常量引用：</strong>经常用于形参类型，即避免了拷贝，又避免了函数对值的修改</li>
 <li><strong>修饰成员函数：</strong>说明该成员函数内不能修改成员变量，本质是const this指针</li>
 </ul>
-<h2 id="1-12-static关键字"><a href="#1-12-static关键字" class="headerlink" title="1.12 static关键字"></a>1.12 static关键字</h2><ul>
+<h2 id="12-static关键字"><a href="#12-static关键字" class="headerlink" title="12.static关键字"></a>12.static关键字</h2><ul>
 <li><strong>修饰普通变量：</strong> 修改变量的存储区域和生命周期，使变量存储在静态区，在main函数运行前就分配了空间，在整个程序运行期间一直存在，如果有初始值就用初始值初始化它，如果没有初始值系统用默认值初始化它，自动初始化为0<ul>
 <li><strong>全局变量作用域：</strong>全局静态变量在声明他的文件之外是不可见的，准确地说是从定义之处开始，到文件结尾</li>
 <li><strong>局部变量作用域：</strong>仍为局部作用域，当定义它的函数或者语句块结束的时候，作用域结束。但是当局部静态变量离开作用域后，并没有销毁，而是仍然驻留在内存当中，只不过我们不能再对它进行访问，直到该函数再次被调用，并且值不变</li>
@@ -525,7 +525,7 @@
 <li><strong>修饰普通函数：</strong>其只能在定义它的源文件中使用，不能在其他源文件中被引用</li>
 <li><strong>修饰类成员变量和成员函数：</strong> 它们是属于类的，而不是某个对象，所有对象共享一个静态成员。静态成员通过&lt;类名&gt;::&lt;静态成员&gt;来使用。在 static 函数内不能访问非静态成员</li>
 </ul>
-<h2 id="1-13-extern关键字"><a href="#1-13-extern关键字" class="headerlink" title="1.13 extern关键字"></a>1.13 extern关键字</h2><p>extern关键字主要修饰变量或函数，表示该函数可以跨文件访问，或者表明该变量在其他文件定义，在此处引用</p>
+<h2 id="13-extern关键字"><a href="#13-extern关键字" class="headerlink" title="13.extern关键字"></a>13.extern关键字</h2><p>extern关键字主要修饰变量或函数，表示该函数可以跨文件访问，或者表明该变量在其他文件定义，在此处引用</p>
 <ul>
 <li><strong>修饰变量或函数</strong><ul>
 <li>被 extern 限定的函数或变量是 extern 类型的</li>
@@ -545,18 +545,18 @@
 </ul>
 </li>
 </ul>
-<h2 id="1-14-volatile关键字"><a href="#1-14-volatile关键字" class="headerlink" title="1.14 volatile关键字"></a>1.14 volatile关键字</h2><ul>
+<h2 id="14-volatile关键字"><a href="#14-volatile关键字" class="headerlink" title="14.volatile关键字"></a>14.volatile关键字</h2><ul>
 <li><strong>不可优化性：</strong> volatile 关键字是一种类型修饰符，用它声明的类型变量表示不可以被某些编译器未知的因素（操作系统、硬件、其它线程等）更改。所以使用 volatile 告诉编译器不应对这样的对象进行优化</li>
 <li><strong>易变性：</strong> volatile 关键字声明的变量，每次访问时都必须从内存中取出值（没有被 volatile 修饰的变量，可能由于编译器的优化，从 CPU 寄存器中取值）</li>
 </ul>
-<h2 id="1-15-explicit关键字"><a href="#1-15-explicit关键字" class="headerlink" title="1.15 explicit关键字"></a>1.15 explicit关键字</h2><p>explicit关键字的作用就是<strong>防止对象间实现&#x3D;赋值</strong>，<strong>防止类构造函数的隐式自动转换</strong>，类构造函数默认情况下即声明为implicit(隐式)，另外<strong>explicit只用于单参数的构造函数</strong>，或者除了第一个参数以外的其他参数都有默认值</p>
+<h2 id="15-explicit关键字"><a href="#15-explicit关键字" class="headerlink" title="15.explicit关键字"></a>15.explicit关键字</h2><p>explicit关键字的作用就是<strong>防止对象间实现&#x3D;赋值</strong>，<strong>防止类构造函数的隐式自动转换</strong>，类构造函数默认情况下即声明为implicit(隐式)，另外<strong>explicit只用于单参数的构造函数</strong>，或者除了第一个参数以外的其他参数都有默认值</p>
 <ul>
 <li><p>explicit 修饰构造函数时，可以防止隐式转换和复制初始化</p>
 </li>
 <li><p>explicit 修饰转换函数时，可以防止隐式转换</p>
 </li>
 </ul>
-<h1 id="二、C-面向对象"><a href="#二、C-面向对象" class="headerlink" title="二、C++面向对象"></a>二、C++面向对象</h1><h2 id="2-1-内存字节对齐"><a href="#2-1-内存字节对齐" class="headerlink" title="2.1 内存字节对齐"></a>2.1 内存字节对齐</h2><ul>
+<h1 id="二、C-面向对象"><a href="#二、C-面向对象" class="headerlink" title="二、C++面向对象"></a>二、C++面向对象</h1><h2 id="1-内存字节对齐"><a href="#1-内存字节对齐" class="headerlink" title="1.内存字节对齐"></a>1.内存字节对齐</h2><ul>
 <li><code>#pragma pack(n)</code> 表示的是设置n字节对齐，windows默认是8，linux是4</li>
 </ul>
 <figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs processing">struct A&#123;<br>    <span class="hljs-type">char</span> a;<br>    <span class="hljs-type">int</span> b;<br>    <span class="hljs-type">short</span> c;<br>&#125;;<br>- <span class="hljs-type">char</span>占一个字节，起始偏移为零，<span class="hljs-type">int</span>占四个字节，<span class="hljs-built_in">min</span>(<span class="hljs-number">8</span>,<span class="hljs-number">4</span>)=<span class="hljs-number">4</span>；所以应该偏移量为<span class="hljs-number">4</span>，所以应该在<span class="hljs-type">char</span>后面加上三个字节，不存放任何东西，<span class="hljs-type">short</span>占两个字节，<span class="hljs-built_in">min</span>(<span class="hljs-number">8</span>,<span class="hljs-number">2</span>)=<span class="hljs-number">2</span>;所以偏移量是<span class="hljs-number">2</span>的倍数，而<span class="hljs-type">short</span>偏移量是<span class="hljs-number">8</span>，是<span class="hljs-number">2</span>的倍数，所以无需添加任何字节，所以第一个规则对齐之后内存状态为<span class="hljs-number">0</span>xxx|<span class="hljs-number">0000</span>|<span class="hljs-number">00</span><br><br>- 此时一共占了<span class="hljs-number">10</span>个字节，但是还有结构体本身的对齐，<span class="hljs-built_in">min</span>(<span class="hljs-number">8</span>,<span class="hljs-number">4</span>)=<span class="hljs-number">4</span>；所以总体应该是<span class="hljs-number">4</span>的倍数，所以还需要添加两个字节在最后面，所以内存存储状态变为了 <span class="hljs-number">0</span>xxx|<span class="hljs-number">0000</span>|<span class="hljs-number">00</span>xx，一共占据了<span class="hljs-number">12</span>个字节<br></code></pre></td></tr></table></figure>
@@ -573,7 +573,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="2-2-双冒号、using和namespace"><a href="#2-2-双冒号、using和namespace" class="headerlink" title="2.2 双冒号、using和namespace"></a>2.2 双冒号、using和namespace</h2><ul>
+<h2 id="2-双冒号、using和namespace"><a href="#2-双冒号、using和namespace" class="headerlink" title="2.双冒号、using和namespace"></a>2.双冒号、using和namespace</h2><ul>
 <li><strong>namespace主要用来解决命名冲突的问题</strong><ul>
 <li>必须在全局作用域下声明</li>
 <li>命名空间下可以放函数，变量、结构体和类</li>
@@ -594,7 +594,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="2-3-内联函数和函数重载"><a href="#2-3-内联函数和函数重载" class="headerlink" title="2.3 内联函数和函数重载"></a>2.3 内联函数和函数重载</h2><ul>
+<h2 id="3-内联函数和函数重载"><a href="#3-内联函数和函数重载" class="headerlink" title="3.内联函数和函数重载"></a>3.内联函数和函数重载</h2><ul>
 <li><strong>内联函数</strong><ul>
 <li>相当于把内联函数里面的内容写在调用内联函数处</li>
 <li>相当于不用执行进入函数的步骤，直接执行函数体</li>
@@ -610,12 +610,12 @@
 </ul>
 </li>
 </ul>
-<h2 id="2-4-虚函数可以是内联函数吗"><a href="#2-4-虚函数可以是内联函数吗" class="headerlink" title="2.4 虚函数可以是内联函数吗"></a>2.4 虚函数可以是内联函数吗</h2><ul>
+<h2 id="4-虚函数可以是内联函数吗"><a href="#4-虚函数可以是内联函数吗" class="headerlink" title="4.虚函数可以是内联函数吗"></a>4.虚函数可以是内联函数吗</h2><ul>
 <li>虚函数可以是内联函数，内联是可以修饰虚函数的，但是当虚函数表现多态性的时候不能内联</li>
 <li>内联是在编译期内联，而虚函数的多态性在运行期，编译器无法知道运行期调用哪个代码，因此虚函数表现为多态性时（运行期）不可以内联</li>
 <li><strong>inline virtual 唯一可以内联的时候是</strong>：编译器知道所调用的对象是哪个类（如 Base::who()），这只有在编译器具有实际对象而不是对象的指针或引用时才会发生</li>
 </ul>
-<h2 id="2-5-构造函数和析构函数"><a href="#2-5-构造函数和析构函数" class="headerlink" title="2.5 构造函数和析构函数"></a>2.5 构造函数和析构函数</h2><ul>
+<h2 id="5-构造函数和析构函数"><a href="#5-构造函数和析构函数" class="headerlink" title="5.构造函数和析构函数"></a>5.构造函数和析构函数</h2><ul>
 <li>构造函数和析构函数，分别对应变量的初始化和清理，变量没有初始化，使用后果未知；没有清理，则会内存管理出现安全问题。 当对象结束其生命周期，如对象所在的函数已调用完毕时，系统会自动执行析构函数</li>
 </ul>
 <blockquote>
@@ -635,7 +635,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="2-6-拷贝构造函数与深浅拷贝"><a href="#2-6-拷贝构造函数与深浅拷贝" class="headerlink" title="2.6 拷贝构造函数与深浅拷贝"></a>2.6 拷贝构造函数与深浅拷贝</h2><p>拷贝构造函数的参数必须加const，因为防止修改，本来就是用现有的对象初始化新的对象</p>
+<h2 id="6-拷贝构造函数与深浅拷贝"><a href="#6-拷贝构造函数与深浅拷贝" class="headerlink" title="6.拷贝构造函数与深浅拷贝"></a>6.拷贝构造函数与深浅拷贝</h2><p>拷贝构造函数的参数必须加const，因为防止修改，本来就是用现有的对象初始化新的对象</p>
 <ul>
 <li><strong>拷贝构造函数的使用时机</strong><ul>
 <li>使用已经创建好的对象初始化新对象 <code>A a; A b = a; A c(a); b = c;//b = c不是初始化，调用赋值运算符</code></li>
@@ -651,7 +651,11 @@
 </li>
 </ul>
 <p>我们在定义类或者结构体，这些结构的时候，<strong>最后都重写拷贝函数，避免浅拷贝</strong>这类不易发现但后果严重的错误产生</p>
-<h2 id="2-7-只在堆上-x2F-栈上创建对象"><a href="#2-7-只在堆上-x2F-栈上创建对象" class="headerlink" title="2.7 只在堆上&#x2F;栈上创建对象"></a>2.7 只在堆上&#x2F;栈上创建对象</h2><ul>
+<h2 id="7-拷贝构造函数和移动构造函数的区别"><a href="#7-拷贝构造函数和移动构造函数的区别" class="headerlink" title="7.拷贝构造函数和移动构造函数的区别"></a>7.拷贝构造函数和移动构造函数的区别</h2><ul>
+<li>拷贝构造函数是先将传入的参数对象进行一次深拷贝，再传给新对象。这就会有一次拷贝对象的开销，并且进行了深拷贝，就需要给对象分配地址空间</li>
+<li>移动构造函数就是为了解决这个拷贝开销而产生的。移动构造函数首先将传递参数的内存地址空间接管，然后将内部所有指针设置为nullptr，并且在原地址上进行新对象的构造，最后调用原对象的的析构函数，这样做既不会产生额外的拷贝开销，也不会给新对象分配内存空间</li>
+</ul>
+<h2 id="8-只在堆上-x2F-栈上创建对象"><a href="#8-只在堆上-x2F-栈上创建对象" class="headerlink" title="8.只在堆上&#x2F;栈上创建对象"></a>8.只在堆上&#x2F;栈上创建对象</h2><ul>
 <li><p><strong>只能在堆上生成对象：将析构函数设置为私有</strong> </p>
 <ul>
 <li><strong>原因：</strong>C++是静态绑定语言，编译器管理栈上对象的生命周期，编译器在为类对象分配栈空间时，会先检查类的析构函数的访问性。若析构函数不可访问，则不能在栈上创建对象</li>
@@ -663,7 +667,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="2-8-this指针"><a href="#2-8-this指针" class="headerlink" title="2.8 this指针"></a>2.8 this指针</h2><ul>
+<h2 id="9-this指针"><a href="#9-this指针" class="headerlink" title="9.this指针"></a>9.this指针</h2><ul>
 <li><p><strong>为什么会有this指针</strong>：</p>
 <ul>
 <li>在类实例化对象时，只有非静态成员变量属于对象本身，剩余的静态成员变量，静态函数，非静态函数都不属于对象本身，因此非静态成员函数只会实例一份，多个同类型对象会共用一块代码，由于类中每个实例后的对象都有独一无二的地址，因此不同的实例对象调用成员函数时，函数需要知道是谁在调用它，因此引入了this指针</li>
@@ -686,14 +690,14 @@
 </ul>
 </li>
 </ul>
-<h2 id="2-9-delete-this合法吗？"><a href="#2-9-delete-this合法吗？" class="headerlink" title="2.9 delete this合法吗？"></a>2.9 delete this合法吗？</h2><p><strong>合法，但有前提：</strong></p>
+<h2 id="10-delete-this合法吗？"><a href="#10-delete-this合法吗？" class="headerlink" title="10.delete this合法吗？"></a>10.delete this合法吗？</h2><p><strong>合法，但有前提：</strong></p>
 <ul>
 <li>必须保证 this 对象是通过 new（不是 new[]、不是 placement new、不是栈上、不是全局、不是其他对象成员）分配的</li>
 <li>必须保证调用 delete this 的成员函数是最后一个调用 this 的成员函数</li>
 <li>必须保证成员函数的 delete this 后面没有调用 this 了</li>
 <li>必须保证 delete this 后没有人使用了</li>
 </ul>
-<h2 id="2-10-静态成员变量和静态成员函数"><a href="#2-10-静态成员变量和静态成员函数" class="headerlink" title="2.10 静态成员变量和静态成员函数"></a>2.10 静态成员变量和静态成员函数</h2><p>若将成员变量声明为static，则为静态成员变量，与一般的成员变量不同，无论建立多少对象，都只有一个静态成员变量的拷贝，静态成员变量属于一个类，所有对象共享。<strong>静态变量在编译阶段就分配了空间，对象还没创建时就已经分配了空间，放到全局静态区</strong></p>
+<h2 id="11-静态成员变量和静态成员函数"><a href="#11-静态成员变量和静态成员函数" class="headerlink" title="11.静态成员变量和静态成员函数"></a>11.静态成员变量和静态成员函数</h2><p>若将成员变量声明为static，则为静态成员变量，与一般的成员变量不同，无论建立多少对象，都只有一个静态成员变量的拷贝，静态成员变量属于一个类，所有对象共享。<strong>静态变量在编译阶段就分配了空间，对象还没创建时就已经分配了空间，放到全局静态区</strong></p>
 <ul>
 <li><strong>静态成员变量</strong><ul>
 <li>最好是类内声明，类外初始化（以免类名访问静态成员访问不到）</li>
@@ -709,7 +713,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="2-11-初始化列表的好处和使用条件"><a href="#2-11-初始化列表的好处和使用条件" class="headerlink" title="2.11 初始化列表的好处和使用条件"></a>2.11 初始化列表的好处和使用条件</h2><ul>
+<h2 id="12-初始化列表的好处和使用条件"><a href="#12-初始化列表的好处和使用条件" class="headerlink" title="12.初始化列表的好处和使用条件"></a>12.初始化列表的好处和使用条件</h2><ul>
 <li><p><strong>初始化列表的使用条件</strong></p>
 <ul>
 <li>const类型的数据</li>
@@ -725,7 +729,7 @@
 <li><p><strong>不能通过初始化列表初始化静态成员变量</strong>，静态成员变量最好类内声明，类外初始化.静态成员是单独存储的，并不是对象的组成部分。如果在类的内部进行定义，在建立多个对象时会多次声明和定义该变量的存储位置。在名字空间和作用域相同的情况下会导致重名的问题</p>
 </li>
 </ul>
-<h2 id="2-12-运算符重载及-重载实现"><a href="#2-12-运算符重载及-重载实现" class="headerlink" title="2.12 运算符重载及++重载实现"></a>2.12 运算符重载及++重载实现</h2><ul>
+<h2 id="13-运算符重载及-重载实现"><a href="#13-运算符重载及-重载实现" class="headerlink" title="13.运算符重载及++重载实现"></a>13.运算符重载及++重载实现</h2><ul>
 <li><p><strong>运算符重载基本属性</strong></p>
 <ul>
 <li><p>运算符重载的目的是扩展C++中提供的运算符的适用范围，使之能作用于对象，或自定义的数据类型</p>
@@ -752,7 +756,7 @@
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//++i</span><br><span class="hljs-type">int</span>&amp;  <span class="hljs-type">int</span>::<span class="hljs-keyword">operator</span>++()<br>&#123;<br>    *<span class="hljs-keyword">this</span> +=<span class="hljs-number">1</span>；<br>    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>；<br>&#125;<br><br><span class="hljs-comment">//i++，注意后置++有占位参数以区分跟前置++不同</span><br><span class="hljs-type">const</span> <span class="hljs-type">int</span>  <span class="hljs-type">int</span>::<span class="hljs-keyword">operator</span>++(<span class="hljs-type">int</span>)<br>&#123;<br>    <span class="hljs-type">int</span> oldValue = *<span class="hljs-keyword">this</span>；<br>    ++（*<span class="hljs-keyword">this</span>）；<br>    <span class="hljs-keyword">return</span> oldValue；<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h2 id="2-13-继承方式、对象模型、同名处理"><a href="#2-13-继承方式、对象模型、同名处理" class="headerlink" title="2.13 继承方式、对象模型、同名处理"></a>2.13 继承方式、对象模型、同名处理</h2><p><strong>继承主要是为了减少代码的重复内容，解决代码复用问题。通过抽象出一个基类（父类），将重复代码写到基类中，在派生类（子类）中实现不同的方法</strong></p>
+<h2 id="14-继承方式、对象模型、同名处理"><a href="#14-继承方式、对象模型、同名处理" class="headerlink" title="14.继承方式、对象模型、同名处理"></a>14.继承方式、对象模型、同名处理</h2><p><strong>继承主要是为了减少代码的重复内容，解决代码复用问题。通过抽象出一个基类（父类），将重复代码写到基类中，在派生类（子类）中实现不同的方法</strong></p>
 <ul>
 <li><p><strong>继承方式</strong></p>
 <ul>
@@ -788,7 +792,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="2-14-多继承和菱形继承"><a href="#2-14-多继承和菱形继承" class="headerlink" title="2.14 多继承和菱形继承"></a>2.14 多继承和菱形继承</h2><ul>
+<h2 id="15-多继承和菱形继承"><a href="#15-多继承和菱形继承" class="headerlink" title="15.多继承和菱形继承"></a>15.多继承和菱形继承</h2><ul>
 <li><strong>多继承</strong></li>
 </ul>
 <blockquote>
@@ -838,7 +842,7 @@
 </ul>
 <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">class</span> <span class="hljs-symbol">Animal</span>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">int</span> m_Age;<br>&#125;;<br><span class="hljs-keyword">class</span> <span class="hljs-symbol">Sheep:<span class="hljs-symbol">virtual</span></span> <span class="hljs-symbol">public</span> <span class="hljs-symbol">Animal</span>&#123;<br>    <span class="hljs-built_in">int</span> m_sheep;<br>&#125;;<br><span class="hljs-keyword">class</span> <span class="hljs-symbol">Camel</span> :<span class="hljs-symbol">virtual</span> <span class="hljs-symbol">public</span> <span class="hljs-symbol">Animal</span>&#123;<br>    <span class="hljs-built_in">int</span> m_camel;<br>&#125;;<br><br><span class="hljs-keyword">class</span> <span class="hljs-symbol">Son</span> :<span class="hljs-symbol">virtual</span> <span class="hljs-symbol">public</span> <span class="hljs-symbol">Sheep, <span class="hljs-symbol">virtual</span></span> <span class="hljs-symbol">public</span> <span class="hljs-symbol">Camel</span>&#123;<br>    <span class="hljs-built_in">int</span> m_son<br>&#125;;<br><span class="hljs-built_in">void</span> test01()&#123;<br>    Son son;<br>    son.m_Age = <span class="hljs-number">10</span>;<br>    cout &lt;&lt; sizeof(Animal) &lt;&lt; endl; <span class="hljs-comment">//m_Age</span><br>    cout &lt;&lt; sizeof(Sheep) &lt;&lt; endl;  <span class="hljs-comment">//sheep-Vbptr,m_sheep,m_Age</span><br>    cout &lt;&lt; sizeof(Camel) &lt;&lt; endl;  <span class="hljs-comment">//camel-Vbptr,m_camel,m_Age</span><br>    cout &lt;&lt; sizeof(Son) &lt;&lt; endl;    <span class="hljs-comment">//son-vbptr,m_son,m_Age,sheep-Vbptr,m_sheep,camel-Vbptr,m_camel,</span><br>&#125;<br>- 注意跟上面的区别，一个是son类中的元素顺序，一个是son类有了自己的虚基类指针和虚基类表<br></code></pre></td></tr></table></figure>
 
-<h2 id="2-15-重载、覆盖、重写"><a href="#2-15-重载、覆盖、重写" class="headerlink" title="2.15 重载、覆盖、重写"></a>2.15 重载、覆盖、重写</h2><ul>
+<h2 id="16-重载、覆盖、重写"><a href="#16-重载、覆盖、重写" class="headerlink" title="16.重载、覆盖、重写"></a>16.重载、覆盖、重写</h2><ul>
 <li><strong>重载(overload)：</strong>是函数名相同，参数列表不同。重载只是在同一个类的内部存在，但是不能靠返回类型来判断</li>
 <li><strong>覆盖(override)：</strong>子类重新定义父类中有相同名称和参数的虚函数。两者的函数特征相同<ul>
 <li>被重写的函数不能是static的。必须是virtual的</li>
@@ -848,7 +852,7 @@
 </li>
 <li><strong>重写(overwrite)：</strong>也叫做隐藏。子类重新定义父类中有相同名称的非虚函数 ( 参数列表可以不同 ) 。如果一个类，存在和父类相同的函数，那么，这个类将会隐藏其父类的方法，除非你在调用的时候，强制转换为父类类型或加上父类作用域</li>
 </ul>
-<h2 id="2-16-多态实现的基础"><a href="#2-16-多态实现的基础" class="headerlink" title="2.16 多态实现的基础"></a>2.16 多态实现的基础</h2><ul>
+<h2 id="17-多态实现的基础"><a href="#17-多态实现的基础" class="headerlink" title="17.多态实现的基础"></a>17.多态实现的基础</h2><ul>
 <li><strong>继承</strong></li>
 <li><strong>虚函数覆盖</strong></li>
 <li><strong>父类指针或引用指向子类对象访问虚函数</strong></li>
@@ -862,7 +866,7 @@
 <blockquote>
 <p>两者主要的区别：函数地址是早绑定（静态联编）还是晚绑定（动态联编）。即，在编译阶段确定好地址还是在运行时才确定地址</p>
 </blockquote>
-<h2 id="2-17-虚函数指针和虚函数表"><a href="#2-17-虚函数指针和虚函数表" class="headerlink" title="2.17 虚函数指针和虚函数表"></a>2.17 虚函数指针和虚函数表</h2><ul>
+<h2 id="18-虚函数指针和虚函数表"><a href="#18-虚函数指针和虚函数表" class="headerlink" title="18.虚函数指针和虚函数表"></a>18.虚函数指针和虚函数表</h2><ul>
 <li>前提发生了多态，每个类中都有虚函数表，最开始的父类创建虚函数表，后面的子类继承父类的虚函数表，然后对虚函数重写</li>
 <li>虚函数重写（覆盖）的实质就是重写父类虚函数表中的父类虚函数地址</li>
 <li><strong>实现多态的流程：虚函数指针-&gt;虚函数表-&gt;函数指针-&gt;入口地址，虚函数表（vftable）属于类，或者说这个类的所有对象共享一个虚函数表；而虚函数指针（vfptr）属于单个对象</strong></li>
@@ -874,13 +878,13 @@
 </ul>
 </li>
 </ul>
-<h2 id="2-18-构造函数能否实现多态-x2F-虚函数指针什么时候初始化"><a href="#2-18-构造函数能否实现多态-x2F-虚函数指针什么时候初始化" class="headerlink" title="2.18 构造函数能否实现多态&#x2F;虚函数指针什么时候初始化"></a>2.18 构造函数能否实现多态&#x2F;虚函数指针什么时候初始化</h2><p><strong>两个问题本质是一样的，构造函数不能实现多态</strong></p>
+<h2 id="19-构造函数能否实现多态-x2F-虚函数指针什么时候初始化"><a href="#19-构造函数能否实现多态-x2F-虚函数指针什么时候初始化" class="headerlink" title="19.构造函数能否实现多态&#x2F;虚函数指针什么时候初始化"></a>19.构造函数能否实现多态&#x2F;虚函数指针什么时候初始化</h2><p><strong>两个问题本质是一样的，构造函数不能实现多态</strong></p>
 <ul>
 <li>对象在创建时,由编译器对VPTR指针进行初始化，只有当对象的构造完全结束后VPTR的指向才最终确定</li>
 <li>子类中虚函数指针的初始化过程 当定义一个子类对象的时候比较麻烦，因为构造子类对象的时候会首先调用父类的构造函数然后再调用子类的构造函数。当调用父类的构造函数的时候，此时会创建Vptr指针，该指针会指向父类的虚函数表；然后再调用子类的构造函数，子类继承父类的虚函数指针，此时Vptr又被赋值指向子类的虚函数表</li>
 <li>构造函数不能是虚函数，虚表指针并没有在对象的内存空间中，必须要构造函数调用完成后才会形成虚表指针</li>
 </ul>
-<h2 id="2-19-抽象类和纯虚函数"><a href="#2-19-抽象类和纯虚函数" class="headerlink" title="2.19 抽象类和纯虚函数"></a>2.19 抽象类和纯虚函数</h2><p>在程序设计中，如果仅仅为了设计一些虚函数接口，打算在子类中对其进行重写，那么不需要在父类中对虚函数的函数体提供无意义的代码，可以通过纯虚函数满足需求</p>
+<h2 id="20-抽象类和纯虚函数"><a href="#20-抽象类和纯虚函数" class="headerlink" title="20.抽象类和纯虚函数"></a>20.抽象类和纯虚函数</h2><p>在程序设计中，如果仅仅为了设计一些虚函数接口，打算在子类中对其进行重写，那么不需要在父类中对虚函数的函数体提供无意义的代码，可以通过纯虚函数满足需求</p>
 <ul>
 <li><strong>纯虚函数的语法格式：<code>virtual 返回值类型 函数名 () = 0;</code>只需要将函数体完全替换为 &#x3D;0即可，纯虚函数必须在子类中进行实现，在子类外实现是无效的</strong></li>
 <li>注意<ul>
@@ -889,7 +893,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="2-20-虚析构和纯虚析构"><a href="#2-20-虚析构和纯虚析构" class="headerlink" title="2.20 虚析构和纯虚析构"></a>2.20 虚析构和纯虚析构</h2><ul>
+<h2 id="21-虚析构和纯虚析构"><a href="#21-虚析构和纯虚析构" class="headerlink" title="21.虚析构和纯虚析构"></a>21.虚析构和纯虚析构</h2><ul>
 <li><p><strong>内存泄漏：当一个对象已经不需要再使用本该被回收时，另外一个正在使用的对象持有它的引用从而导致它不能被回收，这导致本该被回收的对象不能被回收而停留在堆内存中，这就产生了内存泄漏</strong></p>
 <ul>
 <li>仅仅发生继承时，创建子类对象后销毁，函数调用流程为：父类构造函数-&gt;子类构造函数-&gt;子类析构函数-&gt;父类析构函数</li>
@@ -911,7 +915,7 @@
 <li><p><strong>C++默认的析构函数不是虚函数：因为虚函数需要额外的虚函数表和虚表指针，占用额外的内存。而对于不会被继承的类来说，其析构函数如果是虚函数，就会浪费内存</strong></p>
 </li>
 </ul>
-<h2 id="2-21-类模版和函数模版"><a href="#2-21-类模版和函数模版" class="headerlink" title="2.21 类模版和函数模版"></a>2.21 类模版和函数模版</h2><p><strong>通过template或template实现，主要用于数据的类型参数化，简化代码，有类模板和函数模板，函数模板是用于生成函数的，类模板则是用于生成类的</strong></p>
+<h2 id="22-类模版和函数模版"><a href="#22-类模版和函数模版" class="headerlink" title="22.类模版和函数模版"></a>22.类模版和函数模版</h2><p><strong>通过template或template实现，主要用于数据的类型参数化，简化代码，有类模板和函数模板，函数模板是用于生成函数的，类模板则是用于生成类的</strong></p>
 <ul>
 <li><p>类模板和函数模板定义</p>
 <ul>
@@ -928,7 +932,7 @@
 </ul>
 </li>
 </ul>
-<h1 id="三、C-高级特性"><a href="#三、C-高级特性" class="headerlink" title="三、C++高级特性"></a>三、C++高级特性</h1><h2 id="3-1-构造函数可以抛出异常吗，有什么问题？"><a href="#3-1-构造函数可以抛出异常吗，有什么问题？" class="headerlink" title="3.1 构造函数可以抛出异常吗，有什么问题？"></a>3.1 构造函数可以抛出异常吗，有什么问题？</h2><p><strong>构造函数中应该避免抛出异常</strong></p>
+<h1 id="三、C-高级特性"><a href="#三、C-高级特性" class="headerlink" title="三、C++高级特性"></a>三、C++高级特性</h1><h2 id="1-构造函数可以抛出异常吗，有什么问题？"><a href="#1-构造函数可以抛出异常吗，有什么问题？" class="headerlink" title="1.构造函数可以抛出异常吗，有什么问题？"></a>1.构造函数可以抛出异常吗，有什么问题？</h2><p><strong>构造函数中应该避免抛出异常</strong></p>
 <ul>
 <li><p>构造函数中抛出异常后，对象的析构函数将不会被执行</p>
 </li>
@@ -937,23 +941,23 @@
 <li><p>当对象发生部分构造时，已经构造完毕的子对象（非动态分配）将会逆序地被析构</p>
 </li>
 </ul>
-<h2 id="3-2-初始化列表的异常怎么捕获？"><a href="#3-2-初始化列表的异常怎么捕获？" class="headerlink" title="3.2 初始化列表的异常怎么捕获？"></a>3.2 初始化列表的异常怎么捕获？</h2><ul>
+<h2 id="2-初始化列表的异常怎么捕获？"><a href="#2-初始化列表的异常怎么捕获？" class="headerlink" title="2.初始化列表的异常怎么捕获？"></a>2.初始化列表的异常怎么捕获？</h2><ul>
 <li>初始化列表构造，当初始化列表出现异常时，程序还未进入函数体，因此函数体中的try-catch不能执行，catch也无法处理异常。可以通过函数try块解决该问题</li>
 <li>函数try块中的try出现在表示构造函数初始值列表的冒号以及表示构造函数体的花括号之前，与这个try关联的catch既能处理构造函数体抛出的异常，也能处理成员初始化列表抛出的异常</li>
 </ul>
-<h2 id="3-3-析构函数可以抛出异常吗，有什么问题？"><a href="#3-3-析构函数可以抛出异常吗，有什么问题？" class="headerlink" title="3.3 析构函数可以抛出异常吗，有什么问题？"></a>3.3 析构函数可以抛出异常吗，有什么问题？</h2><p><strong>析构函数不应该抛出异常</strong></p>
+<h2 id="3-析构函数可以抛出异常吗，有什么问题？"><a href="#3-析构函数可以抛出异常吗，有什么问题？" class="headerlink" title="3.析构函数可以抛出异常吗，有什么问题？"></a>3.析构函数可以抛出异常吗，有什么问题？</h2><p><strong>析构函数不应该抛出异常</strong></p>
 <ul>
 <li><p><strong>其他正常，仅析构函数异常</strong>。 如果析构函数抛出异常，则异常点之后的程序不会执行，如果析构函数在异常点之后执行了某些必要的动作比如释放某些资源，则这些动作不会执行，会造成诸如资源泄漏的问题</p>
 </li>
 <li><p><strong>其他异常，且析构函数异常</strong>。 通常异常发生时，c++的机制会调用已经构造对象的析构函数来释放资源，此时若析构函数本身也抛出异常，则前一个异常尚未处理，又有新的异常，会造成程序崩溃的问题</p>
 </li>
 </ul>
-<h2 id="3-4-析构函数如何处理异常"><a href="#3-4-析构函数如何处理异常" class="headerlink" title="3.4 析构函数如何处理异常"></a>3.4 析构函数如何处理异常</h2><ul>
+<h2 id="4-析构函数如何处理异常"><a href="#4-析构函数如何处理异常" class="headerlink" title="4.析构函数如何处理异常"></a>4.析构函数如何处理异常</h2><ul>
 <li>若析构函数抛出异常，调用std::abort()来终止程序</li>
 <li>在析构函数中catch捕获异常并作处理，吞下异常</li>
 <li>如果客户需要对某个操作函数运次期间抛出的异常做出反应，class应该提供普通函数执行该操作，而非在析构函数中</li>
 </ul>
-<h2 id="3-5-智能指针"><a href="#3-5-智能指针" class="headerlink" title="3.5 智能指针"></a>3.5 智能指针</h2><ul>
+<h2 id="5-智能指针"><a href="#5-智能指针" class="headerlink" title="5.智能指针"></a>5.智能指针</h2><ul>
 <li><p><strong>原始指针在引入了异常机制后容易发生内存泄漏、二次释放等问题</strong></p>
 </li>
 <li><p>C++11 中引入了智能指针（Smart Pointer），它利用了一种叫做 RAII（资源获取即初始化）的技术将普通的指针封装为一个栈对象。当栈对象的生存周期结束后，会在析构函数中释放掉申请的内存，从而防止内存泄漏。这使得智能指针实质是一个对象，行为表现的却像一个指针</p>
@@ -1002,14 +1006,14 @@
 </ul>
 </li>
 </ul>
-<h2 id="3-6-野指针"><a href="#3-6-野指针" class="headerlink" title="3.6 野指针"></a>3.6 野指针</h2><p><strong>野指针指向一个已删除的对象或 申请访问受限内存区域的指针</strong></p>
+<h2 id="6-野指针"><a href="#6-野指针" class="headerlink" title="6.野指针"></a>6.野指针</h2><p><strong>野指针指向一个已删除的对象或 申请访问受限内存区域的指针</strong></p>
 <p><strong>产生原因：</strong></p>
 <ul>
 <li>指针变量未初始化</li>
 <li>指针释放未置空</li>
 <li>指针操作超出作用域。返回指向栈内存的指针或引用，因为栈内存在函数结束时会被释放</li>
 </ul>
-<h2 id="3-7-强制转换"><a href="#3-7-强制转换" class="headerlink" title="3.7 强制转换"></a>3.7 强制转换</h2><p><strong>C++中强制转换为static_cast, dynamic_cast,const_cast, reinterpret_cast</strong></p>
+<h2 id="7-强制转换"><a href="#7-强制转换" class="headerlink" title="7.强制转换"></a>7.强制转换</h2><p><strong>C++中强制转换为static_cast, dynamic_cast,const_cast, reinterpret_cast</strong></p>
 <ul>
 <li><strong>static_cast</strong><ul>
 <li>完成基础数据类型；同一个继承体系中类型的转换；任意类型与空指针类型void* 之间的转换，不能用于普通指针的转换（void空指针除外）</li>
@@ -1028,19 +1032,19 @@
 </ul>
 </li>
 </ul>
-<h2 id="3-8-RTTI"><a href="#3-8-RTTI" class="headerlink" title="3.8 RTTI"></a>3.8 RTTI</h2><p><strong>运行时类型检查，在C++层面主要体现在dynamic_cast和typeid</strong></p>
+<h2 id="8-RTTI"><a href="#8-RTTI" class="headerlink" title="8.RTTI"></a>8.RTTI</h2><p><strong>运行时类型检查，在C++层面主要体现在dynamic_cast和typeid</strong></p>
 <ul>
 <li><p>dynamic_cast 动态类型转换</p>
 </li>
 <li><p>typeid typeid 运算符允许在运行时确定对象的类型，获取对象的实际类型</p>
 </li>
 </ul>
-<h2 id="3-9-RAII"><a href="#3-9-RAII" class="headerlink" title="3.9 RAII"></a>3.9 RAII</h2><p><strong>RAII全称是“Resource Acquisition is Initialization”，直译过来是“资源获取即初始化”</strong></p>
+<h2 id="9-RAII"><a href="#9-RAII" class="headerlink" title="9.RAII"></a>9.RAII</h2><p><strong>RAII全称是“Resource Acquisition is Initialization”，直译过来是“资源获取即初始化”</strong></p>
 <ul>
 <li>在构造函数中申请分配资源，在析构函数中释放资源。因为C++的语言机制保证了，当一个对象创建的时候，自动调用构造函数，当对象超出作用域的时候会自动调用析构函数。所以，在RAII的指导下，我们应该使用类来管理资源，将资源和对象的生命周期绑定</li>
 <li>RAII的核心思想是将资源或者状态与对象的生命周期绑定，通过C++的语言机制，实现资源和状态的安全管理,智能指针是RAII最好的例子</li>
 </ul>
-<h2 id="3-10-CPP11新特性"><a href="#3-10-CPP11新特性" class="headerlink" title="3.10 CPP11新特性"></a>3.10 CPP11新特性</h2><ul>
+<h2 id="10-CPP11新特性"><a href="#10-CPP11新特性" class="headerlink" title="10.CPP11新特性"></a>10.CPP11新特性</h2><ul>
 <li><strong>nullptr常量</strong><ul>
 <li>C++中NULL仅仅是define NULL 0 的一个宏定义，因此，有时候会产生歧义<ul>
 <li>比如f（char*）和f（int），参数传NULL的话到底该调用哪个？</li>
@@ -1095,11 +1099,78 @@
 </ul>
 </li>
 </ul>
-<h1 id="四、STL原理"><a href="#四、STL原理" class="headerlink" title="四、STL原理"></a>四、STL原理</h1><h2 id="4-1-STL中的swap函数"><a href="#4-1-STL中的swap函数" class="headerlink" title="4.1 STL中的swap函数"></a>4.1 STL中的swap函数</h2><ul>
+<h2 id="11-右值引用"><a href="#11-右值引用" class="headerlink" title="11.右值引用"></a>11.右值引用</h2><ul>
+<li><p><strong>定义：</strong></p>
+<ul>
+<li>左值：存储在内存中，有明确存储地址(可寻址)的数据</li>
+<li>右值：可以提供数据值的数据(不一定可以寻址，如寄存器中的数据)</li>
+</ul>
+</li>
+<li><p><strong>判断某个表达式是左值还是右值</strong></p>
+<ul>
+<li>可位于&#x3D;左侧的表达式就是左值；反之，只能位于&#x3D;右侧的表达式就是右值</li>
+<li>有名称的、可以获取到存储地址的表达式即为左值；反之则是右值</li>
+</ul>
+</li>
+<li><p><strong>右值引用：</strong></p>
+<ul>
+<li>和声明左值引用一样，右值引用也必须立即进行初始化操作，且只能使用右值进行初始化</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-built_in">int</span> <span class="hljs-built_in">num</span> = <span class="hljs-number">10</span>;<br><span class="hljs-built_in">int</span> &amp;b = <span class="hljs-built_in">num</span>; <span class="hljs-comment">//左值引用</span><br><span class="hljs-built_in">int</span> &amp;&amp; a = <span class="hljs-number">10</span>; <span class="hljs-comment">//右值引用</span><br><span class="hljs-built_in">int</span> &amp;&amp; c = <span class="hljs-built_in">num</span> + <span class="hljs-number">40</span>; <span class="hljs-comment">//右值引用</span><br>a = <span class="hljs-number">100</span>; <span class="hljs-comment">//右值引用可以对右值进行修改</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>移动语义</strong></p>
+<ul>
+<li><p><strong>定义：</strong>即从右值中直接拿数据过来初始化或修改左值，而不需要重新构造一个临时左值后再析构右值，减少了两个对象交互时不必要的拷贝构造</p>
+</li>
+<li><p><strong>可解决的问题：</strong></p>
+<ul>
+<li>用右值参数</li>
+</ul>
+<figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs sqf"><span class="hljs-comment">//在实现转移语义之前</span><br><span class="hljs-comment">//const &amp;的形参接收了右值参数，但是调用了额外的拷贝构造函数，生成了一个临时变量，销毁临时变量还调用了一次析构函数</span><br>MyString a = new MyString(b + <span class="hljs-string">&quot;abc&quot;</span>);<br><span class="hljs-comment">//在实现转移语义之后</span><br><span class="hljs-comment">//会调用1次移动构造函数</span><br>MyString a = new MyString(b + <span class="hljs-string">&quot;abc&quot;</span>);<br>MyString(MsString &amp;&amp; <span class="hljs-built_in">str</span>)&#123;<br>	<span class="hljs-variable">_len</span> = <span class="hljs-built_in">str</span>.len;<br>	<span class="hljs-variable">_data</span> = <span class="hljs-built_in">str</span>.<span class="hljs-variable">_data</span>;	<span class="hljs-comment">//从右值中获取数据</span><br>	<span class="hljs-built_in">str</span>.len = <span class="hljs-number">0</span>;<br>	<span class="hljs-built_in">str</span>.<span class="hljs-variable">_data</span> = NULL;	<span class="hljs-comment">//销毁右值</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>对象存入容器<ul>
+<li>void push_back(const T&amp; value)</li>
+<li>void push_back(T &amp;&amp; value)</li>
+<li>使用push_back()需要调用拷贝构造函数和移动构造函数</li>
+<li>而使用emplace_back()插入的元素原地构造，不需要触发拷贝构造函数和移动构造函数，效率更高</li>
+</ul>
+</li>
+<li>vector增长扩容<ul>
+<li>移动语义之前是复制并删除，之后只需要移动即可</li>
+<li>vector添加元素在空间不够的时候需要重新分配，此时对于原来已有的元素会调用对象类的move constructor，而如果对象类没有定义移动构造，则会使用copy constructor</li>
+<li>所以给类添加移动构造函数可以在很多时候提高效率，因为没有它只能用拷贝构造来替代，而编译器又不会自动合成一个</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>std::move函数</strong></p>
+<ul>
+<li>将左值转变为右值</li>
+<li>只有右值引用的类型在后面加上&amp;&amp;仍然是右值引用</li>
+<li>其余的在后面加&amp;或者&amp;&amp;都是左值引用</li>
+</ul>
+<figure class="highlight zephir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs zephir"><span class="hljs-keyword">string</span> s(<span class="hljs-string">&quot;hello&quot;</span>);<br>std::move(s) =&gt; std::move(<span class="hljs-keyword">string</span>&amp; &amp;&amp;) =&gt; 折叠后 std::move(<span class="hljs-keyword">string</span>&amp; )<br>此时：T的类型为<span class="hljs-keyword">string</span>&amp;<br>	remove_reference&lt;T&gt;::type为<span class="hljs-keyword">string</span> <br>整个std::move被实例化如下<br><span class="hljs-keyword">string</span>&amp;&amp; move(<span class="hljs-keyword">string</span>&amp; t) <span class="hljs-comment">//t为左值，移动后不能在使用t</span><br>&#123;<br>    <span class="hljs-comment">//通过static_cast将string&amp;强制转换为string&amp;&amp;</span><br>    <span class="hljs-keyword">return</span> static_cast&lt;<span class="hljs-keyword">string</span>&amp;&amp;&gt;(t); <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight zephir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs zephir">std::move(<span class="hljs-keyword">string</span>(<span class="hljs-string">&quot;hello&quot;</span>)) =&gt; 折叠后 std::move(<span class="hljs-keyword">string</span>&amp;&amp;)<br>此时：T的类型为<span class="hljs-keyword">string</span> <br>     remove_reference&lt;T&gt;::type为<span class="hljs-keyword">string</span> <br>整个std::move被实例如下<br><span class="hljs-keyword">string</span>&amp;&amp; move(<span class="hljs-keyword">string</span>&amp;&amp; t) <span class="hljs-comment">//t为右值</span><br>&#123;<br>    <span class="hljs-keyword">return</span> static_cast&lt;<span class="hljs-keyword">string</span>&amp;&amp;&gt;(t);  <span class="hljs-comment">//返回一个右值引用</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>完美转发</strong></p>
+<ul>
+<li>使用场景：需要将一组参数原封不动地传递给另一个函数，左值&#x2F;右值、const&#x2F;non-const属性在传递过程中不能改变</li>
+<li>使用方法：<ul>
+<li>在模板参数列表中使用T&amp;&amp;（通用引用）</li>
+<li>使用std::forward()转发变量</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="四、STL原理"><a href="#四、STL原理" class="headerlink" title="四、STL原理"></a>四、STL原理</h1><h2 id="1-STL中的swap函数"><a href="#1-STL中的swap函数" class="headerlink" title="1.STL中的swap函数"></a>1.STL中的swap函数</h2><ul>
 <li>除了数组，其他容器在交换后本质上是将内存地址进行了交换，而元素本身在内存中的位置是没有变化</li>
 <li>swap在交换的时候并不是完全将2个容器的元素互换，而是交换了2个容器内的内存地址</li>
 </ul>
-<h2 id="4-2-STL中的哈希表扩容"><a href="#4-2-STL中的哈希表扩容" class="headerlink" title="4.2 STL中的哈希表扩容"></a>4.2 STL中的哈希表扩容</h2><ul>
+<h2 id="2-STL中的哈希表扩容"><a href="#2-STL中的哈希表扩容" class="headerlink" title="2.STL中的哈希表扩容"></a>2.STL中的哈希表扩容</h2><ul>
 <li>这里需要知道STL中的swap底层，其实扩容也是vector扩容<ul>
 <li>创建一个新桶，该桶是原来桶两倍大最接近的质数(判断n是不是质数的方法：用n除2到sqrt(n)范围内的数) </li>
 <li>将原来桶里的数通过指针的转换，插入到新桶中(注意STL这里做的很精细，没有直接将数据从旧桶遍历拷贝数据插入到新桶，而是通过指针转换两个桶的地址)</li>
@@ -1107,7 +1178,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="4-3-STL迭代器失效的几种情况总结"><a href="#4-3-STL迭代器失效的几种情况总结" class="headerlink" title="4.3 STL迭代器失效的几种情况总结"></a>4.3 STL迭代器失效的几种情况总结</h2><ul>
+<h2 id="3-STL迭代器失效的几种情况总结"><a href="#3-STL迭代器失效的几种情况总结" class="headerlink" title="3.STL迭代器失效的几种情况总结"></a>3.STL迭代器失效的几种情况总结</h2><ul>
 <li><p><strong>迭代器的失效问题：</strong>对容器的操作影响了元素的存放位置，称为迭代器失效</p>
 </li>
 <li><p><strong>失效情况</strong></p>
