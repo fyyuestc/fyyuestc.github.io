@@ -16,12 +16,12 @@
   <meta name="author" content="Fyy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一、数据结构与对象1.1 Redis数据类型和应用场景Redis五大数据类型，string，hash，list，set，zset  string（字符串） 一个字符串类型的值能存储最大容量是512M set&#x2F;get 设置&#x2F;获取   setex setex k4 10 v4 设置过期时间10s，然后给k4赋值为v4   setnx setnx k1 v11 若k1存在，则不覆盖，">
+    <meta name="description" content="一、数据结构与对象1.Redis数据类型和应用场景Redis五大数据类型，string，hash，list，set，zset  string（字符串） 一个字符串类型的值能存储最大容量是512M set&#x2F;get 设置&#x2F;获取   setex setex k4 10 v4 设置过期时间10s，然后给k4赋值为v4   setnx setnx k1 v11 若k1存在，则不覆盖，否则">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis面经-个人总结">
 <meta property="og:url" content="http://example.com/2022/07/09/Redis%E9%9D%A2%E7%BB%8F-%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="UESTC-Fyy">
-<meta property="og:description" content="一、数据结构与对象1.1 Redis数据类型和应用场景Redis五大数据类型，string，hash，list，set，zset  string（字符串） 一个字符串类型的值能存储最大容量是512M set&#x2F;get 设置&#x2F;获取   setex setex k4 10 v4 设置过期时间10s，然后给k4赋值为v4   setnx setnx k1 v11 若k1存在，则不覆盖，">
+<meta property="og:description" content="一、数据结构与对象1.Redis数据类型和应用场景Redis五大数据类型，string，hash，list，set，zset  string（字符串） 一个字符串类型的值能存储最大容量是512M set&#x2F;get 设置&#x2F;获取   setex setex k4 10 v4 设置过期时间10s，然后给k4赋值为v4   setnx setnx k1 v11 若k1存在，则不覆盖，否则">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202207221546516.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202207221548702.png">
@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202207221520828.awebp">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202207221520842.awebp">
 <meta property="article:published_time" content="2022-07-09T07:15:59.000Z">
-<meta property="article:modified_time" content="2022-07-22T08:51:26.592Z">
+<meta property="article:modified_time" content="2022-08-07T08:36:48.225Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -239,7 +239,7 @@
         
         
         
-          169 分钟
+          168 分钟
         
       </span>
     
@@ -289,7 +289,7 @@
             
             <div class="markdown-body">
               
-              <h1 id="一、数据结构与对象"><a href="#一、数据结构与对象" class="headerlink" title="一、数据结构与对象"></a>一、数据结构与对象</h1><h2 id="1-1-Redis数据类型和应用场景"><a href="#1-1-Redis数据类型和应用场景" class="headerlink" title="1.1 Redis数据类型和应用场景"></a>1.1 Redis数据类型和应用场景</h2><p><strong>Redis五大数据类型，string，hash，list，set，zset</strong></p>
+              <h1 id="一、数据结构与对象"><a href="#一、数据结构与对象" class="headerlink" title="一、数据结构与对象"></a>一、数据结构与对象</h1><h2 id="1-Redis数据类型和应用场景"><a href="#1-Redis数据类型和应用场景" class="headerlink" title="1.Redis数据类型和应用场景"></a>1.Redis数据类型和应用场景</h2><p><strong>Redis五大数据类型，string，hash，list，set，zset</strong></p>
 <ul>
 <li><strong>string（字符串）</strong><ul>
 <li><strong>一个字符串类型的值能存储最大容量是512M</strong></li>
@@ -332,7 +332,7 @@
 </ul>
 </li>
 </ul>
-<h1 id="二、单机数据库的实现"><a href="#二、单机数据库的实现" class="headerlink" title="二、单机数据库的实现"></a>二、单机数据库的实现</h1><h2 id="2-1-Redis优缺点"><a href="#2-1-Redis优缺点" class="headerlink" title="2.1 Redis优缺点"></a>2.1 Redis优缺点</h2><ul>
+<h1 id="二、单机数据库的实现"><a href="#二、单机数据库的实现" class="headerlink" title="二、单机数据库的实现"></a>二、单机数据库的实现</h1><h2 id="1-Redis优缺点"><a href="#1-Redis优缺点" class="headerlink" title="1.Redis优缺点"></a>1.Redis优缺点</h2><ul>
 <li><strong>CAP原理</strong><ul>
 <li>C：Consistency 强一致性</li>
 <li>A：Availability 可用性</li>
@@ -356,7 +356,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="2-2-Redis线程模型"><a href="#2-2-Redis线程模型" class="headerlink" title="2.2 Redis线程模型"></a>2.2 Redis线程模型</h2><ul>
+<h2 id="2-Redis线程模型"><a href="#2-Redis线程模型" class="headerlink" title="2.Redis线程模型"></a>2.Redis线程模型</h2><ul>
 <li>单线程模型处理客户端请求</li>
 <li>封装epoll函数实现读写事件的响应</li>
 <li><strong>单线程效率高的原因</strong><ul>
@@ -366,7 +366,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="2-3-Redis持久化机制RDB和AOF"><a href="#2-3-Redis持久化机制RDB和AOF" class="headerlink" title="2.3 Redis持久化机制RDB和AOF"></a>2.3 Redis持久化机制RDB和AOF</h2><ul>
+<h2 id="3-Redis持久化机制RDB和AOF"><a href="#3-Redis持久化机制RDB和AOF" class="headerlink" title="3.Redis持久化机制RDB和AOF"></a>3.Redis持久化机制RDB和AOF</h2><ul>
 <li><p><strong>默认机制</strong></p>
 <ul>
 <li>默认是RDB持久</li>
@@ -460,7 +460,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="2-4-Redis过期策略和缓存淘汰策略"><a href="#2-4-Redis过期策略和缓存淘汰策略" class="headerlink" title="2.4 Redis过期策略和缓存淘汰策略"></a>2.4 Redis过期策略和缓存淘汰策略</h2><ul>
+<h2 id="4-Redis过期策略和缓存淘汰策略"><a href="#4-Redis过期策略和缓存淘汰策略" class="headerlink" title="4.Redis过期策略和缓存淘汰策略"></a>4.Redis过期策略和缓存淘汰策略</h2><ul>
 <li><strong>过期策略</strong><br><strong>redis 过期策略是：定期删除+惰性删除</strong><ul>
 <li><strong>定期删除</strong><ul>
 <li>redis 默认是每隔 100ms 就随机抽取一些设置了过期时间的 key，检查其是否过期，如果过期就删除</li>
@@ -482,8 +482,8 @@
 </ul>
 </li>
 </ul>
-<h1 id="三、多机数据库的实现"><a href="#三、多机数据库的实现" class="headerlink" title="三、多机数据库的实现"></a>三、多机数据库的实现</h1><h2 id="3-1-Redis主从复制-哨兵，如何保证redis的高并发和高可用？"><a href="#3-1-Redis主从复制-哨兵，如何保证redis的高并发和高可用？" class="headerlink" title="3.1 Redis主从复制+哨兵，如何保证redis的高并发和高可用？"></a>3.1 Redis主从复制+哨兵，如何保证redis的高并发和高可用？</h2><p>redis 实现<strong>高并发</strong>主要依靠<strong>主从架构</strong>，一主多从，一般来说，很多项目其实就足够了，单主用来写入数据，单机几万 QPS，多从用来查询数据，多个从实例可以提供每秒 10w 的 QPS</p>
-<h3 id="3-1-1-主从架构"><a href="#3-1-1-主从架构" class="headerlink" title="3.1.1 主从架构"></a>3.1.1 <strong>主从架构</strong></h3><p>单机的 Redis，能够承载的 QPS 大概就在上万到几万不等。对于缓存来说，一般都是用来支撑<strong>读高并发</strong>的。因此架构做成主从(master-slave)架构，一主多从，主负责写，并且将数据复制到其它的 slave 节点，从节点负责读。所有的<strong>读请求全部走从节点</strong>。这样也可以很轻松实现水平扩容，<strong>支撑读高并发</strong></p>
+<h1 id="三、多机数据库的实现"><a href="#三、多机数据库的实现" class="headerlink" title="三、多机数据库的实现"></a>三、多机数据库的实现</h1><h2 id="1-Redis主从复制-哨兵，如何保证redis的高并发和高可用？"><a href="#1-Redis主从复制-哨兵，如何保证redis的高并发和高可用？" class="headerlink" title="1.Redis主从复制+哨兵，如何保证redis的高并发和高可用？"></a>1.Redis主从复制+哨兵，如何保证redis的高并发和高可用？</h2><p>redis 实现<strong>高并发</strong>主要依靠<strong>主从架构</strong>，一主多从，一般来说，很多项目其实就足够了，单主用来写入数据，单机几万 QPS，多从用来查询数据，多个从实例可以提供每秒 10w 的 QPS</p>
+<h3 id="1-1主从架构"><a href="#1-1主从架构" class="headerlink" title="1.1主从架构"></a>1.1<strong>主从架构</strong></h3><p>单机的 Redis，能够承载的 QPS 大概就在上万到几万不等。对于缓存来说，一般都是用来支撑<strong>读高并发</strong>的。因此架构做成主从(master-slave)架构，一主多从，主负责写，并且将数据复制到其它的 slave 节点，从节点负责读。所有的<strong>读请求全部走从节点</strong>。这样也可以很轻松实现水平扩容，<strong>支撑读高并发</strong></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/doocs/advanced-java/blob/main/docs/high-concurrency/images/redis-master-slave.png"><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202207221546516.png" srcset="/img/loading.gif" lazyload alt="Redis-master-slave"></a></p>
 <p>Redis replication -&gt; 主从架构 -&gt; 读写分离 -&gt; 水平扩容支撑读高并发</p>
 <h4 id="Redis-replication-的核心机制"><a href="#Redis-replication-的核心机制" class="headerlink" title="Redis replication 的核心机制"></a><strong>Redis replication 的核心机制</strong></h4><ul>
@@ -585,7 +585,7 @@
 <li><p>master node 在故障时，自动检测，并且将某个 slave node 自动切换为 master node 的过程，叫做主备切换。这个过程，实现了 Redis 的主从架构下的高可用</p>
 </li>
 </ul>
-<h3 id="3-1-2-Redis哨兵集群实现高可用"><a href="#3-1-2-Redis哨兵集群实现高可用" class="headerlink" title="3.1.2 Redis哨兵集群实现高可用"></a>3.1.2 Redis哨兵集群实现高可用</h3><h4 id="哨兵的介绍"><a href="#哨兵的介绍" class="headerlink" title="哨兵的介绍"></a>哨兵的介绍</h4><p>sentinel，中文名是哨兵。哨兵是 Redis 集群架构中非常重要的一个组件，主要有以下功能：</p>
+<h3 id="1-2Redis哨兵集群实现高可用"><a href="#1-2Redis哨兵集群实现高可用" class="headerlink" title="1.2Redis哨兵集群实现高可用"></a>1.2Redis哨兵集群实现高可用</h3><h4 id="哨兵的介绍"><a href="#哨兵的介绍" class="headerlink" title="哨兵的介绍"></a>哨兵的介绍</h4><p>sentinel，中文名是哨兵。哨兵是 Redis 集群架构中非常重要的一个组件，主要有以下功能：</p>
 <ul>
 <li><strong>集群监控：</strong>负责监控 Redis master 和 slave 进程是否正常工作</li>
 <li><strong>消息通知：</strong>如果某个 Redis 实例有故障，那么哨兵负责发送消息作为报警通知给管理员</li>
@@ -696,13 +696,13 @@
 <li><p>这里之前的 version 号就很重要了，因为各种消息都是通过一个 channel 去发布和监听的，所以一个哨兵完成一次新的切换之后，新的 master 配置是跟着新的 version 号的。其他的哨兵都是根据版本号的大小来更新自己的 master 配置的</p>
 </li>
 </ul>
-<h2 id="3-2-Redis集群"><a href="#3-2-Redis集群" class="headerlink" title="3.2 Redis集群"></a>3.2 Redis集群</h2><h3 id="3-2-1-Redis-cluster-介绍"><a href="#3-2-1-Redis-cluster-介绍" class="headerlink" title="3.2.1 Redis cluster 介绍"></a>3.2.1 Redis cluster 介绍</h3><ul>
+<h2 id="2-Redis集群"><a href="#2-Redis集群" class="headerlink" title="2.Redis集群"></a>2.Redis集群</h2><h3 id="2-1Redis-cluster-介绍"><a href="#2-1Redis-cluster-介绍" class="headerlink" title="2.1Redis cluster 介绍"></a>2.1Redis cluster 介绍</h3><ul>
 <li>自动将数据进行分片，每个 master 上放一部分数据</li>
 <li>提供内置的高可用支持，部分 master 不可用时，还是可以继续工作的</li>
 </ul>
 <p>在 Redis cluster 架构下，每个 Redis 要放开两个端口号，比如一个是 6379，另外一个就是 加 1w 的端口号，比如 16379</p>
 <p>16379 端口号是用来进行节点间通信的，也就是 cluster bus 的东西，cluster bus 的通信，用来进行故障检测、配置更新、故障转移授权。cluster bus 用了另外一种二进制的协议， <code>gossip</code> 协议，用于节点间进行高效的数据交换，占用更少的网络带宽和处理时间</p>
-<h3 id="3-2-2-节点间的内部通信机制"><a href="#3-2-2-节点间的内部通信机制" class="headerlink" title="3.2.2 节点间的内部通信机制"></a>3.2.2 节点间的内部通信机制</h3><h4 id="基本通信原理"><a href="#基本通信原理" class="headerlink" title="基本通信原理"></a><strong>基本通信原理</strong></h4><p>集群元数据的维护有两种方式：集中式、Gossip 协议。Redis cluster 节点间采用 gossip 协议进行通信</p>
+<h3 id="2-2节点间的内部通信机制"><a href="#2-2节点间的内部通信机制" class="headerlink" title="2.2节点间的内部通信机制"></a>2.2节点间的内部通信机制</h3><h4 id="基本通信原理"><a href="#基本通信原理" class="headerlink" title="基本通信原理"></a><strong>基本通信原理</strong></h4><p>集群元数据的维护有两种方式：集中式、Gossip 协议。Redis cluster 节点间采用 gossip 协议进行通信</p>
 <p><strong>集中式</strong>是将集群元数据（节点信息、故障等等）集中存储在某个节点上。集中式元数据集中存储的一个典型代表，就是大数据领域的 <code>storm</code> 。它是分布式的大数据实时计算引擎，是集中式的元数据存储的结构，底层基于 zookeeper（分布式协调的中间件）对所有元数据进行存储维护</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/doocs/advanced-java/blob/main/docs/high-concurrency/images/zookeeper-centralized-storage.png"><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202207221621765.png" srcset="/img/loading.gif" lazyload alt="zookeeper-centralized-storage"></a></p>
 <p>Redis 维护集群元数据采用另一个方式， <code>gossip</code> 协议，所有节点都持有一份元数据，不同的节点如果出现了元数据的变更，就不断将元数据发送给其它的节点，让其它节点也进行元数据的变更</p>
@@ -733,7 +733,7 @@
 <li><p>每次 ping，会带上自己节点的信息，还有就是带上 1&#x2F;10 其它节点的信息，发送出去，进行交换。至少包含 <code>3</code> 个其它节点的信息，最多包含 <code>总节点数减 2</code> 个其它节点的信息</p>
 </li>
 </ul>
-<h3 id="3-2-3-分布式寻址算法"><a href="#3-2-3-分布式寻址算法" class="headerlink" title="3.2.3 分布式寻址算法"></a>3.2.3 分布式寻址算法</h3><ul>
+<h3 id="2-3分布式寻址算法"><a href="#2-3分布式寻址算法" class="headerlink" title="2.3分布式寻址算法"></a>2.3分布式寻址算法</h3><ul>
 <li>hash 算法（大量缓存重建）</li>
 <li>一致性 hash 算法（自动缓存迁移）+ 虚拟节点（自动负载均衡）</li>
 <li>Redis cluster 的 hash slot 算法</li>
@@ -760,7 +760,7 @@
 </li>
 </ul>
 <p><a target="_blank" rel="noopener" href="https://github.com/doocs/advanced-java/blob/main/docs/high-concurrency/images/hash-slot.png"><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202207221627969.png" srcset="/img/loading.gif" lazyload alt="hash-slot"></a></p>
-<h3 id="3-2-4-Redis-cluster-的高可用与主备切换原理"><a href="#3-2-4-Redis-cluster-的高可用与主备切换原理" class="headerlink" title="3.2.4 Redis cluster 的高可用与主备切换原理"></a>3.2.4 Redis cluster 的高可用与主备切换原理</h3><p>Redis cluster 的高可用的原理，几乎跟哨兵是类似的</p>
+<h3 id="2-4Redis-cluster-的高可用与主备切换原理"><a href="#2-4Redis-cluster-的高可用与主备切换原理" class="headerlink" title="2.4Redis cluster 的高可用与主备切换原理"></a>2.4Redis cluster 的高可用与主备切换原理</h3><p>Redis cluster 的高可用的原理，几乎跟哨兵是类似的</p>
 <h4 id="判断节点宕机"><a href="#判断节点宕机" class="headerlink" title="判断节点宕机"></a>判断节点宕机</h4><ul>
 <li><p>如果一个节点认为另外一个节点宕机，那么就是 <code>pfail</code> ，<strong>主观宕机</strong>。如果多个节点都认为另外一个节点宕机了，那么就是 <code>fail</code> ，<strong>客观宕机</strong>，跟哨兵的原理几乎一样，sdown，odown</p>
 </li>
@@ -786,7 +786,7 @@
 <h4 id="与哨兵比较"><a href="#与哨兵比较" class="headerlink" title="与哨兵比较"></a>与哨兵比较</h4><ul>
 <li>整个流程跟哨兵相比，非常类似，所以说，Redis cluster 功能强大，直接集成了 replication 和 sentinel 的功能</li>
 </ul>
-<h2 id="3-3-分布式算法一致性哈希"><a href="#3-3-分布式算法一致性哈希" class="headerlink" title="3.3 分布式算法一致性哈希"></a>3.3 分布式算法一致性哈希</h2><ul>
+<h2 id="3-分布式算法一致性哈希"><a href="#3-分布式算法一致性哈希" class="headerlink" title="3.分布式算法一致性哈希"></a>3.分布式算法一致性哈希</h2><ul>
 <li><strong>普通哈希</strong><ul>
 <li>原始的做法是对缓存项的键进行哈希，将hash后的结果对<strong>缓存服务器的数量</strong>进行取模操作，通过取模后的结果，决定缓存项将会缓存在哪一台服务器上</li>
 <li><strong>缺点</strong><ul>
@@ -824,13 +824,13 @@
 </ul>
 </li>
 </ul>
-<h2 id="3-4-Redis和Mysql缓存和数据库的双写一致性"><a href="#3-4-Redis和Mysql缓存和数据库的双写一致性" class="headerlink" title="3.4 Redis和Mysql缓存和数据库的双写一致性"></a>3.4 Redis和Mysql缓存和数据库的双写一致性</h2><ul>
+<h2 id="4-Redis和Mysql缓存和数据库的双写一致性"><a href="#4-Redis和Mysql缓存和数据库的双写一致性" class="headerlink" title="4.Redis和Mysql缓存和数据库的双写一致性"></a>4.Redis和Mysql缓存和数据库的双写一致性</h2><ul>
 <li><p>一般来说，如果允许缓存可以稍微的跟数据库偶尔有不一致的情况，也就是说如果你的系统<strong>不是严格要求</strong> “缓存+数据库” 必须保持一致性的话，最好不要做这个方案，即：<strong>读请求和写请求串行化</strong>，串到一个<strong>内存队列</strong>里去</p>
 </li>
 <li><p>串行化可以保证一定不会出现不一致的情况，但是它也会导致系统的吞吐量大幅度降低，用比正常情况下多几倍的机器去支撑线上的一个请求</p>
 </li>
 </ul>
-<h3 id="3-4-1-Cache-Aside-Pattern"><a href="#3-4-1-Cache-Aside-Pattern" class="headerlink" title="3.4.1 Cache Aside Pattern"></a>3.4.1 Cache Aside Pattern</h3><p>最经典的缓存+数据库读写的模式，就是 Cache Aside Pattern</p>
+<h3 id="4-1Cache-Aside-Pattern"><a href="#4-1Cache-Aside-Pattern" class="headerlink" title="4.1Cache Aside Pattern"></a>4.1Cache Aside Pattern</h3><p>最经典的缓存+数据库读写的模式，就是 Cache Aside Pattern</p>
 <ul>
 <li>读的时候，先读缓存，缓存没有的话，就读数据库，然后取出数据后放入缓存，同时返回响应</li>
 <li>更新的时候，<strong>先更新数据库，然后再删除缓存</strong></li>
@@ -848,7 +848,7 @@
 <li><p>其实删除缓存，而不是更新缓存，就是一个 lazy 计算的思想，不要每次都重新做复杂的计算，不管它会不会用到，而是让它到需要被使用的时候再重新计算。像 mybatis，hibernate，都有懒加载思想。查询一个部门，部门带了一个员工的 list，没有必要说每次查询部门，都把里面的 1000 个员工的数据也同时查出来啊。80% 的情况，查这个部门，就只是要访问这个部门的信息就可以了。先查部门，同时要访问里面的员工，那么这个时候只有在你要访问里面的员工的时候，才会去数据库里面查询 1000 个员工</p>
 </li>
 </ul>
-<h3 id="3-4-2-最初级的缓存不一致问题及解决方案"><a href="#3-4-2-最初级的缓存不一致问题及解决方案" class="headerlink" title="3.4.2 最初级的缓存不一致问题及解决方案"></a>3.4.2 最初级的缓存不一致问题及解决方案</h3><p><strong>问题：先更新数据库，再删除缓存。如果删除缓存失败了，那么会导致数据库中是新数据，缓存中是旧数据，数据就出现了不一致</strong></p>
+<h3 id="4-2最初级的缓存不一致问题及解决方案"><a href="#4-2最初级的缓存不一致问题及解决方案" class="headerlink" title="4.2最初级的缓存不一致问题及解决方案"></a>4.2最初级的缓存不一致问题及解决方案</h3><p><strong>问题：先更新数据库，再删除缓存。如果删除缓存失败了，那么会导致数据库中是新数据，缓存中是旧数据，数据就出现了不一致</strong></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/doocs/advanced-java/blob/main/docs/high-concurrency/images/redis-junior-inconsistent.png"><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202207221631030.png" srcset="/img/loading.gif" lazyload alt="redis-junior-inconsistent"></a></p>
 <ul>
 <li><p>解决思路 1：先删除缓存，再更新数据库。如果数据库更新失败了，那么数据库中是旧数据，缓存中是空的，那么数据不会不一致。因为读的时候缓存没有，所以去读了数据库中的旧数据，然后更新到缓存中</p>
@@ -861,7 +861,7 @@
 <ul>
 <li>删除的动作，可以有多种选择，比如：1. 使用 <code>DelayQueue</code>，会随着 JVM 进程的死亡，丢失更新的风险；2. 放在 <code>MQ</code>，但编码复杂度为增加。总之，我们需要综合各种因素去做设计，选择一个最合理的解决方案</li>
 </ul>
-<h3 id="3-4-3-比较复杂的数据不一致问题分析"><a href="#3-4-3-比较复杂的数据不一致问题分析" class="headerlink" title="3.4.3 比较复杂的数据不一致问题分析"></a>3.4.3 比较复杂的数据不一致问题分析</h3><p>数据发生了变更，先删除了缓存，然后要去修改数据库，此时还没修改。一个请求过来，去读缓存，发现缓存空了，去查询数据库，<strong>查到了修改前的旧数据</strong>，放到了缓存中。随后数据变更的程序完成了数据库的修改。完了，数据库和缓存中的数据不一样了…</p>
+<h3 id="4-3比较复杂的数据不一致问题分析"><a href="#4-3比较复杂的数据不一致问题分析" class="headerlink" title="4.3比较复杂的数据不一致问题分析"></a>4.3比较复杂的数据不一致问题分析</h3><p>数据发生了变更，先删除了缓存，然后要去修改数据库，此时还没修改。一个请求过来，去读缓存，发现缓存空了，去查询数据库，<strong>查到了修改前的旧数据</strong>，放到了缓存中。随后数据变更的程序完成了数据库的修改。完了，数据库和缓存中的数据不一样了…</p>
 <p><strong>为什么上亿流量高并发场景下，缓存会出现这个问题？</strong></p>
 <p>只有在对一个数据在并发的进行读写的时候，才可能会出现这种问题。其实如果说你的并发量很低的话，特别是读并发很低，每天访问量就 1 万次，那么很少的情况下，会出现刚才描述的那种不一致的场景。但是问题是，如果每天的是上亿的流量，每秒并发读是几万，每秒只要有数据更新的请求，就<strong>可能会出现上述的数据库+缓存不一致的情况</strong></p>
 <p><strong>解决方案如下：</strong></p>
@@ -904,7 +904,7 @@
 <li><strong>热点商品的路由问题，导致请求的倾斜</strong></li>
 </ul>
 <p>万一某个商品的读写请求特别高，全部打到相同的机器的相同的队列里面去了，可能会造成某台机器的压力过大。就是说，因为只有在商品数据更新的时候才会清空缓存，然后才会导致读写并发，所以其实要根据业务系统去看，如果更新频率不是太高的话，这个问题的影响并不是特别大，但是的确可能某些机器的负载会高一些</p>
-<h2 id="3-5-缓存雪崩和缓存穿透及解决方案"><a href="#3-5-缓存雪崩和缓存穿透及解决方案" class="headerlink" title="3.5 缓存雪崩和缓存穿透及解决方案"></a>3.5 缓存雪崩和缓存穿透及解决方案</h2><ul>
+<h2 id="5-缓存雪崩和缓存穿透及解决方案"><a href="#5-缓存雪崩和缓存穿透及解决方案" class="headerlink" title="5.缓存雪崩和缓存穿透及解决方案"></a>5.缓存雪崩和缓存穿透及解决方案</h2><ul>
 <li><p><strong>缓存雪崩</strong><br>缓存宕机，此时所有请求落到数据库上，由于高并发的请求，导致数据库宕机，发生缓存血崩</p>
 <ul>
 <li><strong>解决方案</strong><ul>
@@ -943,14 +943,14 @@
 </ul>
 </li>
 </ul>
-<h2 id="3-6-Redis常见问题及解决方案"><a href="#3-6-Redis常见问题及解决方案" class="headerlink" title="3.6 Redis常见问题及解决方案"></a>3.6 Redis常见问题及解决方案</h2><ul>
+<h2 id="6-Redis常见问题及解决方案"><a href="#6-Redis常见问题及解决方案" class="headerlink" title="6.Redis常见问题及解决方案"></a>6.Redis常见问题及解决方案</h2><ul>
 <li>Master最好不要做任何持久化工作，如RDB内存快照和AOF日志文件</li>
 <li>如果数据比较重要，某个Slave开启AOF备份数据，策略设置为每秒同步一次</li>
 <li>为了主从复制的速度和连接的稳定性，Master和Slave最好在同一个局域网内</li>
 <li>尽量避免在压力很大的主库上增加从库</li>
 <li>主从复制不要用图状结构，用单向链表结构更为稳定，即：Master &lt;- Slave1 &lt;- Slave2 &lt;- Slave3…这样的结构方便解决单点故障问题，实现Slave对Master的替换。如果Master挂了，可以立刻启用Slave1做Master，其他不变</li>
 </ul>
-<h1 id="四、独立功能的实现"><a href="#四、独立功能的实现" class="headerlink" title="四、独立功能的实现"></a>四、独立功能的实现</h1><h2 id="4-1-Redis事务"><a href="#4-1-Redis事务" class="headerlink" title="4.1 Redis事务"></a>4.1 Redis事务</h2><h3 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h3><p><strong>概念：</strong> 可以一次执行多个命令，本质是一组命令的集合。一个事务中的所有命令都会序列化，按顺序地串行化执行而不会被其它命令插入，不许加塞</p>
+<h1 id="四、独立功能的实现"><a href="#四、独立功能的实现" class="headerlink" title="四、独立功能的实现"></a>四、独立功能的实现</h1><h2 id="1-Redis事务"><a href="#1-Redis事务" class="headerlink" title="1.Redis事务"></a>1.Redis事务</h2><h3 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h3><p><strong>概念：</strong> 可以一次执行多个命令，本质是一组命令的集合。一个事务中的所有命令都会序列化，按顺序地串行化执行而不会被其它命令插入，不许加塞</p>
 <p><strong>Redis部分支持事务，不支持的是：强一致性</strong></p>
 <p><strong>能干嘛：</strong> 一个队列中，一次性、顺序性、排他性的执行一系列命令</p>
 <p><strong>常用命令：</strong></p>
