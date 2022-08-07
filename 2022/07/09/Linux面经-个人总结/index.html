@@ -16,15 +16,15 @@
   <meta name="author" content="Fyy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一、OS基础1. 硬件结构2. 操作系统结构2.1 用户态和内核态 概念 用户态和内核态是操作系统的两种运行级别，两者最大的区别就是特权级不同 用户态拥有最低的特权级，内核态拥有较高的特权级 运行在用户态的程序不能直接访问操作系统内核数据结构和程序 操作系统的数据都是存放于系统空间的，用户进程的数据是存放于用户空间的 分开来存放，就让系统的数据和用户的数据互不干扰，保证系统的稳定性 分开存放，管理">
+    <meta name="description" content="一、OS基础1.硬件结构2.操作系统结构2.1用户态和内核态 概念 用户态和内核态是操作系统的两种运行级别，两者最大的区别就是特权级不同 用户态拥有最低的特权级，内核态拥有较高的特权级 运行在用户态的程序不能直接访问操作系统内核数据结构和程序 操作系统的数据都是存放于系统空间的，用户进程的数据是存放于用户空间的 分开来存放，就让系统的数据和用户的数据互不干扰，保证系统的稳定性 分开存放，管理上很方">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux面经-个人总结">
 <meta property="og:url" content="http://example.com/2022/07/09/Linux%E9%9D%A2%E7%BB%8F-%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="UESTC-Fyy">
-<meta property="og:description" content="一、OS基础1. 硬件结构2. 操作系统结构2.1 用户态和内核态 概念 用户态和内核态是操作系统的两种运行级别，两者最大的区别就是特权级不同 用户态拥有最低的特权级，内核态拥有较高的特权级 运行在用户态的程序不能直接访问操作系统内核数据结构和程序 操作系统的数据都是存放于系统空间的，用户进程的数据是存放于用户空间的 分开来存放，就让系统的数据和用户的数据互不干扰，保证系统的稳定性 分开存放，管理">
+<meta property="og:description" content="一、OS基础1.硬件结构2.操作系统结构2.1用户态和内核态 概念 用户态和内核态是操作系统的两种运行级别，两者最大的区别就是特权级不同 用户态拥有最低的特权级，内核态拥有较高的特权级 运行在用户态的程序不能直接访问操作系统内核数据结构和程序 操作系统的数据都是存放于系统空间的，用户进程的数据是存放于用户空间的 分开来存放，就让系统的数据和用户的数据互不干扰，保证系统的稳定性 分开存放，管理上很方">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-07-09T07:15:07.000Z">
-<meta property="article:modified_time" content="2022-07-21T11:33:46.807Z">
+<meta property="article:modified_time" content="2022-08-07T07:58:50.817Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          23k 字
+          28k 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          196 分钟
+          231 分钟
         
       </span>
     
@@ -271,7 +271,7 @@
             
             <div class="markdown-body">
               
-              <h2 id="一、OS基础"><a href="#一、OS基础" class="headerlink" title="一、OS基础"></a>一、OS基础</h2><h2 id="1-硬件结构"><a href="#1-硬件结构" class="headerlink" title="1. 硬件结构"></a>1. 硬件结构</h2><h2 id="2-操作系统结构"><a href="#2-操作系统结构" class="headerlink" title="2. 操作系统结构"></a>2. <strong>操作系统结构</strong></h2><h3 id="2-1-用户态和内核态"><a href="#2-1-用户态和内核态" class="headerlink" title="2.1 用户态和内核态"></a>2.1 用户态和内核态</h3><ul>
+              <h2 id="一、OS基础"><a href="#一、OS基础" class="headerlink" title="一、OS基础"></a>一、OS基础</h2><h2 id="1-硬件结构"><a href="#1-硬件结构" class="headerlink" title="1.硬件结构"></a>1.硬件结构</h2><h2 id="2-操作系统结构"><a href="#2-操作系统结构" class="headerlink" title="2.操作系统结构"></a>2.<strong>操作系统结构</strong></h2><h3 id="2-1用户态和内核态"><a href="#2-1用户态和内核态" class="headerlink" title="2.1用户态和内核态"></a>2.1用户态和内核态</h3><ul>
 <li><strong>概念</strong><ul>
 <li>用户态和内核态是操作系统的两种运行级别，两者最大的区别就是特权级不同</li>
 <li>用户态拥有最低的特权级，内核态拥有较高的特权级</li>
@@ -324,7 +324,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="2-2-库函数和系统调用的区别"><a href="#2-2-库函数和系统调用的区别" class="headerlink" title="2.2 库函数和系统调用的区别"></a>2.2 库函数和系统调用的区别</h3><ul>
+<h3 id="2-2库函数和系统调用的区别"><a href="#2-2库函数和系统调用的区别" class="headerlink" title="2.2库函数和系统调用的区别"></a>2.2库函数和系统调用的区别</h3><ul>
 <li><strong>概念</strong><ul>
 <li>库函数调用是语言或应用程序的一部分，而系统调用是操作系统的一部分，<strong>跨平台技术的原理就是通过库函数实现的，库函数可以理解为是对系统调用的一层封装，但库函数不是必须包含系统调用</strong></li>
 <li>库函数有可能包含有一个系统调用，有可能有好几个系统调用，当然也有可能没有系统调用，比如有些操作不需要涉及内核的功能</li>
@@ -363,7 +363,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="2-2-计算密集任务和IO密集任务"><a href="#2-2-计算密集任务和IO密集任务" class="headerlink" title="2.2 计算密集任务和IO密集任务"></a>2.2 计算密集任务和IO密集任务</h3><ul>
+<h3 id="2-3计算密集任务和IO密集任务"><a href="#2-3计算密集任务和IO密集任务" class="headerlink" title="2.3计算密集任务和IO密集任务"></a>2.3计算密集任务和IO密集任务</h3><ul>
 <li><strong>计算密集型任务</strong><ul>
 <li>特点是要进行大量的计算，消耗CPU资源，比如计算圆周率、对视频进行高清解码等等，全靠CPU的运算能力</li>
 <li>虽然可以用多任务完成，但是任务越多，花在任务切换的时间就越多，CPU执行任务的效率就越低，所以，要最高效地利用CPU，计算密集型任务同时进行的数量应当等于CPU的核心数</li>
@@ -375,7 +375,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="3-内存管理"><a href="#3-内存管理" class="headerlink" title="3. 内存管理"></a>3. 内存管理</h2><h3 id="3-1-程序的局部性原理"><a href="#3-1-程序的局部性原理" class="headerlink" title="3.1 程序的局部性原理"></a>3.1 程序的局部性原理</h3><ul>
+<h2 id="3-内存管理"><a href="#3-内存管理" class="headerlink" title="3.内存管理"></a>3.内存管理</h2><h3 id="3-1程序的局部性原理"><a href="#3-1程序的局部性原理" class="headerlink" title="3.1程序的局部性原理"></a>3.1程序的局部性原理</h3><ul>
 <li><p><strong>基本概念</strong><br>程序倾向于引用临近于其他最近引用过的数据项的数据项，或最近引用过的数据项本身，这种倾向性被称为局部性原理</p>
 <ul>
 <li><strong>时间局部性</strong><ul>
@@ -413,7 +413,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="3-2-存储器层次结构"><a href="#3-2-存储器层次结构" class="headerlink" title="3.2 存储器层次结构"></a>3.2 存储器层次结构</h3><ul>
+<h3 id="3-2存储器层次结构"><a href="#3-2存储器层次结构" class="headerlink" title="3.2存储器层次结构"></a>3.2存储器层次结构</h3><ul>
 <li><p><strong>层次结构</strong><br>本地磁盘 -&gt; 主存(DRAM) -&gt; L3高速缓存(SRAM) -&gt; L2高速缓存(SRAM) -&gt; L1高速缓存(SRAM) -&gt; L0寄存器</p>
 </li>
 <li><p><strong>缓存思想</strong></p>
@@ -429,7 +429,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="3-3-虚拟内存页表寻址"><a href="#3-3-虚拟内存页表寻址" class="headerlink" title="3.3 虚拟内存页表寻址"></a>3.3 虚拟内存页表寻址</h3><ul>
+<h3 id="3-3虚拟内存页表寻址"><a href="#3-3虚拟内存页表寻址" class="headerlink" title="3.3虚拟内存页表寻址"></a>3.3虚拟内存页表寻址</h3><ul>
 <li><strong>什么是虚拟内存</strong><ul>
 <li>为了让物理内存扩充成更大的逻辑内存，从而让程序获得更多的可用内存，防止不同进程同一时刻在物理内存中运行而对物理内存的争夺和践踏，采用了虚拟内存</li>
 <li>为了更好的管理内存，操作系统将内存抽象成地址空间。每个程序拥有自己的地址空间，这个地址空间被分割成多个块，每一块称为一页。这些页被映射到物理内存，但<strong>不需要映射到连续的物理内存</strong>，也<strong>不需要所有页都必须在物理内存中</strong>。当程序引用到不在物理内存中的页时，由硬件执行必要的映射，将缺失的部分装入物理内存并重新执行失败的指令</li>
@@ -495,7 +495,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="4-进程与线程"><a href="#4-进程与线程" class="headerlink" title="4. 进程与线程"></a>4. 进程与线程</h2><h3 id="4-1-单核CPU-x2F-多核CPU-x2F-多CPU"><a href="#4-1-单核CPU-x2F-多核CPU-x2F-多CPU" class="headerlink" title="4.1 单核CPU&#x2F;多核CPU&#x2F;多CPU"></a>4.1 单核CPU&#x2F;多核CPU&#x2F;多CPU</h3><ul>
+<h2 id="4-进程与线程"><a href="#4-进程与线程" class="headerlink" title="4.进程与线程"></a>4.进程与线程</h2><h3 id="4-1单核CPU-x2F-多核CPU-x2F-多CPU"><a href="#4-1单核CPU-x2F-多核CPU-x2F-多CPU" class="headerlink" title="4.1单核CPU&#x2F;多核CPU&#x2F;多CPU"></a>4.1单核CPU&#x2F;多核CPU&#x2F;多CPU</h3><ul>
 <li><p><strong>概述</strong></p>
 <ul>
 <li>单核CPU<ul>
@@ -536,7 +536,7 @@
 <li>单CPU单核中线程只能并发，单CPU多核中线程可以并行</li>
 <li>并行有上限，进程与CPU个数，线程与CPU核心个数有关，并不是所有线程和所有进程都能同时运行</li>
 </ul>
-<h3 id="4-2-进程与PCB"><a href="#4-2-进程与PCB" class="headerlink" title="4.2 进程与PCB"></a>4.2 进程与PCB</h3><ul>
+<h3 id="4-2进程与PCB"><a href="#4-2进程与PCB" class="headerlink" title="4.2进程与PCB"></a>4.2进程与PCB</h3><ul>
 <li><strong>进程</strong><ul>
 <li>进程是操作系统的资源分配单位，实现操作系统的并发，对于一个进程，它在被执行前其实是一个可执行程序。这个程序是被放在磁盘上的，当它要被执行的时候，它先被加载到内存当中，然后再放入到寄存器中，最后再让cpu执行该程序，这个时候一个静态的程序就变成了进程</li>
 <li>进程创建时会分配4G的内存，其中0-3G是用户空间，3-4G是内核空间，PCB存在于内核空间</li>
@@ -560,7 +560,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="4-3-进程间通信"><a href="#4-3-进程间通信" class="headerlink" title="4.3 进程间通信"></a>4.3 进程间通信</h3><p>进程间通信主要包括管道、系统IPC（包括消息队列、信号、共享内存等）、本地套接字socket</p>
+<h3 id="4-3进程间通信"><a href="#4-3进程间通信" class="headerlink" title="4.3进程间通信"></a>4.3进程间通信</h3><p>进程间通信主要包括管道、系统IPC（包括消息队列、信号、共享内存等）、本地套接字socket</p>
 <ul>
 <li><strong>管道(缓冲区有限)</strong><ul>
 <li><strong>无名管道PIPE</strong><ul>
@@ -689,7 +689,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="4-4-fork、vfork、clone"><a href="#4-4-fork、vfork、clone" class="headerlink" title="4.4 fork、vfork、clone"></a>4.4 fork、vfork、clone</h3><p><strong>fork、v_fork、clone底层都是do_fork，追踪发现底层使用的是sys_clone</strong></p>
+<h3 id="4-4fork、vfork、clone"><a href="#4-4fork、vfork、clone" class="headerlink" title="4.4fork、vfork、clone"></a>4.4fork、vfork、clone</h3><p><strong>fork、v_fork、clone底层都是do_fork，追踪发现底层使用的是sys_clone</strong></p>
 <ul>
 <li><strong>fork</strong><ul>
 <li>父进程fork之后创建子进程，子进程复制父进程的所有资源，子进程的代码段、数据段、堆栈都是指向父进程的物理空间，但此时仅仅是子进程的虚拟地址空间和父进程指向的物理地址空间建立了映射关系，并没有真正复制</li>
@@ -706,7 +706,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="4-5-僵尸进程和孤儿进程"><a href="#4-5-僵尸进程和孤儿进程" class="headerlink" title="4.5 僵尸进程和孤儿进程"></a>4.5 僵尸进程和孤儿进程</h3><ul>
+<h3 id="4-5僵尸进程和孤儿进程"><a href="#4-5僵尸进程和孤儿进程" class="headerlink" title="4.5僵尸进程和孤儿进程"></a>4.5僵尸进程和孤儿进程</h3><ul>
 <li>当父进程先结束，子进程此时就会变成孤儿进程，孤儿进程会自动向上被init进程收养，init进程完成对状态收集工作。而且这种过继的方式也是守护进程能够实现的因素</li>
 <li>如果子进程先结束，父进程并未调用wait或者waitpid获取进程状态信息，回收进程资源，那么子进程描述符就会一直保存在系统中，这种进程称为僵尸进程<ul>
 <li><strong>僵尸进程是每个子进程退出时必然经历的过程</strong></li>
@@ -723,7 +723,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="4-6-进程退出方式及区别"><a href="#4-6-进程退出方式及区别" class="headerlink" title="4.6 进程退出方式及区别"></a>4.6 进程退出方式及区别</h3><p>不管哪种退出方式，系统最终都会执行内核的同一代码，这段代码用来关闭进程打开的文件描述符，释放它占用的内存和其他资源</p>
+<h3 id="4-6进程退出方式及区别"><a href="#4-6进程退出方式及区别" class="headerlink" title="4.6进程退出方式及区别"></a>4.6进程退出方式及区别</h3><p>不管哪种退出方式，系统最终都会执行内核的同一代码，这段代码用来关闭进程打开的文件描述符，释放它占用的内存和其他资源</p>
 <ul>
 <li><strong>退出</strong><ul>
 <li><strong>正常退出</strong><ul>
@@ -772,7 +772,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="4-7-回收进程资源的方式和区别"><a href="#4-7-回收进程资源的方式和区别" class="headerlink" title="4.7 回收进程资源的方式和区别"></a>4.7 回收进程资源的方式和区别</h3><ul>
+<h3 id="4-7回收进程资源的方式和区别"><a href="#4-7回收进程资源的方式和区别" class="headerlink" title="4.7回收进程资源的方式和区别"></a>4.7回收进程资源的方式和区别</h3><ul>
 <li><strong>init进程（进程号为1）会周期性的调用wait系统调用来清除各个僵尸进程</strong></li>
 <li><strong>wait</strong><ul>
 <li><code>pid_t wait (int *status)</code> status表示子进程的退出状态，成功返回值为子进程进程号，失败为-1</li>
@@ -801,7 +801,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="4-8-线程间同步及系统调用"><a href="#4-8-线程间同步及系统调用" class="headerlink" title="4.8 线程间同步及系统调用"></a>4.8 线程间同步及系统调用</h3><ul>
+<h3 id="4-8线程间同步及系统调用"><a href="#4-8线程间同步及系统调用" class="headerlink" title="4.8线程间同步及系统调用"></a>4.8线程间同步及系统调用</h3><ul>
 <li><p><strong>信号量</strong><br>信号量是一种特殊的变量，可用于线程同步。它只取自然数值，并且只支持两种操作：</p>
 <ul>
 <li>P(SV)：如果信号量SV大于0，将它减一；如果SV值为0，则挂起该线程</li>
@@ -836,7 +836,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="4-9-线程退出方式与线程回收"><a href="#4-9-线程退出方式与线程回收" class="headerlink" title="4.9 线程退出方式与线程回收"></a>4.9 线程退出方式与线程回收</h3><ul>
+<h3 id="4-9线程退出方式与线程回收"><a href="#4-9线程退出方式与线程回收" class="headerlink" title="4.9线程退出方式与线程回收"></a>4.9线程退出方式与线程回收</h3><ul>
 <li><p>线程退出方式</p>
 <p>注意：不能使用exit，exit表示退出整个进程</p>
 <ul>
@@ -878,7 +878,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="4-10-说一下LINUX系统中的锁"><a href="#4-10-说一下LINUX系统中的锁" class="headerlink" title="4.10 说一下LINUX系统中的锁"></a>4.10 说一下LINUX系统中的锁</h3><ul>
+<h3 id="4-10说一下LINUX系统中的锁"><a href="#4-10说一下LINUX系统中的锁" class="headerlink" title="4.10说一下LINUX系统中的锁"></a>4.10说一下LINUX系统中的锁</h3><ul>
 <li><strong>互斥锁：</strong>mutex，用于保证在任何时刻，都只能有一个线程访问该对象。<strong>当获取锁操作失败时，线程会进入睡眠</strong>，等待锁释放时被唤醒</li>
 <li><strong>读写锁：rwlock，分为读锁和写锁</strong>。处于读操作时，可以允许多个线程同时获得读操作。但是同一时刻只能有一个线程可以获得写锁。其它<strong>获取写锁失败的线程都会进入睡眠状态</strong>，直到写锁释放时被唤醒。 <ul>
 <li><strong>注意：</strong>写锁会阻塞其它读写锁。当有一个线程获得写锁在写时，读锁也不能被其它线程获取；写者优先于读者（一旦有写者，则后续读者必须等待，唤醒时优先考虑写者）。适用于读取数据的频率远远大于写数据的频率的场合</li>
@@ -886,11 +886,11 @@
 </li>
 <li><strong>自旋锁：</strong>spinlock，在任何时刻同样只能有一个线程访问对象。但是<strong>当获取锁操作失败时，不会进入睡眠，而是会在原地自旋</strong>，循环检测锁的保持者是否释放，直到锁被释放。这样节省了线程从睡眠状态到被唤醒期间的消耗，在加锁时间短暂的环境下会极大的提高效率。但如果加锁时间过长，则会非常浪费CPU资源</li>
 </ul>
-<h3 id="4-11-线程间共享和私有资源"><a href="#4-11-线程间共享和私有资源" class="headerlink" title="4.11 线程间共享和私有资源"></a>4.11 线程间共享和私有资源</h3><ul>
+<h3 id="4-11线程间共享和私有资源"><a href="#4-11线程间共享和私有资源" class="headerlink" title="4.11线程间共享和私有资源"></a>4.11线程间共享和私有资源</h3><ul>
 <li><strong>私有：线程栈，寄存器，程序寄存器</strong>，线程ID，错误返回码，信号屏蔽字，调度优先级</li>
 <li><strong>共享：</strong>文件描述符表，堆，地址空间，全局变量，静态变量，进程代码段，进程的当前目录和进程用户ID与进程组ID</li>
 </ul>
-<h3 id="4-12-进程与线程的区别"><a href="#4-12-进程与线程的区别" class="headerlink" title="4.12 进程与线程的区别"></a>4.12 进程与线程的区别</h3><ul>
+<h3 id="4-12进程与线程的区别"><a href="#4-12进程与线程的区别" class="headerlink" title="4.12进程与线程的区别"></a>4.12进程与线程的区别</h3><ul>
 <li><p><strong>概述</strong></p>
 <ul>
 <li>进程是cpu资源分配的最小单位，线程是cpu调度的最小单位</li>
@@ -935,7 +935,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="5-调度算法"><a href="#5-调度算法" class="headerlink" title="5. 调度算法"></a>5. 调度算法</h2><h3 id="5-1-进程调度算法"><a href="#5-1-进程调度算法" class="headerlink" title="5.1 进程调度算法"></a>5.1 进程调度算法</h3><ul>
+<h2 id="5-调度算法"><a href="#5-调度算法" class="headerlink" title="5.调度算法"></a>5.调度算法</h2><h3 id="5-1进程调度算法"><a href="#5-1进程调度算法" class="headerlink" title="5.1进程调度算法"></a>5.1进程调度算法</h3><ul>
 <li><p><strong>批处理系统</strong><br>批处理系统没有太多的用户操作，在该系统中，调度算法目标是保证吞吐量和周转时间（从提交到终止的时间）</p>
 <ul>
 <li><strong>先来先服务 first-come first-serverd（FCFS）</strong><ul>
@@ -991,7 +991,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="5-2-虚拟内存置换算法"><a href="#5-2-虚拟内存置换算法" class="headerlink" title="5.2 虚拟内存置换算法"></a>5.2 虚拟内存置换算法</h3><ul>
+<h3 id="5-2虚拟内存置换算法"><a href="#5-2虚拟内存置换算法" class="headerlink" title="5.2虚拟内存置换算法"></a>5.2虚拟内存置换算法</h3><ul>
 <li>当访问一个内存中不存在的页，并且内存已满，则需要从内存中调出一个页或将数据送至磁盘对换区，替换一个页，这种现象叫做缺页置换</li>
 <li>当前操作系统最常采用的缺页置换算法如下：<ul>
 <li><strong>先进先出(FIFO)算法：</strong>置换最先调入内存的页面，即置换在内存中驻留时间最久的页面。按照进入内存的先后次序排列成队列，从队尾进入，从队首删除</li>
@@ -1000,7 +1000,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="6-文件系统"><a href="#6-文件系统" class="headerlink" title="6. 文件系统"></a>6. 文件系统</h2><h2 id="7-设备管理"><a href="#7-设备管理" class="headerlink" title="7. 设备管理"></a>7. 设备管理</h2><h2 id="8-网络系统"><a href="#8-网络系统" class="headerlink" title="8. 网络系统"></a>8. 网络系统</h2><h1 id="二、Linux网络编程"><a href="#二、Linux网络编程" class="headerlink" title="二、Linux网络编程"></a>二、Linux网络编程</h1><h2 id="2-1-网络编程步骤"><a href="#2-1-网络编程步骤" class="headerlink" title="2.1 网络编程步骤"></a>2.1 网络编程步骤</h2><ul>
+<h2 id="6-文件系统"><a href="#6-文件系统" class="headerlink" title="6.文件系统"></a>6.文件系统</h2><h2 id="7-设备管理"><a href="#7-设备管理" class="headerlink" title="7.设备管理"></a>7.设备管理</h2><h2 id="8-网络系统"><a href="#8-网络系统" class="headerlink" title="8.网络系统"></a>8.网络系统</h2><h1 id="二、Linux网络编程"><a href="#二、Linux网络编程" class="headerlink" title="二、Linux网络编程"></a>二、Linux网络编程</h1><h2 id="1-网络编程步骤"><a href="#1-网络编程步骤" class="headerlink" title="1.网络编程步骤"></a>1.网络编程步骤</h2><ul>
 <li><strong>TCP</strong><ul>
 <li><strong>服务端：</strong>socket-&gt;bind-&gt;listen-&gt;accept-&gt;recv&#x2F;send-&gt;close<ul>
 <li>创建一个socket，用函数socket()，设置SOCK_STREAM</li>
@@ -1065,7 +1065,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="2-2-TCP中的accept和connect和listen的关系"><a href="#2-2-TCP中的accept和connect和listen的关系" class="headerlink" title="2.2 TCP中的accept和connect和listen的关系"></a>2.2 TCP中的accept和connect和listen的关系</h2><ul>
+<h2 id="2-TCP中的accept和connect和listen的关系"><a href="#2-TCP中的accept和connect和listen的关系" class="headerlink" title="2.TCP中的accept和connect和listen的关系"></a>2.TCP中的accept和connect和listen的关系</h2><ul>
 <li><strong>listen</strong><ul>
 <li><strong>listen功能</strong><ul>
 <li>listen函数把一个未连接的套接字转换成一个被动套接字，指示内核应接受指向该套接字的连接请求</li>
@@ -1114,7 +1114,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="2-3-UDP中的connect"><a href="#2-3-UDP中的connect" class="headerlink" title="2.3 UDP中的connect"></a>2.3 UDP中的connect</h2><p><strong>UDP的connect和TCP的connect完全不同，UDP不会引起三次握手</strong></p>
+<h2 id="3-UDP中的connect"><a href="#3-UDP中的connect" class="headerlink" title="3.UDP中的connect"></a>3.UDP中的connect</h2><p><strong>UDP的connect和TCP的connect完全不同，UDP不会引起三次握手</strong></p>
 <ul>
 <li><strong>未连接的UDP传输数据</strong><ul>
 <li>第一阶段：向UDP套接字注册IP和端口号</li>
@@ -1137,7 +1137,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="2-4-服务端大量TIMEWAIT或CLOSEWAIT状态"><a href="#2-4-服务端大量TIMEWAIT或CLOSEWAIT状态" class="headerlink" title="2.4 服务端大量TIMEWAIT或CLOSEWAIT状态"></a>2.4 服务端大量TIMEWAIT或CLOSEWAIT状态</h2><p>首先通过TCP的四次挥手过程分析确定两个状态的出现背景。TIMEWAIT是大量tcp短连接导致的，确保对方收到最后发出的ACK，一般为2MSL；CLOSEWAIT是tcp连接不关闭导致的，出现在close()函数之前</p>
+<h2 id="4-服务端大量TIMEWAIT或CLOSEWAIT状态"><a href="#4-服务端大量TIMEWAIT或CLOSEWAIT状态" class="headerlink" title="4.服务端大量TIMEWAIT或CLOSEWAIT状态"></a>4.服务端大量TIMEWAIT或CLOSEWAIT状态</h2><p>首先通过TCP的四次挥手过程分析确定两个状态的出现背景。TIMEWAIT是大量tcp短连接导致的，确保对方收到最后发出的ACK，一般为2MSL；CLOSEWAIT是tcp连接不关闭导致的，出现在close()函数之前</p>
 <ul>
 <li><strong>TIMEWAIT</strong><ul>
 <li>可以通过设置SOCKET选项SO_REUSEADDR来重用处于TIMEWAIT的sock地址，对应于内核中的tcp_tw_reuse，这个参数不是“消除” TIME_WAIT的，而是说当资源不够时，可以重用TIME_WAIT的连接</li>
@@ -1150,7 +1150,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="2-5-优雅关闭和半关闭"><a href="#2-5-优雅关闭和半关闭" class="headerlink" title="2.5 优雅关闭和半关闭"></a>2.5 优雅关闭和半关闭</h2><ul>
+<h2 id="5-优雅关闭和半关闭"><a href="#5-优雅关闭和半关闭" class="headerlink" title="5.优雅关闭和半关闭"></a>5.优雅关闭和半关闭</h2><ul>
 <li><strong>概念</strong><ul>
 <li>一个文件描述符关联一个文件，这里是网络套接字</li>
 <li>close会关闭用户应用程序中的socket句柄，释放相关资源，从而触发关闭TCP连接</li>
@@ -1185,7 +1185,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="2-6-send和recv的阻塞和非阻塞情况"><a href="#2-6-send和recv的阻塞和非阻塞情况" class="headerlink" title="2.6 send和recv的阻塞和非阻塞情况"></a>2.6 send和recv的阻塞和非阻塞情况</h2><ul>
+<h2 id="6-send和recv的阻塞和非阻塞情况"><a href="#6-send和recv的阻塞和非阻塞情况" class="headerlink" title="6.send和recv的阻塞和非阻塞情况"></a>6.send和recv的阻塞和非阻塞情况</h2><ul>
 <li><p><strong>send</strong><br>send函数返回100，并不是将100个字节的数据发送到网络上或对端，而是发送到了协议栈的写缓冲区，至于什么时候发送，由协议栈决定</p>
 <ul>
 <li><strong>阻塞</strong><ul>
@@ -1233,7 +1233,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="2-7-网络字节序和主机序"><a href="#2-7-网络字节序和主机序" class="headerlink" title="2.7 网络字节序和主机序"></a>2.7 网络字节序和主机序</h2><p>字节序分为大端字节序和小端字节序，大端字节序也称网络字节序，小端字节序也称为主机字节序</p>
+<h2 id="7-网络字节序和主机序"><a href="#7-网络字节序和主机序" class="headerlink" title="7.网络字节序和主机序"></a>7.网络字节序和主机序</h2><p>字节序分为大端字节序和小端字节序，大端字节序也称网络字节序，小端字节序也称为主机字节序</p>
 <ul>
 <li><strong>大端字节序</strong><ul>
 <li>一个整数的高位字节存储在低位地址，低位字节存储在高位地址</li>
@@ -1251,7 +1251,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="2-8-为什么忽略SIGPIPE信号"><a href="#2-8-为什么忽略SIGPIPE信号" class="headerlink" title="2.8 为什么忽略SIGPIPE信号"></a>2.8 为什么忽略SIGPIPE信号</h2><ul>
+<h2 id="8-为什么忽略SIGPIPE信号"><a href="#8-为什么忽略SIGPIPE信号" class="headerlink" title="8.为什么忽略SIGPIPE信号"></a>8.为什么忽略SIGPIPE信号</h2><ul>
 <li>假设server和client 已经建立了连接，server调用了close, 发送FIN 段给client（其实不一定会发送FIN段，后面再说），此时server不能再通过socket发送和接收数据，此时client调用read，如果接收到FIN 段会返回0</li>
 <li>但client此时还是可以write 给server的，write调用只负责把数据交给TCP发送缓冲区就可以成功返回了，所以不会出错，而server收到数据后应答一个RST段，表示服务器已经不能接收数据，连接重置，client收到RST段后无法立刻通知应用层，只把这个状态保存在TCP协议层</li>
 <li>如果client再次调用write发数据给server，由于TCP协议层已经处于RST状态了，因此不会将数据发出，而是发一个SIGPIPE信号给应用层，SIGPIPE信号的缺省处理动作是终止程序</li>
@@ -1260,7 +1260,7 @@
 <li>通过sigaction函数设置信号，将handler设置为SIG_IGN将其忽略</li>
 <li>通过send函数的MSG_NOSIGNAL来禁止写操作触发SIGPIPE信号</li>
 </ul>
-<h1 id="三、Linux工具与命令"><a href="#三、Linux工具与命令" class="headerlink" title="三、Linux工具与命令"></a>三、Linux工具与命令</h1><h2 id="3-1-Linux基本目录结构"><a href="#3-1-Linux基本目录结构" class="headerlink" title="3.1 Linux基本目录结构"></a>3.1 Linux基本目录结构</h2><ul>
+<h1 id="三、Linux工具与命令"><a href="#三、Linux工具与命令" class="headerlink" title="三、Linux工具与命令"></a>三、Linux工具与命令</h1><h2 id="1-Linux基本目录结构"><a href="#1-Linux基本目录结构" class="headerlink" title="1.Linux基本目录结构"></a>1.Linux基本目录结构</h2><ul>
 <li>&#x2F;bin，binaries存放二进制可执行文件</li>
 <li>&#x2F;usr，unix shared resources用于存放共享的系统资源</li>
 <li>&#x2F;sbin，super user binaries存放二进制可执行文件，只有root才能访问</li>
@@ -1285,32 +1285,145 @@
 </ul>
 </li>
 </ul>
-<h2 id="3-2-文件操作命令"><a href="#3-2-文件操作命令" class="headerlink" title="3.2 文件操作命令"></a>3.2 文件操作命令</h2><ul>
-<li><strong>ls</strong><ul>
+<h2 id="2-文件操作命令"><a href="#2-文件操作命令" class="headerlink" title="2.文件操作命令"></a>2.文件操作命令</h2><ul>
+<li><p><strong>文件查找：find</strong></p>
+<ul>
+<li><p>按名查找： </p>
+<ul>
+<li>查找具体文件（一般方式）</li>
+</ul>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">find</span> . -name <span class="hljs-regexp">*.cpp</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>查找具体文件（正则方式）</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment"># -regex为正则查找，-iregex为忽略大小写的正则查找 </span><br>find <span class="hljs-operator">-regex</span> <span class="hljs-string">&quot;.*.cpp<span class="hljs-variable">$</span>&quot;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>定制查找：</p>
+<ul>
+<li>按类型查找</li>
+</ul>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs scss"># <span class="hljs-built_in">f</span>(file)为文件，<span class="hljs-built_in">d</span>(dictionary)为目录，<span class="hljs-built_in">l</span>(link)为链接<br>find . -type f<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>按时间查找</li>
+</ul>
+<figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sqf"><span class="hljs-meta"># atime为访问时间，x天内加参数<span class="hljs-string">&quot;-atime -x&quot;</span>，超过x天加<span class="hljs-string">&quot;-atime -x&quot;</span></span><br><span class="hljs-meta"># mtime为修改时间</span><br><span class="hljs-built_in">find</span> . -<span class="hljs-built_in">type</span> f -atime -<span class="hljs-number">7</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>按大小查找</li>
+</ul>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs scss"># -size后接文件大小，单位可以为<span class="hljs-built_in">k</span>(kb)，<span class="hljs-built_in">m</span>(MB)，<span class="hljs-built_in">g</span>(GB)<br>find . -type f -size -<span class="hljs-number">1</span>k<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>按权限查询</li>
+</ul>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs haskell"><span class="hljs-meta"># -perm后接权限</span><br><span class="hljs-title">find</span> . -<span class="hljs-class"><span class="hljs-keyword">type</span> -perm 644</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>文本搜索：grep</strong></p>
+<ul>
+<li><p>模式匹配</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stata"># 匹配<span class="hljs-keyword">test</span>.cpp文件中含有<span class="hljs-string">&quot;iostream&quot;</span>串的内容<br>grep <span class="hljs-string">&quot;iostream&quot;</span> <span class="hljs-keyword">test</span>.cpp  <br></code></pre></td></tr></table></figure>
+</li>
+<li><p>多个模式匹配</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stata"># 匹配<span class="hljs-keyword">test</span>.cpp文件中含有<span class="hljs-string">&quot;iostream&quot;</span>和<span class="hljs-string">&quot;using&quot;</span>串的内容<br>grep -<span class="hljs-keyword">e</span> <span class="hljs-string">&quot;using&quot;</span> -<span class="hljs-keyword">e</span> <span class="hljs-string">&quot;iostream&quot;</span> <span class="hljs-keyword">test</span>.cpp  <br></code></pre></td></tr></table></figure>
+</li>
+<li><p>输出信息</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># -n为打印匹配的行号；-i搜索时忽略大小写；-c统计包含文本次数</span><br>grep -n <span class="hljs-string">&quot;iostream&quot;</span> <span class="hljs-keyword">test</span>.cpp  <br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>排序：sort</strong></p>
+<ul>
+<li>文件内容行排序</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 排序在内存进行，不改变文件</span><br><span class="hljs-comment"># -n(number)表示按数字排序，-d(dictionary)表示按字典序</span><br><span class="hljs-comment"># -k N表示按各行第N列进行排序</span><br><span class="hljs-comment"># -r(reverse)为逆序排序</span><br><br><span class="hljs-built_in">sort</span> -n -k 1 <span class="hljs-built_in">test</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>转换：tr</strong></p>
+<ul>
+<li><p>字符替换</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 转换在内存进行，不改变文件</span><br><span class="hljs-comment"># 将打开文件中所有目标字符替换</span><br><span class="hljs-built_in">cat</span> <span class="hljs-built_in">test</span> | <span class="hljs-built_in">tr</span> <span class="hljs-string">&#x27;1&#x27;</span> <span class="hljs-string">&#x27;2&#x27;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>字符删除</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 转换在内存进行，不改变文件</span><br><span class="hljs-comment"># -d删除(delete)</span><br><span class="hljs-built_in">cat</span> <span class="hljs-built_in">test</span> | <span class="hljs-built_in">tr</span> -d <span class="hljs-string">&#x27;1&#x27;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>字符压缩</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 转换在内存进行，不改变文件</span><br><span class="hljs-comment"># -s位于后部</span><br><span class="hljs-built_in">cat</span> <span class="hljs-built_in">test</span> | <span class="hljs-built_in">tr</span> <span class="hljs-string">&#x27; &#x27;</span> -s<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>按列切分文本：cut</strong></p>
+<ul>
+<li><p>截取特定列</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 截取的内存进行，不改变文件</span><br><span class="hljs-comment"># -b(byte)以字节为单位，-c(character)以字符为单位，-f以字段为单位</span><br><span class="hljs-comment"># 数字为具体列范围</span><br><span class="hljs-attribute">cut</span> -f <span class="hljs-number">1</span>,<span class="hljs-number">2</span> test<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>指定界定符</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs axapta"><span class="hljs-meta"># 截取的内存进行，不改变文件</span><br><span class="hljs-meta"># -d后接界定符</span><br>cut -f <span class="hljs-number">2</span> -d <span class="hljs-string">&#x27;,&#x27;</span> <span class="hljs-keyword">new</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>按列拼接文本：paste</strong></p>
+<ul>
+<li><p>按列拼接</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">在内存中拼接，不改变文件</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">将两个文件按对应列拼接</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">最后加上-d <span class="hljs-string">&quot;x&quot;</span>会将x作为指定分隔符（<span class="hljs-built_in">paste</span> test1 test2 -d <span class="hljs-string">&quot;,&quot;</span>）</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">两文件列数可以不同</span> <br>paste test1 test2<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>指定界定符拼接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 在内存中拼接，不改变文件</span><br><span class="hljs-comment"># 按照-d之后给出的界定符拼接</span><br><span class="hljs-built_in">paste</span> test1 test2 -d <span class="hljs-string">&quot;,&quot;</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>统计行和字符：wc</strong><ul>
+<li><p>基本统计 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># -l统计行数(line)，-w统计单词数(word)，-c统计字符数(character)</span><br><span class="hljs-built_in">wc</span> -l <span class="hljs-built_in">test</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>ls</strong></p>
+<ul>
 <li><code>ls -lrt</code> 递归显示文件的详细信息并按照时间排序</li>
 </ul>
 </li>
-<li><strong>tail</strong><ul>
-<li><code>tail -n 100</code> 显示文件尾，指定显示行数，默认10行</li>
+<li><p><strong>tail</strong></p>
+<ul>
+<li><p><code>tail -n 100</code> 显示文件尾，指定显示行数，默认10行</p>
+</li>
+<li><p>查看文件尾部</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># -f参数可以不立即回传结束信号，当文件有新写入数据时会及时更新</span><br><span class="hljs-comment"># 查看日志时常用</span><br><span class="hljs-built_in">tail</span> -f <span class="hljs-built_in">test</span><br></code></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li><strong>chmod</strong><ul>
-<li><code>chmod 777 filename</code> 修改文件的权限为用户，用户组，其他人有所有权限</li>
+<li><p><strong>chmod</strong></p>
+<ul>
+<li><p><code>chmod 777 filename</code> 修改文件的权限为用户，用户组，其他人有所有权限</p>
+</li>
+<li><p>更改文件权限</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs applescript"><span class="hljs-comment"># 可以对三种使用者设置权限，u(user, owner)，g(group)，o(other)</span><br><span class="hljs-comment"># 文件可以有三种权限，r(read)，w(write)，x(execute)</span><br><span class="hljs-comment"># 这里u+r表示文件所有者在原有基础上增加文件读取权限</span><br><span class="hljs-comment"># 这里777分别对应，u=7，g=7，o=7，具体数字含义自行google</span><br>chmod u+r <span class="hljs-built_in">file</span><br>chmod <span class="hljs-number">777</span> <span class="hljs-built_in">file</span><br></code></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li><strong>rm</strong><ul>
+<li><p><strong>rm</strong></p>
+<ul>
 <li><code>rm -r</code> 递归删除子目录</li>
 <li><code>rm -f</code> 强制删除</li>
 </ul>
 </li>
-<li><strong>vim的三种模式</strong><ul>
+<li><p><strong>vim的三种模式</strong></p>
+<ul>
 <li>命令模式(一般模式，通过yy进行赋值)</li>
 <li>编辑模式，通过i或者a</li>
 <li>末行模式，冒号</li>
 </ul>
+<p><a target="_blank" rel="noopener" href="http://coolshell.cn/articles/5426.html">详见</a></p>
+</li>
+<li><p><strong>创建链接：ln</strong></p>
+<ul>
+<li><p>创建硬链接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 文件inode中链接数会增加，只有链接数减为0时文件才真正被删除</span><br><span class="hljs-built_in">ln</span> file1 file2<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>创建软（符号链接）链接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># -s(symbol)为符号链接，仅仅是引用路径</span><br><span class="hljs-comment"># 相比于硬链接最大特点是可以跨文件系统</span><br><span class="hljs-comment"># 类似于Windows创建快捷方式，实际文件删除则链接失效</span><br><span class="hljs-built_in">ln</span> -s file1 file2<br></code></pre></td></tr></table></figure></li>
+</ul>
 </li>
 </ul>
-<h2 id="3-3-磁盘及内存命令"><a href="#3-3-磁盘及内存命令" class="headerlink" title="3.3 磁盘及内存命令"></a>3.3 磁盘及内存命令</h2><ul>
+<h2 id="3-磁盘及内存命令"><a href="#3-磁盘及内存命令" class="headerlink" title="3.磁盘及内存命令"></a>3.磁盘及内存命令</h2><ul>
 <li>文件大小和占用空间大小是不一样的，因为要对齐</li>
 <li>显示每个文件和目录的磁盘使用空间<ul>
 <li><strong>(disk used) du -h</strong></li>
@@ -1320,8 +1433,8 @@
 <li><strong>(disk free) df -h</strong></li>
 </ul>
 </li>
-<li><strong>显示内存使用情况</strong><ul>
-<li>free</li>
+<li><strong>显示内存使用情况：free</strong><ul>
+<li>可获得内存及交换区的总量，已使用量，空闲量等信息</li>
 <li>Mem是物理内存的使用情况</li>
 <li>Swap是交换空间的使用情况</li>
 <li>total是物理内存和交换空间的总大小</li>
@@ -1333,8 +1446,31 @@
 </ul>
 </li>
 </ul>
-<h2 id="3-4-进程命令"><a href="#3-4-进程命令" class="headerlink" title="3.4 进程命令"></a>3.4 进程命令</h2><ul>
-<li><strong>ps</strong><ul>
+<h2 id="4-监控性能指标：sar"><a href="#4-监控性能指标：sar" class="headerlink" title="4.监控性能指标：sar"></a>4.监控性能指标：sar</h2><p>监控CPU </p>
+<ul>
+<li>监控CPU负载</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 加上-q可以查看运行队列中进程数，系统上进程大小，平均负载等</span><br><span class="hljs-comment"># 这里&quot;1&quot;表示采样时间间隔是1秒，这里&quot;2&quot;表示采样次数为2</span><br><span class="hljs-attribute">sar</span> -q <span class="hljs-number">1</span> <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>监控CPU使用率</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 可以显示CPU使用情况</span><br><span class="hljs-comment"># 参数意义同上</span><br><span class="hljs-attribute">sar</span> -u <span class="hljs-number">1</span> <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
+
+<p>监控内存</p>
+<ul>
+<li>查询内存</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 可以显示内存使用情况</span><br><span class="hljs-comment"># 参数意义同上 </span><br><span class="hljs-attribute">sar</span> -r <span class="hljs-number">1</span> <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>页面交换查询</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"> <span class="hljs-comment"># 可以查看是否发生大量页面交换，吞吐率大幅下降时可用</span><br> <span class="hljs-comment"># 参数意义同上</span><br><span class="hljs-attribute">sar</span> -W <span class="hljs-number">1</span> <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="5-进程命令"><a href="#5-进程命令" class="headerlink" title="5.进程命令"></a>5.进程命令</h2><ul>
+<li><p><strong>ps</strong></p>
+<ul>
 <li>当前运行的进程的快照，指定ps命令的那个时刻的那些进程</li>
 <li><code>ps -aux</code> 查看所有的在内存中的进程信息</li>
 <li><code>ps -ajx</code> 查看进程组相关信息，可以追踪进程之间的血缘关系</li>
@@ -1342,7 +1478,8 @@
 <li><code>ps -u username</code> 显示指定用户username信息</li>
 </ul>
 </li>
-<li><strong>top</strong><ul>
+<li><p><strong>top</strong></p>
+<ul>
 <li>实时显示系统中各个进程的资源占用情况，按”q”退出top命令</li>
 <li><code>top -H -p pid</code>显示对应pid的所有线程资源使用情况</li>
 <li><code>load average</code> 表示系统最近1min,5min,15min的平均负载，越大表示负载越来越小</li>
@@ -1354,101 +1491,165 @@
 </li>
 </ul>
 </li>
-<li><strong>kill</strong><ul>
-<li>杀掉进程</li>
-<li><code>kill -9 pid</code>杀掉指定进程</li>
+<li><p><strong>kill</strong></p>
+<ul>
+<li><p>杀掉进程</p>
+</li>
+<li><p><code>kill -9 pid</code>杀掉指定进程</p>
+</li>
+<li><p>杀死具体进程</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 加具体进程PID</span><br><span class="hljs-attribute">kill</span> <span class="hljs-number">12345</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>杀死某进程相关进程</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 加上&quot;-9&quot;杀死某进程相关进程</span><br><span class="hljs-attribute">kill</span> -<span class="hljs-number">9</span> <span class="hljs-number">12345</span><br></code></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li><strong>lsof</strong><ul>
+<li><p><strong>lsof</strong></p>
+<ul>
 <li>列出当前系统打开文件的工具</li>
 <li><code>lsof -i :8600</code> 查看8600端口的运行情况</li>
 <li><code>lsof -u username</code> 查看username打开的文件</li>
 <li><code>lsof -c string</code> 查看包含指定字符的进程所打开的文件</li>
 </ul>
+<ul>
+<li><p>查看某用户打开的文件 </p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-comment"># -u(user)为用户，后接用户名</span><br><span class="hljs-attribute">lsof</span> -u inx<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>查看指定进程打开的文件 </p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># -p(process)为进程，后接进程PID</span><br><span class="hljs-attribute">lsof</span> -p <span class="hljs-number">12345</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>查看指定目录下被进程打开的文件 </p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs autoit"><span class="hljs-meta"># 这里是<span class="hljs-string">&quot;+d&quot;</span>，需要注意，使用<span class="hljs-string">&quot;+D&quot;</span>递归目录</span><br>lsof +d /test<br></code></pre></td></tr></table></figure></li>
+</ul>
 </li>
 </ul>
-<h2 id="3-5-网络命令"><a href="#3-5-网络命令" class="headerlink" title="3.5 网络命令"></a>3.5 网络命令</h2><ul>
-<li><strong>netstat</strong><ul>
-<li>用于显示与IP、TCP、UDP、和ICMP协议相关的统计数据，用于检验本机各端口的网络连接情况</li>
-<li><code>-a</code> 列出所有端口</li>
-<li><code>-p</code> 显示出进程和PID</li>
-<li><code>-n</code> 将主机、端口和用户名用数字代替</li>
-<li><code>netstat -apn | grep port</code> 显示指定端口的状态信息和进程信息</li>
+<h2 id="6-网络命令"><a href="#6-网络命令" class="headerlink" title="6.网络命令"></a>6.网络命令</h2><ul>
+<li><p><strong>netstat</strong></p>
+<ul>
+<li><p>用于显示与IP、TCP、UDP、和ICMP协议相关的统计数据，用于检验本机各端口的网络连接情况</p>
+</li>
+<li><p><code>-a</code> 列出所有端口</p>
+</li>
+<li><p><code>-p</code> 显示出进程和PID</p>
+</li>
+<li><p><code>-n</code> 将主机、端口和用户名用数字代替</p>
+</li>
+<li><p><code>netstat -apn | grep port</code> 显示指定端口的状态信息和进程信息</p>
+</li>
+<li><p>网络接口信息</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-comment"># 显示网卡信息，可结合ifconfig学习</span><br><span class="hljs-attribute">netstat</span> -i<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>列出端口</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs scss"># <span class="hljs-built_in">-a</span>(all)表示所有端口，<span class="hljs-built_in">-t</span>(tcp)表示所有使用中的TCP端口<br># <span class="hljs-built_in">-l</span>(listening)表示正在监听的端口<br>netstat -at<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>显示端口统计信息</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs scss"># <span class="hljs-built_in">-s</span>(status)显示各协议信息<br># -加上<span class="hljs-built_in">-t</span>(tcp)显示tcp协议信息，加上<span class="hljs-built_in">-u</span>(udp)显示udp协议信息<br>netstat -s<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>显示使用某协议的应用名</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-comment"># -p(progress)表示程序，可以显示使用tcp/udp协议的应用的名称</span><br><span class="hljs-attribute">netstat</span> -pt<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>查找指定进程、端口</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs perl"><span class="hljs-comment"># 互逆操作第一个显示某程序使用的端口号，第二个显示某端口号的使用进程</span><br><span class="hljs-comment"># 第二个操作可以用lsof替代</span><br>netstat -ap | <span class="hljs-keyword">grep</span> ssh<br>netstat -an | <span class="hljs-keyword">grep</span> <span class="hljs-string">&#x27;:80&#x27;</span><br></code></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li><strong>tcpdump</strong><ul>
+<li><p><strong>tcpdump</strong></p>
+<ul>
 <li><code>tcpdump host ip</code> 截获主机发出和收到的数据包</li>
 <li><code>tcpdump port 6666</code> 截获端口上通过的包</li>
 <li><code>tcpdump -i eth0</code> 截获某网卡上的包</li>
 </ul>
+<p><a target="_blank" rel="noopener" href="http://www.cnblogs.com/ggjucheng/archive/2012/01/14/2322659.html">详见</a></p>
 </li>
-<li><strong>ping</strong><ul>
+<li><p><strong>ping</strong></p>
+<ul>
 <li><code>ping ip</code> 用于测试另一台主机是否可达，测试网络是否连通以及时延</li>
 <li>windows下ping是32比特，默认发送4次数据包结束</li>
 <li>linux下ping是64比特，默认不停发送数据包，直到手动停止</li>
 </ul>
 </li>
-<li><strong>host</strong><ul>
+<li><p><strong>host</strong></p>
+<ul>
 <li><code>host 域名</code> 返回域名的IP地址</li>
 <li>用来查询DNS记录</li>
 </ul>
 </li>
-<li><strong>ifconfig</strong><ul>
-<li>输出当前系统中所有处于活动状态的网络接口</li>
-<li><code>ifconfig eth0 ip/24</code> 手工指定网卡的IP地址和广播地址，其中广播地址可以根据掩码计算出来</li>
-<li><code>ifconfig eth0 up</code> 启动网卡eht0</li>
-<li><code>ifconfig eth0 down</code> 关闭网卡eht0</li>
+<li><p><strong>ifconfig</strong></p>
+<ul>
+<li><p>输出当前系统中所有处于活动状态的网络接口</p>
+</li>
+<li><p><code>ifconfig eth0 ip/24</code> 手工指定网卡的IP地址和广播地址，其中广播地址可以根据掩码计算出来</p>
+</li>
+<li><p><code>ifconfig eth0 up</code> 启动网卡eht0</p>
+</li>
+<li><p><code>ifconfig eth0 down</code> 关闭网卡eht0</p>
+</li>
+<li><p>显示设备信息</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs 1c"><span class="hljs-meta"># 可以显示已激活的网络设备信息</span><br>ifconfig<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>启动关闭指定网卡</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-comment"># 前一个参数为具体网卡，后一个为开关信息</span><br><span class="hljs-comment"># up为打开，down为关闭</span><br><span class="hljs-attribute">ifconfig</span> eth0 up<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>配置IP地址</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-comment"># 前一个参数为具体网卡，后一个为配置的IP地址</span><br><span class="hljs-attribute">ifconfig</span> eth0 <span class="hljs-number">192.168.1.1</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>设置最大传输单元</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-string">前一个参数为具体网卡，后面为MTU的大小</span><br><span class="hljs-comment"># 设置链路层MTU值，通常为1500</span><br><span class="hljs-string">ifconfig</span> <span class="hljs-string">eth0</span> <span class="hljs-string">mtu</span> <span class="hljs-number">1500</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>启用和关闭ARP协议</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-comment"># 开启arp如下，若关闭则-arp</span><br><span class="hljs-attribute">ifconfig</span> eth0 arp<br></code></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li><strong>traceroute</strong></li>
-</ul>
-<h2 id="3-6-字符处理命令"><a href="#3-6-字符处理命令" class="headerlink" title="3.6 字符处理命令"></a>3.6 字符处理命令</h2><ul>
-<li><strong>管道|</strong></li>
-<li><strong>grep</strong></li>
-</ul>
-<h2 id="3-7-调试命令"><a href="#3-7-调试命令" class="headerlink" title="3.7 调试命令"></a>3.7 调试命令</h2><ul>
-<li><strong>gdb</strong><ul>
-<li><code>l</code> 列出函数代码及行数</li>
-<li><code>b 16</code> 在16行设置断点</li>
-<li><code>b func</code> 在函数func设置断点</li>
-<li><code>r</code> 运行程序</li>
-<li><code>n</code> 单条执行程序</li>
-<li><code>p i</code> 打印i变量的值</li>
-<li><code>bt</code> 查看函数堆栈</li>
-<li><code>finish</code> 退出函数</li>
-<li><code>q</code> 结束调试</li>
-</ul>
-</li>
-<li><strong>strace</strong><ul>
-<li>监控用户空间进程和内核的交互，跟踪系统调用和信号传递</li>
-<li><code>strace -c ./test</code> 统计.&#x2F;test使用的系统调用</li>
-<li><code>strace -p pid</code> 跟踪现有进程</li>
-</ul>
-</li>
-<li><strong>ipcs</strong><ul>
-<li>用于报告系统的消息队列，信号量和共享内存等使用情况</li>
-<li><code>ipcs -a</code>用于列出本用户所有相关的ipcs参数</li>
-<li><code>ipcs -q</code>用于列出进程中的消息队列</li>
-<li><code>ipcs -s</code>用于列出所有的信号量</li>
-<li><code>ipcs -m</code>用于列出所有的共享内存信息</li>
-<li><code>ipcs -l</code>用于列出系统限额，比如共享内存最大限制</li>
-<li><code>ipcs -u</code>用于列出当前的使用情况</li>
-</ul>
-</li>
-<li><strong>ipcrm</strong><ul>
-<li>用于移除一个消息队列，或者共享内存段，或者一个信号集，同时会将与ipc对象相关联的数据也一起移除，只有超级管理员，或者ipc对象的创建者才能这样做</li>
-<li><code>ipcrm -M shmkey</code> 移除用shmkey创建的共享内存段</li>
-<li><code>ipcrm -m shmid</code> 移除用shmid标识的共享内存段</li>
-<li><code>ipcrm -Q msgkey</code> 移除用msqkey创建的消息队列</li>
-<li><code>ipcrm -q msqid</code> 移除用msqid标识的消息队列</li>
-<li><code>ipcrm -S semkey</code> 移除用semkey创建的信号</li>
-<li><code>ipcrm -s semid</code> 移除用semid标识的信号</li>
+<li><p><strong>traceroute</strong></p>
+<ul>
+<li><p>文件包途径的IP</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-comment"># 可以打印从沿途经过的路由器IP地址</span><br><span class="hljs-attribute">traceroute</span> baidu.com<br></code></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
-<h2 id="3-8-文本处理工具"><a href="#3-8-文本处理工具" class="headerlink" title="3.8 文本处理工具"></a>3.8 文本处理工具</h2><ul>
-<li><strong>sed</strong></li>
-<li><strong>awk</strong></li>
+<ul>
+<li><p><strong>网络Debug分析（网络层&#x2F;传输层）：nc</strong></p>
+<ul>
+<li><p>端口扫描</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 黑客很喜欢</span><br><span class="hljs-comment"># 扫描某服务器端口使用情况</span><br><span class="hljs-comment"># -v(view)显示指令执行过程，-w(wait)设置超时时长</span><br><span class="hljs-comment"># -z使用输入输出模式（只在端口扫描时使用）</span><br><span class="hljs-comment"># 数字为扫描的端口范围 </span><br><span class="hljs-attribute">nc</span> -v -w <span class="hljs-number">1</span> baidu.com  -z <span class="hljs-number">75</span>-<span class="hljs-number">1000</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.oschina.net/translate/linux-netcat-command">其他详见</a></p>
+</li>
+<li><p><strong>域名解析工具（应用层DNS协议）：dig</strong></p>
+<ul>
+<li><pre><code class="hljs"># 应用层，DNS
+# 打印域名解析结果
+# 打印域名解析过程中涉及的各级DNS服务器地址
+dig baidu.com
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">-</span> <span class="hljs-strong">**网络请求（应用层）：curl**</span><br><br>  [<span class="hljs-string">详见</span>](<span class="hljs-link">http://www.cnblogs.com/gbyukg/p/3326825.html</span>)<br><br><span class="hljs-section">## 7.调试命令</span><br><br><span class="hljs-bullet">*</span> <span class="hljs-strong">**调试工具：gdb**</span><br>  <br><span class="hljs-bullet">  *</span> <span class="hljs-code">`l`</span> 列出函数代码及行数<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`b 16`</span> 在16行设置断点<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`b func`</span> 在函数func设置断点<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`r`</span> 运行程序<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`n`</span> 单条执行程序<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`p i`</span> 打印i变量的值<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`bt`</span> 查看函数堆栈<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`finish`</span> 退出函数<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`q`</span> 结束调试<br>  <br>  [<span class="hljs-string">详见</span>](<span class="hljs-link">http://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/gdb.html</span>)<br>  <br><span class="hljs-bullet">*</span> <span class="hljs-strong">**编译器：gcc/g++**</span><br><br><span class="hljs-bullet">  *</span> \- C/C++编译器，必知必会，除此以外需要了解预处理-&gt; 编译 -&gt; 汇编 -&gt; 链接等一系列流程<br><br>  [<span class="hljs-string">详见</span>](<span class="hljs-link">http://www.cnblogs.com/lidan/archive/2011/05/25/2239517.html</span>)<br><br><span class="hljs-bullet">*</span> <span class="hljs-strong">**跟踪进程中系统调用：strace**</span><br>  <br><span class="hljs-bullet">  *</span> 监控用户空间进程和内核的交互，跟踪系统调用和信号传递<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`strace -c ./test`</span> 统计./test使用的系统调用<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`strace -p pid`</span> 跟踪现有进程<br>  <br>  [<span class="hljs-string">详见</span>](<span class="hljs-link">http://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/strace.html</span>)<br>  <br><span class="hljs-bullet">*</span> <span class="hljs-strong">**跟踪进程栈：pstack**</span><br><br><span class="hljs-bullet">  *</span> [<span class="hljs-string">详见</span>](<span class="hljs-link">http://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/pstack.html#</span>)<br><br><span class="hljs-bullet">*</span> <span class="hljs-strong">**ipcs**</span><br>  <br><span class="hljs-bullet">  *</span> 用于报告系统的消息队列，信号量和共享内存等使用情况<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`ipcs -a`</span>用于列出本用户所有相关的ipcs参数<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`ipcs -q`</span>用于列出进程中的消息队列<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`ipcs -s`</span>用于列出所有的信号量<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`ipcs -m`</span>用于列出所有的共享内存信息<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`ipcs -l`</span>用于列出系统限额，比如共享内存最大限制<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`ipcs -u`</span>用于列出当前的使用情况<br>  <br><span class="hljs-bullet">*</span> <span class="hljs-strong">**进程内存映射：pmap**</span><br><br><span class="hljs-bullet">  *</span> 显示进程内存映射<br><br></code></pre></td></tr></table></figure>
+# -x显示扩展信息，后接进程pid
+# Address: 内存开始地址
+# 显示信息：
+    Kbytes: 占用内存的字节数
+    RSS: 保留内存的字节数
+    Dirty: 脏页的字节数（包括共享和私有的）
+    Mode: 内存的权限：read、write、execute、shared、private
+    Mapping: 占用内存的文件、或[anon]（分配的内存）、或[stack]（堆栈）
+    Device: 设备名 (major:minor)
+
+pmap -x 12345
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">*</span> <span class="hljs-strong">**ipcrm**</span><br>  <br><span class="hljs-bullet">  *</span> 用于移除一个消息队列，或者共享内存段，或者一个信号集，同时会将与ipc对象相关联的数据也一起移除，只有超级管理员，或者ipc对象的创建者才能这样做<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`ipcrm -M shmkey`</span> 移除用shmkey创建的共享内存段<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`ipcrm -m shmid`</span> 移除用shmid标识的共享内存段<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`ipcrm -Q msgkey`</span> 移除用msqkey创建的消息队列<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`ipcrm -q msqid`</span> 移除用msqid标识的消息队列<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`ipcrm -S semkey`</span> 移除用semkey创建的信号<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`ipcrm -s semid`</span> 移除用semid标识的信号<br>  <br><span class="hljs-bullet">*</span> <span class="hljs-strong">**查看依赖库：ldd**</span><br><br><span class="hljs-bullet">  *</span> 程序依赖库查询<br><br></code></pre></td></tr></table></figure>
+# ldd后接可执行文件
+# 第一列为程序依赖什么库，第二列为系统提供的与程序需要的库所对应的库，第三列为库加载的开始地址
+# 前两列可以判断系统提供的库和需要的库是否匹配，第三列可以知道当前库在进程地址空间中对应的开始位置
+
+ldd a.out
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="8-文本处理工具"><a href="#8-文本处理工具" class="headerlink" title="8.文本处理工具"></a>8.文本处理工具</h2><ul>
+<li><p><strong>sed</strong></p>
+<p><a target="_blank" rel="noopener" href="http://coolshell.cn/articles/9104.html">详见</a></p>
+</li>
+<li><p><strong>awk</strong></p>
+<p><a target="_blank" rel="noopener" href="http://coolshell.cn/articles/9070.html">详见</a></p>
+</li>
 </ul>
 
               
