@@ -23,11 +23,15 @@
 <meta property="og:site_name" content="UESTC-Fyy">
 <meta property="og:description" content="一、C++基础1.数组和指针的区别 概念不同  指针相当于一个变量，它存放的是数据在内存中的地址 数组是用于储存多个相同类型数据的集合   赋值不同  同类型指针变量可以相互赋值，数组不行，只能一个一个元素的赋值或拷贝   访问数据不同  指针是间接访问数据，获取指针，先解引用，再访问指针指向的地址中的内容 数组是直接访问   sizeof意义不同  数组所占存储空间的内存：sizeof（数组名）">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://axiu-image-bed.oss-cn-shanghai.aliyuncs.com/img/202205212343505.png">
+<meta property="og:image" content="https://axiu-image-bed.oss-cn-shanghai.aliyuncs.com/img/202205212343130.png">
+<meta property="og:image" content="https://axiu-image-bed.oss-cn-shanghai.aliyuncs.com/img/202205212343182.png">
 <meta property="article:published_time" content="2022-07-09T07:15:45.000Z">
-<meta property="article:modified_time" content="2022-08-09T05:44:54.576Z">
+<meta property="article:modified_time" content="2022-08-09T11:24:40.613Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://axiu-image-bed.oss-cn-shanghai.aliyuncs.com/img/202205212343505.png">
   
   
   <title>C++面经-个人总结 - UESTC-Fyy</title>
@@ -210,7 +214,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          26k 字
+          30k 字
         
       </span>
     
@@ -221,7 +225,7 @@
         
         
         
-          220 分钟
+          249 分钟
         
       </span>
     
@@ -478,7 +482,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="8-new运算符的原理"><a href="#8-new运算符的原理" class="headerlink" title="8.new运算符的原理"></a>8.new运算符的原理</h2><ul>
+<h2 id="8-new-x2F-delete运算符的原理"><a href="#8-new-x2F-delete运算符的原理" class="headerlink" title="8.new&#x2F;delete运算符的原理"></a>8.new&#x2F;delete运算符的原理</h2><ul>
 <li><strong>内存分配</strong><ul>
 <li>调用相应的 operator new(size_t) 函数，动态分配内存</li>
 <li>如果 operator new(size_t) 不能成功获得内存，则调用 new_handler()函数用于处理new失败问题</li>
@@ -490,6 +494,7 @@
 <li>如果调用构造函数初始化对象时抛出异常，则自动调用 operator delete(void *, void *) 函数释放已经分配到的内存</li>
 </ul>
 </li>
+<li><strong>delete简单数据类型默认只是调用free函数；复杂数据类型先调用析构函数再调用operator delete；针对简单类型，delete和delete[]等同</strong></li>
 </ul>
 <h2 id="9-malloc的内存分配机制"><a href="#9-malloc的内存分配机制" class="headerlink" title="9.malloc的内存分配机制"></a>9.malloc的内存分配机制</h2><p><strong>malloc内存分配机制是怎么样的,在哪里分配内存，最大可以申请多大的内存？</strong></p>
 <ul>
@@ -556,11 +561,65 @@
 </ul>
 <h2 id="15-explicit关键字"><a href="#15-explicit关键字" class="headerlink" title="15.explicit关键字"></a>15.explicit关键字</h2><p>explicit关键字的作用就是<strong>防止对象间实现&#x3D;赋值</strong>，<strong>防止类构造函数的隐式自动转换</strong>，类构造函数默认情况下即声明为implicit(隐式)，另外<strong>explicit只用于单参数的构造函数</strong>，或者除了第一个参数以外的其他参数都有默认值</p>
 <ul>
-<li><p>explicit 修饰构造函数时，可以防止隐式转换和复制初始化</p>
+<li>explicit 修饰构造函数时，可以防止隐式转换和复制初始化</li>
+<li>explicit 修饰转换函数时，可以防止隐式转换</li>
+</ul>
+<h2 id="16-C-从代码到可执行"><a href="#16-C-从代码到可执行" class="headerlink" title="16.C++从代码到可执行"></a>16.C++从代码到可执行</h2><h2 id="17-hello-c程序的编译过程"><a href="#17-hello-c程序的编译过程" class="headerlink" title="17.hello.c程序的编译过程"></a>17.hello.c程序的编译过程</h2><p>以下是一个 hello.c 程序：</p>
+<pre><code class="hljs">#include &lt;stdio.h&gt;
+
+int main()
+&#123;
+    printf(&quot;hello, world\n&quot;);
+    return 0;
+&#125;
+</code></pre>
+<p>在 Unix 系统上，由编译器把源文件转换为目标文件。</p>
+<pre><code class="hljs">    gcc -o hello hello.c
+</code></pre>
+<p>这个过程大致如下：</p>
+<p><img src="https://axiu-image-bed.oss-cn-shanghai.aliyuncs.com/img/202205212343505.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<ul>
+<li>预处理阶段：处理以 # 开头的预处理命令；</li>
+<li>编译阶段：翻译成汇编文件；</li>
+<li>汇编阶段：将汇编文件翻译成可重定位目标文件；</li>
+<li>链接阶段：将可重定位目标文件和 printf.o 等单独预编译好的目标文件进行合并，得到最终的可执行目标文件。</li>
+</ul>
+<p><strong>静态链接</strong><br>静态链接器以一组可重定位目标文件为输入，生成一个完全链接的可执行目标文件作为输出。链接器主要完成以下两个任务：</p>
+<ul>
+<li>符号解析：每个符号对应于一个函数、一个全局变量或一个静态变量，符号解析的目的是将每个符号引用与一个符号定义关联起来。</li>
+<li>重定位：链接器通过把每个符号定义与一个内存位置关联起来，然后修改所有对这些符号的引用，使得它们指向这个内存位置。</li>
+</ul>
+<p><img src="https://axiu-image-bed.oss-cn-shanghai.aliyuncs.com/img/202205212343130.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><strong>目标文件</strong></p>
+<ul>
+<li>可执行目标文件：可以直接在内存中执行；</li>
+<li>可重定位目标文件：可与其它可重定位目标文件在链接阶段合并，创建一个可执行目标文件；</li>
+<li>共享目标文件：这是一种特殊的可重定位目标文件，可以在运行时被动态加载进内存并链接；</li>
+</ul>
+<p><strong>动态链接</strong><br>静态库有以下两个问题：</p>
+<ul>
+<li><p>当静态库更新时那么整个程序都要重新进行链接；</p>
 </li>
-<li><p>explicit 修饰转换函数时，可以防止隐式转换</p>
+<li><p>对于 printf 这种标准函数库，如果每个程序都要有代码，这会极大浪费资源。</p>
 </li>
 </ul>
+<p>共享库是为了解决静态库的这两个问题而设计的，在 Linux 系统中通常用 .so 后缀来表示，Windows 系统上它们被称为 DLL。它具有以下特点：</p>
+<ul>
+<li>在给定的文件系统中一个库只有一个文件，所有引用该库的可执行目标文件都共享这个文件，它不会被复制到引用它的可执行文件中；</li>
+<li>在内存中，一个共享库的 .text 节（已编译程序的机器代码）的一个副本可以被不同的正在运行的进程共享。</li>
+</ul>
+<p><img src="https://axiu-image-bed.oss-cn-shanghai.aliyuncs.com/img/202205212343182.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>源代码－－&gt;预处理－－&gt;编译－－&gt;优化－－&gt;汇编－－&gt;链接–&gt;可执行文件</p>
+<ol>
+<li><p>预处理<br>读取c源程序，对其中的伪指令（以#开头的指令）和特殊符号进行处理。包括宏定义替换、条件编译指令、头文件包含指令、特殊符号。 预编译程序所完成的基本上是对源程序的“替代”工作。经过此种替代，生成一个没有宏定义、没有条件编译指令、没有特殊符号的输出文件。.i预处理后的c文件，.ii预处理后的C++文件。</p>
+</li>
+<li><p>编译阶段<br>编译程序所要作得工作就是通过词法分析和语法分析，在确认所有的指令都符合语法规则之后，将其翻译成等价的中间代码表示或汇编代码。.s文件</p>
+</li>
+<li><p>汇编过程<br>汇编过程实际上指把汇编语言代码翻译成目标机器指令的过程。对于被翻译系统处理的每一个C语言源程序，都将最终经过这一处理而得到相应的目标文件。目标文件中所存放的也就是与源程序等效的目标的机器语言代码。.o目标文件</p>
+</li>
+<li><p>链接阶段<br>链接程序的主要工作就是将有关的目标文件彼此相连接，也即将在一个文件中引用的符号同该符号在另外一个文件中的定义连接起来，使得所有的这些目标文件成为一个能够诶操作系统装入执行的统一整体。</p>
+</li>
+</ol>
 <h1 id="二、C-面向对象"><a href="#二、C-面向对象" class="headerlink" title="二、C++面向对象"></a>二、C++面向对象</h1><h2 id="1-内存字节对齐"><a href="#1-内存字节对齐" class="headerlink" title="1.内存字节对齐"></a>1.内存字节对齐</h2><ul>
 <li><code>#pragma pack(n)</code> 表示的是设置n字节对齐，windows默认是8，linux是4</li>
 </ul>
@@ -640,6 +699,24 @@
 </ul>
 </li>
 </ul>
+<h2 id="6-拷贝初始化和直接初始化"><a href="#6-拷贝初始化和直接初始化" class="headerlink" title="6.拷贝初始化和直接初始化"></a>6.拷贝初始化和直接初始化</h2><ul>
+<li>当用于类类型对象时，初始化的拷贝形式和直接形式有所不同：直接初始化直接调用与实参匹配的构造函数，拷贝初始化总是调用拷贝构造函数。拷贝初始化首先使用指定构造函数创建一个临时对象，然后用拷贝构造函数将那个临时对象拷贝到正在创建的对象。举例如下</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">string <span class="hljs-title">str1</span><span class="hljs-params">(<span class="hljs-string">&quot;I am a string&quot;</span>)</span></span>;<span class="hljs-comment">//语句1 直接初始化</span><br><span class="hljs-function">string <span class="hljs-title">str2</span><span class="hljs-params">(str1)</span></span>;<span class="hljs-comment">//语句2 直接初始化，str1是已经存在的对象，直接调用拷贝构造函数对str2进行初始化</span><br>string str3 = <span class="hljs-string">&quot;I am a string&quot;</span>;<span class="hljs-comment">//语句3 拷贝初始化，先为字符串”I am a string“创建临时对象，再把临时对象作为参数，使用拷贝构造函数构造str3</span><br>string str4 = str1;<span class="hljs-comment">//语句4 拷贝初始化，这里相当于隐式调用拷贝构造函数，而不是调用赋值运算符函数   </span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>为了提高效率，允许编译器跳过创建临时对象这一步，<strong>直接调用构造函数构造要创建的对象，这样就完全等价于</strong>直接初始化了（语句1和语句3等价），但是需要辨别两种情况。<ul>
+<li>当拷贝构造函数为private时：语句3和语句4在编译时会报错</li>
+<li>使用explicit修饰构造函数时：如果构造函数存在隐式转换，编译时会报错</li>
+</ul>
+</li>
+</ul>
+<h2 id="6-初始化和赋值的区别"><a href="#6-初始化和赋值的区别" class="headerlink" title="6.初始化和赋值的区别"></a>6.初始化和赋值的区别</h2><ul>
+<li>对于简单类型来说，初始化和赋值没什么区别</li>
+<li>对于类和复杂数据类型来说，这两者的区别就大了，举例如下：</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-type">int</span> num1;<br>    <span class="hljs-type">int</span> num2;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">A</span>(<span class="hljs-type">int</span> a=<span class="hljs-number">0</span>, <span class="hljs-type">int</span> b=<span class="hljs-number">0</span>):<span class="hljs-built_in">num1</span>(a),<span class="hljs-built_in">num2</span>(b)&#123;&#125;;<br>    <span class="hljs-built_in">A</span>(<span class="hljs-type">const</span> A&amp; a)&#123;&#125;;<br>    <span class="hljs-comment">//重载 = 号操作符函数</span><br>    A&amp; <span class="hljs-keyword">operator</span>=(<span class="hljs-type">const</span> A&amp; a)&#123;<br>        num1 = a.num1 + <span class="hljs-number">1</span>;<br>        num2 = a.num2 + <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>    &#125;;<br>&#125;;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-function">A <span class="hljs-title">a</span><span class="hljs-params">(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)</span></span>;<br>    A a1 = a; <span class="hljs-comment">//拷贝初始化操作，调用拷贝构造函数</span><br>    A b;<br>    b = a;<span class="hljs-comment">//赋值操作，对象a中，num1 = 1，num2 = 1；对象b中，num1 = 2，num2 = 2</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <h2 id="6-拷贝构造函数与深浅拷贝"><a href="#6-拷贝构造函数与深浅拷贝" class="headerlink" title="6.拷贝构造函数与深浅拷贝"></a>6.拷贝构造函数与深浅拷贝</h2><p>拷贝构造函数的参数必须加const，因为防止修改，本来就是用现有的对象初始化新的对象</p>
 <ul>
 <li><strong>拷贝构造函数的使用时机</strong><ul>
@@ -660,6 +737,14 @@
 <li>拷贝构造函数是先将传入的参数对象进行一次深拷贝，再传给新对象。这就会有一次拷贝对象的开销，并且进行了深拷贝，就需要给对象分配地址空间</li>
 <li>移动构造函数就是为了解决这个拷贝开销而产生的。移动构造函数首先将传递参数的内存地址空间接管，然后将内部所有指针设置为nullptr，并且在原地址上进行新对象的构造，最后调用原对象的的析构函数，这样做既不会产生额外的拷贝开销，也不会给新对象分配内存空间</li>
 </ul>
+<h2 id="7-什么情况下会调用拷贝构造函数"><a href="#7-什么情况下会调用拷贝构造函数" class="headerlink" title="7.什么情况下会调用拷贝构造函数"></a>7.什么情况下会调用拷贝构造函数</h2><ul>
+<li>用类的一个实例化对象去初始化另一个对象的时候</li>
+<li>函数的参数是类的对象时（非引用传递）</li>
+<li>函数的返回值是函数体内局部对象的类的对象时 ,此时虽然发生（Named return Value优化）NRV优化，但是由于返回方式是值传递，所以会在返回值的地方调用拷贝构造函数</li>
+</ul>
+<p><strong>另：第三种情况在Linux g++ 下则不会发生拷贝构造函数，不仅如此即使返回局部对象的引用，依然不会发生拷贝构造函数</strong></p>
+<p><strong>总结就是：即使发生NRV优化的情况下，Linux+ g++的环境是不管值返回方式还是引用方式返回的方式都不会发生拷贝构造函数，而Windows + VS2019在值返回的情况下发生拷贝构造函数，引用返回方式则不发生拷贝构造函数</strong>。</p>
+<p>在c++编译器发生NRV优化，如果是引用返回的形式则不会调用拷贝构造函数，如果是值传递的方式依然会发生拷贝构造函数。</p>
 <h2 id="8-只在堆上-x2F-栈上创建对象"><a href="#8-只在堆上-x2F-栈上创建对象" class="headerlink" title="8.只在堆上&#x2F;栈上创建对象"></a>8.只在堆上&#x2F;栈上创建对象</h2><ul>
 <li><p><strong>只能在堆上生成对象：将析构函数设置为私有</strong> </p>
 <ul>
@@ -1022,17 +1107,40 @@
 <ul>
 <li><strong>static_cast</strong><ul>
 <li>完成基础数据类型；同一个继承体系中类型的转换；任意类型与空指针类型void* 之间的转换，不能用于普通指针的转换（void空指针除外）</li>
+<li>static_cast &lt; type-id &gt; (expression)</li>
+<li>该运算符把expression转换为type-id类型，但没有运行时类型检查来保证转换的安全性。它主要有如下几种用法：<ul>
+<li>用于类层次结构中基类（父类）和派生类（子类）之间指针或引用引用的转换<ul>
+<li>进行上行转换（把派生类的指针或引用转换成基类表示）是安全的</li>
+<li>进行下行转换（把基类指针或引用转换成派生类表示）时，由于没有动态类型检查，所以是不安全的</li>
+</ul>
+</li>
+<li>用于基本数据类型之间的转换，如把int转换成char，把int转换成enum。这种转换的安全性也要开发人员来保证。</li>
+<li>把空指针转换成目标类型的空指针</li>
+<li>把任何类型的表达式转换成void类型</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>dynamic_cast</strong><ul>
 <li>动态类型转换，用于实现RTTI。只能用于含有虚函数的类，用于类层次间的向上和向下转化。只能转指针或引用。向下转化时，如果是非法的对于指针返回NULL，对于引用抛异常bad_cast</li>
+<li>dynamic_cast主要用于类层次间的上行转换和下行转换，还可以用于类之间的交叉转换</li>
+<li>在类层次间进行上行转换时，dynamic_cast和static_cast的效果是一样的</li>
+<li>在进行下行转换时，dynamic_cast具有类型检查的功能，比static_cast更安全</li>
 </ul>
 </li>
 <li><strong>const_cast</strong><ul>
 <li>用于删除 const、volatile特性</li>
+<li>该运算符用来修改类型的const或volatile属性。除了const 或volatile修饰之外， type_id和expression的类型是一样的。用法如下：<ul>
+<li>常量指针被转化成非常量的指针，并且仍然指向原来的对象</li>
+<li>常量引用被转换成非常量的引用，并且仍然指向原来的对象</li>
+<li>const_cast一般用于修改底指针。如const char *p形式</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>reinterpret_cast</strong><ul>
+<li>reinterpret_cast<type-id> (expression)</li>
+<li>type-id 必须是一个指针、引用、算术类型、函数指针或者成员指针。它可以用于类型之间进行强制转换。</li>
 <li>几乎什么都可以转,不能丢掉 const、volatile特性</li>
 </ul>
 </li>
