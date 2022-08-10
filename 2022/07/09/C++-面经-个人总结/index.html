@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://axiu-image-bed.oss-cn-shanghai.aliyuncs.com/img/202205212343182.png">
 <meta property="og:image" content="https://axiu-image-bed.oss-cn-shanghai.aliyuncs.com/img/202205220035271.png">
 <meta property="article:published_time" content="2022-07-09T07:15:45.000Z">
-<meta property="article:modified_time" content="2022-08-10T07:08:57.501Z">
+<meta property="article:modified_time" content="2022-08-10T07:31:25.551Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -226,7 +226,7 @@
         
         
         
-          298 分钟
+          300 分钟
         
       </span>
     
@@ -784,8 +784,17 @@ int main()
 </ul>
 <p>我们在定义类或者结构体，这些结构的时候，<strong>最后都重写拷贝函数，避免浅拷贝</strong>这类不易发现但后果严重的错误产生</p>
 <h2 id="7-拷贝构造函数和移动构造函数的区别"><a href="#7-拷贝构造函数和移动构造函数的区别" class="headerlink" title="7.拷贝构造函数和移动构造函数的区别"></a>7.拷贝构造函数和移动构造函数的区别</h2><ul>
+<li><strong>移动构造函数设计初衷</strong><ul>
+<li>有时候我们会遇到这样一种情况，我们用对象a初始化对象b后对象a我们就不在使用了，但是对象a的空间还在呀（在析构之前），既然拷贝构造函数，实际上就是把a对象的内容复制一份到b中，那么为什么我们不能直接使用a的空间呢？这样就避免了新的空间的分配，大大降低了构造的成本</li>
+</ul>
+</li>
+<li><strong>两者区别</strong><ul>
+<li>拷贝构造函数中，对于指针，我们一定要采用深层复制，而移动构造函数中，对于指针，我们采用浅层复制</li>
 <li>拷贝构造函数是先将传入的参数对象进行一次深拷贝，再传给新对象。这就会有一次拷贝对象的开销，并且进行了深拷贝，就需要给对象分配地址空间</li>
 <li>移动构造函数就是为了解决这个拷贝开销而产生的。移动构造函数首先将传递参数的内存地址空间接管，然后将内部所有指针设置为nullptr，并且在原地址上进行新对象的构造，最后调用原对象的的析构函数，这样做既不会产生额外的拷贝开销，也不会给新对象分配内存空间</li>
+<li>典型的未命名对象就是函数的返回值或者类型转换的对象。使用临时对象的值初始化另一个对象值，不会要求对对象的复制：因为临时对象不会有其它使用，因而，它的值可以被移动到目的对象</li>
+</ul>
+</li>
 </ul>
 <h2 id="7-什么情况下会调用拷贝构造函数"><a href="#7-什么情况下会调用拷贝构造函数" class="headerlink" title="7.什么情况下会调用拷贝构造函数"></a>7.什么情况下会调用拷贝构造函数</h2><ul>
 <li>用类的一个实例化对象去初始化另一个对象的时候</li>
