@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/be608a77-7b7f-4f8e-87cc-f2237270bf69.png">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/docker-filesystems-busyboxrw.png">
 <meta property="article:published_time" content="2022-07-09T07:15:07.000Z">
-<meta property="article:modified_time" content="2022-08-07T08:24:15.971Z">
+<meta property="article:modified_time" content="2022-08-10T14:30:19.730Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -225,7 +225,7 @@
         
         
         
-          241 分钟
+          244 分钟
         
       </span>
     
@@ -937,6 +937,20 @@
 </li>
 <li><strong>因此，操作系统引入了比进程粒度更小的线程，作为并发执行的基本单位，从而减少程序在并发执行时所付出的时空开销，提高并发性</strong></li>
 </ul>
+</li>
+</ul>
+<h3 id="4-13Posix信号量与System-V信号量的区别"><a href="#4-13Posix信号量与System-V信号量的区别" class="headerlink" title="4.13Posix信号量与System V信号量的区别"></a>4.13Posix信号量与System V信号量的区别</h3><ul>
+<li><p>POSIX信号量常用于线程；system v信号量常用于进程的同步</p>
+</li>
+<li><p>从使用的角度，System V 信号量的使用比较复杂，而 POSIX 信号量使用起来相对简单</p>
+</li>
+<li><p>对 POSIX 来说，信号量是个非负整数。而 System V 信号量则是一个或多个信号量的集合，它对应的是一个信号量结构体，这个结构体是为 System V IPC 服务的，信号量只不过是它的一部分</p>
+</li>
+<li><p>Posix信号量是基于内存的，即信号量值是放在共享内存中的，它是由可能与文件系统中的路径名对应的名字来标识的。而System v信号量则是基于内核的，它放在内核里面</p>
+</li>
+<li><p>POSIX 信号量的头文件是 &lt;semaphore.h&gt;，而 System V 信号量的头文件是 &lt;sys&#x2F;sem.h&gt;</p>
+</li>
+<li><p>Posix还有有名信号量，一般用于进程同步, 有名信号量是内核持续的</p>
 </li>
 </ul>
 <h2 id="5-调度算法"><a href="#5-调度算法" class="headerlink" title="5.调度算法"></a>5.调度算法</h2><h3 id="5-1进程调度算法"><a href="#5-1进程调度算法" class="headerlink" title="5.1进程调度算法"></a>5.1进程调度算法</h3><ul>
