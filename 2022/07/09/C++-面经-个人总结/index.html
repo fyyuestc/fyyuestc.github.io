@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://axiu-image-bed.oss-cn-shanghai.aliyuncs.com/img/202205212343182.png">
 <meta property="og:image" content="https://axiu-image-bed.oss-cn-shanghai.aliyuncs.com/img/202205220035271.png">
 <meta property="article:published_time" content="2022-07-09T07:15:45.000Z">
-<meta property="article:modified_time" content="2022-08-10T07:31:25.551Z">
+<meta property="article:modified_time" content="2022-08-10T08:34:47.614Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -419,11 +419,8 @@
 </li>
 <li><p><strong>申请的内存所在位置</strong> </p>
 <ul>
-<li>new操作符从自由存储区（free store）上为对象动态分配内存空间，而malloc函数从堆上动态分配内存</li>
-</ul>
-</li>
-<li><p>自由存储区是C++的抽象概念，堆是操作系统中的术语，自由存储区可以是堆，也可以是静态存储区，取决于operator new的实现细节</p>
-<ul>
+<li><strong>new操作符从自由存储区（free store）上为对象动态分配内存空间，而malloc函数从堆上动态分配内存</strong></li>
+<li>自由存储区是C++的抽象概念，堆是操作系统中的术语，自由存储区可以是堆，也可以是静态存储区，取决于operator new的实现细节</li>
 <li>基本上所有的C++编译器默认用堆来实现自由存储区，即new运算符会按照malloc的方式来实现</li>
 </ul>
 </li>
