@@ -26,8 +26,9 @@
 <meta property="og:image" content="https://axiu-image-bed.oss-cn-shanghai.aliyuncs.com/img/202205212343505.png">
 <meta property="og:image" content="https://axiu-image-bed.oss-cn-shanghai.aliyuncs.com/img/202205212343130.png">
 <meta property="og:image" content="https://axiu-image-bed.oss-cn-shanghai.aliyuncs.com/img/202205212343182.png">
+<meta property="og:image" content="https://axiu-image-bed.oss-cn-shanghai.aliyuncs.com/img/202205220035271.png">
 <meta property="article:published_time" content="2022-07-09T07:15:45.000Z">
-<meta property="article:modified_time" content="2022-08-10T02:53:10.073Z">
+<meta property="article:modified_time" content="2022-08-10T06:45:24.409Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -214,7 +215,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          34k 字
+          35k 字
         
       </span>
     
@@ -225,7 +226,7 @@
         
         
         
-          286 分钟
+          294 分钟
         
       </span>
     
@@ -589,19 +590,23 @@
 <p><strong>四、链接</strong></p>
 <p>将不同的源文件产生的目标文件进行链接，从而形成一个可以执行的程序。链接分为静态链接和动态链接：</p>
 <ul>
-<li><strong>静态链接</strong></li>
-</ul>
+<li><p><strong>静态链接</strong></p>
 <p>函数和数据被编译进一个二进制文件。在使用静态库的情况下，在编译链接可执行文件时，链接器从库中复制这些函数和数据并把它们和应用程序的其它模块组合起来创建最终的可执行文件。</p>
-<p>空间浪费：因为每个可执行程序中对所有需要的目标文件都要有一份副本，所以如果多个程序对同一个目标文件都有依赖，会出现同一个目标文件都在内存存在多个副本；</p>
-<p>更新困难：每当库函数的代码修改了，这个时候就需要重新进行编译链接形成可执行程序。</p>
-<p>运行速度快：但是静态链接的优点就是，在可执行程序中已经具备了所有执行程序所需要的任何东西， 在执行的时候运行速度快。</p>
 <ul>
-<li><strong>动态链接</strong></li>
+<li>空间浪费：因为每个可执行程序中对所有需要的目标文件都要有一份副本，所以如果多个程序对同一个目标文件都有依赖，会出现同一个目标文件都在内存存在多个副本；</li>
+<li>更新困难：每当库函数的代码修改了，这个时候就需要重新进行编译链接形成可执行程序。</li>
+<li>运行速度快：但是静态链接的优点就是，在可执行程序中已经具备了所有执行程序所需要的任何东西， 在执行的时候运行速度快。</li>
 </ul>
+</li>
+<li><p><strong>动态链接</strong></p>
 <p>动态链接的基本思想是把程序按照模块拆分成各个相对独立部分，在程序运行时才将它们链接在一起形成一个完整的程序，而不是像静态链接一样把所有程序模块都链接成一个单独的可执行文件。</p>
-<p>共享库：就是即使需要每个程序都依赖同一个库，但是该库不会像静态链接那样在内存中存在多份副本，而是这多个程序在执行时共享同一份副本；</p>
-<p>更新方便：更新时只需要替换原来的目标文件，而无需将所有的程序再重新链接一遍。当程序下一次运行时，新版本的目标文件会被自动加载到内存并且链接起来，程序就完成了升级的目标。</p>
-<p>性能损耗：因为把链接推迟到了程序运行时，所以每次执行程序都需要进行链接，所以性能会有一定损失。</p>
+<ul>
+<li>共享库：就是即使需要每个程序都依赖同一个库，但是该库不会像静态链接那样在内存中存在多份副本，而是这多个程序在执行时共享同一份副本；</li>
+<li>更新方便：更新时只需要替换原来的目标文件，而无需将所有的程序再重新链接一遍。当程序下一次运行时，新版本的目标文件会被自动加载到内存并且链接起来，程序就完成了升级的目标。</li>
+<li>性能损耗：因为把链接推迟到了程序运行时，所以每次执行程序都需要进行链接，所以性能会有一定损失。</li>
+</ul>
+</li>
+</ul>
 <h2 id="17-hello-c程序的编译过程"><a href="#17-hello-c程序的编译过程" class="headerlink" title="17.hello.c程序的编译过程"></a>17.hello.c程序的编译过程</h2><p>以下是一个 hello.c 程序：</p>
 <pre><code class="hljs">#include &lt;stdio.h&gt;
 
@@ -1030,7 +1035,7 @@ int main()
 <ul>
 <li>对象在创建时,由编译器对VPTR指针进行初始化，只有当对象的构造完全结束后VPTR的指向才最终确定</li>
 <li>子类中虚函数指针的初始化过程 当定义一个子类对象的时候比较麻烦，因为构造子类对象的时候会首先调用父类的构造函数然后再调用子类的构造函数。当调用父类的构造函数的时候，此时会创建Vptr指针，该指针会指向父类的虚函数表；然后再调用子类的构造函数，子类继承父类的虚函数指针，此时Vptr又被赋值指向子类的虚函数表</li>
-<li>构造函数不能是虚函数，虚表指针并没有在对象的内存空间中，必须要构造函数调用完成后才会形成虚表指针</li>
+<li><strong>构造函数不能是虚函数，虚表指针并没有在对象的内存空间中，必须要构造函数调用完成后才会形成虚表指针</strong></li>
 </ul>
 <h2 id="20-抽象类和纯虚函数"><a href="#20-抽象类和纯虚函数" class="headerlink" title="20.抽象类和纯虚函数"></a>20.抽象类和纯虚函数</h2><p>在程序设计中，如果仅仅为了设计一些虚函数接口，打算在子类中对其进行重写，那么不需要在父类中对虚函数的函数体提供无意义的代码，可以通过纯虚函数满足需求</p>
 <ul>
@@ -1045,7 +1050,7 @@ int main()
 <li><p><strong>内存泄漏：当一个对象已经不需要再使用本该被回收时，另外一个正在使用的对象持有它的引用从而导致它不能被回收，这导致本该被回收的对象不能被回收而停留在堆内存中，这就产生了内存泄漏</strong></p>
 <ul>
 <li>仅仅发生继承时，创建子类对象后销毁，函数调用流程为：父类构造函数-&gt;子类构造函数-&gt;子类析构函数-&gt;父类析构函数</li>
-<li>当发生多态时（父类指针或引用指向子类对象），通过父类指针在堆上创建子类对象，然后销毁，调用流程为：父类构造函数-&gt;子类构造函数-&gt;父类析构函数，不会调用子类析构函数，因此子类中会出现内存泄漏问题</li>
+<li>当发生多态时（父类指针或引用指向子类对象），通过父类指针在堆上创建子类对象，如果父类的析构函数不被声明为虚函数，则编译器实施的是静态绑定。销毁的调用流程为：父类构造函数-&gt;子类构造函数-&gt;父类析构函数，不会调用子类析构函数，因此子类中会出现内存泄漏问题</li>
 </ul>
 </li>
 <li><p><strong>内存泄漏的解决方法</strong></p>
@@ -1362,10 +1367,20 @@ int main()
 <li>swap在交换的时候并不是完全将2个容器的元素互换，而是交换了2个容器内的内存地址</li>
 </ul>
 <h2 id="2-STL中的哈希表扩容"><a href="#2-STL中的哈希表扩容" class="headerlink" title="2.STL中的哈希表扩容"></a>2.STL中的哈希表扩容</h2><ul>
+<li><strong>哈希表概述</strong><ul>
+<li>hash table表格内的元素称为桶（bucket),而由桶所链接的元素称为节点（node),其中存入桶元素的容器为stl本身很重要的一种序列式容器——vector容器。之所以选择vector为存放桶元素的基础容器，主要是因为vector容器本身具有动态扩容能力，无需人工干预</li>
+<li><strong>hashtable中的bucket所维护的list既不是list也不是slist，而是其自己定义的由hashtable_node数据结构组成的linked-list，而bucket聚合体本身使用vector进行存储。hashtable的迭代器只提供前进操作，不提供后退操作</strong></li>
+</ul>
+</li>
+<li><strong>哈希表扩容</strong><ul>
+<li>在hashtable设计bucket的数量上，其内置了28个质数[53, 97, 193,…,429496729]，在创建hashtable时，会根据存入的元素个数选择大于等于元素个数的质数作为hashtable的容量（vector的长度），其中每个bucket所维护的linked-list长度也等于hashtable的容量。如果插入hashtable的元素个数超过了bucket的容量，就要进行重建table操作，即找出下一个质数，创建新的buckets vector，重新计算元素在新hashtable的位置</li>
+<li><img src="https://axiu-image-bed.oss-cn-shanghai.aliyuncs.com/img/202205220035271.png" srcset="/img/loading.gif" lazyload alt="img"></li>
 <li>这里需要知道STL中的swap底层，其实扩容也是vector扩容<ul>
 <li>创建一个新桶，该桶是原来桶两倍大最接近的质数(判断n是不是质数的方法：用n除2到sqrt(n)范围内的数) </li>
 <li>将原来桶里的数通过指针的转换，插入到新桶中(注意STL这里做的很精细，没有直接将数据从旧桶遍历拷贝数据插入到新桶，而是通过指针转换两个桶的地址)</li>
 <li>通过swap函数将新桶和旧桶交换，销毁新桶</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1425,6 +1440,16 @@ int main()
 </ol>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-number">2.</span> <span class="hljs-comment">//i++实现代码为：                 </span><br><span class="hljs-type">int</span> <span class="hljs-keyword">operator</span>++(<span class="hljs-type">int</span>)                 <br>&#123;<br>   <span class="hljs-type">int</span> temp = *<span class="hljs-keyword">this</span>;                   <br>   ++*<span class="hljs-keyword">this</span>;                       <br>   <span class="hljs-keyword">return</span> temp;                  <br>&#125; <br></code></pre></td></tr></table></figure>
 
+<h2 id="5-STL中的allocator、deallocator"><a href="#5-STL中的allocator、deallocator" class="headerlink" title="5.STL中的allocator、deallocator"></a>5.STL中的allocator、deallocator</h2><ul>
+<li><p>第一级配置器直接使用malloc()、free()和relloc()，第二级配置器视情况采用不同的策略：当配置区块超过128bytes时，视之为足够大，便调用第一级配置器；当配置器区块小于128bytes时，为了降低额外负担，使用复杂的内存池整理方式，而不再用一级配置器</p>
+</li>
+<li><p>第二级配置器主动将任何小额区块的内存需求量上调至8的倍数，并维护16个free-list，各自管理大小为8~128bytes的小额区块</p>
+</li>
+<li><p>空间配置函数allocate()，首先判断区块大小，大于128就直接调用第一级配置器，小于128时就检查对应的free-list。如果free-list之内有可用区块，就直接拿来用，如果没有可用区块，就将区块大小调整至8的倍数，然后调用refill()，为free-list重新分配空</p>
+</li>
+<li><p>空间释放函数deallocate()，该函数首先判断区块大小，大于128bytes时，直接调用一级配置器，小于128bytes就找到对应的free-list然后释放内存</p>
+</li>
+</ul>
 
               
             </div>
