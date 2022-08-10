@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://axiu-image-bed.oss-cn-shanghai.aliyuncs.com/img/202205212343130.png">
 <meta property="og:image" content="https://axiu-image-bed.oss-cn-shanghai.aliyuncs.com/img/202205212343182.png">
 <meta property="article:published_time" content="2022-07-09T07:15:45.000Z">
-<meta property="article:modified_time" content="2022-08-09T11:41:35.300Z">
+<meta property="article:modified_time" content="2022-08-10T02:50:23.943Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -214,7 +214,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          32k 字
+          34k 字
         
       </span>
     
@@ -225,7 +225,7 @@
         
         
         
-          264 分钟
+          286 分钟
         
       </span>
     
@@ -810,12 +810,13 @@ int main()
 </li>
 <li><p><strong>this指针的作用：</strong></p>
 <ul>
-<li><p>this指针是隐含在对象成员函数内的一种指针。当一个对象被创建后，它的每一个成员函数都会含有一个系统自动生成的隐含指针this。this指针指向被调用的成员函数所属的对象（谁调用成员函数，this指向谁），this表示对象本身，<strong>非静态成员函数中才有this，静态成员函数内部没有</strong></p>
+<li>this指针是隐含在对象成员函数内的一种指针。当一个对象被创建后，它的每一个成员函数都会含有一个系统自动生成的隐含指针this。this指针指向被调用的成员函数所属的对象（谁调用成员函数，this指向谁），this表示对象本身，<strong>非静态成员函数中才有this，静态成员函数内部没有</strong></li>
+</ul>
 </li>
 <li><p>this 并不是一个常规变量，而是个右值，所以不能取得 this 的地址（不能 &amp;this）</p>
-</li>
-<li><p>对非静态成员函数默认添加了this指针，类型为classname *const this</p>
-</li>
+<ul>
+<li>对非静态成员函数默认添加了this指针，类型为classname *const this</li>
+<li><strong>this指针只能在成员函数中使用，在全局函数、静态成员函数中不能使用this指针。因此，获得一个对象后，不能通过对象使用this指针，但在成员函数中，可以知道this指针位置，也可以直接使用它</strong></li>
 </ul>
 </li>
 <li><p><strong>this指针使用：</strong></p>
@@ -824,13 +825,25 @@ int main()
 <li>为实现对象的链式引用，在类的非静态成员函数中返回对象本身，可以用return * this，this指向对象，&#x2F;*this表示对象本身</li>
 </ul>
 </li>
+<li><p><strong>this指针在成员函数的开始执行前构造，在成员函数的执行结束后清除</strong></p>
+</li>
+<li><p><strong>this指针会因编译器不同而有不同的放置位置，可能是栈，也可能是寄存器，甚至全局变量</strong></p>
+</li>
 </ul>
 <h2 id="10-delete-this合法吗？"><a href="#10-delete-this合法吗？" class="headerlink" title="10.delete this合法吗？"></a>10.delete this合法吗？</h2><p><strong>合法，但有前提：</strong></p>
+<blockquote>
+<p>在类对象的内存空间中，只有数据成员和虚函数表指针，并不包含代码内容，类的成员函数单独放在代码段中。在调用成员函数时，隐含传递一个this指针，让成员函数知道当前是哪个对象在调用它。当调用delete this时，类对象的内存空间被释放。在delete this之后进行的其他任何函数调用，只要不涉及到this指针的内容，都能够正常运行。一旦涉及到this指针，如操作数据成员，调用虚函数等，就会出现不可预期的问题</p>
+</blockquote>
 <ul>
 <li>必须保证 this 对象是通过 new（不是 new[]、不是 placement new、不是栈上、不是全局、不是其他对象成员）分配的</li>
 <li>必须保证调用 delete this 的成员函数是最后一个调用 this 的成员函数</li>
 <li>必须保证成员函数的 delete this 后面没有调用 this 了</li>
 <li>必须保证 delete this 后没有人使用了</li>
+</ul>
+<p><strong>在类的析构函数中调用delete this会发生什么？</strong></p>
+<ul>
+<li>会导致堆栈溢出</li>
+<li>原因很简单，delete的本质是“为将被释放的内存调用一个或多个析构函数，然后，释放内存”。显然，delete this会去调用本对象的析构函数，而析构函数中又调用delete this，形成无限递归，造成堆栈溢出，系统崩溃</li>
 </ul>
 <h2 id="11-静态成员变量和静态成员函数"><a href="#11-静态成员变量和静态成员函数" class="headerlink" title="11.静态成员变量和静态成员函数"></a>11.静态成员变量和静态成员函数</h2><p>若将成员变量声明为static，则为静态成员变量，与一般的成员变量不同，无论建立多少对象，都只有一个静态成员变量的拷贝，静态成员变量属于一个类，所有对象共享。<strong>静态变量在编译阶段就分配了空间，对象还没创建时就已经分配了空间，放到全局静态区</strong></p>
 <ul>
@@ -1092,6 +1105,75 @@ int main()
 <li>在析构函数中catch捕获异常并作处理，吞下异常</li>
 <li>如果客户需要对某个操作函数运次期间抛出的异常做出反应，class应该提供普通函数执行该操作，而非在析构函数中</li>
 </ul>
+<h2 id="10-CPP11新特性"><a href="#10-CPP11新特性" class="headerlink" title="10.CPP11新特性"></a>10.CPP11新特性</h2><ul>
+<li><strong>nullptr常量</strong><ul>
+<li>C++中NULL仅仅是define NULL 0 的一个宏定义，因此，有时候会产生歧义<ul>
+<li>比如f（char*）和f（int），参数传NULL的话到底该调用哪个？</li>
+<li>事实上，在VS下测试这样的函数重载会优先调用f（int），但是f（char *）也是正确的，因此C++引入nullptr来避免这个问题</li>
+</ul>
+</li>
+<li>nullptr是一个空指针，可以被转换成其他任意指针的类型</li>
+</ul>
+</li>
+<li><strong>auto类型指示符</strong><ul>
+<li>让编译器替我们去分析表达式所属的类型，直接推导</li>
+<li>尤其是STL中map的迭代器这种很长的类型，适合用auto</li>
+</ul>
+</li>
+<li><strong>decltype类型指示符</strong><ul>
+<li>从表达式的类型推断出要定义的变量的类型，跟表达式的类型也就是参数类型紧密相关</li>
+<li><code>delctype (f()) sum = x;</code> 并不实际调用函数f()，只是使用f()的返回值当做sum的类型</li>
+<li><code>delctype (i) sum = x;</code>和<code>delctype ((i)) sum = x;</code> 其中i为int类型，前面的为int类型，后面的为int&amp;引用</li>
+</ul>
+</li>
+<li><strong>范围for语句</strong><ul>
+<li>多与auto配合使用</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs scss">string <span class="hljs-built_in">str</span>(&quot;somthing&quot;);<br><span class="hljs-built_in">for</span>(auto i:str) <span class="hljs-comment">//对于str中的每个字符，i类型为char</span><br>    cout &lt;&lt; c &lt;&lt; endl;<br><br><span class="hljs-built_in">for</span>(auto &amp;i:str) <span class="hljs-comment">//对于若要改变每个字符的值，需要加引用</span><br>    cout &lt;&lt; c &lt;&lt; endl;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>定义双层vector</strong><ul>
+<li><code>vector&lt;vector&lt;int&gt;&gt;(m, vector&lt;int&gt;(n, 0))</code> 创建m行n列的二维数组，全部初始化为0</li>
+</ul>
+</li>
+<li><strong>lambda表达式</strong><ul>
+<li>用于实现匿名函数，匿名函数只有函数体，没有函数名</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs fsharp">[capture list] (params list) <span class="hljs-keyword">mutable</span> <span class="hljs-keyword">exception</span><span class="hljs-operator">-&gt;</span> <span class="hljs-keyword">return</span> <span class="hljs-keyword">type</span> &#123;<span class="hljs-keyword">function</span> body&#125;;  <span class="hljs-comment">//1</span><br>[capture list] (params list) <span class="hljs-operator">-&gt;</span> <span class="hljs-keyword">return</span> <span class="hljs-keyword">type</span> &#123;<span class="hljs-keyword">function</span> body&#125;;  <span class="hljs-comment">//省略mutable，表示const不可修改</span><br>[capture list] (params list) &#123;<span class="hljs-keyword">function</span> body&#125;;       <span class="hljs-comment">//省略返回类型，按照函数体返回值决定返回类型</span><br>[capture list] &#123;<span class="hljs-keyword">function</span> body&#125;;     <span class="hljs-comment">//省略参数列表，无参函数</span><br>参数capture list：捕获外部变量列表 <br>params list：形参列表 <br><span class="hljs-keyword">mutable</span>指示符：用来说用是否可以修改捕获的变量 <br><span class="hljs-keyword">exception</span>：异常设定 <br><span class="hljs-keyword">return</span> <span class="hljs-keyword">type</span>：返回类型 <br><span class="hljs-keyword">function</span> body：函数体			<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-comment">//示例</span><br><span class="hljs-function"><span class="hljs-title">sort</span><span class="hljs-params">(vec.begin()</span></span>, vec<span class="hljs-selector-class">.end</span>(), <span class="hljs-selector-attr">[]</span>(int <span class="hljs-selector-tag">a</span>, int b)-&gt;bool&#123;return <span class="hljs-selector-tag">a</span> &lt; b&#125;)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>智能指针</strong><ul>
+<li>shared_ptr</li>
+<li>weak_ptr</li>
+<li>unique_ptr</li>
+</ul>
+</li>
+<li><strong>右值引用</strong><ul>
+<li>左值引用，必须引用左值 <code>int a = 0; int &amp;b = a</code></li>
+<li>右值引用可以引用结果 <code>int &amp;&amp; i = 0</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="5-auto、decltype的用法"><a href="#5-auto、decltype的用法" class="headerlink" title="5.auto、decltype的用法"></a>5.auto、decltype的用法</h2><p><strong>1）auto</strong></p>
+<p>C++11新标准引入了auto类型说明符，用它就能让编译器替我们去分析表达式所属的类型。和原来那些只对应某种特定的类型说明符(例如 int)不同，</p>
+<p>auto 让编译器通过初始值来进行类型推演。从而获得定义变量的类型，所以说 auto 定义的变量必须有初始值。</p>
+<p>举个例子：</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-comment">//普通；类型</span><br><span class="hljs-built_in">int</span> a = <span class="hljs-number">1</span>, b = <span class="hljs-number">3</span>;<br><span class="hljs-built_in">auto</span> c = a + b;<span class="hljs-comment">// c为int型</span><br><br><span class="hljs-comment">//const类型</span><br><span class="hljs-keyword">const</span> <span class="hljs-built_in">int</span> i = <span class="hljs-number">5</span>;<br><span class="hljs-built_in">auto</span> j = i; <span class="hljs-comment">// 变量i是顶层const, 会被忽略, 所以j的类型是int</span><br><span class="hljs-built_in">auto</span> k = &amp;i; <span class="hljs-comment">// 变量i是一个常量, 对常量取地址是一种底层const, 所以b的类型是const int*</span><br><span class="hljs-keyword">const</span> <span class="hljs-built_in">auto</span> l = i; <span class="hljs-comment">//如果希望推断出的类型是顶层const的, 那么就需要在auto前面加上cosnt</span><br><br><span class="hljs-comment">//引用和指针类型</span><br><span class="hljs-built_in">int</span> x = <span class="hljs-number">2</span>;<br><span class="hljs-built_in">int</span>&amp; y = x;<br><span class="hljs-built_in">auto</span> z = y; <span class="hljs-comment">//z是int型不是int&amp; 型</span><br><span class="hljs-built_in">auto</span>&amp; p1 = y; <span class="hljs-comment">//p1是int&amp;型</span><br><span class="hljs-built_in">auto</span> p2 = &amp;x; <span class="hljs-comment">//p2是指针类型int*</span><br></code></pre></td></tr></table></figure>
+
+<p>2）decltype</p>
+<p>有的时候我们还会遇到这种情况，<strong>我们希望从表达式中推断出要定义变量的类型，但却不想用表达式的值去初始化变量。</strong>还有可能是函数的返回类型为某表达式的值类型。在这些时候auto显得就无力了，所以C++11又引入了第二种类型说明符decltype，它的作用是选择并返回操作数的数据类型。在此过程中，编译器只是分析表达式并得到它的类型，却不进行实际的计算表达式的值。</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs awk">int <span class="hljs-keyword">func</span>() &#123;return <span class="hljs-number">0</span>&#125;;<br><br><span class="hljs-regexp">//</span>普通类型<br>decltype(<span class="hljs-keyword">func</span>()) sum = <span class="hljs-number">5</span>; <span class="hljs-regexp">//</span> sum的类型是函数<span class="hljs-keyword">func</span>()的返回值的类型int, 但是这时不会实际调用函数<span class="hljs-keyword">func</span>()<br>int a = <span class="hljs-number">0</span>;<br>decltype(a) b = <span class="hljs-number">4</span>; <span class="hljs-regexp">//</span> a的类型是int, 所以b的类型也是int<br><br><span class="hljs-regexp">//</span>不论是顶层const还是底层const, decltype都会保留   <br>const int c = <span class="hljs-number">3</span>;<br>decltype(c) d = c; <span class="hljs-regexp">//</span> d的类型和c是一样的, 都是顶层const<br>int e = <span class="hljs-number">4</span>;<br>const int* f = &amp;e; <span class="hljs-regexp">//</span> f是底层const<br>decltype(f) g = f; <span class="hljs-regexp">//</span> g也是底层const<br><br><span class="hljs-regexp">//</span>引用与指针类型<br><span class="hljs-regexp">//</span><span class="hljs-number">1</span>. 如果表达式是引用类型, 那么decltype的类型也是引用<br>const int i = <span class="hljs-number">3</span>, &amp;j = i;<br>decltype(j) k = <span class="hljs-number">5</span>; <span class="hljs-regexp">//</span> k的类型是 const int&amp;<br><br><span class="hljs-regexp">//</span><span class="hljs-number">2</span>. 如果表达式是引用类型, 但是想要得到这个引用所指向的类型, 需要修改表达式:<br>int i = <span class="hljs-number">3</span>, &amp;r = i;<br>decltype(r + <span class="hljs-number">0</span>) t = <span class="hljs-number">5</span>; <span class="hljs-regexp">//</span> 此时是int类型<br><br><span class="hljs-regexp">//</span><span class="hljs-number">3</span>. 对指针的解引用操作返回的是引用类型<br>int i = <span class="hljs-number">3</span>, j = <span class="hljs-number">6</span>, *p = &amp;i;<br>decltype(*p) c = j; <span class="hljs-regexp">//</span> c是int&amp;类型, c和j绑定在一起<br><br><span class="hljs-regexp">//</span><span class="hljs-number">4</span>. 如果一个表达式的类型不是引用, 但是我们需要推断出引用, 那么可以加上一对括号, 就变成了引用类型了<br>int i = <span class="hljs-number">3</span>;<br>decltype((i)) j = i; <span class="hljs-regexp">//</span> 此时j的类型是int&amp;类型, j和i绑定在了一起<br></code></pre></td></tr></table></figure>
+
+<h2 id="6-C-中NULL和nullptr的区别"><a href="#6-C-中NULL和nullptr的区别" class="headerlink" title="6.C++中NULL和nullptr的区别"></a>6.C++中NULL和nullptr的区别</h2><ul>
+<li><strong>NULL来自C语言，一般由宏定义实现，而 nullptr 则是C++11的新增关键字。在C语言中，NULL被定义为(void)0,而在C++语言中，NULL则被定义为整数0</strong></li>
+<li><strong>在传入NULL参数时，会把NULL当做整数0来看，如果我们想调用参数是指针的函数，该怎么办呢?。nullptr在C++11被引入用于解决这一问题，nullptr可以明确区分整型和指针类型，能够根据环境自动转换成相应的指针类型，但不会被转换为任何整型，所以不会造成参数传递错误</strong></li>
+</ul>
 <h2 id="5-智能指针"><a href="#5-智能指针" class="headerlink" title="5.智能指针"></a>5.智能指针</h2><ul>
 <li><p><strong>原始指针在引入了异常机制后容易发生内存泄漏、二次释放等问题</strong></p>
 </li>
@@ -1202,61 +1284,6 @@ int main()
 <li>在构造函数中申请分配资源，在析构函数中释放资源。因为C++的语言机制保证了，当一个对象创建的时候，自动调用构造函数，当对象超出作用域的时候会自动调用析构函数。所以，在RAII的指导下，我们应该使用类来管理资源，将资源和对象的生命周期绑定</li>
 <li>RAII的核心思想是将资源或者状态与对象的生命周期绑定，通过C++的语言机制，实现资源和状态的安全管理,智能指针是RAII最好的例子</li>
 </ul>
-<h2 id="10-CPP11新特性"><a href="#10-CPP11新特性" class="headerlink" title="10.CPP11新特性"></a>10.CPP11新特性</h2><ul>
-<li><strong>nullptr常量</strong><ul>
-<li>C++中NULL仅仅是define NULL 0 的一个宏定义，因此，有时候会产生歧义<ul>
-<li>比如f（char*）和f（int），参数传NULL的话到底该调用哪个？</li>
-<li>事实上，在VS下测试这样的函数重载会优先调用f（int），但是f（char *）也是正确的，因此C++引入nullptr来避免这个问题</li>
-</ul>
-</li>
-<li>nullptr是一个空指针，可以被转换成其他任意指针的类型</li>
-</ul>
-</li>
-<li><strong>auto类型指示符</strong><ul>
-<li>让编译器替我们去分析表达式所属的类型，直接推导</li>
-<li>尤其是STL中map的迭代器这种很长的类型，适合用auto</li>
-</ul>
-</li>
-<li><strong>decltype类型指示符</strong><ul>
-<li>从表达式的类型推断出要定义的变量的类型，跟表达式的类型也就是参数类型紧密相关</li>
-<li><code>delctype (f()) sum = x;</code> 并不实际调用函数f()，只是使用f()的返回值当做sum的类型</li>
-<li><code>delctype (i) sum = x;</code>和<code>delctype ((i)) sum = x;</code> 其中i为int类型，前面的为int类型，后面的为int&amp;引用</li>
-</ul>
-</li>
-<li><strong>范围for语句</strong><ul>
-<li>多与auto配合使用</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs scss">string <span class="hljs-built_in">str</span>(&quot;somthing&quot;);<br><span class="hljs-built_in">for</span>(auto i:str) <span class="hljs-comment">//对于str中的每个字符，i类型为char</span><br>    cout &lt;&lt; c &lt;&lt; endl;<br><br><span class="hljs-built_in">for</span>(auto &amp;i:str) <span class="hljs-comment">//对于若要改变每个字符的值，需要加引用</span><br>    cout &lt;&lt; c &lt;&lt; endl;<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>定义双层vector</strong><ul>
-<li><code>vector&lt;vector&lt;int&gt;&gt;(m, vector&lt;int&gt;(n, 0))</code> 创建m行n列的二维数组，全部初始化为0</li>
-</ul>
-</li>
-<li><strong>lambda表达式</strong><ul>
-<li>用于实现匿名函数，匿名函数只有函数体，没有函数名</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs fsharp">[capture list] (params list) <span class="hljs-keyword">mutable</span> <span class="hljs-keyword">exception</span><span class="hljs-operator">-&gt;</span> <span class="hljs-keyword">return</span> <span class="hljs-keyword">type</span> &#123;<span class="hljs-keyword">function</span> body&#125;;  <span class="hljs-comment">//1</span><br>[capture list] (params list) <span class="hljs-operator">-&gt;</span> <span class="hljs-keyword">return</span> <span class="hljs-keyword">type</span> &#123;<span class="hljs-keyword">function</span> body&#125;;  <span class="hljs-comment">//省略mutable，表示const不可修改</span><br>[capture list] (params list) &#123;<span class="hljs-keyword">function</span> body&#125;;       <span class="hljs-comment">//省略返回类型，按照函数体返回值决定返回类型</span><br>[capture list] &#123;<span class="hljs-keyword">function</span> body&#125;;     <span class="hljs-comment">//省略参数列表，无参函数</span><br>参数capture list：捕获外部变量列表 <br>params list：形参列表 <br><span class="hljs-keyword">mutable</span>指示符：用来说用是否可以修改捕获的变量 <br><span class="hljs-keyword">exception</span>：异常设定 <br><span class="hljs-keyword">return</span> <span class="hljs-keyword">type</span>：返回类型 <br><span class="hljs-keyword">function</span> body：函数体			<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-comment">//示例</span><br><span class="hljs-function"><span class="hljs-title">sort</span><span class="hljs-params">(vec.begin()</span></span>, vec<span class="hljs-selector-class">.end</span>(), <span class="hljs-selector-attr">[]</span>(int <span class="hljs-selector-tag">a</span>, int b)-&gt;bool&#123;return <span class="hljs-selector-tag">a</span> &lt; b&#125;)<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>智能指针</strong><ul>
-<li>shared_ptr</li>
-<li>weak_ptr</li>
-<li>unique_ptr</li>
-</ul>
-</li>
-<li><strong>右值引用</strong><ul>
-<li>左值引用，必须引用左值 <code>int a = 0; int &amp;b = a</code></li>
-<li>右值引用可以引用结果 <code>int &amp;&amp; i = 0</code></li>
-</ul>
-</li>
-</ul>
 <h2 id="11-右值引用"><a href="#11-右值引用" class="headerlink" title="11.右值引用"></a>11.右值引用</h2><ul>
 <li><p><strong>定义：</strong></p>
 <ul>
@@ -1272,9 +1299,15 @@ int main()
 </li>
 <li><p><strong>右值引用：</strong></p>
 <ul>
+<li><strong>右值引用关联到右值时，右值被存储到特定位置，右值引用指向该特定位置，也就是说，右值虽然无法获取地址，但是右值引用是可以获取地址的，该地址表示临时对象的存储位置</strong></li>
 <li>和声明左值引用一样，右值引用也必须立即进行初始化操作，且只能使用右值进行初始化</li>
 </ul>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-built_in">int</span> <span class="hljs-built_in">num</span> = <span class="hljs-number">10</span>;<br><span class="hljs-built_in">int</span> &amp;b = <span class="hljs-built_in">num</span>; <span class="hljs-comment">//左值引用</span><br><span class="hljs-built_in">int</span> &amp;&amp; a = <span class="hljs-number">10</span>; <span class="hljs-comment">//右值引用</span><br><span class="hljs-built_in">int</span> &amp;&amp; c = <span class="hljs-built_in">num</span> + <span class="hljs-number">40</span>; <span class="hljs-comment">//右值引用</span><br>a = <span class="hljs-number">100</span>; <span class="hljs-comment">//右值引用可以对右值进行修改</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-built_in">int</span> <span class="hljs-built_in">num</span> = <span class="hljs-number">10</span>;<br><span class="hljs-built_in">int</span>&amp; b = <span class="hljs-built_in">num</span>; <span class="hljs-comment">//左值引用</span><br><span class="hljs-built_in">int</span>&amp; e = <span class="hljs-number">10</span>; <span class="hljs-comment">//错误，左值引用不能使用右值初始化</span><br><span class="hljs-built_in">int</span>&amp;&amp; d = <span class="hljs-built_in">num</span>; <span class="hljs-comment">//错误，右值引用不能使用左值初始化 </span><br><span class="hljs-built_in">int</span>&amp;&amp; a = <span class="hljs-number">10</span>; <span class="hljs-comment">//右值引用</span><br><span class="hljs-built_in">int</span>&amp;&amp; c = <span class="hljs-built_in">num</span> + <span class="hljs-number">40</span>; <span class="hljs-comment">//右值引用</span><br>a = <span class="hljs-number">100</span>; <span class="hljs-comment">//右值引用可以对右值进行修改</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>右值引用的特点</strong></p>
+<ul>
+<li>通过右值引用的声明，右值的生命周期与右值引用类型变量的生命周期一样长，只要该变量还活着，该右值变量将会一直存活下去</li>
+</ul>
 </li>
 <li><p><strong>移动语义</strong></p>
 <ul>
@@ -1324,7 +1357,7 @@ int main()
 </ul>
 </li>
 </ul>
-<h1 id="四、STL原理"><a href="#四、STL原理" class="headerlink" title="四、STL原理"></a>四、STL原理</h1><h2 id="1-STL中的swap函数"><a href="#1-STL中的swap函数" class="headerlink" title="1.STL中的swap函数"></a>1.STL中的swap函数</h2><ul>
+<h1 id="四、STL模板库"><a href="#四、STL模板库" class="headerlink" title="四、STL模板库"></a>四、STL模板库</h1><h2 id="1-STL中的swap函数"><a href="#1-STL中的swap函数" class="headerlink" title="1.STL中的swap函数"></a>1.STL中的swap函数</h2><ul>
 <li>除了数组，其他容器在交换后本质上是将内存地址进行了交换，而元素本身在内存中的位置是没有变化</li>
 <li>swap在交换的时候并不是完全将2个容器的元素互换，而是交换了2个容器内的内存地址</li>
 </ul>
@@ -1362,15 +1395,12 @@ int main()
 <li>对于链表式容器(如 list)，删除当前的 iterator，仅仅会使当前的 iterator 失效，这是因为 list 之类的容器，<strong>使用了链表来实现，插入、删除一个结点不会对其他结点造成影响</strong></li>
 <li>只要在 erase 时，递增当前 iterator 即可，并且 erase 方法可以返回下一个有效的 iterator</li>
 </ul>
-</li>
-</ul>
 <p><strong>方式一：递增当前 iterator</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span> (iter = cont.<span class="hljs-built_in">begin</span>(); it != cont.<span class="hljs-built_in">end</span>();)<br>&#123;<br>   (*iter)-&gt;<span class="hljs-built_in">doSomething</span>();<br>   <span class="hljs-keyword">if</span> (<span class="hljs-built_in">shouldDelete</span>(*iter))<br>      cont.<span class="hljs-built_in">erase</span>(iter++);<br>   <span class="hljs-keyword">else</span><br>      iter++;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p><strong>方式二：通过 erase 获得下一个有效的 iterator</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span> (iter = cont.<span class="hljs-built_in">begin</span>(); iter != cont.<span class="hljs-built_in">end</span>();)<br>&#123;<br>   (*it)-&gt;<span class="hljs-built_in">doSomething</span>();<br>   <span class="hljs-keyword">if</span> (<span class="hljs-built_in">shouldDelete</span>(*iter))<br>      iter = cont.<span class="hljs-built_in">erase</span>(iter);  <span class="hljs-comment">//erase删除元素，返回下一个迭代器</span><br>   <span class="hljs-keyword">else</span><br>      ++iter;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<ul>
+</li>
 <li><p><strong>关联式容器</strong></p>
 <ul>
 <li>对于关联容器(如 map, set,multimap,multiset)，删除当前的 iterator，仅仅会使当前的 iterator 失效，只要在 erase 时，递增当前 iterator 即可</li>
@@ -1385,6 +1415,15 @@ int main()
 </ul>
 </li>
 </ul>
+<h2 id="4-迭代器：-it、it-哪个好，为什么"><a href="#4-迭代器：-it、it-哪个好，为什么" class="headerlink" title="4.迭代器：++it、it++哪个好，为什么"></a>4.迭代器：++it、it++哪个好，为什么</h2><ol>
+<li><p>前置返回一个引用，后置返回一个对象</p>
+<p> &#x2F;&#x2F; ++i实现代码为：<br> int&amp; operator++()<br> {<br>   *this +&#x3D; 1;<br>   return *this;<br> } </p>
+</li>
+<li><p>前置不会产生临时对象，后置必须产生临时对象，临时对象会导致效率降低</p>
+</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-number">2.</span> <span class="hljs-comment">//i++实现代码为：                 </span><br><span class="hljs-type">int</span> <span class="hljs-keyword">operator</span>++(<span class="hljs-type">int</span>)                 <br>&#123;<br>   <span class="hljs-type">int</span> temp = *<span class="hljs-keyword">this</span>;                   <br>   ++*<span class="hljs-keyword">this</span>;                       <br>   <span class="hljs-keyword">return</span> temp;                  <br>&#125; <br></code></pre></td></tr></table></figure>
+
 
               
             </div>
