@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://axiu-image-bed.oss-cn-shanghai.aliyuncs.com/img/202205212343182.png">
 <meta property="og:image" content="https://axiu-image-bed.oss-cn-shanghai.aliyuncs.com/img/202205220035271.png">
 <meta property="article:published_time" content="2022-07-09T07:15:45.000Z">
-<meta property="article:modified_time" content="2022-08-10T08:34:47.614Z">
+<meta property="article:modified_time" content="2022-08-12T05:44:35.850Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -751,7 +751,7 @@ int main()
 </ul>
 </li>
 </ul>
-<h2 id="6-初始化和赋值的区别"><a href="#6-初始化和赋值的区别" class="headerlink" title="6.初始化和赋值的区别"></a>6.初始化和赋值的区别</h2><ul>
+<h2 id="7-初始化和赋值的区别"><a href="#7-初始化和赋值的区别" class="headerlink" title="7.初始化和赋值的区别"></a>7.初始化和赋值的区别</h2><ul>
 <li>对于简单类型来说，初始化和赋值没什么区别</li>
 <li>对于类和复杂数据类型来说，这两者的区别就大了，举例如下：</li>
 </ul>
@@ -764,7 +764,7 @@ int main()
 <li><strong>实现不一样。拷贝构造函数首先是一个构造函数，它调用时候是通过参数的对象初始化产生一个对象。赋值操作符则是把一个新的对象赋值给一个原有的对象，所以如果原来的对象中有内存分配要先把内存释放掉，而且还要检察一下两个对象是不是同一个对象，如果是，不做任何操作，直接返回。（这些要点会在下面的String实现代码中体现）</strong></li>
 <li>如果不想写拷贝构造函数和赋值函数，又不允许别人使用编译器生成的缺省函数，最简单的办法是将拷贝构造函数和赋值函数声明为私有函数，不用编写代码</li>
 </ul>
-<h2 id="6-拷贝构造函数与深浅拷贝"><a href="#6-拷贝构造函数与深浅拷贝" class="headerlink" title="6.拷贝构造函数与深浅拷贝"></a>6.拷贝构造函数与深浅拷贝</h2><p>拷贝构造函数的参数必须加const，因为防止修改，本来就是用现有的对象初始化新的对象</p>
+<h2 id="8-拷贝构造函数与深浅拷贝"><a href="#8-拷贝构造函数与深浅拷贝" class="headerlink" title="8.拷贝构造函数与深浅拷贝"></a>8.拷贝构造函数与深浅拷贝</h2><p>拷贝构造函数的参数必须加const，因为防止修改，本来就是用现有的对象初始化新的对象</p>
 <ul>
 <li><strong>拷贝构造函数的使用时机</strong><ul>
 <li>使用已经创建好的对象初始化新对象 <code>A a; A b = a; A c(a); b = c;//b = c不是初始化，调用赋值运算符</code></li>
@@ -780,7 +780,7 @@ int main()
 </li>
 </ul>
 <p>我们在定义类或者结构体，这些结构的时候，<strong>最后都重写拷贝函数，避免浅拷贝</strong>这类不易发现但后果严重的错误产生</p>
-<h2 id="7-拷贝构造函数和移动构造函数的区别"><a href="#7-拷贝构造函数和移动构造函数的区别" class="headerlink" title="7.拷贝构造函数和移动构造函数的区别"></a>7.拷贝构造函数和移动构造函数的区别</h2><ul>
+<h2 id="9-拷贝构造函数和移动构造函数的区别"><a href="#9-拷贝构造函数和移动构造函数的区别" class="headerlink" title="9.拷贝构造函数和移动构造函数的区别"></a>9.拷贝构造函数和移动构造函数的区别</h2><ul>
 <li><strong>移动构造函数设计初衷</strong><ul>
 <li>有时候我们会遇到这样一种情况，我们用对象a初始化对象b后对象a我们就不在使用了，但是对象a的空间还在呀（在析构之前），既然拷贝构造函数，实际上就是把a对象的内容复制一份到b中，那么为什么我们不能直接使用a的空间呢？这样就避免了新的空间的分配，大大降低了构造的成本</li>
 </ul>
@@ -793,7 +793,7 @@ int main()
 </ul>
 </li>
 </ul>
-<h2 id="7-什么情况下会调用拷贝构造函数"><a href="#7-什么情况下会调用拷贝构造函数" class="headerlink" title="7.什么情况下会调用拷贝构造函数"></a>7.什么情况下会调用拷贝构造函数</h2><ul>
+<h2 id="10-什么情况下会调用拷贝构造函数"><a href="#10-什么情况下会调用拷贝构造函数" class="headerlink" title="10.什么情况下会调用拷贝构造函数"></a>10.什么情况下会调用拷贝构造函数</h2><ul>
 <li>用类的一个实例化对象去初始化另一个对象的时候</li>
 <li>函数的参数是类的对象时（非引用传递）</li>
 <li>函数的返回值是函数体内局部对象的类的对象时 ,此时虽然发生（Named return Value优化）NRV优化，但是由于返回方式是值传递，所以会在返回值的地方调用拷贝构造函数</li>
@@ -801,7 +801,7 @@ int main()
 <p><strong>另：第三种情况在Linux g++ 下则不会发生拷贝构造函数，不仅如此即使返回局部对象的引用，依然不会发生拷贝构造函数</strong></p>
 <p><strong>总结就是：即使发生NRV优化的情况下，Linux+ g++的环境是不管值返回方式还是引用方式返回的方式都不会发生拷贝构造函数，而Windows + VS2019在值返回的情况下发生拷贝构造函数，引用返回方式则不发生拷贝构造函数</strong>。</p>
 <p>在c++编译器发生NRV优化，如果是引用返回的形式则不会调用拷贝构造函数，如果是值传递的方式依然会发生拷贝构造函数。</p>
-<h2 id="8-只在堆上-x2F-栈上创建对象"><a href="#8-只在堆上-x2F-栈上创建对象" class="headerlink" title="8.只在堆上&#x2F;栈上创建对象"></a>8.只在堆上&#x2F;栈上创建对象</h2><ul>
+<h2 id="11-只在堆上-x2F-栈上创建对象"><a href="#11-只在堆上-x2F-栈上创建对象" class="headerlink" title="11.只在堆上&#x2F;栈上创建对象"></a>11.只在堆上&#x2F;栈上创建对象</h2><ul>
 <li><p><strong>只能在堆上生成对象：将析构函数设置为私有</strong> </p>
 <ul>
 <li><strong>原因：</strong>C++是静态绑定语言，编译器管理栈上对象的生命周期，编译器在为类对象分配栈空间时，会先检查类的析构函数的访问性。若析构函数不可访问，则不能在栈上创建对象</li>
@@ -813,7 +813,7 @@ int main()
 </ul>
 </li>
 </ul>
-<h2 id="9-this指针"><a href="#9-this指针" class="headerlink" title="9.this指针"></a>9.this指针</h2><ul>
+<h2 id="12-this指针"><a href="#12-this指针" class="headerlink" title="12.this指针"></a>12.this指针</h2><ul>
 <li><p><strong>为什么会有this指针</strong>：</p>
 <ul>
 <li>在类实例化对象时，只有非静态成员变量属于对象本身，剩余的静态成员变量，静态函数，非静态函数都不属于对象本身，因此非静态成员函数只会实例一份，多个同类型对象会共用一块代码，由于类中每个实例后的对象都有独一无二的地址，因此不同的实例对象调用成员函数时，函数需要知道是谁在调用它，因此引入了this指针</li>
@@ -841,7 +841,7 @@ int main()
 <li><p><strong>this指针会因编译器不同而有不同的放置位置，可能是栈，也可能是寄存器，甚至全局变量</strong></p>
 </li>
 </ul>
-<h2 id="10-delete-this合法吗？"><a href="#10-delete-this合法吗？" class="headerlink" title="10.delete this合法吗？"></a>10.delete this合法吗？</h2><p><strong>合法，但有前提：</strong></p>
+<h2 id="13-delete-this合法吗？"><a href="#13-delete-this合法吗？" class="headerlink" title="13.delete this合法吗？"></a>13.delete this合法吗？</h2><p><strong>合法，但有前提：</strong></p>
 <blockquote>
 <p>在类对象的内存空间中，只有数据成员和虚函数表指针，并不包含代码内容，类的成员函数单独放在代码段中。在调用成员函数时，隐含传递一个this指针，让成员函数知道当前是哪个对象在调用它。当调用delete this时，类对象的内存空间被释放。在delete this之后进行的其他任何函数调用，只要不涉及到this指针的内容，都能够正常运行。一旦涉及到this指针，如操作数据成员，调用虚函数等，就会出现不可预期的问题</p>
 </blockquote>
@@ -856,7 +856,7 @@ int main()
 <li>会导致堆栈溢出</li>
 <li>原因很简单，delete的本质是“为将被释放的内存调用一个或多个析构函数，然后，释放内存”。显然，delete this会去调用本对象的析构函数，而析构函数中又调用delete this，形成无限递归，造成堆栈溢出，系统崩溃</li>
 </ul>
-<h2 id="11-静态成员变量和静态成员函数"><a href="#11-静态成员变量和静态成员函数" class="headerlink" title="11.静态成员变量和静态成员函数"></a>11.静态成员变量和静态成员函数</h2><p>若将成员变量声明为static，则为静态成员变量，与一般的成员变量不同，无论建立多少对象，都只有一个静态成员变量的拷贝，静态成员变量属于一个类，所有对象共享。<strong>静态变量在编译阶段就分配了空间，对象还没创建时就已经分配了空间，放到全局静态区</strong></p>
+<h2 id="14-静态成员变量和静态成员函数"><a href="#14-静态成员变量和静态成员函数" class="headerlink" title="14.静态成员变量和静态成员函数"></a>14.静态成员变量和静态成员函数</h2><p>若将成员变量声明为static，则为静态成员变量，与一般的成员变量不同，无论建立多少对象，都只有一个静态成员变量的拷贝，静态成员变量属于一个类，所有对象共享。<strong>静态变量在编译阶段就分配了空间，对象还没创建时就已经分配了空间，放到全局静态区</strong></p>
 <ul>
 <li><strong>静态成员变量</strong><ul>
 <li>最好是类内声明，类外初始化（以免类名访问静态成员访问不到）</li>
@@ -872,7 +872,7 @@ int main()
 </ul>
 </li>
 </ul>
-<h2 id="12-初始化列表的好处和使用条件"><a href="#12-初始化列表的好处和使用条件" class="headerlink" title="12.初始化列表的好处和使用条件"></a>12.初始化列表的好处和使用条件</h2><ul>
+<h2 id="15-初始化列表的好处和使用条件"><a href="#15-初始化列表的好处和使用条件" class="headerlink" title="15.初始化列表的好处和使用条件"></a>15.初始化列表的好处和使用条件</h2><ul>
 <li><p><strong>初始化列表的使用条件</strong></p>
 <ul>
 <li>const类型的数据</li>
@@ -888,7 +888,7 @@ int main()
 <li><p><strong>不能通过初始化列表初始化静态成员变量</strong>，静态成员变量最好类内声明，类外初始化.静态成员是单独存储的，并不是对象的组成部分。如果在类的内部进行定义，在建立多个对象时会多次声明和定义该变量的存储位置。在名字空间和作用域相同的情况下会导致重名的问题</p>
 </li>
 </ul>
-<h2 id="13-运算符重载及-重载实现"><a href="#13-运算符重载及-重载实现" class="headerlink" title="13.运算符重载及++重载实现"></a>13.运算符重载及++重载实现</h2><ul>
+<h2 id="16-运算符重载及-重载实现"><a href="#16-运算符重载及-重载实现" class="headerlink" title="16.运算符重载及++重载实现"></a>16.运算符重载及++重载实现</h2><ul>
 <li><p><strong>运算符重载基本属性</strong></p>
 <ul>
 <li><p>运算符重载的目的是扩展C++中提供的运算符的适用范围，使之能作用于对象，或自定义的数据类型</p>
@@ -915,7 +915,7 @@ int main()
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//++i</span><br><span class="hljs-type">int</span>&amp;  <span class="hljs-type">int</span>::<span class="hljs-keyword">operator</span>++()<br>&#123;<br>    *<span class="hljs-keyword">this</span> +=<span class="hljs-number">1</span>；<br>    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>；<br>&#125;<br><br><span class="hljs-comment">//i++，注意后置++有占位参数以区分跟前置++不同</span><br><span class="hljs-type">const</span> <span class="hljs-type">int</span>  <span class="hljs-type">int</span>::<span class="hljs-keyword">operator</span>++(<span class="hljs-type">int</span>)<br>&#123;<br>    <span class="hljs-type">int</span> oldValue = *<span class="hljs-keyword">this</span>；<br>    ++（*<span class="hljs-keyword">this</span>）；<br>    <span class="hljs-keyword">return</span> oldValue；<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h2 id="14-继承方式、对象模型、同名处理"><a href="#14-继承方式、对象模型、同名处理" class="headerlink" title="14.继承方式、对象模型、同名处理"></a>14.继承方式、对象模型、同名处理</h2><p><strong>继承主要是为了减少代码的重复内容，解决代码复用问题。通过抽象出一个基类（父类），将重复代码写到基类中，在派生类（子类）中实现不同的方法</strong></p>
+<h2 id="17-继承方式、对象模型、同名处理"><a href="#17-继承方式、对象模型、同名处理" class="headerlink" title="17.继承方式、对象模型、同名处理"></a>17.继承方式、对象模型、同名处理</h2><p><strong>继承主要是为了减少代码的重复内容，解决代码复用问题。通过抽象出一个基类（父类），将重复代码写到基类中，在派生类（子类）中实现不同的方法</strong></p>
 <ul>
 <li><p><strong>继承方式</strong></p>
 <ul>
@@ -951,7 +951,7 @@ int main()
 </ul>
 </li>
 </ul>
-<h2 id="15-多继承和菱形继承"><a href="#15-多继承和菱形继承" class="headerlink" title="15.多继承和菱形继承"></a>15.多继承和菱形继承</h2><ul>
+<h2 id="18-多继承和菱形继承"><a href="#18-多继承和菱形继承" class="headerlink" title="18.多继承和菱形继承"></a>18.多继承和菱形继承</h2><ul>
 <li><strong>多继承</strong></li>
 </ul>
 <blockquote>
@@ -1001,7 +1001,7 @@ int main()
 </ul>
 <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">class</span> <span class="hljs-symbol">Animal</span>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">int</span> m_Age;<br>&#125;;<br><span class="hljs-keyword">class</span> <span class="hljs-symbol">Sheep:<span class="hljs-symbol">virtual</span></span> <span class="hljs-symbol">public</span> <span class="hljs-symbol">Animal</span>&#123;<br>    <span class="hljs-built_in">int</span> m_sheep;<br>&#125;;<br><span class="hljs-keyword">class</span> <span class="hljs-symbol">Camel</span> :<span class="hljs-symbol">virtual</span> <span class="hljs-symbol">public</span> <span class="hljs-symbol">Animal</span>&#123;<br>    <span class="hljs-built_in">int</span> m_camel;<br>&#125;;<br><br><span class="hljs-keyword">class</span> <span class="hljs-symbol">Son</span> :<span class="hljs-symbol">virtual</span> <span class="hljs-symbol">public</span> <span class="hljs-symbol">Sheep, <span class="hljs-symbol">virtual</span></span> <span class="hljs-symbol">public</span> <span class="hljs-symbol">Camel</span>&#123;<br>    <span class="hljs-built_in">int</span> m_son<br>&#125;;<br><span class="hljs-built_in">void</span> test01()&#123;<br>    Son son;<br>    son.m_Age = <span class="hljs-number">10</span>;<br>    cout &lt;&lt; sizeof(Animal) &lt;&lt; endl; <span class="hljs-comment">//m_Age</span><br>    cout &lt;&lt; sizeof(Sheep) &lt;&lt; endl;  <span class="hljs-comment">//sheep-Vbptr,m_sheep,m_Age</span><br>    cout &lt;&lt; sizeof(Camel) &lt;&lt; endl;  <span class="hljs-comment">//camel-Vbptr,m_camel,m_Age</span><br>    cout &lt;&lt; sizeof(Son) &lt;&lt; endl;    <span class="hljs-comment">//son-vbptr,m_son,m_Age,sheep-Vbptr,m_sheep,camel-Vbptr,m_camel,</span><br>&#125;<br>- 注意跟上面的区别，一个是son类中的元素顺序，一个是son类有了自己的虚基类指针和虚基类表<br></code></pre></td></tr></table></figure>
 
-<h2 id="16-重载、覆盖、重写"><a href="#16-重载、覆盖、重写" class="headerlink" title="16.重载、覆盖、重写"></a>16.重载、覆盖、重写</h2><ul>
+<h2 id="19-重载、覆盖、重写"><a href="#19-重载、覆盖、重写" class="headerlink" title="19.重载、覆盖、重写"></a>19.重载、覆盖、重写</h2><ul>
 <li><strong>重载(overload)：</strong>是函数名相同，参数列表不同。重载只是在同一个类的内部存在，但是不能靠返回类型来判断</li>
 <li><strong>覆盖(override)：</strong>子类重新定义父类中有相同名称和参数的虚函数。两者的函数特征相同<ul>
 <li>被重写的函数不能是static的。必须是virtual的</li>
@@ -1011,7 +1011,7 @@ int main()
 </li>
 <li><strong>重写(overwrite)：</strong>也叫做隐藏。子类重新定义父类中有相同名称的非虚函数 ( 参数列表可以不同 ) 。如果一个类，存在和父类相同的函数，那么，这个类将会隐藏其父类的方法，除非你在调用的时候，强制转换为父类类型或加上父类作用域</li>
 </ul>
-<h2 id="17-多态实现的基础"><a href="#17-多态实现的基础" class="headerlink" title="17.多态实现的基础"></a>17.多态实现的基础</h2><ul>
+<h2 id="20-多态实现的基础"><a href="#20-多态实现的基础" class="headerlink" title="20.多态实现的基础"></a>20.多态实现的基础</h2><ul>
 <li><strong>继承</strong></li>
 <li><strong>虚函数覆盖</strong></li>
 <li><strong>父类指针或引用指向子类对象访问虚函数</strong></li>
@@ -1025,7 +1025,7 @@ int main()
 <blockquote>
 <p>两者主要的区别：函数地址是早绑定（静态联编）还是晚绑定（动态联编）。即，在编译阶段确定好地址还是在运行时才确定地址</p>
 </blockquote>
-<h2 id="18-虚函数指针和虚函数表"><a href="#18-虚函数指针和虚函数表" class="headerlink" title="18.虚函数指针和虚函数表"></a>18.虚函数指针和虚函数表</h2><ul>
+<h2 id="21-虚函数指针和虚函数表"><a href="#21-虚函数指针和虚函数表" class="headerlink" title="21.虚函数指针和虚函数表"></a>21.虚函数指针和虚函数表</h2><ul>
 <li>前提发生了多态，每个类中都有虚函数表，最开始的父类创建虚函数表，后面的子类继承父类的虚函数表，然后对虚函数重写</li>
 <li>虚函数重写（覆盖）的实质就是重写父类虚函数表中的父类虚函数地址</li>
 <li><strong>实现多态的流程：虚函数指针-&gt;虚函数表-&gt;函数指针-&gt;入口地址，虚函数表（vftable）属于类，或者说这个类的所有对象共享一个虚函数表；而虚函数指针（vfptr）属于单个对象</strong></li>
@@ -1037,13 +1037,13 @@ int main()
 </ul>
 </li>
 </ul>
-<h2 id="19-构造函数能否实现多态-x2F-虚函数指针什么时候初始化"><a href="#19-构造函数能否实现多态-x2F-虚函数指针什么时候初始化" class="headerlink" title="19.构造函数能否实现多态&#x2F;虚函数指针什么时候初始化"></a>19.构造函数能否实现多态&#x2F;虚函数指针什么时候初始化</h2><p><strong>两个问题本质是一样的，构造函数不能实现多态</strong></p>
+<h2 id="22-构造函数能否实现多态-x2F-虚函数指针什么时候初始化"><a href="#22-构造函数能否实现多态-x2F-虚函数指针什么时候初始化" class="headerlink" title="22.构造函数能否实现多态&#x2F;虚函数指针什么时候初始化"></a>22.构造函数能否实现多态&#x2F;虚函数指针什么时候初始化</h2><p><strong>两个问题本质是一样的，构造函数不能实现多态</strong></p>
 <ul>
 <li>对象在创建时,由编译器对VPTR指针进行初始化，只有当对象的构造完全结束后VPTR的指向才最终确定</li>
 <li>子类中虚函数指针的初始化过程 当定义一个子类对象的时候比较麻烦，因为构造子类对象的时候会首先调用父类的构造函数然后再调用子类的构造函数。当调用父类的构造函数的时候，此时会创建Vptr指针，该指针会指向父类的虚函数表；然后再调用子类的构造函数，子类继承父类的虚函数指针，此时Vptr又被赋值指向子类的虚函数表</li>
 <li><strong>构造函数不能是虚函数，虚表指针并没有在对象的内存空间中，必须要构造函数调用完成后才会形成虚表指针</strong></li>
 </ul>
-<h2 id="20-抽象类和纯虚函数"><a href="#20-抽象类和纯虚函数" class="headerlink" title="20.抽象类和纯虚函数"></a>20.抽象类和纯虚函数</h2><p>在程序设计中，如果仅仅为了设计一些虚函数接口，打算在子类中对其进行重写，那么不需要在父类中对虚函数的函数体提供无意义的代码，可以通过纯虚函数满足需求</p>
+<h2 id="23-抽象类和纯虚函数"><a href="#23-抽象类和纯虚函数" class="headerlink" title="23.抽象类和纯虚函数"></a>23.抽象类和纯虚函数</h2><p>在程序设计中，如果仅仅为了设计一些虚函数接口，打算在子类中对其进行重写，那么不需要在父类中对虚函数的函数体提供无意义的代码，可以通过纯虚函数满足需求</p>
 <ul>
 <li><strong>纯虚函数的语法格式：<code>virtual 返回值类型 函数名 () = 0;</code>只需要将函数体完全替换为 &#x3D;0即可，纯虚函数必须在子类中进行实现，在子类外实现是无效的</strong></li>
 <li>注意<ul>
@@ -1053,7 +1053,7 @@ int main()
 </ul>
 </li>
 </ul>
-<h2 id="21-虚析构和纯虚析构"><a href="#21-虚析构和纯虚析构" class="headerlink" title="21.虚析构和纯虚析构"></a>21.虚析构和纯虚析构</h2><ul>
+<h2 id="24-虚析构和纯虚析构"><a href="#24-虚析构和纯虚析构" class="headerlink" title="24.虚析构和纯虚析构"></a>24.虚析构和纯虚析构</h2><ul>
 <li><p><strong>内存泄漏：当一个对象已经不需要再使用本该被回收时，另外一个正在使用的对象持有它的引用从而导致它不能被回收，这导致本该被回收的对象不能被回收而停留在堆内存中，这就产生了内存泄漏</strong></p>
 <ul>
 <li>仅仅发生继承时，创建子类对象后销毁，函数调用流程为：父类构造函数-&gt;子类构造函数-&gt;子类析构函数-&gt;父类析构函数</li>
@@ -1076,7 +1076,7 @@ int main()
 <li><p><strong>C++默认的析构函数不是虚函数：因为虚函数需要额外的虚函数表和虚表指针，占用额外的内存。而对于不会被继承的类来说，其析构函数如果是虚函数，就会浪费内存</strong></p>
 </li>
 </ul>
-<h2 id="22-哪些函数不能是虚函数"><a href="#22-哪些函数不能是虚函数" class="headerlink" title="22.哪些函数不能是虚函数"></a>22.哪些函数不能是虚函数</h2><ol>
+<h2 id="25-哪些函数不能是虚函数"><a href="#25-哪些函数不能是虚函数" class="headerlink" title="25.哪些函数不能是虚函数"></a>25.哪些函数不能是虚函数</h2><ol>
 <li><p>构造函数，构造函数初始化对象，派生类必须知道基类函数干了什么，才能进行构造；当有虚函数时，每一个类有一个虚表，每一个对象有一个虚表指针，虚表指针在构造函数中初始化</p>
 </li>
 <li><p>内联函数，内联函数表示在编译阶段进行函数体的替换操作，而虚函数意味着在运行期间进行类型确定，所以内联函数不能是虚函数</p>
@@ -1088,7 +1088,7 @@ int main()
 <li><p>普通函数，普通函数不属于类的成员函数，不具有继承特性，因此普通函数没有虚函数</p>
 </li>
 </ol>
-<h2 id="22-类模版和函数模版"><a href="#22-类模版和函数模版" class="headerlink" title="22.类模版和函数模版"></a>22.类模版和函数模版</h2><p><strong>通过template或template实现，主要用于数据的类型参数化，简化代码，有类模板和函数模板，函数模板是用于生成函数的，类模板则是用于生成类的</strong></p>
+<h2 id="26-类模版和函数模版"><a href="#26-类模版和函数模版" class="headerlink" title="26.类模版和函数模版"></a>26.类模版和函数模版</h2><p><strong>通过template或template实现，主要用于数据的类型参数化，简化代码，有类模板和函数模板，函数模板是用于生成函数的，类模板则是用于生成类的</strong></p>
 <ul>
 <li><p>类模板和函数模板定义</p>
 <ul>
@@ -1130,7 +1130,7 @@ int main()
 <li>在析构函数中catch捕获异常并作处理，吞下异常</li>
 <li>如果客户需要对某个操作函数运次期间抛出的异常做出反应，class应该提供普通函数执行该操作，而非在析构函数中</li>
 </ul>
-<h2 id="10-CPP11新特性"><a href="#10-CPP11新特性" class="headerlink" title="10.CPP11新特性"></a>10.CPP11新特性</h2><ul>
+<h2 id="5-CPP11新特性"><a href="#5-CPP11新特性" class="headerlink" title="5.CPP11新特性"></a>5.CPP11新特性</h2><ul>
 <li><strong>nullptr常量</strong><ul>
 <li>C++中NULL仅仅是define NULL 0 的一个宏定义，因此，有时候会产生歧义<ul>
 <li>比如f（char*）和f（int），参数传NULL的话到底该调用哪个？</li>
@@ -1185,7 +1185,7 @@ int main()
 </ul>
 </li>
 </ul>
-<h2 id="5-auto、decltype的用法"><a href="#5-auto、decltype的用法" class="headerlink" title="5.auto、decltype的用法"></a>5.auto、decltype的用法</h2><p><strong>1）auto</strong></p>
+<h2 id="6-auto、decltype的用法"><a href="#6-auto、decltype的用法" class="headerlink" title="6.auto、decltype的用法"></a>6.auto、decltype的用法</h2><p><strong>1）auto</strong></p>
 <p>C++11新标准引入了auto类型说明符，用它就能让编译器替我们去分析表达式所属的类型。和原来那些只对应某种特定的类型说明符(例如 int)不同，</p>
 <p>auto 让编译器通过初始值来进行类型推演。从而获得定义变量的类型，所以说 auto 定义的变量必须有初始值。</p>
 <p>举个例子：</p>
@@ -1195,11 +1195,11 @@ int main()
 <p>有的时候我们还会遇到这种情况，<strong>我们希望从表达式中推断出要定义变量的类型，但却不想用表达式的值去初始化变量。</strong>还有可能是函数的返回类型为某表达式的值类型。在这些时候auto显得就无力了，所以C++11又引入了第二种类型说明符decltype，它的作用是选择并返回操作数的数据类型。在此过程中，编译器只是分析表达式并得到它的类型，却不进行实际的计算表达式的值。</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs awk">int <span class="hljs-keyword">func</span>() &#123;return <span class="hljs-number">0</span>&#125;;<br><br><span class="hljs-regexp">//</span>普通类型<br>decltype(<span class="hljs-keyword">func</span>()) sum = <span class="hljs-number">5</span>; <span class="hljs-regexp">//</span> sum的类型是函数<span class="hljs-keyword">func</span>()的返回值的类型int, 但是这时不会实际调用函数<span class="hljs-keyword">func</span>()<br>int a = <span class="hljs-number">0</span>;<br>decltype(a) b = <span class="hljs-number">4</span>; <span class="hljs-regexp">//</span> a的类型是int, 所以b的类型也是int<br><br><span class="hljs-regexp">//</span>不论是顶层const还是底层const, decltype都会保留   <br>const int c = <span class="hljs-number">3</span>;<br>decltype(c) d = c; <span class="hljs-regexp">//</span> d的类型和c是一样的, 都是顶层const<br>int e = <span class="hljs-number">4</span>;<br>const int* f = &amp;e; <span class="hljs-regexp">//</span> f是底层const<br>decltype(f) g = f; <span class="hljs-regexp">//</span> g也是底层const<br><br><span class="hljs-regexp">//</span>引用与指针类型<br><span class="hljs-regexp">//</span><span class="hljs-number">1</span>. 如果表达式是引用类型, 那么decltype的类型也是引用<br>const int i = <span class="hljs-number">3</span>, &amp;j = i;<br>decltype(j) k = <span class="hljs-number">5</span>; <span class="hljs-regexp">//</span> k的类型是 const int&amp;<br><br><span class="hljs-regexp">//</span><span class="hljs-number">2</span>. 如果表达式是引用类型, 但是想要得到这个引用所指向的类型, 需要修改表达式:<br>int i = <span class="hljs-number">3</span>, &amp;r = i;<br>decltype(r + <span class="hljs-number">0</span>) t = <span class="hljs-number">5</span>; <span class="hljs-regexp">//</span> 此时是int类型<br><br><span class="hljs-regexp">//</span><span class="hljs-number">3</span>. 对指针的解引用操作返回的是引用类型<br>int i = <span class="hljs-number">3</span>, j = <span class="hljs-number">6</span>, *p = &amp;i;<br>decltype(*p) c = j; <span class="hljs-regexp">//</span> c是int&amp;类型, c和j绑定在一起<br><br><span class="hljs-regexp">//</span><span class="hljs-number">4</span>. 如果一个表达式的类型不是引用, 但是我们需要推断出引用, 那么可以加上一对括号, 就变成了引用类型了<br>int i = <span class="hljs-number">3</span>;<br>decltype((i)) j = i; <span class="hljs-regexp">//</span> 此时j的类型是int&amp;类型, j和i绑定在了一起<br></code></pre></td></tr></table></figure>
 
-<h2 id="6-C-中NULL和nullptr的区别"><a href="#6-C-中NULL和nullptr的区别" class="headerlink" title="6.C++中NULL和nullptr的区别"></a>6.C++中NULL和nullptr的区别</h2><ul>
+<h2 id="7-C-中NULL和nullptr的区别"><a href="#7-C-中NULL和nullptr的区别" class="headerlink" title="7.C++中NULL和nullptr的区别"></a>7.C++中NULL和nullptr的区别</h2><ul>
 <li><strong>NULL来自C语言，一般由宏定义实现，而 nullptr 则是C++11的新增关键字。在C语言中，NULL被定义为(void)0,而在C++语言中，NULL则被定义为整数0</strong></li>
 <li><strong>在传入NULL参数时，会把NULL当做整数0来看，如果我们想调用参数是指针的函数，该怎么办呢?。nullptr在C++11被引入用于解决这一问题，nullptr可以明确区分整型和指针类型，能够根据环境自动转换成相应的指针类型，但不会被转换为任何整型，所以不会造成参数传递错误</strong></li>
 </ul>
-<h2 id="5-智能指针"><a href="#5-智能指针" class="headerlink" title="5.智能指针"></a>5.智能指针</h2><ul>
+<h2 id="8-智能指针"><a href="#8-智能指针" class="headerlink" title="8.智能指针"></a>8.智能指针</h2><ul>
 <li><p><strong>原始指针在引入了异常机制后容易发生内存泄漏、二次释放等问题</strong></p>
 </li>
 <li><p>C++11 中引入了智能指针（Smart Pointer），它利用了一种叫做 RAII（资源获取即初始化）的技术将普通的指针封装为一个栈对象。当栈对象的生存周期结束后，会在析构函数中释放掉申请的内存，从而防止内存泄漏。这使得智能指针实质是一个对象，行为表现的却像一个指针</p>
@@ -1248,14 +1248,14 @@ int main()
 </ul>
 </li>
 </ul>
-<h2 id="6-野指针"><a href="#6-野指针" class="headerlink" title="6.野指针"></a>6.野指针</h2><p><strong>野指针指向一个已删除的对象或 申请访问受限内存区域的指针</strong></p>
+<h2 id="9-野指针"><a href="#9-野指针" class="headerlink" title="9.野指针"></a>9.野指针</h2><p><strong>野指针指向一个已删除的对象或 申请访问受限内存区域的指针</strong></p>
 <p><strong>产生原因：</strong></p>
 <ul>
 <li>指针变量未初始化</li>
 <li>指针释放未置空</li>
 <li>指针操作超出作用域。返回指向栈内存的指针或引用，因为栈内存在函数结束时会被释放</li>
 </ul>
-<h2 id="7-强制转换"><a href="#7-强制转换" class="headerlink" title="7.强制转换"></a>7.强制转换</h2><p><strong>C++中强制转换为static_cast, dynamic_cast,const_cast, reinterpret_cast</strong></p>
+<h2 id="10-强制转换"><a href="#10-强制转换" class="headerlink" title="10.强制转换"></a>10.强制转换</h2><p><strong>C++中强制转换为static_cast, dynamic_cast,const_cast, reinterpret_cast</strong></p>
 <ul>
 <li><strong>static_cast</strong><ul>
 <li>完成基础数据类型；同一个继承体系中类型的转换；任意类型与空指针类型void* 之间的转换，不能用于普通指针的转换（void空指针除外）</li>
@@ -1297,19 +1297,19 @@ int main()
 </ul>
 </li>
 </ul>
-<h2 id="8-RTTI"><a href="#8-RTTI" class="headerlink" title="8.RTTI"></a>8.RTTI</h2><p><strong>运行时类型检查，在C++层面主要体现在dynamic_cast和typeid</strong></p>
+<h2 id="11-RTTI"><a href="#11-RTTI" class="headerlink" title="11.RTTI"></a>11.RTTI</h2><p><strong>运行时类型检查，在C++层面主要体现在dynamic_cast和typeid</strong></p>
 <ul>
 <li><p>dynamic_cast 动态类型转换</p>
 </li>
 <li><p>typeid typeid 运算符允许在运行时确定对象的类型，获取对象的实际类型</p>
 </li>
 </ul>
-<h2 id="9-RAII"><a href="#9-RAII" class="headerlink" title="9.RAII"></a>9.RAII</h2><p><strong>RAII全称是“Resource Acquisition is Initialization”，直译过来是“资源获取即初始化”</strong></p>
+<h2 id="12-RAII"><a href="#12-RAII" class="headerlink" title="12.RAII"></a>12.RAII</h2><p><strong>RAII全称是“Resource Acquisition is Initialization”，直译过来是“资源获取即初始化”</strong></p>
 <ul>
 <li>在构造函数中申请分配资源，在析构函数中释放资源。因为C++的语言机制保证了，当一个对象创建的时候，自动调用构造函数，当对象超出作用域的时候会自动调用析构函数。所以，在RAII的指导下，我们应该使用类来管理资源，将资源和对象的生命周期绑定</li>
 <li>RAII的核心思想是将资源或者状态与对象的生命周期绑定，通过C++的语言机制，实现资源和状态的安全管理,智能指针是RAII最好的例子</li>
 </ul>
-<h2 id="11-右值引用"><a href="#11-右值引用" class="headerlink" title="11.右值引用"></a>11.右值引用</h2><ul>
+<h2 id="13-右值引用"><a href="#13-右值引用" class="headerlink" title="13.右值引用"></a>13.右值引用</h2><ul>
 <li><p><strong>定义：</strong></p>
 <ul>
 <li>左值：存储在内存中，有明确存储地址(可寻址)的数据</li>
