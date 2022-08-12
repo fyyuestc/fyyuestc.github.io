@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://axiu-image-bed.oss-cn-shanghai.aliyuncs.com/img/202205212343182.png">
 <meta property="og:image" content="https://axiu-image-bed.oss-cn-shanghai.aliyuncs.com/img/202205220035271.png">
 <meta property="article:published_time" content="2022-07-09T07:15:45.000Z">
-<meta property="article:modified_time" content="2022-08-12T05:44:35.850Z">
+<meta property="article:modified_time" content="2022-08-12T07:31:50.701Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -226,7 +226,7 @@
         
         
         
-          300 分钟
+          301 分钟
         
       </span>
     
@@ -1210,34 +1210,18 @@ int main()
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 指向一个值为42的int的shared_ptr</span><br>shared_ptr&lt;<span class="hljs-type">int</span>&gt; p3 = <span class="hljs-built_in">make_shared</span>&lt;<span class="hljs-type">int</span>&gt;(<span class="hljs-number">42</span>);<br><br><span class="hljs-comment">// p4 指向一个值为&quot;9999999999&quot;的string</span><br>shared_ptr&lt;string&gt; p4 = <span class="hljs-built_in">make_shared</span>&lt;string&gt;(<span class="hljs-number">10</span>,<span class="hljs-string">&#x27;9&#x27;</span>);<br><br><span class="hljs-comment">// p5指向一个值初始化的int</span><br>shared_ptr&lt;<span class="hljs-type">int</span>&gt; p5 = <span class="hljs-built_in">make_shared</span>&lt;<span class="hljs-type">int</span>&gt;();<br><br><span class="hljs-function">shared_ptr&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">p2</span><span class="hljs-params">(<span class="hljs-keyword">new</span> <span class="hljs-type">int</span>(<span class="hljs-number">1024</span>))</span></span>;	<span class="hljs-comment">// 正确：使用了直接初始化形式</span><br></code></pre></td></tr></table></figure>
 </li>
 <li><p><strong>shared_ptr常用操作</strong></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs stylus">make_shared&lt;T&gt;(args) <span class="hljs-comment">// 返回一个shared_ptr，指向一个动态分配的类型为T的对象。使用args初始化此对象</span><br>shared_ptr&lt;T&gt; <span class="hljs-selector-tag">p</span>(q) <span class="hljs-comment">// p是shared_ptr q的拷贝；此操作会递增q中的引用计数。q中的指针必须能转换成T*</span><br><span class="hljs-selector-tag">p</span> = <span class="hljs-selector-tag">q</span> <span class="hljs-comment">// p和q都是shared_ptr，所保存的指针必须能相互转换。此操作会递减p中的引用计数，递增q中的引用计数。若p中的引用计数变为0，则将其管理的原内存释放</span><br><span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.unique</span>() <span class="hljs-comment">// 若p.use_count()为1，返回true；否则返回false</span><br><span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.use_count</span>() <span class="hljs-comment">// 返回与p共享对象的智能指针数量；可能很慢，主要用于调试</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>shared_ptr的其他方法</strong></p>
 <ul>
-<li>&#96;&#96;&#96;<br>make_shared<T>(args) &#x2F;&#x2F; 返回一个shared_ptr，指向一个动态分配的类型为T的对象。使用args初始化此对象<br>shared_ptr<T> p(q) &#x2F;&#x2F; p是shared_ptr q的拷贝；此操作会递增q中的引用计数。q中的指针必须能转换成T*<br>p &#x3D; q &#x2F;&#x2F; p和q都是shared_ptr，所保存的指针必须能相互转换。此操作会递减p中的引用计数，递增q中的引用计数。若p中的引用计数变为0，则将其管理的原内存释放<br>p.unique() &#x2F;&#x2F; 若p.use_count()为1，返回true；否则返回false<br>p.use_count() &#x2F;&#x2F; 返回与p共享对象的智能指针数量；可能很慢，主要用于调试<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs css"><br>- **shared_ptr的其他方法**<br><br>  - ```<br>    <span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.reset</span> () //若<span class="hljs-selector-tag">p</span>是唯一指向其对象的shared_ptr，reset会释放此对象。<br>    <span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.reset</span>(<span class="hljs-selector-tag">q</span>) //若传递了可选的参数内置指针<span class="hljs-selector-tag">q</span>，会令<span class="hljs-selector-tag">P</span>指向<span class="hljs-selector-tag">q</span>，否则会将<span class="hljs-selector-tag">P</span>置为空。<br>    <span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.reset</span>(<span class="hljs-selector-tag">q</span>, d) //若还传递了参数d,将会调用d而不是delete 来释放<span class="hljs-selector-tag">q</span><br></code></pre></td></tr></table></figure></li>
+<li>&#96;&#96;&#96;<br>p.reset () &#x2F;&#x2F;若p是唯一指向其对象的shared_ptr，reset会释放此对象。<br>p.reset(q) &#x2F;&#x2F;若传递了可选的参数内置指针q，会令P指向q，否则会将P置为空。<br>p.reset(q, d) &#x2F;&#x2F;若还传递了参数d,将会调用d而不是delete 来释放q<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey"><br>- **weak_ptr弱引用的智能指针**<br><br>  - `shared_ptr`的一个最大的陷阱是循环引用，循环引用会导致堆内存无法正确释放，导致内存泄漏<br><br><span class="hljs-title">  - 要想解决上面循环引用的问题，只能引入新的智能指针`std::weak_ptr`。`std::weak_ptr`有什么特点呢？与`std::</span>shared_ptr`最大的差别是在赋值的时候，不会引起智能指针计数增加<br><br>    - `weak_ptr`被设计为与`shared_ptr`共同工作，可以从一个`shared_ptr`或者另一个`weak_ptr`对象构造，获得资源的观测权。但`weak_ptr`没有共享资源，它的构造不会引起指针引用计数的增加<br>    - 同样，在`weak_ptr`析构时也不会导致引用计数的减少，它只是一个静静地观察者。`weak_ptr`没有重载`operator*`和`-&gt;`，这是特意的，因为它不共享指针，不能操作资源，这是它弱的原因<br>    - 如要操作资源，则必须使用一个非常重要的成员函数`lock()`从被观测的`shared_ptr`获得一个可用的`shared_ptr`对象，从而操作资源<br><br>  - 当我们创建一个`weak_ptr`时，要用一个`shared_ptr`来初始化它：<br><br>    - ```<br>      auto p = make_shared&lt;int&gt;(<span class="hljs-number">42</span>)<span class="hljs-comment">;</span><br>      weak_ptr&lt;int&gt; wp(p)<span class="hljs-comment">; // wp弱共享p; p的引用计数未改变</span><br></code></pre></td></tr></table></figure></li>
 </ul>
 </li>
+<li><p><strong>weak_ptr常用操作</strong></p>
+<ul>
+<li>&#96;&#96;&#96;<br>weak_ptr<T> w;	&#x2F;&#x2F; 空weak_ptr可以指向类型为T的对象<br>weak_ptr<T> w(shared_ptr p);	&#x2F;&#x2F; 与p指向相同对象的weak_ptr, T必须能转换为sp指向的类型<br>w &#x3D; p;	&#x2F;&#x2F; p可以是shared_ptr或者weak_ptr，赋值后w和p共享对象<br>w.reset();	&#x2F;&#x2F; weak_ptr置为空<br>w.use_count();	&#x2F;&#x2F; 与w共享对象的shared_ptr的计数<br>w.expired();	&#x2F;&#x2F; w.use_count()为0则返回true，否则返回false<br>w.lock();	&#x2F;&#x2F; w.expired()为true，返回空的shared_ptr;否则返回指向w的shared_ptr<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><br>- **unique_ptr的基本使用**<br><br>  - `unique_ptr`相对于其他两个智能指针更加简单，它和`shared_ptr`使用差不多，但是功能更为单一，它是一个独占型的智能指针，不允许其他的智能指针共享其内部的指针，更像原生的指针（但更为安全，能够自己释放内存）。**不允许赋值和拷贝操作，只能够移动**<br><br>    ```c++<br>    <span class="hljs-function">std::unique_ptr&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">ptr1</span><span class="hljs-params">(<span class="hljs-keyword">new</span> <span class="hljs-type">int</span>(<span class="hljs-number">0</span>))</span></span>;<br>    std::unique_ptr&lt;<span class="hljs-type">int</span>&gt; ptr2 = ptr1; <span class="hljs-comment">// 错误，不能复制</span><br>    std::unique_ptr&lt;<span class="hljs-type">int</span>&gt; ptr3 = std::<span class="hljs-built_in">move</span>(ptr1); <span class="hljs-comment">// 可以移动</span><br></code></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li><p><strong>weak_ptr弱引用的智能指针</strong></p>
-<ul>
-<li><p><code>shared_ptr</code>的一个最大的陷阱是循环引用，循环引用会导致堆内存无法正确释放，导致内存泄漏</p>
-</li>
-<li><p>要想解决上面循环引用的问题，只能引入新的智能指针<code>std::weak_ptr</code>。<code>std::weak_ptr</code>有什么特点呢？与<code>std::shared_ptr</code>最大的差别是在赋值的时候，不会引起智能指针计数增加</p>
-<ul>
-<li><code>weak_ptr</code>被设计为与<code>shared_ptr</code>共同工作，可以从一个<code>shared_ptr</code>或者另一个<code>weak_ptr</code>对象构造，获得资源的观测权。但<code>weak_ptr</code>没有共享资源，它的构造不会引起指针引用计数的增加</li>
-<li>同样，在<code>weak_ptr</code>析构时也不会导致引用计数的减少，它只是一个静静地观察者。<code>weak_ptr</code>没有重载<code>operator*</code>和<code>-&gt;</code>，这是特意的，因为它不共享指针，不能操作资源，这是它弱的原因</li>
-<li>如要操作资源，则必须使用一个非常重要的成员函数<code>lock()</code>从被观测的<code>shared_ptr</code>获得一个可用的<code>shared_ptr</code>对象，从而操作资源</li>
-</ul>
-</li>
-<li><p>当我们创建一个<code>weak_ptr</code>时，要用一个<code>shared_ptr</code>来初始化它：</p>
-<ul>
-<li>&#96;&#96;&#96;<br>auto p &#x3D; make_shared<int>(42);<br>weak_ptr<int> wp(p); &#x2F;&#x2F; wp弱共享p; p的引用计数未改变<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs awk"><br>- **weak_ptr常用操作**<br><br>  - ```<br>    weak_ptr&lt;T&gt; w;	<span class="hljs-regexp">//</span> 空weak_ptr可以指向类型为T的对象<br>    weak_ptr&lt;T&gt; w(shared_ptr p);	<span class="hljs-regexp">//</span> 与p指向相同对象的weak_ptr, T必须能转换为sp指向的类型<br>    w = p;	<span class="hljs-regexp">//</span> p可以是shared_ptr或者weak_ptr，赋值后w和p共享对象<br>    w.reset();	<span class="hljs-regexp">//</span> weak_ptr置为空<br>    w.use_count();	<span class="hljs-regexp">//</span> 与w共享对象的shared_ptr的计数<br>    w.expired();	<span class="hljs-regexp">//</span> w.use_count()为<span class="hljs-number">0</span>则返回true，否则返回false<br>    w.lock();	<span class="hljs-regexp">//</span> w.expired()为true，返回空的shared_ptr;否则返回指向w的shared_ptr<br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>unique_ptr的基本使用</strong></p>
-<ul>
-<li><p><code>unique_ptr</code>相对于其他两个智能指针更加简单，它和<code>shared_ptr</code>使用差不多，但是功能更为单一，它是一个独占型的智能指针，不允许其他的智能指针共享其内部的指针，更像原生的指针（但更为安全，能够自己释放内存）。<strong>不允许赋值和拷贝操作，只能够移动</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function">std::unique_ptr&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">ptr1</span><span class="hljs-params">(<span class="hljs-keyword">new</span> <span class="hljs-type">int</span>(<span class="hljs-number">0</span>))</span></span>;<br>std::unique_ptr&lt;<span class="hljs-type">int</span>&gt; ptr2 = ptr1; <span class="hljs-comment">// 错误，不能复制</span><br>std::unique_ptr&lt;<span class="hljs-type">int</span>&gt; ptr3 = std::<span class="hljs-built_in">move</span>(ptr1); <span class="hljs-comment">// 可以移动</span><br></code></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p><strong>性能与安全的权衡</strong></p>
