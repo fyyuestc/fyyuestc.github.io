@@ -16,13 +16,16 @@
   <meta name="author" content="Fyy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Git面试题1.Git 中 merge 和 rebase 的区别 git pull是git fetch + git merge FETCH_HEAD的缩写，所以默认情况下，git pull就是先fetch，然后执行merge操作，如果加-rebase参数，就是使用git rebase代替git merge更新本地仓库  merge 是合并的意思，rebase是复位基底的意思现在我们有这样的两个分支">
+    <meta name="description" content="面试题1.哈希表与完美哈希哈希表哈希函数计算中常见的一种行为：哈希冲突（Hash Collisions） 当要添加新元素到 Hashtable 中时，哈希冲突是导致操作被破坏的一个因素。如果没有冲突发生，则元素被成功插入。如果发生了冲突，则需要判断冲突的原因。因此，哈希冲突提高了操作的代价，Hashtable 的设计目标就是要尽可能减低冲突的发生。 处理哈希冲突的方式有两种：避免和解决，即冲突避免">
 <meta property="og:type" content="article">
 <meta property="og:title" content="分布式面经-个人总结">
 <meta property="og:url" content="http://example.com/2022/07/09/%E5%88%86%E5%B8%83%E5%BC%8F%E9%9D%A2%E7%BB%8F-%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="UESTC-Fyy">
-<meta property="og:description" content="Git面试题1.Git 中 merge 和 rebase 的区别 git pull是git fetch + git merge FETCH_HEAD的缩写，所以默认情况下，git pull就是先fetch，然后执行merge操作，如果加-rebase参数，就是使用git rebase代替git merge更新本地仓库  merge 是合并的意思，rebase是复位基底的意思现在我们有这样的两个分支">
+<meta property="og:description" content="面试题1.哈希表与完美哈希哈希表哈希函数计算中常见的一种行为：哈希冲突（Hash Collisions） 当要添加新元素到 Hashtable 中时，哈希冲突是导致操作被破坏的一个因素。如果没有冲突发生，则元素被成功插入。如果发生了冲突，则需要判断冲突的原因。因此，哈希冲突提高了操作的代价，Hashtable 的设计目标就是要尽可能减低冲突的发生。 处理哈希冲突的方式有两种：避免和解决，即冲突避免">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202208171444170.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202208171444667.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202208171445847.png">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/image-20191208200656794.png">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/image-20191208195941661.png">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/image-20191208200014395.png">
@@ -35,11 +38,11 @@
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/image-20191208203639712.png">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/7a29acce-f243-4914-9f00-f2988c528412.jpg">
 <meta property="article:published_time" content="2022-07-09T07:16:19.000Z">
-<meta property="article:modified_time" content="2022-08-09T05:51:04.277Z">
+<meta property="article:modified_time" content="2022-08-17T06:54:26.110Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/image-20191208200656794.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202208171444170.png">
   
   
   <title>分布式面经-个人总结 - UESTC-Fyy</title>
@@ -222,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3k 字
+          5.7k 字
         
       </span>
     
@@ -233,7 +236,7 @@
         
         
         
-          26 分钟
+          48 分钟
         
       </span>
     
@@ -283,7 +286,58 @@
             
             <div class="markdown-body">
               
-              <h1 id="Git面试题"><a href="#Git面试题" class="headerlink" title="Git面试题"></a>Git面试题</h1><h2 id="1-Git-中-merge-和-rebase-的区别"><a href="#1-Git-中-merge-和-rebase-的区别" class="headerlink" title="1.Git 中 merge 和 rebase 的区别"></a>1.Git 中 merge 和 rebase 的区别</h2><ul>
+              <h1 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h1><h2 id="1-哈希表与完美哈希"><a href="#1-哈希表与完美哈希" class="headerlink" title="1.哈希表与完美哈希"></a>1.哈希表与完美哈希</h2><h3 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h3><p>哈希函数计算中常见的一种行为：<strong>哈希冲突（Hash Collisions）</strong></p>
+<p>当要添加新元素到 Hashtable 中时，哈希冲突是导致操作被破坏的一个因素。如果没有冲突发生，则元素被成功插入。如果发生了冲突，则需要判断冲突的原因。因此，<strong>哈希冲突提高了操作的代价，Hashtable 的设计目标就是要尽可能减低冲突的发生</strong>。</p>
+<p><strong>处理哈希冲突的方式有两种：避免和解决，即冲突避免机制（Collision Avoidance）和冲突解决机制（Collision Resolution）。</strong></p>
+<ul>
+<li><p>在处理冲突时，有很多策略可以实施，这些策略称为冲突解决机制（Collision Resolution）。其中一种方法就是将要插入的元素放到另外一个块空间中，因为相同的哈希位置已经被占用。</p>
+</li>
+<li><p><strong>哈希冲突解决策略：开放寻址法（Open Addressing）</strong>，将所有的元素都存放在哈希表内的数组中，不使用额外的数据结构。</p>
+</li>
+</ul>
+<p><strong>开放寻址法的最简单的一种实现就是线性探查（Linear Probing）</strong>，步骤如下：</p>
+<ol>
+<li>当插入新的元素时，使用哈希函数在哈希表中定位元素位置；</li>
+<li>检查哈希表中该位置是否已经存在元素。如果该位置内容为空，则插入并返回，否则转向步骤 3。</li>
+<li>如果该位置为 i，则检查 i+1 是否为空，如果已被占用，则检查 i+2，依此类推，直到找到一个内容为空的位置。</li>
+</ol>
+<p>线性探查（Linear Probing）方式虽然简单，但并不是解决冲突的最好的策略，因为它会导致同类哈希的聚集（Primary Clustering）。这导致搜索哈希表时，冲突依然存在。</p>
+<p>一种改进的方式为<strong>二次探查（Quadratic Probing）</strong>，即每次检查位置空间的步长为平方倍数。也就是说，如果位置 s 被占用，则首先检查 s + 12 处，然后检查s - 12，s + 22，s - 22，s + 32 依此类推，而不是象线性探查那样以 s + 1，s + 2 … 方式增长。尽管如此，二次探查同样也会导致同类哈希聚集问题（Secondary Clustering）。</p>
+<p>另一种改进的开放寻址法称为<strong>二度哈希（Rehashing）</strong>（或称为<strong>双重哈希（Double Hashing）</strong>）。</p>
+<p><strong>二度哈希的工作原理如下：</strong></p>
+<ul>
+<li><p>有一个包含一组哈希函数 H1…Hn 的集合。当需要从哈希表中添加或获取元素时，首先使用哈希函数 H1。如果导致冲突，则尝试使用 H2，以此类推，直到 Hn。所有的哈希函数都与 H1 十分相似，不同的是它们选用的乘法因子（multiplicative factor）。</p>
+</li>
+<li><p>当使用二度哈希时，重要的是在执行了 hashsize 次探查后，哈希表中的每一个位置都有且只有一次被访问到。也就是说，对于给定的 key，对哈希表中的同一位置不会同时使用 Hi 和 Hj。在 Hashtable 类中使用二度哈希公式，其始终保持 (1 + (((GetHash(key) &gt;&gt; 5) + 1) % (hashsize – 1)) 与 hashsize 互为素数（两数互为素数表示两者没有共同的质因子）。</p>
+</li>
+<li><p>二度哈希使用了 Θ(m2) 种探查序列，而线性探查（Linear Probing）和二次探查（Quadratic Probing）使用了Θ(m) 种探查序列，故二度哈希提供了更好的避免冲突的策略。</p>
+</li>
+<li><p>向 Hashtable 中添加新元素时，需要检查以保证元素与空间大小的比例不会超过最大比例。如果超过了，哈希表空间将被扩充。步骤如下：</p>
+<ul>
+<li><p>哈希表的位置空间几乎被翻倍。准确地说，位置空间值从当前的素数值增加到下一个最大的素数值。</p>
+</li>
+<li><p>因为二度哈希时，哈希表中的所有元素值将依赖于哈希表的位置空间值，所以表中所有值也需要重新二度哈希。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>由此看出，对哈希表的扩充将是以性能损耗为代价。因此，我们应该预先估计哈希表中最有可能容纳的元素数量，在初始化哈希表时给予合适的值进行构造，以避免不必要的扩充。</p>
+<p><strong>哈希冲突解决策略：链接技术（chaining）</strong></p>
+<p><strong>链接技术（chaining）</strong>是一种冲突解决策略（Collision Resolution Strategy）。在链接法中，把哈希到同一个槽中的所有元素都放到一个链表中。</p>
+<p><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202208171444170.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>使用探查技术（probing）时，如果发生冲突，则将尝试列表中的下一个位置。如果使用二度哈希（rehashing），则将导致所有的哈希被重新计算。而<strong>链接技术（chaining）</strong>将采用额外的数据结构来处理冲突，其将哈希表中每个位置（slot）都映射到了一个链表。当冲突发生时，冲突的元素将被添加到桶（bucket）列表中，而每个桶都包含了一个链表以存储相同哈希的元素。</p>
+<p><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202208171444667.gif" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>上图中的哈希表包含了 8 个桶（bucket），也就是自顶向下的黄色背景的位置。如果一个新的元素要被添加至哈希表中，将会被添加至其 Key 的哈希所对应的桶中。如果在相同位置已经有一个元素存在了，则将会将新元素添加到列表的前面。</p>
+<p>使用链接技术添加元素的操作涉及到哈希计算和链表操作，但其仍为常量，渐进时间为 O(1)。而进行查询和删除操作时，其平均时间取决于元素的数量和桶（bucket）的数量。具体的说就是运行时间为 O(n&#x2F;m)，这里 n 为元素的总数量，m 是桶的数量。但通常对哈希表的实现几乎总是使 n &#x3D; O(m)，也就是说，元素的总数绝不会超过桶的总数，所以 O(n&#x2F;m) 也变成了常量 O(1)。</p>
+<h3 id="完美哈希"><a href="#完美哈希" class="headerlink" title="完美哈希"></a>完美哈希</h3><p>当关键字的集合是一个不变的静态集合（Static）时，哈希技术还可以用来获取出色的最坏情况性能。如果某一种哈希技术在进行查找时，其最坏情况的内存访问次数为 O(1) 时，则称其为<strong>完美哈希（Perfect Hashing）</strong>。</p>
+<p>设计完美哈希的基本思想是利用两级的哈希策略，而每一级上都使用全域哈希（Univeral Hashing）。</p>
+<p><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202208171445847.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>第一级与使用链接技术（chaining）的哈希表基本上是一样的，利用从某一全域哈希函数族中随机选择的一个函数 h ，将 n 个关键字哈希到 m 个槽中。</p>
+<p>而此时，不像链接技术中对槽使用链表结构，而是采用一个较小的二次哈希表 Sj ，与其相关的哈希函数为 hj 。通过随机的选取哈希函数 hj ，可以确保在第二级上不出现哈希冲突。</p>
+<p>如果利用从一个全域哈希函数族中随机选择的哈希函数 h，将 n 个关键字存储在一个大小为 m &#x3D; n2 的哈希表中，那么出现碰撞的概率小于 1&#x2F;2 。</p>
+<p>为了确保第二级上不出现哈希冲突，需要让哈希表 Sj 的大小 mj 为哈希到槽 j 中的关键字数 nj 的平方。mj 对 nj 的这种二次依赖关系看上去可能使得总体存储需求很大，但通过适当地选择第一次哈希函数，预期使用的的总存储空间仍为 O(n)。</p>
+<p>如果关键字的数量 n 等于槽的数量 m ，则该哈希函数称为<strong>最小完美哈希函数（Minimal Perfect Hash Function）</strong>。</p>
+<h1 id="Git面试题"><a href="#Git面试题" class="headerlink" title="Git面试题"></a>Git面试题</h1><h2 id="1-Git-中-merge-和-rebase-的区别"><a href="#1-Git-中-merge-和-rebase-的区别" class="headerlink" title="1.Git 中 merge 和 rebase 的区别"></a>1.Git 中 merge 和 rebase 的区别</h2><ul>
 <li><p>git pull是<code>git fetch + git merge FETCH_HEAD</code>的缩写，所以默认情况下，<code>git pull</code>就是先fetch，然后执行merge操作，如果加-rebase参数，就是使用git rebase代替git merge更新本地仓库</p>
 </li>
 <li><p>merge 是合并的意思，rebase是复位基底的意思<br>现在我们有这样的两个分支,test和master，提交如下：</p>
