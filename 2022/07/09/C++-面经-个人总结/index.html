@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://axiu-image-bed.oss-cn-shanghai.aliyuncs.com/img/202205212343182.png">
 <meta property="og:image" content="https://axiu-image-bed.oss-cn-shanghai.aliyuncs.com/img/202205220035271.png">
 <meta property="article:published_time" content="2022-07-09T07:15:45.000Z">
-<meta property="article:modified_time" content="2022-08-19T12:55:57.434Z">
+<meta property="article:modified_time" content="2022-08-19T12:58:55.774Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -493,19 +493,14 @@
 </li>
 <li><p><strong>内存分配</strong></p>
 <ul>
-<li><p>new简单类型直接调用operator new分配内存</p>
+<li><p>new简单类型直接调用operator new分配内存；而对于复杂结构，先调用operator new分配内存，然后在分配的内存上调用构造函数</p>
 </li>
-<li><p>而对于复杂结构，先调用operator new分配内存，然后在分配的内存上调用构造函数</p>
+<li><p>对于简单类型，new[]计算好大小后调用operator new；对于复杂数据结构，new[]先调用operator new[]分配内存，然后在p的前四个字节写入数组大小n，然后调用n次构造函数，针对复杂类型，new[]会额外存储数组大小</p>
 </li>
-<li><p>对于简单类型，new[]计算好大小后调用operator new</p>
+<li><p>如果 operator new(size_t) 不能成功获得内存，则调用 new_handler()函数用于处理new失败问题</p>
 </li>
-<li><p>对于复杂数据结构，new[]先调用operator new[]分配内存，然后在p的前四个字节写入数组大小n，然后调用n次构造函数，针对复杂类型，new[]会额外存储数组大小</p>
+<li><p>如果没有设置 new_handler() 函数或者 new_handler() 未能分配足够内存，则抛出 std::bad_alloc 异常</p>
 </li>
-</ul>
-</li>
-<li><ul>
-<li>如果 operator new(size_t) 不能成功获得内存，则调用 new_handler()函数用于处理new失败问题</li>
-<li>如果没有设置 new_handler() 函数或者 new_handler() 未能分配足够内存，则抛出 std::bad_alloc 异常</li>
 </ul>
 </li>
 <li><p><strong>构造函数</strong></p>
