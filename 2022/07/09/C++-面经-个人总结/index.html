@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://axiu-image-bed.oss-cn-shanghai.aliyuncs.com/img/202205212343182.png">
 <meta property="og:image" content="https://axiu-image-bed.oss-cn-shanghai.aliyuncs.com/img/202205220035271.png">
 <meta property="article:published_time" content="2022-07-09T07:15:45.000Z">
-<meta property="article:modified_time" content="2022-08-19T08:50:26.433Z">
+<meta property="article:modified_time" content="2022-08-19T12:55:57.434Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -215,7 +215,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          37k 字
+          38k 字
         
       </span>
     
@@ -226,7 +226,7 @@
         
         
         
-          312 分钟
+          317 分钟
         
       </span>
     
@@ -460,13 +460,13 @@
 </li>
 <li><p><strong>是否调用构造函数&#x2F;析构函数</strong> </p>
 <ul>
-<li>new会先调用operator_ new函数，申请足够的内存（通常底层使用malloc实现）。然后调用类型的构造函数，初始化成员变量，最后返回自定义类型指针。delete先调用析构函数，然后调用operator_ delete函数释放内存（通常底层使用free实现）</li>
+<li>new会先调用operator new函数，申请足够的内存（通常底层使用malloc实现）。然后调用类型的构造函数，初始化成员变量，最后返回自定义类型指针。delete先调用析构函数，然后调用operator delete函数释放内存（通常底层使用free实现）</li>
 <li>malloc&#x2F;free是库函数，只能动态的申请和释放内存，无法强制要求其做自定义类型对象构造和析构工作</li>
 </ul>
 </li>
 <li><p><strong>能否重载</strong> </p>
 <ul>
-<li>opeartor_new&#x2F;operator_delete允许重载,malloc&#x2F;free不允许重载</li>
+<li>opeartor new&#x2F;operator delete允许重载,malloc&#x2F;free不允许重载</li>
 </ul>
 </li>
 <li><p><strong>已分配内存的扩充</strong> </p>
@@ -476,31 +476,53 @@
 </li>
 <li><p><strong>能否相互调用</strong></p>
 <ul>
-<li>operator_new &#x2F;operator _delete的实现可以基于malloc&#x2F;free，而malloc的实现不可以去调用new</li>
+<li>operator new &#x2F;operator  delete的实现可以基于malloc&#x2F;free，而malloc的实现不可以去调用new</li>
 </ul>
 </li>
 </ul>
 <h2 id="8-new运算符的原理"><a href="#8-new运算符的原理" class="headerlink" title="8.new运算符的原理"></a>8.new运算符的原理</h2><ul>
-<li><strong>内存分配</strong><ul>
-<li>调用相应的 operator new(size_t) 函数，动态分配内存</li>
+<li><p><strong>基本过程</strong></p>
+<ul>
+<li><p>new表达式调用一个名为operator new(operator new[])函数，分配一块足够大的、原始的、未命名的内存空间</p>
+</li>
+<li><p>编译器运行相应的构造函数以构造这些对象，并为其传入初始值</p>
+</li>
+<li><p>对象被分配了空间并构造完成，返回一个指向该对象的指针</p>
+</li>
+</ul>
+</li>
+<li><p><strong>内存分配</strong></p>
+<ul>
+<li><p>new简单类型直接调用operator new分配内存</p>
+</li>
+<li><p>而对于复杂结构，先调用operator new分配内存，然后在分配的内存上调用构造函数</p>
+</li>
+<li><p>对于简单类型，new[]计算好大小后调用operator new</p>
+</li>
+<li><p>对于复杂数据结构，new[]先调用operator new[]分配内存，然后在p的前四个字节写入数组大小n，然后调用n次构造函数，针对复杂类型，new[]会额外存储数组大小</p>
+</li>
+</ul>
+</li>
+<li><ul>
 <li>如果 operator new(size_t) 不能成功获得内存，则调用 new_handler()函数用于处理new失败问题</li>
 <li>如果没有设置 new_handler() 函数或者 new_handler() 未能分配足够内存，则抛出 std::bad_alloc 异常</li>
 </ul>
 </li>
-<li><strong>构造函数</strong><ul>
+<li><p><strong>构造函数</strong></p>
+<ul>
 <li>在分配到的动态内存块上 初始化相应类型的对象（构造函数）并返回其首地址</li>
-<li>如果调用构造函数初始化对象时抛出异常，则自动调用 operator delete(void *, void *) 函数释放已经分配到的内存</li>
+<li>如果调用构造函数初始化对象时抛出异常，则自动调用 operator delete(void *) 函数释放已经分配到的内存</li>
 </ul>
 </li>
 </ul>
 <h2 id="9-delete、delete、allocator都有什么作用"><a href="#9-delete、delete、allocator都有什么作用" class="headerlink" title="9.delete、delete、allocator都有什么作用"></a>9.delete、delete、allocator都有什么作用</h2><ul>
-<li><p>delete简单数据类型默认只是调用free函数；复杂数据类型先调用析构函数再调用operator delete；针对简单类型，delete和delete[]等同。假设指针p指向new[]分配的内存。因为要4字节存储数组大小，实际分配的内存地址为[p-4]，系统记录的也是这个地址。delete[]实际释放的就是p-4指向的内存。而delete会直接释放p指向的内存，这个内存根本没有被系统记录，所以会崩溃</p>
+<li><p>delete简单数据类型默认只是调用free函数；复杂数据类型则先调用析构函数再调用operator delete</p>
+<ul>
+<li>针对简单类型，delete和delete[]等同。假设指针p指向new[]分配的内存。因为要4字节存储数组大小，实际分配的内存地址为[p-4]，系统记录的也是这个地址。delete[]实际释放的就是p-4指向的内存。而delete会直接释放p指向的内存，这个内存根本没有被系统记录，所以会崩溃</li>
+<li>delete[]时，数组中的元素按逆序的顺序进行销毁</li>
+</ul>
 </li>
-<li><p>动态数组管理new一个数组时，[]中必须是一个整数，但是不一定是常量整数，普通数组必须是一个常量整数</p>
-</li>
-<li><p>new动态数组返回的并不是数组类型，而是一个元素类型的指针</p>
-</li>
-<li><p>delete[]时，数组中的元素按逆序的顺序进行销毁</p>
+<li><p>需要在 new [] 一个对象数组时，需要保存数组的维度，C++ 的做法是在分配数组空间时多分配了 4 个字节的大小，专门保存数组的大小，在 delete [] 时就可以取出这个保存的数，就知道了需要调用析构函数多少次了</p>
 </li>
 <li><p>new在内存分配上面有一些局限性，new的机制是将内存分配和对象构造组合在一起，同样的，delete也是将对象析构和内存释放组合在一起的。allocator将这两部分分开进行，allocator申请一部分内存，不进行初始化对象，只有当需要的时候才进行初始化操作</p>
 </li>
@@ -904,6 +926,12 @@ int main()
 <ul>
 <li>会导致堆栈溢出</li>
 <li>原因很简单，delete的本质是“为将被释放的内存调用一个或多个析构函数，然后释放内存”。显然，delete this会去调用本对象的析构函数，而析构函数中又调用delete this，形成无限递归，造成堆栈溢出，系统崩溃</li>
+</ul>
+<p><strong>在成员函数中调用delete this会出现什么问题？对象还可以使用吗？</strong></p>
+<ul>
+<li>在类对象的内存空间中，只有数据成员和虚函数表指针，并不包含代码内容，类的成员函数单独放在代码段中</li>
+<li>在调用成员函数时，隐含传递一个this指针，让成员函数知道当前是哪个对象在调用它</li>
+<li>当调用delete this时，类对象的内存空间被释放。在delete this之后进行的其他任何函数调用，只要不涉及到this指针的内容，都能够正常运行。一旦涉及到this指针，如操作数据成员，调用虚函数等，就会出现不可预期的问题</li>
 </ul>
 <h2 id="14-静态成员变量和静态成员函数"><a href="#14-静态成员变量和静态成员函数" class="headerlink" title="14.静态成员变量和静态成员函数"></a>14.静态成员变量和静态成员函数</h2><p>若将成员变量声明为static，则为静态成员变量，与一般的成员变量不同，无论建立多少对象，都只有一个静态成员变量的拷贝，静态成员变量属于一个类，所有对象共享。<strong>静态变量在编译阶段就分配了空间，对象还没创建时就已经分配了空间，放到全局静态区</strong></p>
 <ul>
