@@ -27,6 +27,8 @@
 <meta property="og:image" content="https://axiu-image-bed.oss-cn-shanghai.aliyuncs.com/img/202205212343130.png">
 <meta property="og:image" content="https://axiu-image-bed.oss-cn-shanghai.aliyuncs.com/img/202205212343182.png">
 <meta property="og:image" content="https://axiu-image-bed.oss-cn-shanghai.aliyuncs.com/img/202205220035271.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202208202051612.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202208202052325.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204011124009.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031339227.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031339243.png">
@@ -36,7 +38,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356010.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356849.png">
 <meta property="article:published_time" content="2022-07-09T07:15:45.000Z">
-<meta property="article:modified_time" content="2022-08-20T12:25:15.477Z">
+<meta property="article:modified_time" content="2022-08-20T12:55:42.132Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -223,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          41k 字
+          44k 字
         
       </span>
     
@@ -234,7 +236,7 @@
         
         
         
-          345 分钟
+          369 分钟
         
       </span>
     
@@ -1157,16 +1159,17 @@ int main()
 </li>
 </ul>
 <h2 id="25-哪些函数不能是虚函数"><a href="#25-哪些函数不能是虚函数" class="headerlink" title="25.哪些函数不能是虚函数"></a>25.哪些函数不能是虚函数</h2><ol>
-<li><p>构造函数，构造函数初始化对象，派生类必须知道基类函数干了什么，才能进行构造；当有虚函数时，每一个类有一个虚表，每一个对象有一个虚表指针，虚表指针在构造函数中初始化</p>
+<li>构造函数，构造函数初始化对象，派生类必须知道基类函数干了什么，才能进行构造；当有虚函数时，每一个类有一个虚表，每一个对象有一个虚表指针，虚表指针在构造函数中初始化</li>
+<li>内联函数，内联函数表示在编译阶段进行函数体的替换操作，而虚函数意味着在运行期间进行类型确定，所以内联函数不能是虚函数</li>
+<li>静态函数，静态函数不属于对象属于类，静态成员函数没有this指针，因此静态函数设置为虚函数没有任何意义<ul>
+<li>static成员不属于任何类对象或类实例，所以即使给此函数加上virutal也是没有任何意义的</li>
+<li>静态与非静态成员函数之间有一个主要的区别，那就是静态成员函数没有this指针</li>
+<li>虚函数依靠vptr和vtable来处理。vptr是一个指针，在类的构造函数中创建生成，并且只能用this指针来访问它，因为它是类的一个成员，并且vptr指向保存虚函数地址的vtable.对于静态成员函数，它没有this指针，所以无法访问vptr</li>
+<li>这就是为何static函数不能为virtual，虚函数的调用关系：this -&gt; vptr -&gt; vtable -&gt;virtual function</li>
+</ul>
 </li>
-<li><p>内联函数，内联函数表示在编译阶段进行函数体的替换操作，而虚函数意味着在运行期间进行类型确定，所以内联函数不能是虚函数</p>
-</li>
-<li><p>静态函数，静态函数不属于对象属于类，静态成员函数没有this指针，因此静态函数设置为虚函数没有任何意义</p>
-</li>
-<li><p>友元函数，友元函数不属于类的成员函数，不能被继承。对于没有继承特性的函数没有虚函数的说法</p>
-</li>
-<li><p>普通函数，普通函数不属于类的成员函数，不具有继承特性，因此普通函数没有虚函数</p>
-</li>
+<li>友元函数，友元函数不属于类的成员函数，不能被继承。对于没有继承特性的函数没有虚函数的说法</li>
+<li>普通函数，普通函数不属于类的成员函数，不具有继承特性，因此普通函数没有虚函数</li>
 </ol>
 <h2 id="26-类模版和函数模版"><a href="#26-类模版和函数模版" class="headerlink" title="26.类模版和函数模版"></a>26.类模版和函数模版</h2><p><strong>通过template或template实现，主要用于数据的类型参数化，简化代码，有类模板和函数模板，函数模板是用于生成函数的，类模板则是用于生成类的</strong></p>
 <ul>
@@ -1185,7 +1188,31 @@ int main()
 </ul>
 </li>
 </ul>
-<h1 id="三、C-高级特性"><a href="#三、C-高级特性" class="headerlink" title="三、C++高级特性"></a>三、C++高级特性</h1><h2 id="1-构造函数可以抛出异常吗，有什么问题？"><a href="#1-构造函数可以抛出异常吗，有什么问题？" class="headerlink" title="1.构造函数可以抛出异常吗，有什么问题？"></a>1.构造函数可以抛出异常吗，有什么问题？</h2><p><strong>构造函数中应该避免抛出异常</strong></p>
+<h1 id="三、C-高级特性"><a href="#三、C-高级特性" class="headerlink" title="三、C++高级特性"></a>三、C++高级特性</h1><h2 id="1-什么是内存池，如何实现？"><a href="#1-什么是内存池，如何实现？" class="headerlink" title="1.什么是内存池，如何实现？"></a>1.什么是内存池，如何实现？</h2><p><strong>内存池（Memory Pool） 是一种内存分配方式</strong></p>
+<ul>
+<li>通常我们习惯直接使用new、malloc 等申请内存，这样做的缺点在于：由于所申请内存块的大小不定，当频繁使用时会造成大量的内存碎片并进而降低性能。内存池则是在真正使用内存之前，先申请分配一定数量的、大小相等(一般情况下)的内存块留作备用</li>
+<li>当有新的内存需求时，就从内存池中分出一部分内存块， 若内存块不够再继续申请新的内存。这样做的一个显著优点是尽量避免了内存碎片，使得内存分配效率得到提升</li>
+</ul>
+<p><strong>内存池实现机制：allocate 包装 malloc，deallocate包装free</strong></p>
+<ul>
+<li><p>一般是一次20*2个的申请，先用一半，留着一半，为什么也没个说法，侯捷在STL那边书里说好像是C++委员会成员认为20是个比较好的数字，既不大也不小</p>
+<ol>
+<li><p>首先客户端会调用malloc()配置一定数量的区块（固定大小的内存块，通常为8的倍数），假设40个32bytes的区块，其中20个区块（一半）给程序实际使用，1个区块交出，另外19个处于维护状态。剩余20个（一半）留给内存池，此时一共有（20* 32byte）</p>
+</li>
+<li><p>客户端之后有有内存需求，想申请（20* 64bytes）的空间，这时内存池只有（20* 32bytes），就先将（10* 64bytes)个区块返回，1个区块交出，另外9个处于维护状态，此时内存池空空如也</p>
+</li>
+<li><p>接下来如果客户端还有内存需求，就必须再调用malloc()配置空间，此时新申请的区块数量会增加一个随着配置次数越来越大的附加量，同样一半提供程序使用，另一半留给内存池。申请内存的时候用永远是先看内存池有无剩余，有的话就用上，然后挂在0-15号某一条链表上，要不然就重新申请</p>
+</li>
+<li><p>如果整个堆的空间都不够了，就会在原先已经分配区块中寻找能满足当前需求的区块数量，能满足就返回，不能满足就向客户端报bad_alloc异常</p>
+</li>
+</ol>
+</li>
+<li><p>allocator就是用来分配内存的，最重要的两个函数是allocate和deallocate，就是用来申请内存和回收内存的，外部（一般指容器）调用的时候只需要知道这些就够了</p>
+</li>
+<li><p>内部实现，目前的所有编译器都是直接调用的::operator new()和::operator delete()，说白了就是和直接使用new运算符的效果是一样的，所以老师说它们都没做任何特殊处理。</p>
+</li>
+</ul>
+<h2 id="2-构造函数可以抛出异常吗，有什么问题？"><a href="#2-构造函数可以抛出异常吗，有什么问题？" class="headerlink" title="2.构造函数可以抛出异常吗，有什么问题？"></a>2.构造函数可以抛出异常吗，有什么问题？</h2><p><strong>构造函数中应该避免抛出异常</strong></p>
 <ul>
 <li><p>构造函数中抛出异常后，对象的析构函数将不会被执行</p>
 </li>
@@ -1194,23 +1221,23 @@ int main()
 <li><p>当对象发生部分构造时，已经构造完毕的子对象（非动态分配）将会逆序地被析构</p>
 </li>
 </ul>
-<h2 id="2-初始化列表的异常怎么捕获？"><a href="#2-初始化列表的异常怎么捕获？" class="headerlink" title="2.初始化列表的异常怎么捕获？"></a>2.初始化列表的异常怎么捕获？</h2><ul>
+<h2 id="3-初始化列表的异常怎么捕获？"><a href="#3-初始化列表的异常怎么捕获？" class="headerlink" title="3.初始化列表的异常怎么捕获？"></a>3.初始化列表的异常怎么捕获？</h2><ul>
 <li>初始化列表构造，当初始化列表出现异常时，程序还未进入函数体，因此函数体中的try-catch不能执行，catch也无法处理异常。可以通过函数try块解决该问题</li>
 <li>函数try块中的try出现在表示构造函数初始值列表的冒号以及表示构造函数体的花括号之前，与这个try关联的catch既能处理构造函数体抛出的异常，也能处理成员初始化列表抛出的异常</li>
 </ul>
-<h2 id="3-析构函数可以抛出异常吗，有什么问题？"><a href="#3-析构函数可以抛出异常吗，有什么问题？" class="headerlink" title="3.析构函数可以抛出异常吗，有什么问题？"></a>3.析构函数可以抛出异常吗，有什么问题？</h2><p><strong>析构函数不应该抛出异常</strong></p>
+<h2 id="4-析构函数可以抛出异常吗，有什么问题？"><a href="#4-析构函数可以抛出异常吗，有什么问题？" class="headerlink" title="4.析构函数可以抛出异常吗，有什么问题？"></a>4.析构函数可以抛出异常吗，有什么问题？</h2><p><strong>析构函数不应该抛出异常</strong></p>
 <ul>
 <li><p><strong>其他正常，仅析构函数异常</strong>。 如果析构函数抛出异常，则异常点之后的程序不会执行，如果析构函数在异常点之后执行了某些必要的动作比如释放某些资源，则这些动作不会执行，会造成诸如资源泄漏的问题</p>
 </li>
 <li><p><strong>其他异常，且析构函数异常</strong>。 通常异常发生时，c++的机制会调用已经构造对象的析构函数来释放资源，此时若析构函数本身也抛出异常，则前一个异常尚未处理，又有新的异常，会造成程序崩溃的问题</p>
 </li>
 </ul>
-<h2 id="4-析构函数如何处理异常"><a href="#4-析构函数如何处理异常" class="headerlink" title="4.析构函数如何处理异常"></a>4.析构函数如何处理异常</h2><ul>
+<h2 id="5-析构函数如何处理异常"><a href="#5-析构函数如何处理异常" class="headerlink" title="5.析构函数如何处理异常"></a>5.析构函数如何处理异常</h2><ul>
 <li>若析构函数抛出异常，调用std::abort()来终止程序</li>
 <li>在析构函数中catch捕获异常并作处理，吞下异常</li>
 <li>如果客户需要对某个操作函数运次期间抛出的异常做出反应，class应该提供普通函数执行该操作，而非在析构函数中</li>
 </ul>
-<h2 id="5-CPP11新特性"><a href="#5-CPP11新特性" class="headerlink" title="5.CPP11新特性"></a>5.CPP11新特性</h2><ul>
+<h2 id="6-CPP11新特性"><a href="#6-CPP11新特性" class="headerlink" title="6.CPP11新特性"></a>6.CPP11新特性</h2><ul>
 <li><strong>nullptr常量</strong><ul>
 <li>C++中NULL仅仅是define NULL 0 的一个宏定义，因此，有时候会产生歧义<ul>
 <li>比如f（char*）和f（int），参数传NULL的话到底该调用哪个？</li>
@@ -1265,7 +1292,7 @@ int main()
 </ul>
 </li>
 </ul>
-<h2 id="6-auto、decltype的用法"><a href="#6-auto、decltype的用法" class="headerlink" title="6.auto、decltype的用法"></a>6.auto、decltype的用法</h2><p><strong>1）auto</strong></p>
+<h2 id="7-auto、decltype的用法"><a href="#7-auto、decltype的用法" class="headerlink" title="7.auto、decltype的用法"></a>7.auto、decltype的用法</h2><p><strong>1）auto</strong></p>
 <p>C++11新标准引入了auto类型说明符，用它就能让编译器替我们去分析表达式所属的类型。和原来那些只对应某种特定的类型说明符(例如 int)不同，</p>
 <p>auto 让编译器通过初始值来进行类型推演。从而获得定义变量的类型，所以说 auto 定义的变量必须有初始值。</p>
 <p>举个例子：</p>
@@ -1275,11 +1302,11 @@ int main()
 <p>有的时候我们还会遇到这种情况，<strong>我们希望从表达式中推断出要定义变量的类型，但却不想用表达式的值去初始化变量。</strong>还有可能是函数的返回类型为某表达式的值类型。在这些时候auto显得就无力了，所以C++11又引入了第二种类型说明符decltype，它的作用是选择并返回操作数的数据类型。在此过程中，编译器只是分析表达式并得到它的类型，却不进行实际的计算表达式的值。</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs awk">int <span class="hljs-keyword">func</span>() &#123;return <span class="hljs-number">0</span>&#125;;<br><br><span class="hljs-regexp">//</span>普通类型<br>decltype(<span class="hljs-keyword">func</span>()) sum = <span class="hljs-number">5</span>; <span class="hljs-regexp">//</span> sum的类型是函数<span class="hljs-keyword">func</span>()的返回值的类型int, 但是这时不会实际调用函数<span class="hljs-keyword">func</span>()<br>int a = <span class="hljs-number">0</span>;<br>decltype(a) b = <span class="hljs-number">4</span>; <span class="hljs-regexp">//</span> a的类型是int, 所以b的类型也是int<br><br><span class="hljs-regexp">//</span>不论是顶层const还是底层const, decltype都会保留   <br>const int c = <span class="hljs-number">3</span>;<br>decltype(c) d = c; <span class="hljs-regexp">//</span> d的类型和c是一样的, 都是顶层const<br>int e = <span class="hljs-number">4</span>;<br>const int* f = &amp;e; <span class="hljs-regexp">//</span> f是底层const<br>decltype(f) g = f; <span class="hljs-regexp">//</span> g也是底层const<br><br><span class="hljs-regexp">//</span>引用与指针类型<br><span class="hljs-regexp">//</span><span class="hljs-number">1</span>. 如果表达式是引用类型, 那么decltype的类型也是引用<br>const int i = <span class="hljs-number">3</span>, &amp;j = i;<br>decltype(j) k = <span class="hljs-number">5</span>; <span class="hljs-regexp">//</span> k的类型是 const int&amp;<br><br><span class="hljs-regexp">//</span><span class="hljs-number">2</span>. 如果表达式是引用类型, 但是想要得到这个引用所指向的类型, 需要修改表达式:<br>int i = <span class="hljs-number">3</span>, &amp;r = i;<br>decltype(r + <span class="hljs-number">0</span>) t = <span class="hljs-number">5</span>; <span class="hljs-regexp">//</span> 此时是int类型<br><br><span class="hljs-regexp">//</span><span class="hljs-number">3</span>. 对指针的解引用操作返回的是引用类型<br>int i = <span class="hljs-number">3</span>, j = <span class="hljs-number">6</span>, *p = &amp;i;<br>decltype(*p) c = j; <span class="hljs-regexp">//</span> c是int&amp;类型, c和j绑定在一起<br><br><span class="hljs-regexp">//</span><span class="hljs-number">4</span>. 如果一个表达式的类型不是引用, 但是我们需要推断出引用, 那么可以加上一对括号, 就变成了引用类型了<br>int i = <span class="hljs-number">3</span>;<br>decltype((i)) j = i; <span class="hljs-regexp">//</span> 此时j的类型是int&amp;类型, j和i绑定在了一起<br></code></pre></td></tr></table></figure>
 
-<h2 id="7-C-中NULL和nullptr的区别"><a href="#7-C-中NULL和nullptr的区别" class="headerlink" title="7.C++中NULL和nullptr的区别"></a>7.C++中NULL和nullptr的区别</h2><ul>
+<h2 id="8-C-中NULL和nullptr的区别"><a href="#8-C-中NULL和nullptr的区别" class="headerlink" title="8.C++中NULL和nullptr的区别"></a>8.C++中NULL和nullptr的区别</h2><ul>
 <li>NULL来自C语言，一般由宏定义实现，而 nullptr 则是C++11的新增关键字。在C语言中，NULL被定义为(void)0，而在C++语言中，NULL则被定义为整数0</li>
 <li>在传入NULL参数时，会把NULL当做整数0来看，如果我们想调用参数是指针的函数，该怎么办呢?。nullptr在C++11被引入用于解决这一问题，nullptr可以明确区分整型和指针类型，能够根据环境自动转换成相应的指针类型，但不会被转换为任何整型，所以不会造成参数传递错误</li>
 </ul>
-<h2 id="8-智能指针"><a href="#8-智能指针" class="headerlink" title="8.智能指针"></a>8.智能指针</h2><ul>
+<h2 id="9-智能指针"><a href="#9-智能指针" class="headerlink" title="9.智能指针"></a>9.智能指针</h2><ul>
 <li><p><strong>原始指针在引入了异常机制后容易发生内存泄漏、二次释放等问题</strong></p>
 </li>
 <li><p>C++11 中引入了智能指针（Smart Pointer），它利用了一种叫做 RAII（资源获取即初始化）的技术将普通的指针封装为一个栈对象。当栈对象的生存周期结束后，会在析构函数中释放掉申请的内存，从而防止内存泄漏。这使得智能指针实质是一个对象，行为表现的却像一个指针</p>
@@ -1330,14 +1357,14 @@ int main()
 </ul>
 </li>
 </ul>
-<h2 id="9-野指针"><a href="#9-野指针" class="headerlink" title="9.野指针"></a>9.野指针</h2><p><strong>野指针指向一个已删除的对象或 申请访问受限内存区域的指针</strong></p>
+<h2 id="10-野指针"><a href="#10-野指针" class="headerlink" title="10.野指针"></a>10.野指针</h2><p><strong>野指针指向一个已删除的对象或 申请访问受限内存区域的指针</strong></p>
 <p><strong>产生原因：</strong></p>
 <ul>
 <li>指针变量未初始化</li>
 <li>指针释放未置空</li>
 <li>指针操作超出作用域。返回指向栈内存的指针或引用，因为栈内存在函数结束时会被释放</li>
 </ul>
-<h2 id="10-强制转换"><a href="#10-强制转换" class="headerlink" title="10.强制转换"></a>10.强制转换</h2><p><strong>C++中强制转换为static_cast, dynamic_cast,const_cast, reinterpret_cast</strong></p>
+<h2 id="11-强制转换"><a href="#11-强制转换" class="headerlink" title="11.强制转换"></a>11.强制转换</h2><p><strong>C++中强制转换为static_cast, dynamic_cast,const_cast, reinterpret_cast</strong></p>
 <ul>
 <li><strong>static_cast</strong><ul>
 <li>完成基础数据类型；同一个继承体系中类型的转换；任意类型与空指针类型void* 之间的转换，不能用于普通指针的转换（void空指针除外）</li>
@@ -1379,14 +1406,14 @@ int main()
 </ul>
 </li>
 </ul>
-<h2 id="11-RTTI"><a href="#11-RTTI" class="headerlink" title="11.RTTI"></a>11.RTTI</h2><p><strong>运行时类型检查，在C++层面主要体现在dynamic_cast和typeid</strong></p>
+<h2 id="12-RTTI"><a href="#12-RTTI" class="headerlink" title="12.RTTI"></a>12.RTTI</h2><p><strong>运行时类型检查，在C++层面主要体现在dynamic_cast和typeid</strong></p>
 <ul>
 <li><p>dynamic_cast 动态类型转换</p>
 </li>
 <li><p>typeid typeid 运算符允许在运行时确定对象的类型，获取对象的实际类型</p>
 </li>
 </ul>
-<h2 id="12-RAII"><a href="#12-RAII" class="headerlink" title="12.RAII"></a>12.RAII</h2><p><strong>RAII全称是“Resource Acquisition is Initialization”，直译过来是“资源获取即初始化”</strong></p>
+<h2 id="13-RAII"><a href="#13-RAII" class="headerlink" title="13.RAII"></a>13.RAII</h2><p><strong>RAII全称是“Resource Acquisition is Initialization”，直译过来是“资源获取即初始化”</strong></p>
 <ul>
 <li>在构造函数中申请分配资源，在析构函数中释放资源。因为C++的语言机制保证了，当一个对象创建的时候，自动调用构造函数，当对象超出作用域的时候会自动调用析构函数。所以，在RAII的指导下，我们应该使用类来管理资源，将资源和对象的生命周期绑定</li>
 <li>RAII的核心思想是将资源或者状态与对象的生命周期绑定，通过C++的语言机制，实现资源和状态的安全管理</li>
@@ -1402,7 +1429,7 @@ int main()
 <li><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/sunchaothu/p/10389842.html">参考</a></p>
 </li>
 </ul>
-<h2 id="13-右值引用"><a href="#13-右值引用" class="headerlink" title="13.右值引用"></a>13.右值引用</h2><ul>
+<h2 id="14-右值引用"><a href="#14-右值引用" class="headerlink" title="14.右值引用"></a>14.右值引用</h2><ul>
 <li><p><strong>定义：</strong></p>
 <ul>
 <li>左值：存储在内存中，有明确存储地址(可寻址)的数据</li>
@@ -1553,15 +1580,53 @@ int main()
 </ol>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-number">2.</span> <span class="hljs-comment">//i++实现代码为：                 </span><br><span class="hljs-type">int</span> <span class="hljs-keyword">operator</span>++(<span class="hljs-type">int</span>)                 <br>&#123;<br>   <span class="hljs-type">int</span> temp = *<span class="hljs-keyword">this</span>;                   <br>   ++*<span class="hljs-keyword">this</span>;                       <br>   <span class="hljs-keyword">return</span> temp;                  <br>&#125; <br></code></pre></td></tr></table></figure>
 
-<h2 id="5-STL中的allocator、deallocator"><a href="#5-STL中的allocator、deallocator" class="headerlink" title="5.STL中的allocator、deallocator"></a>5.STL中的allocator、deallocator</h2><ul>
-<li><p>第一级配置器直接使用malloc()、free()和relloc()，第二级配置器视情况采用不同的策略：当配置区块超过128bytes时，视之为足够大，便调用第一级配置器；当配置器区块小于128bytes时，为了降低额外负担，使用复杂的内存池整理方式，而不再用一级配置器</p>
+<h2 id="5-STL中的二级空间配置器"><a href="#5-STL中的二级空间配置器" class="headerlink" title="5.STL中的二级空间配置器"></a>5.STL中的二级空间配置器</h2><p><strong>为什么需要二级空间配置器：</strong></p>
+<ul>
+<li><p>我们知道动态开辟内存时，要在堆上申请，但若是我们需要频繁的在堆开辟释放内存，则就会在堆上造成很多外部碎片，浪费了内存空间</p>
 </li>
-<li><p>第二级配置器主动将任何小额区块的内存需求量上调至8的倍数，并维护16个free-list，各自管理大小为8~128bytes的小额区块</p>
+<li><p>每次都要进行调用malloc、free函数等操作，使空间就会增加一些附加信息，降低了空间利用率</p>
 </li>
-<li><p>空间配置函数allocate()，首先判断区块大小，大于128就直接调用第一级配置器，小于128时就检查对应的free-list。如果free-list之内有可用区块，就直接拿来用，如果没有可用区块，就将区块大小调整至8的倍数，然后调用refill()，为free-list重新分配空</p>
+<li><p>随着外部碎片增多，内存分配器在找不到合适内存情况下需要合并空闲块，浪费了时间，大大降低了效率。于是就设置了二级空间配置器，当开辟内存&lt;&#x3D;128bytes时，即视为开辟小块内存，则调用二级空间配置器</p>
 </li>
-<li><p>空间释放函数deallocate()，该函数首先判断区块大小，大于128bytes时，直接调用一级配置器，小于128bytes就找到对应的free-list然后释放内存</p>
+<li><p>关于STL中一级空间配置器和二级空间配置器的选择上，一般默认选择的为二级空间配置器。 如果大于128字节再转去一级配置器器</p>
 </li>
+</ul>
+<p><strong>一级配置器</strong></p>
+<ul>
+<li><p>一级空间配置器中重要的函数就是allocate、deallocate、reallocate 。 一级空间配置器是以malloc()，free()，realloc()等C函数执行实际的内存配置 。大致过程是：</p>
+<p>1、直接allocate分配内存，其实就是malloc来分配内存，成功则直接返回，失败就调用处理函数</p>
+<p>2、如果用户自定义了内存分配失败的处理函数就调用，没有的话就返回异常</p>
+<p>3、如果自定义了处理函数就进行处理，完事再继续分配试试</p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202208202051612.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><strong>二级配置器</strong></p>
+<p><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202208202052325.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<ul>
+<li><p>维护16条链表，分别是0-15号链表，最小8字节，以8字节逐渐递增，最大128字节，你传入一个字节参数，表示你需要多大的内存，会自动帮你校对到第几号链表（如需要13bytes空间，我们会给它分配16bytes大小），在找到第n个链表后查看链表是否为空，如果不为空直接从对应的free_list中拔出，将已经拨出的指针向后移动一位。</p>
+</li>
+<li><p>对应的free_list为空，先看其内存池是不是空时，如果内存池不为空： </p>
+<p>（1）先检验它剩余空间是否够20个节点大小（即所需内存大小(提升后) * 20），若足够则直接从内存池中拿出20个节点大小空间，将其中一个分配给用户使用，另外19个当作自由链表中的区块挂在相应的free_list下，这样下次再有相同大小的内存需求时，可直接拨出</p>
+<p>（2）如果不够20个节点大小，则看它是否能满足1个节点大小，如果够的话则直接拿出一个分配给用户，然后从剩余的空间中分配尽可能多的节点挂在相应的free_list中</p>
+<p>（3）如果连一个节点内存都不能满足的话，则将内存池中剩余的空间挂在相应的free_list中（找到相应的free_list），然后再给内存池申请内存，转到3。 3、内存池为空，申请内存 此时二级空间配置器会使用malloc()从heap上申请内存，（一次所申请的内存大小为2 * 所需节点内存大小（提升后）* 20 + 一段额外空间），申请40块，一半拿来用，一半放内存池中</p>
+<p>（4）malloc没有成功 在第三种情况下，如果malloc()失败了，说明heap上没有足够空间分配给我们了，这时，二级空间配置器会从比所需节点空间大的free_list中一一搜索，从比它所需节点空间大的free_list中拔除一个节点来使用。如果这也没找到，说明比其大的free_list中都没有自由区块了，那就要调用一级适配器了</p>
+</li>
+<li><p>释放时调用deallocate()函数，若释放的n&gt;128，则调用一级空间配置器，否则就直接将内存块挂上自由链表的合适位置。</p>
+</li>
+</ul>
+<p><strong>STL二级空间配置器虽然解决了外部碎片与提高了效率，但它同时增加了一些缺点：</strong></p>
+<ol>
+<li><p>因为自由链表的管理问题，它会把我们需求的内存块自动提升为8的倍数，这时若你需要1个字节，它会给你8个字节，即浪费了7个字节，所以它又引入了内部碎片的问题，若相似情况出现很多次，就会造成很多内部碎片；</p>
+</li>
+<li><p>二级空间配置器是在堆上申请大块的狭义内存池，然后用自由链表管理，供现在使用，在程序执行过程中，它将申请的内存一块一块都挂在自由链表上，即不会还给操作系统，并且它的实现中所有成员全是静态的，所以它申请的所有内存只有在进程结束才会释放内存，还给操作系统，由此带来的问题有：1.即我不断的开辟小块内存，最后整个堆上的空间都被挂在自由链表上，若我想开辟大块内存就会失败；2.若自由链表上挂很多内存块没有被使用，当前进程又占着内存不释放，这时别的进程在堆上申请不到空间，也不可以使用当前进程的空闲内存，由此就会引发多种问题。</p>
+</li>
+</ol>
+<p><strong>总结：</strong></p>
+<ul>
+<li>第一级配置器直接使用malloc()、free()和relloc()，第二级配置器视情况采用不同的策略：当配置区块超过128bytes时，视之为足够大，便调用第一级配置器；当配置器区块小于128bytes时，为了降低额外负担，使用复杂的内存池整理方式，而不再用一级配置器</li>
+<li>第二级配置器主动将任何小额区块的内存需求量上调至8的倍数，并维护16个free-list，各自管理大小为8~128bytes的小额区块</li>
+<li>空间配置函数allocate()，首先判断区块大小，大于128就直接调用第一级配置器，小于128时就检查对应的free-list。如果free-list之内有可用区块，就直接拿来用，如果没有可用区块，就将区块大小调整至8的倍数，然后调用refill()，为free-list重新分配空</li>
+<li>空间释放函数deallocate()，该函数首先判断区块大小，大于128bytes时，直接调用一级配置器，小于128bytes就找到对应的free-list然后释放内存</li>
 </ul>
 <h2 id="6-红黑树原理"><a href="#6-红黑树原理" class="headerlink" title="6.红黑树原理"></a>6.红黑树原理</h2><h3 id="6-1-二叉查找树"><a href="#6-1-二叉查找树" class="headerlink" title="6.1.二叉查找树"></a>6.1.二叉查找树</h3><p><strong>删除某节点</strong></p>
 <p>假设要删除的为节点 p，则对于二叉查找树来说，需要根据节点 p 所在不同的位置作不同的操作，有以下 3 种可能</p>
