@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202207232116840.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202207232136438.png">
 <meta property="article:published_time" content="2022-07-09T07:15:51.000Z">
-<meta property="article:modified_time" content="2022-08-12T05:45:25.689Z">
+<meta property="article:modified_time" content="2022-08-21T07:08:13.896Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          15k 字
+          16k 字
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          127 分钟
+          132 分钟
         
       </span>
     
@@ -637,7 +637,36 @@
 </li>
 <li><strong>根据explain的结果，进行索引优化</strong></li>
 </ul>
-<h2 id="7-一颗高度为3的B-树能存多少行数据？"><a href="#7-一颗高度为3的B-树能存多少行数据？" class="headerlink" title="7.一颗高度为3的B+树能存多少行数据？"></a>7.一颗高度为3的B+树能存多少行数据？</h2><ul>
+<h2 id="7-order-by关键字优化"><a href="#7-order-by关键字优化" class="headerlink" title="7.order by关键字优化"></a>7.order by关键字优化</h2><ul>
+<li><p><strong>order by索引对比</strong></p>
+<ul>
+<li>无过滤条件(无where和limit)的order by 必然会出现 Using filesort</li>
+<li>过滤条件中的字段和order by 后跟的字段的顺序不一致，必然会出现 Using filesort</li>
+<li>order by后跟的字段排序即有DESC也有ASC，必然会出现Using filesort</li>
+<li>where条件的值确定，且order by后跟了跟了where条件的排序字段(order by 字段去除定值字段后剩余单字段)，即使order by后跟的字段和组合索引字段顺序不一致，也不会出现Usi</li>
+</ul>
+</li>
+<li><p><strong>order by索引建议</strong></p>
+<ul>
+<li>尽量在索引列上完成排序操作，遵循最佳做前缀法则</li>
+<li>order by子句，尽量使用index方式排序，避免使用filesort方式</li>
+</ul>
+</li>
+<li><p><strong>无索引 order by的索引建议</strong></p>
+<ul>
+<li>双路排序：扫描2次磁盘获取最终数据，第一次扫描读取行指针和order by字段列的值进行排序，刷选出需要的排完序的行指针，第二次扫描读取所需的全部数据</li>
+<li>单路排序：从磁盘中读取查询所需的全部列，在buff中进行排序，排序后进行输出，只需要扫描一次磁盘</li>
+<li>问题：双路排序相比单路排序会减少I&#x2F;O次数，但会消耗更多的内存，如果取出的数据总大小超出sort_buffer的容量，会创建temp文件进行多路合并，反而会增加I&#x2F;O次数，同理双路排序也会出现同样的问题，但单路排序的相对几率要高很多</li>
+<li>优化：<ul>
+<li>增大sort_buffer_size</li>
+<li>增大max_length_for_sort_data</li>
+<li>减少select后跟的查询字段</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="8-一颗高度为3的B-树能存多少行数据？"><a href="#8-一颗高度为3的B-树能存多少行数据？" class="headerlink" title="8.一颗高度为3的B+树能存多少行数据？"></a>8.一颗高度为3的B+树能存多少行数据？</h2><ul>
 <li><p>InnoDB存储引擎的最小储存单元是 <code>页（Page）</code> ，一个页的大小是默认是 <code>16K</code> 。磁盘存储数据最小单元是 <code>扇区</code> ，一个扇区的大小是 <code>512字节</code> ， 而文件系统（例如XFS&#x2F;EXT4）它的最小单元是 <code>块</code> ，一个块的大小是 <code>4k</code> </p>
 </li>
 <li><p>因此InnoDB的所有数据文件（后缀为 <em>.ibd</em> 的文件），它的大小始终都是16384B（16k）的整数倍</p>
