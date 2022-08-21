@@ -38,7 +38,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356010.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356849.png">
 <meta property="article:published_time" content="2022-07-09T07:15:45.000Z">
-<meta property="article:modified_time" content="2022-08-20T12:55:42.132Z">
+<meta property="article:modified_time" content="2022-08-21T03:11:36.305Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -225,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          44k 字
+          46k 字
         
       </span>
     
@@ -236,7 +236,7 @@
         
         
         
-          369 分钟
+          383 分钟
         
       </span>
     
@@ -712,23 +712,19 @@ int main()
 <li><p>链接阶段<br>链接程序的主要工作就是将有关的目标文件彼此相连接，也即将在一个文件中引用的符号同该符号在另外一个文件中的定义连接起来，使得所有的这些目标文件成为一个能够诶操作系统装入执行的统一整体。</p>
 </li>
 </ol>
-<h2 id="19-宏定义和typedef、函数的区别"><a href="#19-宏定义和typedef、函数的区别" class="headerlink" title="19.宏定义和typedef、函数的区别"></a>19.宏定义和typedef、函数的区别</h2><ul>
-<li><p>宏在预处理阶段完成替换，之后被替换的文本参与编译，相当于直接插入了代码，运行时不存在函数调用，执行起来更快；函数调用在运行时需要跳转到具体调用函数</p>
-</li>
-<li><p>宏定义属于在结构中插入代码，没有返回值；函数调用具有返回值</p>
-</li>
-<li><p>宏定义参数没有类型，不进行类型检查；函数参数具有类型，需要检查类型</p>
-</li>
-<li><p>宏主要用于定义常量及书写复杂的内容；typedef主要用于定义类型别名</p>
-</li>
-<li><p>宏替换发生在编译阶段之前，属于文本插入替换；typedef是编译的一部分</p>
-</li>
-<li><p>宏不检查类型；typedef会检查数据类型</p>
-</li>
-<li><p>宏不是语句，不在在最后加分号；typedef是语句，要加分号标识结束</p>
-</li>
-<li><p>注意对指针的操作，typedef char * p_char和#define p_char char *区别巨大</p>
-</li>
+<h2 id="19-宏定义和typedef、函数的区别"><a href="#19-宏定义和typedef、函数的区别" class="headerlink" title="19.宏定义和typedef、函数的区别"></a>19.宏定义和typedef、函数的区别</h2><p><strong>宏定义与typedef：</strong></p>
+<ul>
+<li>宏主要用于定义常量及书写复杂的内容；typedef主要用于定义类型别名</li>
+<li>宏替换发生在编译阶段之前，属于文本插入替换；typedef是编译的一部分</li>
+<li>宏不检查类型；typedef会检查数据类型</li>
+<li>宏不是语句，不在在最后加分号；typedef是语句，要加分号标识结束</li>
+<li>注意对指针的操作，typedef char * p_char和#define p_char char *区别巨大</li>
+</ul>
+<p><strong>宏定义与函数：</strong></p>
+<ul>
+<li>宏在预处理阶段完成替换，之后被替换的文本参与编译，相当于直接插入了代码，运行时不存在函数调用，执行起来更快；函数调用在运行时需要跳转到具体调用函数</li>
+<li>宏定义属于在结构中插入代码，没有返回值；函数调用具有返回值</li>
+<li>宏定义参数没有类型，不进行类型检查；函数参数具有类型，需要检查类型</li>
 </ul>
 <h1 id="二、C-面向对象"><a href="#二、C-面向对象" class="headerlink" title="二、C++面向对象"></a>二、C++面向对象</h1><h2 id="1-内存字节对齐"><a href="#1-内存字节对齐" class="headerlink" title="1.内存字节对齐"></a>1.内存字节对齐</h2><ul>
 <li><code>#pragma pack(n)</code> 表示的是设置n字节对齐，windows默认是8，linux是4</li>
@@ -768,7 +764,7 @@ int main()
 </ul>
 </li>
 </ul>
-<h2 id="3-内联函数和函数重载"><a href="#3-内联函数和函数重载" class="headerlink" title="3.内联函数和函数重载"></a>3.内联函数和函数重载</h2><ul>
+<h2 id="3-内联函数、函数重载、宏定义的区别"><a href="#3-内联函数、函数重载、宏定义的区别" class="headerlink" title="3.内联函数、函数重载、宏定义的区别"></a>3.内联函数、函数重载、宏定义的区别</h2><ul>
 <li><strong>内联函数</strong><ul>
 <li>相当于把内联函数里面的内容写在调用内联函数处</li>
 <li>相当于不用执行进入函数的步骤，直接执行函数体</li>
@@ -777,10 +773,22 @@ int main()
 <li>在类声明中定义的函数，除了虚函数的其他函数都会自动隐式地当成内联函数，内联函数对于编译器而言只是一个建议，编译器不一定会接受这种建议，即使没有声明内联函数，编译器可能也会内联一些小的简单的函数</li>
 </ul>
 </li>
+<li><strong>内联函数适用场景：</strong><ul>
+<li>使用宏定义的地方都可以使用 inline 函数</li>
+<li>作为类成员接口函数来读写类的私有成员或者保护成员，会提高效率</li>
+</ul>
+</li>
 <li><strong>C++的函数名称可以重复，称为函数重载</strong><ul>
 <li>其中必须在同一作用域下的函数名称相同，不能是一个在全局，一个局部，或者不同的代码块中</li>
 <li>可以根据函数参数的个数、类型（const也可以作为重载条件）、顺序不同进行函数重载，但<strong>不能用函数返回值进行重载</strong></li>
 <li>当函数重载遇到函数默认参数时，要注意二义性</li>
+</ul>
+</li>
+<li><strong>内联函数与宏定义的区别</strong><ul>
+<li>在使用时，宏只做简单字符串替换（编译前）。而内联函数可以进行参数类型检查（编译时），且具有返回值</li>
+<li>内联函数在编译时直接将函数代码嵌入到目标代码中，省去函数调用的开销来提高执行效率，并且进行参数类型检查，具有返回值，可以实现重载</li>
+<li>宏定义时要注意书写（参数要括起来）否则容易出现歧义，内联函数不会产生歧义</li>
+<li>内联函数有类型检测、语法判断等功能，而宏没有</li>
 </ul>
 </li>
 </ul>
@@ -1746,6 +1754,52 @@ int main()
 </li>
 <li><p>同平衡二叉树相比较，红黑树没有像平衡二叉树对平衡性要求的那么苛刻，虽然两者的时间复杂度相同，但是红黑树在实际测算中的速度要更胜一筹！平衡二叉树的时间复杂度是<code>O(logn)</code>，红黑树的时间复杂度为<code>O(lgn)</code>，两者都表示的都是时间复杂度为对数关系（lg 函数为底是 10 的对数，用于表示时间复杂度时可以忽略）</p>
 </li>
+</ul>
+<h2 id="7-vector中resize-和reserve-的区别"><a href="#7-vector中resize-和reserve-的区别" class="headerlink" title="7.vector中resize()和reserve()的区别"></a>7.vector中resize()和reserve()的区别</h2><p><strong>一、reserve()避免多次不必要的扩容</strong></p>
+<ul>
+<li>capacity()：告诉我们当前 vector 容器总共可以容纳多少个元素。如果想知道当前 vector 容器有多少未被使用的存储空间，可以通过 capacity()-size() 得知。注意，如果 size() 和 capacity() 返回的值相同，则表明当前 vector 容器中没有可用存储空间了，这意味着，下一次向 vector 容器中添加新元素，将导致 vector 容器扩容</li>
+<li>size()：告诉我们当前 vector 容器中已经存有多少个元素，但仅通过此方法，无法得知 vector 容器有多少存储空间</li>
+<li>reserve(n)：强制 vector 容器的容量至少为 n。注意，如果 n 比当前 vector 容器的容量小，则该方法什么也不会做；反之如果 n 比当前 vector 容器的容量大，则 vector 容器就会扩容</li>
+<li><strong>reserve的作用是更改vector的容量（capacity），使vector至少可以容纳n个元素</strong><ul>
+<li>如果n大于vector当前的容量，reserve会对vector进行扩容</li>
+<li>其他情况下都不会重新分配vector的存储空间</li>
+<li>reserve是容器预留空间，但在空间内不真正创建元素对象，所以在没有添加新的对象之前，不能引用容器内的元素。加入新的元素时，要调用push_back()&#x2F;insert()函数</li>
+<li>reserve()函数预分配出的空间没有被初始化，所以不可访问</li>
+</ul>
+</li>
+</ul>
+<p><strong>二、resize()是改变容器的大小，且创建对象</strong></p>
+<ul>
+<li><p><strong>使用</strong></p>
+<ul>
+<li><p>resize(n) </p>
+<ul>
+<li>调整容器的长度大小，使其能容纳n个元素。如果n小于容器的当前的size，则删除多出来的元素。否则，添加采用值初始化的元素。</li>
+</ul>
+</li>
+<li><p>resize(n，t)</p>
+</li>
+<li><p>多一个参数t，将所有新添加的元素初始化为t。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>特征</strong></p>
+<ul>
+<li>resize()函数和容器的size息息相关。调用resize(n)后，容器的size即为n。至于是否影响capacity，取决于调整后的容器的size是否大于capacity<ul>
+<li>比原来的变小之后，后面的会被截断</li>
+<li>比原来的变大之后，后面的会被填充新的东西，不同的编译器可能会不同。也可以自己指定后面填充的内容</li>
+</ul>
+</li>
+<li>resize是改变容器的大小，且在创建对象，因此，调用这个函数之后，就可以引用容器内的对象了，因此当加入新的元素时，用operator[]操作符，或者用迭代器来引用元素对象。此时再调用push_back()函数，是加在这个新的空间后面的。</li>
+</ul>
+</li>
+</ul>
+<p><strong>三、resize()和reserve()区别</strong></p>
+<ul>
+<li>vector的reserve增加了vector的capacity，但是它的size没有改变！而resize改变了vector的capacity同时也增加了它的size</li>
+<li>reserve是容器预留空间，但在空间内不真正创建元素对象，所以在没有添加新的对象之前，不能引用容器内的元素。加入新的元素时，要调用push_back()&#x2F;insert()函数</li>
+<li>resize是改变容器的大小，且在创建对象，因此，调用这个函数之后，就可以引用容器内的对象了，因此当加入新的元素时，用operator[]操作符，或者用迭代器来引用元素对象。此时再调用push_back()函数，是加在这个新的空间后面的</li>
+<li>两个函数的参数形式也有区别的，reserve函数之后一个参数，即需要预留的容器的空间；resize函数可以有两个参数，第一个参数是容器新的大小，第二个参数是要加入容器中的新元素，如果这个参数被省略，那么就调用元素对象的默认构造函数</li>
 </ul>
 
               
