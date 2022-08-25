@@ -38,7 +38,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356010.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356849.png">
 <meta property="article:published_time" content="2022-07-09T07:15:45.000Z">
-<meta property="article:modified_time" content="2022-08-21T03:17:30.705Z">
+<meta property="article:modified_time" content="2022-08-25T03:08:57.504Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -236,7 +236,7 @@
         
         
         
-          383 分钟
+          386 分钟
         
       </span>
     
@@ -415,6 +415,11 @@
 <li>class这个关键字还用于定义模板参数，就像typename。但关键字struct不用于定义模板参数</li>
 </ul>
 </li>
+</ul>
+<h2 id="7-结构体和联合体的区别"><a href="#7-结构体和联合体的区别" class="headerlink" title="7.结构体和联合体的区别"></a>7.结构体和联合体的区别</h2><ul>
+<li>struct和union都是由多个不同的数据类型成员组成, 但在任何同一时刻, union中只存放了一个被选中的成员, 而struct的所有成员都存在。在struct中，各成员都占有自己的内存空间，它们是同时存在的。一个struct变量的总长度等于所有成员长度之和</li>
+<li>在Union中，所有成员不能同时占用它的内存空间，它们不能同时存在。Union变量的长度等于最长的成员的长度</li>
+<li>对于union的不同成员赋值, 将会对其它成员重写, 原来成员的值就不存在了, 而对于struct的不同成员赋值是互不影响的</li>
 </ul>
 <h2 id="7-new-x2F-delete和malloc-x2F-free的区别"><a href="#7-new-x2F-delete和malloc-x2F-free的区别" class="headerlink" title="7.new&#x2F;delete和malloc&#x2F;free的区别"></a>7.new&#x2F;delete和malloc&#x2F;free的区别</h2><ul>
 <li><p><strong>主要区别</strong></p>
