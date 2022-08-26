@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/be608a77-7b7f-4f8e-87cc-f2237270bf69.png">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/docker-filesystems-busyboxrw.png">
 <meta property="article:published_time" content="2022-07-09T07:15:07.000Z">
-<meta property="article:modified_time" content="2022-08-25T08:42:56.766Z">
+<meta property="article:modified_time" content="2022-08-26T14:57:03.604Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -225,7 +225,7 @@
         
         
         
-          248 分钟
+          250 分钟
         
       </span>
     
@@ -1543,15 +1543,18 @@
 </li>
 <li><p><strong>kill</strong></p>
 <ul>
-<li><p>杀掉进程</p>
+<li><strong>执行kill命令：系统会发送一个SIGTERM信号给对应的程序。当程序接收到该signal信号后，将会发生以下事情</strong><ul>
+<li>程序立刻停止</li>
+<li>当程序释放相应资源后再停止</li>
+<li>程序可能仍然继续运行</li>
+<li>大部分程序接收到SIGTERM信号后，会先释放自己的资源，然后再停止。但是也有程序可能接收信号后，做一些其他的事情（如果程序正在等待IO，可能就不会立马做出响应，我在使用wkhtmltopdf转pdf的项目中遇到这现象），也就是说，SIGTERM多半是会被阻塞的</li>
+</ul>
 </li>
-<li><p><code>kill -9 pid</code>杀掉指定进程</p>
+<li><strong>执行kill -9命令:</strong><ul>
+<li><strong>系统给对应程序发送的信号是SIGKILL，即exit。exit信号不会被系统阻塞，所以kill -9 能顺利杀掉进程</strong></li>
+<li>kill -9 pid杀掉指定进程</li>
+</ul>
 </li>
-<li><p>杀死具体进程</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 加具体进程PID</span><br><span class="hljs-attribute">kill</span> <span class="hljs-number">12345</span><br></code></pre></td></tr></table></figure>
-</li>
-<li><p>杀死某进程相关进程</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 加上&quot;-9&quot;杀死某进程相关进程</span><br><span class="hljs-attribute">kill</span> -<span class="hljs-number">9</span> <span class="hljs-number">12345</span><br></code></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p><strong>lsof</strong></p>
