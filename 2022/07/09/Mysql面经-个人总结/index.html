@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202207232116840.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202207232136438.png">
 <meta property="article:published_time" content="2022-07-09T07:15:51.000Z">
-<meta property="article:modified_time" content="2022-08-25T07:18:26.111Z">
+<meta property="article:modified_time" content="2022-08-27T14:01:35.077Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -668,29 +668,26 @@
 </li>
 </ul>
 <h2 id="8-一颗高度为3的B-树能存多少行数据？"><a href="#8-一颗高度为3的B-树能存多少行数据？" class="headerlink" title="8.一颗高度为3的B+树能存多少行数据？"></a>8.一颗高度为3的B+树能存多少行数据？</h2><ul>
-<li><p>InnoDB存储引擎的最小储存单元是 <code>页（Page）</code> ，一个页的大小是默认是 <code>16K</code> 。磁盘存储数据最小单元是 <code>扇区</code> ，一个扇区的大小是 <code>512字节</code> ， 而文件系统（例如XFS&#x2F;EXT4）它的最小单元是 <code>块</code> ，一个块的大小是 <code>4k</code> </p>
+<li><strong>基本概念</strong><ul>
+<li>InnoDB存储引擎的最小储存单元是 <code>页（Page）</code> ，一个页的大小是默认是 <code>16K</code> 。磁盘存储数据最小单元是 <code>扇区</code> ，一个扇区的大小是 <code>512字节</code> ， 而文件系统（例如XFS&#x2F;EXT4）它的最小单元是 <code>块</code> ，一个块的大小是 <code>4k</code> </li>
+<li>因此InnoDB的所有数据文件（后缀为 <em>.ibd</em> 的文件），它的大小始终都是16384B（16k）的整数倍</li>
+<li>数据表中的数据都是存储在页中的，所以一个页中能存储多少行数据呢？<strong>假设一行数据的大小是1k，那么一个页可以存放16行这样的数据</strong></li>
+<li>但是除了有 <code>存放数据的页</code> 以外，还有 <code>存放键值+指针（索引）的页</code> ，即B+树中的非叶子节点，该页存放键值和指向数据页的指针，这样的页由N个（键值+指针）组成。当然它也是排好序的。 这样的数据组织形式，我们称为「索引组织表」。索引组织表通过非叶子节点的「二分查找法」以及指针确定数据在哪个页中，进而在去数据页中查找到需要的数据</li>
+</ul>
 </li>
-<li><p>因此InnoDB的所有数据文件（后缀为 <em>.ibd</em> 的文件），它的大小始终都是16384B（16k）的整数倍</p>
+<li><strong>计算过程</strong><ul>
+<li>这里我们先假设B+树高为2，即存在一个根节点和若干个叶子节点，没有子页节点，那么这棵B+树的存放总记录数为：<code>根节点指针数*单个叶子节点记录行数</code></li>
+<li>那么现在我们需要计算出非叶子节点能存放多少指针，也就是存放多少索引？</li>
+<li>我们假设主键ID为 <code>bigint</code> 类型，长度为8字节，而 <code>指针大小在InnoDB源码中设置为6字节</code> ，这样一共14字节</li>
+<li>我们一个页中能存放多少这样的单元，其实就代表有多少指针，<strong>即 16384&#x2F;14&#x3D;1170。一个页能存放1170个索引</strong></li>
+<li><strong>那么可以算出一棵高度为2的B+树，能存放1170*16&#x3D;18720条这样的数据记录</strong></li>
+<li>根据同样的原理我们可以算出一个高度为3的B+树可以存放：1170（根存的记录指针数据）?1170（下一级每个节点存的记录指针数据）?16（每个叶子阶段存的数据条数）&#x3D;21902400 条这样的记录，即2100w量级</li>
+</ul>
 </li>
-<li><p>数据表中的数据都是存储在页中的，所以一个页中能存储多少行数据呢？<strong>假设一行数据的大小是1k，那么一个页可以存放16行这样的数据</strong></p>
-</li>
-<li><p>但是除了有 <code>存放数据的页</code> 以外，还有 <code>存放键值+指针（索引）的页</code> ，即B+树中的非叶子节点，该页存放键值和指向数据页的指针，这样的页由N个（键值+指针）组成。当然它也是排好序的。 这样的数据组织形式，我们称为「索引组织表」。索引组织表通过非叶子节点的「二分查找法」以及指针确定数据在哪个页中，进而在去数据页中查找到需要的数据</p>
-</li>
-<li><p>这里我们先假设B+树高为2，即存在一个根节点和若干个叶子节点，没有子页节点，那么这棵B+树的存放总记录数为：<code>根节点指针数*单个叶子节点记录行数</code></p>
-</li>
-<li><p>那么现在我们需要计算出非叶子节点能存放多少指针，也就是存放多少索引？</p>
-</li>
-<li><p>我们假设主键ID为 <code>bigint</code> 类型，长度为8字节，而 <code>指针大小在InnoDB源码中设置为6字节</code> ，这样一共14字节</p>
-</li>
-<li><p>我们一个页中能存放多少这样的单元，其实就代表有多少指针，<strong>即 16384&#x2F;14&#x3D;1170。一个页能存放1170个索引</strong></p>
-</li>
-<li><p><strong>那么可以算出一棵高度为2的B+树，能存放1170*16&#x3D;18720条这样的数据记录</strong></p>
-</li>
-<li><p>根据同样的原理我们可以算出一个高度为3的B+树可以存放：1170（根存的记录指针数据）?1170（下一级每个节点存的记录指针数据）?16（每个叶子阶段存的数据条数）&#x3D;21902400 条这样的记录，即2100w量级</p>
-</li>
-<li><p><strong>所以在InnoDB中B+树高度一般为1-3层，它就能满足千万级的数据存储</strong></p>
-</li>
-<li><p>在查找数据时一次页的查找代表一次 <code>IO</code> ，所以通过主键索引查询通常只需要1-3次 <code>IO</code> 操作即可查找到数据，即使一个是千万量级的表，也是很快的</p>
+<li><strong>结论</strong><ul>
+<li><strong>所以在InnoDB中B+树高度一般为1-3层，它就能满足千万级的数据存储</strong></li>
+<li>在查找数据时一次页的查找代表一次 <code>IO</code> ，所以通过主键索引查询通常只需要1-3次 <code>IO</code> 操作即可查找到数据，即使一个是千万量级的表，也是很快的</li>
+</ul>
 </li>
 </ul>
 <h1 id="三、数据库锁"><a href="#三、数据库锁" class="headerlink" title="三、数据库锁"></a>三、数据库锁</h1><h2 id="1-Mysql中的锁"><a href="#1-Mysql中的锁" class="headerlink" title="1.Mysql中的锁"></a>1.Mysql中的锁</h2><h3 id="1-1读写锁"><a href="#1-1读写锁" class="headerlink" title="1.1读写锁"></a>1.1读写锁</h3><ul>
