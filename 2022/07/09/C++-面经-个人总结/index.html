@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356010.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356849.png">
 <meta property="article:published_time" content="2022-07-09T07:15:45.000Z">
-<meta property="article:modified_time" content="2022-08-27T14:47:25.216Z">
+<meta property="article:modified_time" content="2022-08-29T05:26:28.562Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -228,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          49k 字
+          50k 字
         
       </span>
     
@@ -239,7 +239,7 @@
         
         
         
-          409 分钟
+          421 分钟
         
       </span>
     
@@ -529,16 +529,14 @@
 </li>
 </ul>
 <h2 id="10-delete、delete、allocator都有什么作用"><a href="#10-delete、delete、allocator都有什么作用" class="headerlink" title="10.delete、delete、allocator都有什么作用"></a>10.delete、delete、allocator都有什么作用</h2><ul>
-<li><p>delete简单数据类型默认只是调用free函数；复杂数据类型则先调用析构函数再调用operator delete</p>
-<ul>
-<li>针对简单类型，delete和delete[]等同。假设指针p指向new[]分配的内存。因为要4字节存储数组大小，实际分配的内存地址为[p-4]，系统记录的也是这个地址。delete[]实际释放的就是p-4指向的内存。而delete会直接释放p指向的内存，这个内存根本没有被系统记录，所以会崩溃</li>
-<li>delete[]时，数组中的元素按逆序的顺序进行销毁</li>
+<li>需要在 new [] 一个对象数组时，需要保存数组的维度，C++ 的做法是在分配数组空间时多分配了 4 个字节的大小，专门保存数组的大小，在 delete [] 时就可以取出这个保存的数，就知道了需要调用析构函数多少次了</li>
+<li>delete简单数据类型默认只是调用free函数；复杂数据类型则先调用析构函数再调用operator delete<ul>
+<li>针对简单类型，delete和delete[]等同。假设指针p指向new[]分配的内存。因为要4字节存储数组大小，实际分配的内存地址为[p-4]，系统记录的也是这个地址。delete[]实际释放的就是p-4指向的内存。而delete会直接释放p指向的内存，这个内存根本没有被系统记录，所以会崩溃。delete[]时，数组中的元素按逆序的顺序进行销毁</li>
+<li>delete ptr代表用来释放内存，且只用来释放ptr指向的内存。delete[] rg用来释放rg指向的内存，还逐一调用数组中每个对象的destructor</li>
+<li>对于像int&#x2F;char&#x2F;long&#x2F;int*&#x2F;struct等等简单数据类型，由于对象没有destructor ，所以用 delete 和 delete []是一样的！但是如果是 C++ 对象数组就不同</li>
 </ul>
 </li>
-<li><p>需要在 new [] 一个对象数组时，需要保存数组的维度，C++ 的做法是在分配数组空间时多分配了 4 个字节的大小，专门保存数组的大小，在 delete [] 时就可以取出这个保存的数，就知道了需要调用析构函数多少次了</p>
-</li>
-<li><p>new在内存分配上面有一些局限性，new的机制是将内存分配和对象构造组合在一起，同样的，delete也是将对象析构和内存释放组合在一起的。allocator将这两部分分开进行，allocator申请一部分内存，不进行初始化对象，只有当需要的时候才进行初始化操作</p>
-</li>
+<li>new在内存分配上面有一些局限性，new的机制是将内存分配和对象构造组合在一起，同样的，delete也是将对象析构和内存释放组合在一起的。allocator将这两部分分开进行，allocator申请一部分内存，不进行初始化对象，只有当需要的时候才进行初始化操作</li>
 </ul>
 <h2 id="11-malloc-x2F-free的实现原理"><a href="#11-malloc-x2F-free的实现原理" class="headerlink" title="11.malloc&#x2F;free的实现原理"></a>11.malloc&#x2F;free的实现原理</h2><ol>
 <li><p>在标准C库中，提供了malloc&#x2F;free函数分配释放内存，这两个函数底层是由brk、mmap、munmap这些系统调用实现的</p>
@@ -550,14 +548,18 @@
 <li><p>malloc是从堆里面申请内存，也就是说函数返回的指针是指向堆里面的一块内存。操作系统中有一个记录空闲内存地址的链表。当操作系统收到程序的申请时，就会遍历该链表，然后就寻找第一个空间大于所申请空间的堆结点，然后就将该结点从空闲结点链表中删除，并将该结点的空间分配给程序</p>
 </li>
 </ol>
-<p><strong>malloc内存分配机制是怎么样的,在哪里分配内存，最大可以申请多大的内存？</strong></p>
+<ul>
+<li><p><strong>malloc内存分配机制是怎么样的,在哪里分配内存，最大可以申请多大的内存？</strong></p>
 <ul>
 <li>首先会扫描之前由free()所释放的空闲内存块列表，以求找到尺寸大于或等于要求的一块空闲内存</li>
 <li>如果这一内存块的尺寸正好与要求相当，就将它返回给调用者，如果是一块较大的内存，那么将对其进行分割，在将一块大小相当的内存返回给调用者的同时，把较小的那块空闲内存块保留在空闲列表中</li>
 </ul>
-<p><strong>被free回收的内存不是立即返还给操作系统</strong></p>
+</li>
+<li><p><strong>被free回收的内存不是立即返还给操作系统</strong></p>
 <ul>
 <li>被free回收的内存会首先被ptmalloc使用双链表保存起来，当用户下一次申请内存的时候，会尝试从这些内存中寻找合适的返回。这样就避免了频繁的系统调用，占用过多的系统资源。同时ptmalloc也会尝试对小块内存进行合并，避免过多的内存碎片</li>
+</ul>
+</li>
 </ul>
 <h2 id="12-堆和栈的区别"><a href="#12-堆和栈的区别" class="headerlink" title="12.堆和栈的区别"></a>12.堆和栈的区别</h2><ul>
 <li>管理方式不同<ul>
@@ -889,16 +891,15 @@ int main()
 
 <p><strong>拷贝构造函数、构造函数与赋值操作符的区别</strong></p>
 <ul>
-<li><p><strong>构造函数：</strong>对象不存在，没用别的对象初始化，在创建一个新的对象时调用构造函数</p>
+<li><strong>构造函数：对象不存在，没用别的对象初始化，在创建一个新的对象时调用构造函数</strong></li>
+<li><strong>拷贝构造函数是一个对象初始化一块内存区域，这块内存就是新对象的内存区，而赋值函数是对于一个已经被初始化的对象来进行赋值操作</strong></li>
+<li><strong>实现不一样</strong><ul>
+<li><strong>拷贝构造函数首先是一个构造函数，它调用时候是通过参数的对象初始化产生一个对象</strong></li>
+<li><strong>赋值操作符则是把一个新的对象赋值给一个原有的对象，所以如果原来的对象中有内存分配要先把内存释放掉，而且还要检察一下两个对象是不是同一个对象，如果是，不做任何操作，直接返回</strong></li>
+</ul>
 </li>
-<li><p><strong>拷贝构造函数是一个对象初始化一块内存区域，这块内存就是新对象的内存区，而赋值函数是对于一个已经被初始化的对象来进行赋值操作</strong></p>
-</li>
-<li><p>一般来说在数据成员包含指针对象的时候，需要考虑两种不同的处理需求：一种是复制指针对象，另一种是引用指针对象。拷贝构造函数大多数情况下是复制，而赋值函数是引用对象</p>
-</li>
-<li><p><strong>实现不一样。拷贝构造函数首先是一个构造函数，它调用时候是通过参数的对象初始化产生一个对象。赋值操作符则是把一个新的对象赋值给一个原有的对象，所以如果原来的对象中有内存分配要先把内存释放掉，而且还要检察一下两个对象是不是同一个对象，如果是，不做任何操作，直接返回。（这些要点会在下面的String实现代码中体现）</strong></p>
-</li>
-<li><p>如果不想写拷贝构造函数和赋值函数，又不允许别人使用编译器生成的缺省函数，最简单的办法是将拷贝构造函数和赋值函数声明为私有函数，不用编写代码</p>
-</li>
+<li><strong>一般来说在数据成员包含指针对象的时候，需要考虑两种不同的处理需求：一种是复制指针对象，另一种是引用指针对象。拷贝构造函数大多数情况下是复制，而赋值函数是引用对象</strong></li>
+<li><strong>如果不想写拷贝构造函数和赋值函数，又不允许别人使用编译器生成的缺省函数，最简单的办法是将拷贝构造函数和赋值函数声明为私有函数，不用编写代码</strong></li>
 </ul>
 <h2 id="8-拷贝构造函数与深浅拷贝"><a href="#8-拷贝构造函数与深浅拷贝" class="headerlink" title="8.拷贝构造函数与深浅拷贝"></a>8.拷贝构造函数与深浅拷贝</h2><p>拷贝构造函数的参数必须加const，因为防止修改，本来就是用现有的对象初始化新的对象</p>
 <ul>
@@ -1419,8 +1420,8 @@ int main()
 </li>
 <li><p><strong>shared_ptr共享的智能指针</strong></p>
 <ul>
-<li><p>share_ptr的初始化</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 指向一个值为42的int的shared_ptr</span><br>shared_ptr&lt;<span class="hljs-type">int</span>&gt; p3 = <span class="hljs-built_in">make_shared</span>&lt;<span class="hljs-type">int</span>&gt;(<span class="hljs-number">42</span>);<br><br><span class="hljs-comment">// p4 指向一个值为&quot;9999999999&quot;的string</span><br>shared_ptr&lt;string&gt; p4 = <span class="hljs-built_in">make_shared</span>&lt;string&gt;(<span class="hljs-number">10</span>,<span class="hljs-string">&#x27;9&#x27;</span>);<br><br><span class="hljs-comment">// p5指向一个值初始化的int</span><br>shared_ptr&lt;<span class="hljs-type">int</span>&gt; p5 = <span class="hljs-built_in">make_shared</span>&lt;<span class="hljs-type">int</span>&gt;();<br><br><span class="hljs-function">shared_ptr&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">p2</span><span class="hljs-params">(<span class="hljs-keyword">new</span> <span class="hljs-type">int</span>(<span class="hljs-number">1024</span>))</span></span>;	<span class="hljs-comment">// 正确：使用了直接初始化形式</span><br></code></pre></td></tr></table></figure>
+<li><p><strong>share_ptr的初始化</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 指向一个值为42的int的shared_ptr</span><br><span class="hljs-comment">// make_shared里面调用了new操作符分配内存</span><br>shared_ptr&lt;<span class="hljs-type">int</span>&gt; p3 = <span class="hljs-built_in">make_shared</span>&lt;<span class="hljs-type">int</span>&gt;(<span class="hljs-number">42</span>);<br><br><span class="hljs-comment">// p4 指向一个值为&quot;9999999999&quot;的string</span><br>shared_ptr&lt;string&gt; p4 = <span class="hljs-built_in">make_shared</span>&lt;string&gt;(<span class="hljs-number">10</span>,<span class="hljs-string">&#x27;9&#x27;</span>);<br><br><span class="hljs-comment">// p5指向一个值初始化的int</span><br>shared_ptr&lt;<span class="hljs-type">int</span>&gt; p5 = <span class="hljs-built_in">make_shared</span>&lt;<span class="hljs-type">int</span>&gt;();<br><br><span class="hljs-function">shared_ptr&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">p2</span><span class="hljs-params">(<span class="hljs-keyword">new</span> <span class="hljs-type">int</span>(<span class="hljs-number">1024</span>))</span></span>;	<span class="hljs-comment">// 正确：使用了直接初始化形式</span><br></code></pre></td></tr></table></figure>
 </li>
 <li><p><strong>拷贝和赋值：</strong>拷贝使得对象的引用计数增加1，赋值使得原对象引用计数减1，当计数为0时，自动释放内存。后来指向的对象引用计数加1，指向后来的对象</p>
 </li>
@@ -1428,31 +1429,24 @@ int main()
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs stylus">make_shared&lt;T&gt;(args) <span class="hljs-comment">// 返回一个shared_ptr，指向一个动态分配的类型为T的对象。使用args初始化此对象</span><br>shared_ptr&lt;T&gt; <span class="hljs-selector-tag">p</span>(q) <span class="hljs-comment">// p是shared_ptr q的拷贝；此操作会递增q中的引用计数。q中的指针必须能转换成T*</span><br><span class="hljs-selector-tag">p</span> = <span class="hljs-selector-tag">q</span> <span class="hljs-comment">// p和q都是shared_ptr，所保存的指针必须能相互转换。此操作会递减p中的引用计数，递增q中的引用计数。若p中的引用计数变为0，则将其管理的原内存释放</span><br><span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.unique</span>() <span class="hljs-comment">// 若p.use_count()为1，返回true；否则返回false</span><br><span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.use_count</span>() <span class="hljs-comment">// 返回与p共享对象的智能指针数量；可能很慢，主要用于调试</span><br></code></pre></td></tr></table></figure>
 </li>
 <li><p><strong>shared_ptr的其他方法</strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.reset</span> () //若<span class="hljs-selector-tag">p</span>是唯一指向其对象的shared_ptr，reset会释放此对象。<br><span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.reset</span>(<span class="hljs-selector-tag">q</span>) //若传递了可选的参数内置指针<span class="hljs-selector-tag">q</span>，会令<span class="hljs-selector-tag">P</span>指向<span class="hljs-selector-tag">q</span>，否则会将<span class="hljs-selector-tag">P</span>置为空。<br><span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.reset</span>(<span class="hljs-selector-tag">q</span>, d) //若还传递了参数d,将会调用d而不是delete 来释放<span class="hljs-selector-tag">q</span><br></code></pre></td></tr></table></figure></li>
-</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.reset</span> () //若<span class="hljs-selector-tag">p</span>是唯一指向其对象的shared_ptr，reset会释放此对象。<br><span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.reset</span>(<span class="hljs-selector-tag">q</span>) //若传递了可选的参数内置指针<span class="hljs-selector-tag">q</span>，会令<span class="hljs-selector-tag">P</span>指向<span class="hljs-selector-tag">q</span>，否则会将<span class="hljs-selector-tag">P</span>置为空。<br><span class="hljs-selector-tag">p</span><span class="hljs-selector-class">.reset</span>(<span class="hljs-selector-tag">q</span>, d) //若还传递了参数d,将会调用d而不是delete 来释放<span class="hljs-selector-tag">q</span><br></code></pre></td></tr></table></figure>
 </li>
-<li><p><strong>weak_ptr弱引用的智能指针</strong></p>
+<li><p><strong>shared_ptr相互引用产生的问题</strong></p>
 <ul>
-<li><p><code>shared_ptr</code>的一个最大的陷阱是循环引用，循环引用会导致堆内存无法正确释放，导致内存泄漏</p>
-</li>
-<li><p>要想解决上面循环引用的问题，只能引入新的智能指针<code>std::weak_ptr</code>。<code>std::weak_ptr</code>有什么特点呢？与<code>std::shared_ptr</code>最大的差别是在赋值的时候，不会引起智能指针计数增加</p>
-<ul>
-<li><code>weak_ptr</code>被设计为与<code>shared_ptr</code>共同工作，可以从一个<code>shared_ptr</code>或者另一个<code>weak_ptr</code>对象构造，获得资源的观测权。但<code>weak_ptr</code>没有共享资源，它的构造不会引起指针引用计数的增加</li>
-<li>同样，在<code>weak_ptr</code>析构时也不会导致引用计数的减少，它只是一个静静地观察者。<code>weak_ptr</code>没有重载<code>operator*</code>和<code>-&gt;</code>，这是特意的，因为它不共享指针，不能操作资源，这是它弱的原因</li>
-<li>如要操作资源，则必须使用一个非常重要的成员函数<code>lock()</code>从被观测的<code>shared_ptr</code>获得一个可用的<code>shared_ptr</code>对象，从而操作资源</li>
+<li><p>&#96;&#96;&#96;<br>#include <iostream><br>#include <memory></p>
+<p>class Parent;  &#x2F;&#x2F; Parent类的前置声明</p>
+<p>class Child {<br>public:<br>Child() { std::cout &lt;&lt; “hello child” &lt;&lt; std::endl; }<br>~Child() { std::cout &lt;&lt; “bye child” &lt;&lt; std::endl; }<br><br>std::shared_ptr<Parent> father;<br>};</p>
+<p>class Parent {<br>public:<br>Parent() { std::cout &lt;&lt; “hello Parent” &lt;&lt; std::endl; }<br>~Parent() { std::cout &lt;&lt; “bye parent” &lt;&lt; std::endl; }<br><br>std::shared_ptr<Child> son;<br>};</p>
+<p>void testParentAndChild() {</p>
+<p>}</p>
+<p>int main() {<br>std::shared_ptr<Parent> parent(new Parent());  &#x2F;&#x2F; 1  资源A<br>std::shared_ptr<Child> child(new Child());  &#x2F;&#x2F; 2   资源B<br>parent-&gt;son &#x3D; child;     &#x2F;&#x2F; 3   child.use_count() &#x3D;&#x3D; 2 and parent.use_count() &#x3D;&#x3D; 1<br>child-&gt;father &#x3D; parent;  &#x2F;&#x2F; 4   child.use_count() &#x3D;&#x3D; 2 and parent.use_count() &#x3D;&#x3D; 2<br><br>return 0;<br>}</p>
+<p>&#x2F;*<br>输出：<br>hello Parent<br>hello child<br>*&#x2F;</p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey"><br>    - 分析：<br><br>      - 用了shared_ptr管理资源，没有调用 Parent 和 Child 的析构函数，表示资源最后还是没有释放！内存泄漏还是发生了<br>      - 这种情况就是个死循环，如果资源A的引用计数想变成<span class="hljs-number">0</span>，则必须资源B先析构掉（从而析构掉内部管理资源A的共享智能指针），资源B的引用计数想变为<span class="hljs-number">0</span>，又得依赖资源A的析构，这样就陷入了一个死循环<br><br>    - 解决方法：<br><br><span class="hljs-title">      - 将std::shared_ptr&lt;Parent&gt; father改为std::</span>weak_ptr&lt;Parent&gt; father<br><span class="hljs-title">      - 将std::shared_ptr&lt;Child&gt; son改为std::</span>weak_ptr&lt;Child&gt; son<br><br>- **weak_ptr弱引用的智能指针**<br><br>  - **`shared_ptr`的一个最大的陷阱是循环引用，循环引用会导致堆内存无法正确释放，导致内存泄漏**<br><br><span class="hljs-title">  - 要想解决上面循环引用的问题，只能引入新的智能指针`std::weak_ptr`。`std::weak_ptr`有什么特点呢？与`std::</span>shared_ptr`最大的差别是在初始化的时候，不会引起智能指针计数增加<br><br>    - `weak_ptr`被设计为与`shared_ptr`共同工作，可以从一个`shared_ptr`或者另一个`weak_ptr`对象构造，获得资源的观测权。但`weak_ptr`没有共享资源，它的构造不会引起指针引用计数的增加<br>    - 同样，在`weak_ptr`析构时也不会导致引用计数的减少，它只是一个静静地观察者。`weak_ptr`没有重载`operator*`和`-&gt;`，这是特意的，因为它不共享指针，不能操作资源，这是它弱的原因<br>    - 如要操作资源，则必须使用一个非常重要的成员函数`lock()`从被观测的`shared_ptr`获得一个可用的`shared_ptr`对象，从而操作资源<br><br>  - 当我们创建一个`weak_ptr`时，要用一个`shared_ptr`来初始化它：<br><br></code></pre></td></tr></table></figure></li>
 </ul>
-</li>
-<li><p>当我们创建一个<code>weak_ptr</code>时，要用一个<code>shared_ptr</code>来初始化它：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">auto</span> p = <span class="hljs-built_in">make_shared</span>&lt;<span class="hljs-type">int</span>&gt;(<span class="hljs-number">42</span>);<br><span class="hljs-function">weak_ptr&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">wp</span><span class="hljs-params">(p)</span></span>; <span class="hljs-comment">// wp弱共享p; p的引用计数未改变</span><br></code></pre></td></tr></table></figure>
-</li>
-<li><p><strong>weak_ptr常用操作</strong></p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs awk">weak_ptr&lt;T&gt; w;	<span class="hljs-regexp">//</span> 空weak_ptr可以指向类型为T的对象<br>weak_ptr&lt;T&gt; w(shared_ptr p);	<span class="hljs-regexp">//</span> 与p指向相同对象的weak_ptr, T必须能转换为sp指向的类型<br>w = p;	<span class="hljs-regexp">//</span> p可以是shared_ptr或者weak_ptr，赋值后w和p共享对象<br>w.reset();	<span class="hljs-regexp">//</span> weak_ptr置为空<br>w.use_count();	<span class="hljs-regexp">//</span> 与w共享对象的shared_ptr的计数<br>w.expired();	<span class="hljs-regexp">//</span> w.use_count()为<span class="hljs-number">0</span>则返回true，否则返回false<br>w.lock();	<span class="hljs-regexp">//</span> w.expired()为true，返回空的shared_ptr;否则返回指向w的shared_ptr<br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p><strong>unique_ptr的基本使用</strong></p>
-<ul>
-<li><p><code>unique_ptr</code>相对于其他两个智能指针更加简单，它和<code>shared_ptr</code>使用差不多，但是功能更为单一，它是一个独占型的智能指针，不允许其他的智能指针共享其内部的指针，更像原生的指针（但更为安全，能够自己释放内存）。<strong>unique_ptr禁止复制语义，拷贝构造函数和复制运算符operator&#x3D; 均被标记为 &#x3D;delete，不允许赋值和拷贝操作，只能够移动</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function">std::unique_ptr&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">ptr1</span><span class="hljs-params">(<span class="hljs-keyword">new</span> <span class="hljs-type">int</span>(<span class="hljs-number">0</span>))</span></span>;<br>std::unique_ptr&lt;<span class="hljs-type">int</span>&gt; ptr2 = ptr1; <span class="hljs-comment">// 错误，不能复制</span><br>std::unique_ptr&lt;<span class="hljs-type">int</span>&gt; ptr3 = std::<span class="hljs-built_in">move</span>(ptr1); <span class="hljs-comment">// 可以移动</span><br></code></pre></td></tr></table></figure></li>
+<p>auto p &#x3D; make_shared<int>(42);<br>weak_ptr<int> wp(p); &#x2F;&#x2F; wp弱共享p; p的引用计数未改变</p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><br><span class="hljs-bullet">- </span><span class="hljs-strong">**weak_ptr常用操作**</span><br><br></code></pre></td></tr></table></figure>
+<p>weak_ptr<T> w;	&#x2F;&#x2F; 空weak_ptr可以指向类型为T的对象<br>weak_ptr<T> w(shared_ptr p);	&#x2F;&#x2F; 与p指向相同对象的weak_ptr, T必须能转换为sp指向的类型<br>w &#x3D; p;	&#x2F;&#x2F; p可以是shared_ptr或者weak_ptr，赋值后w和p共享对象<br>w.reset();	&#x2F;&#x2F; weak_ptr置为空<br>w.use_count();	&#x2F;&#x2F; 与w共享对象的shared_ptr的计数<br>w.expired();	&#x2F;&#x2F; w.use_count()为0则返回true，否则返回false<br>w.lock();	&#x2F;&#x2F; w.expired()为true，返回空的shared_ptr;否则返回指向w的shared_ptr</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><br>- **unique_ptr的基本使用**<br><br>  - `unique_ptr`相对于其他两个智能指针更加简单，它和`shared_ptr`使用差不多，但是功能更为单一，它是一个独占型的智能指针，不允许其他的智能指针共享其内部的指针，更像原生的指针（但更为安全，能够自己释放内存）。**unique_ptr禁止复制语义，拷贝构造函数和复制运算符<span class="hljs-keyword">operator</span>= 均被标记为 =<span class="hljs-keyword">delete</span>，不允许赋值和拷贝操作，只能够移动**<br><br>    ```c++<br>    std::unique_ptr&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-built_in">ptr1</span>(<span class="hljs-keyword">new</span> <span class="hljs-built_in">int</span>(<span class="hljs-number">0</span>));<br>    std::unique_ptr&lt;<span class="hljs-type">int</span>&gt; ptr2 = ptr1; <span class="hljs-comment">// 错误，不能复制</span><br>    std::unique_ptr&lt;<span class="hljs-type">int</span>&gt; ptr3 = std::<span class="hljs-built_in">move</span>(ptr1); <span class="hljs-comment">// 可以移动</span><br></code></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p><strong>性能与安全的权衡</strong></p>
