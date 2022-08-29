@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/be608a77-7b7f-4f8e-87cc-f2237270bf69.png">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/docker-filesystems-busyboxrw.png">
 <meta property="article:published_time" content="2022-07-09T07:15:07.000Z">
-<meta property="article:modified_time" content="2022-08-29T06:40:14.440Z">
+<meta property="article:modified_time" content="2022-08-29T12:42:15.494Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -214,7 +214,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          32k 字
+          31k 字
         
       </span>
     
@@ -225,7 +225,7 @@
         
         
         
-          264 分钟
+          260 分钟
         
       </span>
     
@@ -1723,44 +1723,109 @@
 </li>
 <li><p><strong>域名解析工具（应用层DNS协议）：dig</strong></p>
 <ul>
-<li><pre><code class="hljs"># 应用层，DNS
-# 打印域名解析结果
-# 打印域名解析过程中涉及的各级DNS服务器地址
-dig baidu.com
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">-</span> <span class="hljs-strong">**网络请求（应用层）：curl**</span><br><br>  [<span class="hljs-string">详见</span>](<span class="hljs-link">http://www.cnblogs.com/gbyukg/p/3326825.html</span>)<br><br><span class="hljs-section">## 7.调试命令</span><br><br><span class="hljs-bullet">*</span> <span class="hljs-strong">**调试工具：gdb**</span><br>  <br><span class="hljs-bullet">  *</span> <span class="hljs-code">`l`</span> 列出函数代码及行数<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`b 16`</span> 在16行设置断点<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`b func`</span> 在函数func设置断点<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`r`</span> 运行程序<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`n`</span> 单条执行程序<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`p i`</span> 打印i变量的值<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`bt`</span> 查看函数堆栈<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`finish`</span> 退出函数<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`q`</span> 结束调试<br>  <br>  [<span class="hljs-string">详见</span>](<span class="hljs-link">http://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/gdb.html</span>)<br>  <br><span class="hljs-bullet">*</span> <span class="hljs-strong">**编译器：gcc/g++**</span><br><br><span class="hljs-bullet">  *</span> \- C/C++编译器，必知必会，除此以外需要了解预处理-&gt; 编译 -&gt; 汇编 -&gt; 链接等一系列流程<br><br>  [<span class="hljs-string">详见</span>](<span class="hljs-link">http://www.cnblogs.com/lidan/archive/2011/05/25/2239517.html</span>)<br><br><span class="hljs-bullet">*</span> <span class="hljs-strong">**跟踪进程中系统调用：strace**</span><br>  <br><span class="hljs-bullet">  *</span> 监控用户空间进程和内核的交互，跟踪系统调用和信号传递<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`strace -c ./test`</span> 统计./test使用的系统调用<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`strace -p pid`</span> 跟踪现有进程<br>  <br>  [<span class="hljs-string">详见</span>](<span class="hljs-link">http://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/strace.html</span>)<br>  <br><span class="hljs-bullet">*</span> <span class="hljs-strong">**跟踪进程栈：pstack**</span><br><br><span class="hljs-bullet">  *</span> [<span class="hljs-string">详见</span>](<span class="hljs-link">http://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/pstack.html#</span>)<br><br><span class="hljs-bullet">*</span> <span class="hljs-strong">**ipcs**</span><br>  <br><span class="hljs-bullet">  *</span> 用于报告系统的消息队列，信号量和共享内存等使用情况<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`ipcs -a`</span>用于列出本用户所有相关的ipcs参数<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`ipcs -q`</span>用于列出进程中的消息队列<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`ipcs -s`</span>用于列出所有的信号量<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`ipcs -m`</span>用于列出所有的共享内存信息<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`ipcs -l`</span>用于列出系统限额，比如共享内存最大限制<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`ipcs -u`</span>用于列出当前的使用情况<br>  <br><span class="hljs-bullet">*</span> <span class="hljs-strong">**进程内存映射：pmap**</span><br><br><span class="hljs-bullet">  *</span> 显示进程内存映射<br><br></code></pre></td></tr></table></figure>
-# -x显示扩展信息，后接进程pid
-# Address: 内存开始地址
-# 显示信息：
-    Kbytes: 占用内存的字节数
-    RSS: 保留内存的字节数
-    Dirty: 脏页的字节数（包括共享和私有的）
-    Mode: 内存的权限：read、write、execute、shared、private
-    Mapping: 占用内存的文件、或[anon]（分配的内存）、或[stack]（堆栈）
-    Device: 设备名 (major:minor)
-
-pmap -x 12345
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-bullet">*</span> <span class="hljs-strong">**ipcrm**</span><br>  <br><span class="hljs-bullet">  *</span> 用于移除一个消息队列，或者共享内存段，或者一个信号集，同时会将与ipc对象相关联的数据也一起移除，只有超级管理员，或者ipc对象的创建者才能这样做<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`ipcrm -M shmkey`</span> 移除用shmkey创建的共享内存段<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`ipcrm -m shmid`</span> 移除用shmid标识的共享内存段<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`ipcrm -Q msgkey`</span> 移除用msqkey创建的消息队列<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`ipcrm -q msqid`</span> 移除用msqid标识的消息队列<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`ipcrm -S semkey`</span> 移除用semkey创建的信号<br><span class="hljs-bullet">  *</span> <span class="hljs-code">`ipcrm -s semid`</span> 移除用semid标识的信号<br>  <br><span class="hljs-bullet">*</span> <span class="hljs-strong">**查看依赖库：ldd**</span><br><br><span class="hljs-bullet">  *</span> 程序依赖库查询<br><br></code></pre></td></tr></table></figure>
-# ldd后接可执行文件
-# 第一列为程序依赖什么库，第二列为系统提供的与程序需要的库所对应的库，第三列为库加载的开始地址
-# 前两列可以判断系统提供的库和需要的库是否匹配，第三列可以知道当前库在进程地址空间中对应的开始位置
-
-ldd a.out
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-section">## 8.文本处理工具</span><br><br><span class="hljs-bullet">*</span> <span class="hljs-strong">**sed**</span><br><br><span class="hljs-bullet">  -</span> 统计该文件中每一个单词出现的次数，并按照出现频率从大到小排序<br><br></code></pre></td></tr></table></figure>
-sed &#39;s/ /\n/g&#39; &quot;a.txt&quot; | sort | uniq -c | sort -nr
-</code></pre>
-<p><strong>sed替换：</strong></p>
+<li><p>dig baidu.com</p>
+<p>&#x2F;&#x2F; 应用层，DNS</p>
+<p>&#x2F;&#x2F; 打印域名解析结果</p>
+<p>&#x2F;&#x2F; 打印域名解析过程中涉及的各级DNS服务器地址</p>
+</li>
+</ul>
+</li>
+<li><p><strong>网络请求（应用层）：curl</strong></p>
+<p><a target="_blank" rel="noopener" href="http://www.cnblogs.com/gbyukg/p/3326825.html">详见</a></p>
+</li>
+</ul>
+<h2 id="7-调试命令"><a href="#7-调试命令" class="headerlink" title="7.调试命令"></a>7.调试命令</h2><ul>
+<li><p><strong>调试工具：gdb</strong></p>
 <ul>
+<li><code>l</code> 列出函数代码及行数</li>
+<li><code>b 16</code> 在16行设置断点</li>
+<li><code>b func</code> 在函数func设置断点</li>
+<li><code>r</code> 运行程序</li>
+<li><code>n</code> 单条执行程序</li>
+<li><code>p i</code> 打印i变量的值</li>
+<li><code>bt</code> 查看函数堆栈</li>
+<li><code>finish</code> 退出函数</li>
+<li><code>q</code> 结束调试</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/gdb.html">详见</a></p>
+</li>
+<li><p><strong>编译器：gcc&#x2F;g++</strong></p>
+<ul>
+<li>- C&#x2F;C++编译器，必知必会，除此以外需要了解预处理-&gt; 编译 -&gt; 汇编 -&gt; 链接等一系列流程</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://www.cnblogs.com/lidan/archive/2011/05/25/2239517.html">详见</a></p>
+</li>
+<li><p><strong>跟踪进程中系统调用：strace</strong></p>
+<ul>
+<li>监控用户空间进程和内核的交互，跟踪系统调用和信号传递</li>
+<li><code>strace -c ./test</code> 统计.&#x2F;test使用的系统调用</li>
+<li><code>strace -p pid</code> 跟踪现有进程</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/strace.html">详见</a></p>
+</li>
+<li><p><strong>跟踪进程栈：pstack</strong></p>
+<ul>
+<li>显示每个进程的栈跟踪</li>
+<li>使用的唯一选项是要检查的进程的 PID</li>
+<li><a target="_blank" rel="noopener" href="http://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/pstack.html#">详见</a></li>
+</ul>
+</li>
+<li><p><strong>ipcs</strong></p>
+<ul>
+<li>用于报告系统的消息队列，信号量和共享内存等使用情况</li>
+<li><code>ipcs -a</code>用于列出本用户所有相关的ipcs参数</li>
+<li><code>ipcs -q</code>用于列出进程中的消息队列</li>
+<li><code>ipcs -s</code>用于列出所有的信号量</li>
+<li><code>ipcs -m</code>用于列出所有的共享内存信息</li>
+<li><code>ipcs -l</code>用于列出系统限额，比如共享内存最大限制</li>
+<li><code>ipcs -u</code>用于列出当前的使用情况</li>
+</ul>
+</li>
+<li><p><strong>进程内存映射：pmap</strong></p>
+<ul>
+<li><p>显示进程内存映射</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-meta"># -x显示扩展信息，后接进程pid</span><br><span class="hljs-meta"># Address: 内存开始地址</span><br><span class="hljs-meta"># 显示信息：</span><br><span class="hljs-symbol">    Kbytes:</span> 占用内存的字节数<br><span class="hljs-symbol">    RSS:</span> 保留内存的字节数<br><span class="hljs-symbol">    Dirty:</span> 脏页的字节数（包括共享和私有的）<br><span class="hljs-symbol">    Mode:</span> 内存的权限：read、write、execute、shared、private<br><span class="hljs-symbol">    Mapping:</span> 占用内存的文件、或[anon]（分配的内存）、或[stack]（堆栈）<br><span class="hljs-symbol">    Device:</span> 设备名 (major:minor)<br><br>pmap -x <span class="hljs-number">12345</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>ipcrm</strong></p>
+<ul>
+<li>用于移除一个消息队列，或者共享内存段，或者一个信号集，同时会将与ipc对象相关联的数据也一起移除，只有超级管理员，或者ipc对象的创建者才能这样做</li>
+<li><code>ipcrm -M shmkey</code> 移除用shmkey创建的共享内存段</li>
+<li><code>ipcrm -m shmid</code> 移除用shmid标识的共享内存段</li>
+<li><code>ipcrm -Q msgkey</code> 移除用msqkey创建的消息队列</li>
+<li><code>ipcrm -q msqid</code> 移除用msqid标识的消息队列</li>
+<li><code>ipcrm -S semkey</code> 移除用semkey创建的信号</li>
+<li><code>ipcrm -s semid</code> 移除用semid标识的信号</li>
+</ul>
+</li>
+<li><p><strong>查看依赖库：ldd</strong></p>
+<ul>
+<li><p>程序依赖库查询</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-meta"># ldd后接可执行文件</span><br><span class="hljs-meta"># 第一列为程序依赖什么库，第二列为系统提供的与程序需要的库所对应的库，第三列为库加载的开始地址</span><br><span class="hljs-meta"># 前两列可以判断系统提供的库和需要的库是否匹配，第三列可以知道当前库在进程地址空间中对应的开始位置</span><br><br><span class="hljs-keyword">ldd</span> a.out<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="8-文本处理工具"><a href="#8-文本处理工具" class="headerlink" title="8.文本处理工具"></a>8.文本处理工具</h2><ul>
+<li><p><strong>sed</strong></p>
+<ul>
+<li><p><strong>统计该文件中每一个单词出现的次数，并按照出现频率从大到小排序</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sed <span class="hljs-string">&#x27;s/ /\n/g&#x27;</span> <span class="hljs-string">&quot;a.txt&quot;</span> | <span class="hljs-built_in">sort</span> | <span class="hljs-built_in">uniq</span> -c | <span class="hljs-built_in">sort</span> -nr<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>sed替换：</strong></li>
+</ul>
+</li>
 <li><p>sed ‘s&#x2F;被替换的字符串&#x2F;新字符串&#x2F;[替换选项]’ filename</p>
 </li>
 <li><p>替换选项g表示替换文本中所有出现被替换字符串之处</p>
 </li>
 </ul>
-<p><strong>uniq统计次数：</strong></p>
-<ul>
-<li>uniq -c表示打印每行在文本中重复出现的次数</li>
+</li>
 </ul>
-<p><strong>sort排序：</strong></p>
 <ul>
+<li><strong>uniq统计次数：</strong><br>- uniq -c表示打印每行在文本中重复出现的次数<ul>
+<li><p><strong>sort排序：</strong></p>
+</li>
 <li><p>-n根据数字大小进行排序</p>
 </li>
 <li><p>-r将排序结果逆向显示</p>
@@ -1770,8 +1835,6 @@ sed &#39;s/ /\n/g&#39; &quot;a.txt&quot; | sort | uniq -c | sort -nr
 </ul>
 <p><a target="_blank" rel="noopener" href="http://coolshell.cn/articles/9104.html">详解</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-comm-sed.html">Linux教程</a></p>
-</li>
-</ul>
 <ul>
 <li><p><strong>awk</strong></p>
 <p><a target="_blank" rel="noopener" href="http://coolshell.cn/articles/9070.html">详解</a></p>
