@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/be608a77-7b7f-4f8e-87cc-f2237270bf69.png">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/docker-filesystems-busyboxrw.png">
 <meta property="article:published_time" content="2022-07-09T07:15:07.000Z">
-<meta property="article:modified_time" content="2022-08-29T06:12:14.956Z">
+<meta property="article:modified_time" content="2022-08-29T06:40:14.440Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -214,7 +214,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          31k 字
+          32k 字
         
       </span>
     
@@ -225,7 +225,7 @@
         
         
         
-          257 分钟
+          264 分钟
         
       </span>
     
@@ -1251,12 +1251,47 @@
 </ul>
 </li>
 </ul>
-<h2 id="7-LT、ET模式在处理读写事件上的区别"><a href="#7-LT、ET模式在处理读写事件上的区别" class="headerlink" title="7.LT、ET模式在处理读写事件上的区别"></a>7.LT、ET模式在处理读写事件上的区别</h2><ul>
+<h2 id="7-EPOLLOUT事件触发条件及典型用法"><a href="#7-EPOLLOUT事件触发条件及典型用法" class="headerlink" title="7.EPOLLOUT事件触发条件及典型用法"></a>7.EPOLLOUT事件触发条件及典型用法</h2><p><strong>以边缘触发下的场景为例，触发EPOLLOUT的条件：</strong> </p>
+<ul>
+<li><p>客户端连接场景</p>
+<ul>
+<li>触发条件：客户端connect上服务端后，得到fd，这时候把fd添加到epoll事件池里面后，因为连接可写，此时会触发EPOLLOUT事件</li>
+</ul>
+</li>
+<li><p>服务端发包场景</p>
+<ul>
+<li><p>触发条件：缓冲区从满到不满，会触发EPOLLOUT事件</p>
+</li>
+<li><p>典型应用场景（响应报文发送问题）：</p>
+<ul>
+<li>响应报文发送逻辑：将数据包发往内核缓冲区–&gt;进而由内核将缓冲区的内容发送出去；这边send只是做了第一部分的工作，如果缓存区满的话send将返回已发送的数据大小（成功放到缓冲区的），而不是整个数据包大小</li>
+<li>这种情况我们可以借助EPOLLOUT事件加以解决：如果send部分成功，则表示缓存区满了，那么把剩下的部分交给epoll，当检测到EPOLLOUT事件后，再将剩余的包发送出去</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>重新注册EPOLLOUT事件</p>
+<ul>
+<li>触发条件：如果当连接可用后，且缓存区不满的情况下，调用epoll_ctl将fd重新注册到epoll事件池(使用EPOLL_CTL_MOD)，这时也会触发EPOLLOUT事件</li>
+<li>典型应用场景：<ul>
+<li>send或write发包函数会涉及系统调用，存在一定开销，如果能将数据包聚合起来，然后调用writev将多个数据包一并发送，则可以减少系统调用次数，提高效率</li>
+<li>这时EPOLLOUT事件就派上用场了：当发包时，可以将先数据包发到数据buffer(用户缓存区)中存放，然后通过重新注册EPOLLOUT事件，从而触发EPOLLOUT事件时，再将数据包一起通过writev发送出去</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="8-LT、ET模式在处理读写事件上的区别"><a href="#8-LT、ET模式在处理读写事件上的区别" class="headerlink" title="8.LT、ET模式在处理读写事件上的区别"></a>8.LT、ET模式在处理读写事件上的区别</h2><ul>
 <li><strong>这两种模式的区别如下：</strong><ul>
 <li>对于水平触发模式，一个事件只要有，就会一直触发</li>
 <li>对于边缘触发模式，在一个事件从无到有时才会触发</li>
 <li>以socket的读事件为例，对于水平模式，只要在socket上有未读完的数据，就会一直产生EPOLLIN事件；而对于边缘模式，socket上每新来以此数据就会触发一次，如果上一次触发后未将socket上的数据读完，也不会再触发，除非再新来一次数据</li>
 <li>对于socket写事件，如果socket的TCP窗口一直不饱和，就会一直触发EPOLLOUT事件；而对于边缘模式，只会触发一次，除非TCP窗口由不饱和变成饱和再一次变成不饱和，才会再次触发EPOLLOUT事件</li>
+</ul>
+</li>
+<li><strong>ET比LT更高效的原因</strong><ul>
+<li>ET在通知用户后，就会把fd从就绪队列里删除。而LT通知用户后fd还在就绪链表中，随着fd的增多，就绪链表越大。下次epoll要通知用户时还需要遍历整个就绪链表。遍历的性能是线性，如果fd的数量非常多，就会带来比较显著的效率下降</li>
+<li>同样数量的fd下，LT模式维护的就绪链表比ET的大</li>
 </ul>
 </li>
 <li><strong>总结：</strong><ul>
@@ -1270,7 +1305,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="8-网络字节序和主机序"><a href="#8-网络字节序和主机序" class="headerlink" title="8.网络字节序和主机序"></a>8.网络字节序和主机序</h2><p>字节序分为大端字节序和小端字节序，大端字节序也称网络字节序，小端字节序也称为主机字节序</p>
+<h2 id="9-网络字节序和主机序"><a href="#9-网络字节序和主机序" class="headerlink" title="9.网络字节序和主机序"></a>9.网络字节序和主机序</h2><p>字节序分为大端字节序和小端字节序，大端字节序也称网络字节序，小端字节序也称为主机字节序</p>
 <ul>
 <li><strong>大端字节序</strong><ul>
 <li>一个整数的高位字节存储在低位地址，低位字节存储在高位地址</li>
@@ -1288,7 +1323,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="9-为什么忽略SIGPIPE信号"><a href="#9-为什么忽略SIGPIPE信号" class="headerlink" title="9.为什么忽略SIGPIPE信号"></a>9.为什么忽略SIGPIPE信号</h2><ul>
+<h2 id="10-为什么忽略SIGPIPE信号"><a href="#10-为什么忽略SIGPIPE信号" class="headerlink" title="10.为什么忽略SIGPIPE信号"></a>10.为什么忽略SIGPIPE信号</h2><ul>
 <li>假设server和client 已经建立了连接，server调用了close, 发送FIN 段给client（其实不一定会发送FIN段，后面再说），此时server不能再通过socket发送和接收数据，此时client调用read，如果接收到FIN 段会返回0</li>
 <li>但client此时还是可以write 给server的，write调用只负责把数据交给TCP发送缓冲区就可以成功返回了，所以不会出错，而server收到数据后应答一个RST段，表示服务器已经不能接收数据，连接重置，client收到RST段后无法立刻通知应用层，只把这个状态保存在TCP协议层</li>
 <li>如果client再次调用write发数据给server，由于TCP协议层已经处于RST状态了，因此不会将数据发出，而是发一个SIGPIPE信号给应用层，SIGPIPE信号的缺省处理动作是终止程序</li>
