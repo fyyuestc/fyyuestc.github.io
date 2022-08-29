@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202207232116840.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202207232136438.png">
 <meta property="article:published_time" content="2022-07-09T07:15:51.000Z">
-<meta property="article:modified_time" content="2022-08-27T14:01:35.077Z">
+<meta property="article:modified_time" content="2022-08-29T10:46:02.890Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          16k 字
+          19k 字
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          132 分钟
+          159 分钟
         
       </span>
     
@@ -638,7 +638,75 @@
 </li>
 <li><strong>根据explain的结果，进行索引优化</strong></li>
 </ul>
-<h2 id="7-order-by关键字优化"><a href="#7-order-by关键字优化" class="headerlink" title="7.order by关键字优化"></a>7.order by关键字优化</h2><ul>
+<h2 id="7-分页查询优化"><a href="#7-分页查询优化" class="headerlink" title="7.分页查询优化"></a>7.分页查询优化</h2><ul>
+<li><p><strong>使用覆盖索引+子查询优化</strong></p>
+<p>这种方式先定位偏移位置的 id，然后往后查询，这种方式适用于 id 递增的情况。</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> orders_history <span class="hljs-keyword">where</span> <span class="hljs-built_in">type</span>=<span class="hljs-number">8</span> <span class="hljs-keyword">limit</span> <span class="hljs-number">100000</span>,<span class="hljs-number">1</span>;<br><span class="hljs-keyword">select</span> id <span class="hljs-keyword">from</span> orders_history <span class="hljs-keyword">where</span> <span class="hljs-built_in">type</span>=<span class="hljs-number">8</span> <span class="hljs-keyword">limit</span> <span class="hljs-number">100000</span>,<span class="hljs-number">1</span>;<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> orders_history <span class="hljs-keyword">where</span> <span class="hljs-built_in">type</span>=<span class="hljs-number">8</span> <span class="hljs-keyword">and</span> id&gt;=(<span class="hljs-keyword">select</span> id <span class="hljs-keyword">from</span> orders_history <span class="hljs-keyword">where</span> <span class="hljs-built_in">type</span>=<span class="hljs-number">8</span> <span class="hljs-keyword">limit</span> <span class="hljs-number">100000</span>,<span class="hljs-number">1</span>) <span class="hljs-keyword">limit</span> <span class="hljs-number">100</span>;<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> orders_history <span class="hljs-keyword">where</span> <span class="hljs-built_in">type</span>=<span class="hljs-number">8</span> <span class="hljs-keyword">limit</span> <span class="hljs-number">100000</span>,<span class="hljs-number">100</span>;<br></code></pre></td></tr></table></figure>
+
+<p>4条语句的查询时间如下：第1条语句：3674ms第2条语句：1315ms第3条语句：1327ms第4条语句：3710ms</p>
+<p>针对上面的查询需要注意：</p>
+<ul>
+<li>比较第1条语句和第2条语句：使用 select id 代替 select * 速度增加了3倍</li>
+<li>比较第2条语句和第3条语句：速度相差几十毫秒</li>
+<li>比较第3条语句和第4条语句：得益于 select id 速度增加，第3条语句查询速度增加了3倍</li>
+</ul>
+<p><strong>这种方式相较于原始一般的查询方法，将会增快数倍</strong></p>
+<ul>
+<li>索引文件不包含行数据的所有信息，故其大小远小于数据文件，因此可以减少大量的IO操作</li>
+<li>索引覆盖只需要扫描一次索引树，不需要回表扫描行数据，所以性能比回表查询要高</li>
+</ul>
+</li>
+<li><p><strong>使用 id 限定优化</strong></p>
+<p>这种方式假设数据表的id是连续递增的，则我们根据查询的页数和查询的记录数可以算出查询的id的范围，可以使用 id between and 来查询：</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> orders_history <span class="hljs-keyword">where</span> <span class="hljs-built_in">type</span>=<span class="hljs-number">2</span> <span class="hljs-keyword">and</span> id <span class="hljs-keyword">between</span> <span class="hljs-number">1000000</span> <span class="hljs-keyword">and</span> <span class="hljs-number">1000100</span> <span class="hljs-keyword">limit</span> <span class="hljs-number">100</span>;<br></code></pre></td></tr></table></figure>
+
+<p>这种查询方式能够极大地优化查询速度，基本能够在几十毫秒之内完成。限制是只能使用于明确知道id的情况，不过一般建立表的时候，都会添加基本的id字段，这为分页查询带来很多便利</p>
+<p>还可以有另外一种写法：</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> orders_history <span class="hljs-keyword">where</span> id &gt;= <span class="hljs-number">1000001</span> <span class="hljs-keyword">limit</span> <span class="hljs-number">100</span>;<br></code></pre></td></tr></table></figure>
+
+<p>当然还可以使用 in 的方式来进行查询，这种方式经常用在多表关联的时候进行查询，使用其他表查询的id集合，来进行查询：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">select</span> * <span class="hljs-function"><span class="hljs-keyword">from</span> orders_history <span class="hljs-keyword">where</span> id <span class="hljs-title">in</span> (<span class="hljs-params"><span class="hljs-keyword">select</span> order_id <span class="hljs-keyword">from</span> trade_2 <span class="hljs-keyword">where</span> goods = <span class="hljs-string">&#x27;pen&#x27;</span></span>) limit 100</span>;<br></code></pre></td></tr></table></figure>
+
+<p><strong>这种 in 查询的方式要注意：某些 mysql 版本不支持在 in 子句中使用 limit</strong></p>
+</li>
+<li><p><strong>记录位置，避免使用 OFFSET</strong></p>
+<p>首先获取第一页的结果：</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> t_order <span class="hljs-keyword">limit</span> <span class="hljs-number">10</span>;<br></code></pre></td></tr></table></figure>
+
+
+<p>假如上边返回的是 id 为1 ~ 10的记录，我们将 10 这个值记住，下一页查询就可以直接从 10 这个值开始</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> t_order <span class="hljs-keyword">where</span> id &gt; <span class="hljs-number">10</span> <span class="hljs-keyword">limit</span> <span class="hljs-number">10</span>;<br></code></pre></td></tr></table></figure>
+
+<p>这样做，无论翻页到多少页，性能都会很好：</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> t_order <span class="hljs-keyword">limit</span> <span class="hljs-number">10</span>;						<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> t_order <span class="hljs-keyword">where</span> id &gt; <span class="hljs-number">10000</span> <span class="hljs-keyword">limit</span> <span class="hljs-number">10</span>;	<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> t_order <span class="hljs-keyword">where</span> id &gt; <span class="hljs-number">100000</span> <span class="hljs-keyword">limit</span> <span class="hljs-number">10</span>;	<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> t_order <span class="hljs-keyword">where</span> id &gt; <span class="hljs-number">1000000</span> <span class="hljs-keyword">limit</span> <span class="hljs-number">10</span>;	<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> t_order <span class="hljs-keyword">where</span> id &gt; <span class="hljs-number">10000000</span> <span class="hljs-keyword">limit</span> <span class="hljs-number">10</span>;<br></code></pre></td></tr></table></figure>
+
+
+<p>执行时间如下：</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ada"><span class="hljs-comment">-- 0.003</span><br><span class="hljs-comment">-- 0.005</span><br><span class="hljs-comment">-- 0.002</span><br><span class="hljs-comment">-- 0.002</span><br><span class="hljs-comment">-- 0.002</span><br></code></pre></td></tr></table></figure>
+
+
+<p>而如果我们当前记录的 id 值为 10000，我们想查上一页怎么办呢？返回去查一下即可：</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> t_order <span class="hljs-keyword">where</span> id &lt;= <span class="hljs-number">10000</span> <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> id <span class="hljs-keyword">desc</span> <span class="hljs-keyword">limit</span> <span class="hljs-number">10</span>,<span class="hljs-number">10</span>;<br></code></pre></td></tr></table></figure>
+
+
+<p>这种优化方式，可以实现上一页、下一页这种的分页。但如果想要实现跳转到指定页码的话，就需要保证 id 连续不中断，再通过计算找到准确的位置</p>
+</li>
+<li><p><strong>使用临时表优化</strong></p>
+<p>这种方式已经不属于查询优化，这儿附带提一下</p>
+<p>对于使用 id 限定优化中的问题，需要 id 是连续递增的，但是在一些场景下，比如使用历史表的时候，或者出现过数据缺失问题时，可以考虑使用临时存储的表来记录分页的id，使用分页的id来进行 in 查询。这样能够极大的提高传统的分页查询速度，尤其是数据量上千万的时候</p>
+</li>
+<li><p><strong>关于数据表的id说明</strong></p>
+<ul>
+<li><p>一般情况下，在数据库中建立表的时候，强制为每一张表添加 id 递增字段，这样方便查询</p>
+</li>
+<li><p>如果像是订单库等数据量非常庞大，一般会进行分库分表。这个时候不建议使用数据库的 id 作为唯一标识，而应该使用分布式的高并发唯一 id 生成器来生成，并在数据表中使用另外的字段来存储这个唯一标识</p>
+</li>
+<li><p>使用先使用范围查询定位 id （或者索引），然后再使用索引进行定位数据，能够提高好几倍查询速度。即先 select id，然后再 select *</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="8-order-by关键字优化"><a href="#8-order-by关键字优化" class="headerlink" title="8.order by关键字优化"></a>8.order by关键字优化</h2><ul>
 <li><p><strong>order by索引对比</strong></p>
 <ul>
 <li>无过滤条件(无where和limit)的order by 必然会出现 Using filesort</li>
@@ -667,7 +735,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="8-一颗高度为3的B-树能存多少行数据？"><a href="#8-一颗高度为3的B-树能存多少行数据？" class="headerlink" title="8.一颗高度为3的B+树能存多少行数据？"></a>8.一颗高度为3的B+树能存多少行数据？</h2><ul>
+<h2 id="9-一颗高度为3的B-树能存多少行数据？"><a href="#9-一颗高度为3的B-树能存多少行数据？" class="headerlink" title="9.一颗高度为3的B+树能存多少行数据？"></a>9.一颗高度为3的B+树能存多少行数据？</h2><ul>
 <li><strong>基本概念</strong><ul>
 <li>InnoDB存储引擎的最小储存单元是 <code>页（Page）</code> ，一个页的大小是默认是 <code>16K</code> 。磁盘存储数据最小单元是 <code>扇区</code> ，一个扇区的大小是 <code>512字节</code> ， 而文件系统（例如XFS&#x2F;EXT4）它的最小单元是 <code>块</code> ，一个块的大小是 <code>4k</code> </li>
 <li>因此InnoDB的所有数据文件（后缀为 <em>.ibd</em> 的文件），它的大小始终都是16384B（16k）的整数倍</li>
@@ -1041,6 +1109,43 @@
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+<h2 id="3-InnoDB-共享表空间和独立表空间的区别"><a href="#3-InnoDB-共享表空间和独立表空间的区别" class="headerlink" title="3.InnoDB 共享表空间和独立表空间的区别"></a>3.<strong>InnoDB 共享表空间和独立表空间的区别</strong></h2><h3 id="3-1共享表空间和独占表空间介绍"><a href="#3-1共享表空间和独占表空间介绍" class="headerlink" title="3.1共享表空间和独占表空间介绍"></a>3.1共享表空间和独占表空间介绍</h3><ul>
+<li><strong>共享表空间以及独占表空间都是针对数据的存储方式而言的</strong><ul>
+<li>共享表空间:   Innodb的所有数据保存在一个单独的表空间里面，而这个表空间可以由很多个文件组成，默认这个共享表空间的文件路径在data目录下。 默认的文件名为:ibdata1，初始化为10M</li>
+<li>独占表空间:  每一个表都将会生成以独立的文件方式来进行存储，每一个表都有一个.frm表描述文件，还有一个.ibd文件(这个文件包括了单独一个表的数据内容以及索引内容)</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-2共享表空间和独占表空间的区别"><a href="#3-2共享表空间和独占表空间的区别" class="headerlink" title="3.2共享表空间和独占表空间的区别"></a>3.2共享表空间和独占表空间的区别</h3><p><strong>共享表空间：</strong></p>
+<ul>
+<li><p>优点：<br>1）可以放表空间分成多个文件存放到各个磁盘上（表空间文件大小不受表大小的限制，如一个表可以分布在不同的文件上）</p>
+<p>所以其大小限制不再是文件大小的限制，而是其自身的限制。从Innodb的官方文档中可以看到，其表空间的最大限制为64TB，也就是说，Innodb的单表限制基本上也在64TB左右了，当然这个大小是包括这个表的所有索引等其他相关数据</p>
+<p>2）表数据和表描述放在一起方便管理</p>
+</li>
+<li><p>缺点：<br>1）所有的数据和索引存放到一个文件中，将有一个很常大的文件，虽然可以把一个大文件分成多个小文件，但是多个表及索引在表空间中混合存储，这样对于一个表做了大量删除操作后表空间中将会有大量的空隙，特别是对于统计分析，日志系统这类应用最不适合用共享表空间</p>
+<p>2）共享表空间管理会出现表空间分配后不能回缩的问题，当临时建立索引或者临时表导致表空间扩大后，就是删除相关的表也没办法回缩那部分空间了</p>
+<p>3）对于第二点存在的问题，一般使用 mysqldump 导出数据，然后删除共享表空间数据文件后，再重新导入</p>
+<p>4）由于一个文件中保存了多个表数据，所以并发操作时可能会产生 IO 瓶颈，所以需要频繁写入的场景并不适合共享表空间</p>
+</li>
+</ul>
+<p><strong>独立表空间（在配置文件（my.cnf）中设置innodb_file_per_table&#x3D;1）：</strong></p>
+<ul>
+<li><p>优点：<br>1）每个表都有自已独立的表空间<br>2）每个表的数据和索引都会存在自已的表空间中<br>3）可以实现单表在不同的数据库中移动</p>
+<p>4）空间可以回收（除drop table操作处,表空不能自已回收）</p>
+<ul>
+<li><p>Drop table操作自动回收表空间,如果对于统计分析或是日值表,删除大量数据后可以通过:alter table TableName engine&#x3D;innodb;回缩不用的空间</p>
+</li>
+<li><p>对于使innodb-plugin的Innodb使用turncate table也会使空间收缩</p>
+</li>
+<li><p>对于使用独立表空间的表,不管怎么删除,表空间的碎片不会太严重的影响性能,而且还有机会处理</p>
+</li>
+</ul>
+<p>5）使用独占表空间的效率以及性能会更高一点</p>
+</li>
+<li><p>缺点：<br>1）单表增加过大，如超过100个G</p>
+<p>当使用独享表空间来存放Innodb的表的时候，每个表的数据以一个单独的文件来存放，这个时候的单表限制，又变成文件系统的大小限制了</p>
 </li>
 </ul>
 <h1 id="六、HBase"><a href="#六、HBase" class="headerlink" title="六、HBase"></a>六、HBase</h1><h2 id="1-分布式数据库的特性"><a href="#1-分布式数据库的特性" class="headerlink" title="1.分布式数据库的特性"></a>1.分布式数据库的特性</h2><p><a target="_blank" rel="noopener" href="https://www.51cto.com/article/665674.html">详见</a></p>
