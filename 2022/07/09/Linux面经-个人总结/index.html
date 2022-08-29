@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/be608a77-7b7f-4f8e-87cc-f2237270bf69.png">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/docker-filesystems-busyboxrw.png">
 <meta property="article:published_time" content="2022-07-09T07:15:07.000Z">
-<meta property="article:modified_time" content="2022-08-29T12:42:15.494Z">
+<meta property="article:modified_time" content="2022-08-29T12:52:07.276Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -225,7 +225,7 @@
         
         
         
-          260 分钟
+          262 分钟
         
       </span>
     
@@ -1529,11 +1529,11 @@
 </ul>
 <h2 id="3-磁盘及内存命令"><a href="#3-磁盘及内存命令" class="headerlink" title="3.磁盘及内存命令"></a>3.磁盘及内存命令</h2><ul>
 <li>文件大小和占用空间大小是不一样的，因为要对齐</li>
-<li>显示每个文件和目录的磁盘使用空间<ul>
+<li><strong>显示每个文件和目录的磁盘使用空间</strong><ul>
 <li><strong>(disk used) du -h</strong></li>
 </ul>
 </li>
-<li>显示磁盘分区上可以使用的磁盘空间<ul>
+<li><strong>显示磁盘分区上可以使用的磁盘空间</strong><ul>
 <li><strong>(disk free) df -h</strong></li>
 </ul>
 </li>
@@ -1550,28 +1550,22 @@
 </ul>
 </li>
 </ul>
-<h2 id="4-监控性能指标：sar"><a href="#4-监控性能指标：sar" class="headerlink" title="4.监控性能指标：sar"></a>4.监控性能指标：sar</h2><p>监控CPU </p>
+<h2 id="4-监控性能指标：sar"><a href="#4-监控性能指标：sar" class="headerlink" title="4.监控性能指标：sar"></a>4.监控性能指标：sar</h2><p><strong>监控CPU</strong> </p>
 <ul>
-<li>监控CPU负载</li>
-</ul>
+<li><p>监控CPU负载</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 加上-q可以查看运行队列中进程数，系统上进程大小，平均负载等</span><br><span class="hljs-comment"># 这里&quot;1&quot;表示采样时间间隔是1秒，这里&quot;2&quot;表示采样次数为2</span><br><span class="hljs-attribute">sar</span> -q <span class="hljs-number">1</span> <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>监控CPU使用率</li>
+</li>
+<li><p>监控CPU使用率</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 可以显示CPU使用情况</span><br><span class="hljs-comment"># 参数意义同上</span><br><span class="hljs-attribute">sar</span> -u <span class="hljs-number">1</span> <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure></li>
 </ul>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 可以显示CPU使用情况</span><br><span class="hljs-comment"># 参数意义同上</span><br><span class="hljs-attribute">sar</span> -u <span class="hljs-number">1</span> <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
-
-<p>监控内存</p>
+<p><strong>监控内存</strong></p>
 <ul>
-<li>查询内存</li>
-</ul>
+<li><p>查询内存</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 可以显示内存使用情况</span><br><span class="hljs-comment"># 参数意义同上 </span><br><span class="hljs-attribute">sar</span> -r <span class="hljs-number">1</span> <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>页面交换查询</li>
+</li>
+<li><p>页面交换查询 </p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 可以查看是否发生大量页面交换，吞吐率大幅下降时可用</span><br><span class="hljs-comment"># 参数意义同上</span><br><span class="hljs-attribute">sar</span> -W <span class="hljs-number">1</span> <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure></li>
 </ul>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"> <span class="hljs-comment"># 可以查看是否发生大量页面交换，吞吐率大幅下降时可用</span><br> <span class="hljs-comment"># 参数意义同上</span><br><span class="hljs-attribute">sar</span> -W <span class="hljs-number">1</span> <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
-
 <h2 id="5-进程命令"><a href="#5-进程命令" class="headerlink" title="5.进程命令"></a>5.进程命令</h2><ul>
 <li><p><strong>ps</strong></p>
 <ul>
@@ -1585,12 +1579,41 @@
 <li><p><strong>top</strong></p>
 <ul>
 <li>实时显示系统中各个进程的资源占用情况，按”q”退出top命令</li>
-<li><code>top -H -p pid</code>显示对应pid的所有线程资源使用情况</li>
+<li><code>top -H -p pid</code>显示对应pid的所有线程资源使用情况，包括线程数</li>
+<li><code>top -H </code>查看总的线程数</li>
 <li><code>load average</code> 表示系统最近1min,5min,15min的平均负载，越大表示负载越来越小</li>
 <li>%MEM物理内存占用比</li>
 <li>Cpu(s)和%CPU<ul>
 <li>Cpu(s)表示的是所有用户进程占用整个cpu的平均值</li>
 <li>%CPU显示的是进程占用一个核的百分比，而不是整个cpu（8核）的百分比，有时候可能大于100，那是因为该进程启用了多线程占用了多个核心，所以有时候我们看该值得时候会超过100%，但不会超过总核数*100</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>pstree命令</strong></p>
+<ul>
+<li><strong>以树状图的方式显示进程间的关系，ps可以展示当前可以正字运行的进程信息，但不能展示进程间的关系</strong></li>
+</ul>
+<ul>
+<li><p><strong>pstree常用命令行：</strong><br><code>pstree</code></p>
+<ul>
+<li>以树状图显示进程，只显示进程名字，相同进程合并显示</li>
+</ul>
+<p><code>pstree pid</code>	</p>
+<ul>
+<li>以树状图显示进程ID为PID的进程及子进程</li>
+</ul>
+<p><code>pstree -p</code>	</p>
+<ul>
+<li>以树状图显示进程，同时显示进程PID</li>
+</ul>
+<p><code>pstree -p pid</code>	</p>
+<ul>
+<li>以树状图显示进程ID为PID的进程及子进程，同时显示进程PID</li>
+</ul>
+<p><code>pstree -a</code>	</p>
+<ul>
+<li>以树状图心事进程，同名进程不合并，显示命令行参数</li>
 </ul>
 </li>
 </ul>
@@ -1714,7 +1737,7 @@
 </li>
 </ul>
 <ul>
-<li><p><strong>网络Debug分析（网络层&#x2F;传输层）：nc</strong></p>
+<li><p><strong>nc：网络Debug分析（网络层&#x2F;传输层）</strong></p>
 <ul>
 <li><p>端口扫描</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 黑客很喜欢</span><br><span class="hljs-comment"># 扫描某服务器端口使用情况</span><br><span class="hljs-comment"># -v(view)显示指令执行过程，-w(wait)设置超时时长</span><br><span class="hljs-comment"># -z使用输入输出模式（只在端口扫描时使用）</span><br><span class="hljs-comment"># 数字为扫描的端口范围 </span><br><span class="hljs-attribute">nc</span> -v -w <span class="hljs-number">1</span> baidu.com  -z <span class="hljs-number">75</span>-<span class="hljs-number">1000</span><br></code></pre></td></tr></table></figure></li>
