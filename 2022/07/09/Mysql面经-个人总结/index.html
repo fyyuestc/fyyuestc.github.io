@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202207232116840.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202207232136438.png">
 <meta property="article:published_time" content="2022-07-09T07:15:51.000Z">
-<meta property="article:modified_time" content="2022-08-29T10:46:02.890Z">
+<meta property="article:modified_time" content="2022-08-29T11:13:59.765Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -557,7 +557,8 @@
 </ul>
 </li>
 </ul>
-<h2 id="5-索引优化"><a href="#5-索引优化" class="headerlink" title="5.索引优化"></a>5.索引优化</h2><ul>
+<h2 id="5-全文索引-fulltext"><a href="#5-全文索引-fulltext" class="headerlink" title="5.全文索引-fulltext"></a>5.全文索引-fulltext</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/35675553">详见</a></p>
+<h2 id="6-索引优化"><a href="#6-索引优化" class="headerlink" title="6.索引优化"></a>6.索引优化</h2><ul>
 <li><strong>全值匹配我最爱</strong><ul>
 <li>创建索引后，尽量在where筛选条件中使用索引列</li>
 </ul>
@@ -599,7 +600,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="6-查询优化"><a href="#6-查询优化" class="headerlink" title="6.查询优化"></a>6.查询优化</h2><ul>
+<h2 id="7-查询优化"><a href="#7-查询优化" class="headerlink" title="7.查询优化"></a>7.查询优化</h2><ul>
 <li><strong>慢查询步骤和过程</strong><ul>
 <li><strong>开启慢查询</strong><ul>
 <li>set slow_query_log &#x3D; 1慢查询开启状态</li>
@@ -638,7 +639,7 @@
 </li>
 <li><strong>根据explain的结果，进行索引优化</strong></li>
 </ul>
-<h2 id="7-分页查询优化"><a href="#7-分页查询优化" class="headerlink" title="7.分页查询优化"></a>7.分页查询优化</h2><ul>
+<h2 id="8-分页查询优化"><a href="#8-分页查询优化" class="headerlink" title="8.分页查询优化"></a>8.分页查询优化</h2><ul>
 <li><p><strong>使用覆盖索引+子查询优化</strong></p>
 <p>这种方式先定位偏移位置的 id，然后往后查询，这种方式适用于 id 递增的情况。</p>
 <figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> orders_history <span class="hljs-keyword">where</span> <span class="hljs-built_in">type</span>=<span class="hljs-number">8</span> <span class="hljs-keyword">limit</span> <span class="hljs-number">100000</span>,<span class="hljs-number">1</span>;<br><span class="hljs-keyword">select</span> id <span class="hljs-keyword">from</span> orders_history <span class="hljs-keyword">where</span> <span class="hljs-built_in">type</span>=<span class="hljs-number">8</span> <span class="hljs-keyword">limit</span> <span class="hljs-number">100000</span>,<span class="hljs-number">1</span>;<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> orders_history <span class="hljs-keyword">where</span> <span class="hljs-built_in">type</span>=<span class="hljs-number">8</span> <span class="hljs-keyword">and</span> id&gt;=(<span class="hljs-keyword">select</span> id <span class="hljs-keyword">from</span> orders_history <span class="hljs-keyword">where</span> <span class="hljs-built_in">type</span>=<span class="hljs-number">8</span> <span class="hljs-keyword">limit</span> <span class="hljs-number">100000</span>,<span class="hljs-number">1</span>) <span class="hljs-keyword">limit</span> <span class="hljs-number">100</span>;<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> orders_history <span class="hljs-keyword">where</span> <span class="hljs-built_in">type</span>=<span class="hljs-number">8</span> <span class="hljs-keyword">limit</span> <span class="hljs-number">100000</span>,<span class="hljs-number">100</span>;<br></code></pre></td></tr></table></figure>
@@ -706,7 +707,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="8-order-by关键字优化"><a href="#8-order-by关键字优化" class="headerlink" title="8.order by关键字优化"></a>8.order by关键字优化</h2><ul>
+<h2 id="9-order-by关键字优化"><a href="#9-order-by关键字优化" class="headerlink" title="9.order by关键字优化"></a>9.order by关键字优化</h2><ul>
 <li><p><strong>order by索引对比</strong></p>
 <ul>
 <li>无过滤条件(无where和limit)的order by 必然会出现 Using filesort</li>
@@ -735,7 +736,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="9-一颗高度为3的B-树能存多少行数据？"><a href="#9-一颗高度为3的B-树能存多少行数据？" class="headerlink" title="9.一颗高度为3的B+树能存多少行数据？"></a>9.一颗高度为3的B+树能存多少行数据？</h2><ul>
+<h2 id="10-一颗高度为3的B-树能存多少行数据？"><a href="#10-一颗高度为3的B-树能存多少行数据？" class="headerlink" title="10.一颗高度为3的B+树能存多少行数据？"></a>10.一颗高度为3的B+树能存多少行数据？</h2><ul>
 <li><strong>基本概念</strong><ul>
 <li>InnoDB存储引擎的最小储存单元是 <code>页（Page）</code> ，一个页的大小是默认是 <code>16K</code> 。磁盘存储数据最小单元是 <code>扇区</code> ，一个扇区的大小是 <code>512字节</code> ， 而文件系统（例如XFS&#x2F;EXT4）它的最小单元是 <code>块</code> ，一个块的大小是 <code>4k</code> </li>
 <li>因此InnoDB的所有数据文件（后缀为 <em>.ibd</em> 的文件），它的大小始终都是16384B（16k）的整数倍</li>
