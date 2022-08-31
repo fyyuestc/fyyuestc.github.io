@@ -38,7 +38,7 @@
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/image-20191208203639712.png">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/7a29acce-f243-4914-9f00-f2988c528412.jpg">
 <meta property="article:published_time" content="2022-07-09T07:16:19.000Z">
-<meta property="article:modified_time" content="2022-08-28T06:03:36.891Z">
+<meta property="article:modified_time" content="2022-08-31T14:26:39.672Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -301,9 +301,16 @@
 <li>检查哈希表中该位置是否已经存在元素。如果该位置内容为空，则插入并返回，否则转向步骤 3。</li>
 <li>如果该位置为 i，则检查 i+1 是否为空，如果已被占用，则检查 i+2，依此类推，直到找到一个内容为空的位置。</li>
 </ol>
-<p>线性探查（Linear Probing）方式虽然简单，但并不是解决冲突的最好的策略，因为它会导致同类哈希的聚集（Primary Clustering）。这导致搜索哈希表时，冲突依然存在。</p>
-<p>一种改进的方式为<strong>二次探查（Quadratic Probing）</strong>，即每次检查位置空间的步长为平方倍数。也就是说，如果位置 s 被占用，则首先检查 s + 12 处，然后检查s - 12，s + 22，s - 22，s + 32 依此类推，而不是象线性探查那样以 s + 1，s + 2 … 方式增长。尽管如此，二次探查同样也会导致同类哈希聚集问题（Secondary Clustering）。</p>
-<p>另一种改进的开放寻址法称为<strong>二度哈希（Rehashing）</strong>（或称为<strong>双重哈希（Double Hashing）</strong>）。</p>
+<p><strong>线性探查（Linear Probing）方式虽然简单，但并不是解决冲突的最好的策略，因为它会导致同类哈希的聚集（Primary Clustering）。这导致搜索哈希表时，冲突依然存在</strong></p>
+<ul>
+<li><p>一种改进的方式为<strong>二次探查（Quadratic Probing）</strong>，即每次检查位置空间的步长为平方倍数。也就是说，如果位置 s 被占用，则首先检查 s + 12 处，然后检查s - 12，s + 22，s - 22，s + 32 依此类推，而不是象线性探查那样以 s + 1，s + 2 … 方式增长</p>
+<ul>
+<li><strong>尽管如此，二次探查同样也会导致同类哈希聚集问题（Secondary Clustering）</strong></li>
+</ul>
+</li>
+<li><p>另一种改进的开放寻址法称为<strong>二度哈希（Rehashing）</strong>（或称为<strong>双重哈希（Double Hashing）</strong>）</p>
+</li>
+</ul>
 <p><strong>2）二度哈希的工作原理如下：</strong></p>
 <ul>
 <li><p>有一个包含一组哈希函数 H1…Hn 的集合。当需要从哈希表中添加或获取元素时，首先使用哈希函数 H1。如果导致冲突，则尝试使用 H2，以此类推，直到 Hn。所有的哈希函数都与 H1 十分相似，不同的是它们选用的乘法因子（multiplicative factor）。</p>
@@ -321,14 +328,17 @@
 </ul>
 </li>
 </ul>
-<p>由此看出，对哈希表的扩充将是以性能损耗为代价。因此，我们应该预先估计哈希表中最有可能容纳的元素数量，在初始化哈希表时给予合适的值进行构造，以避免不必要的扩充。</p>
+<p><strong>由此看出，对哈希表的扩充将是以性能损耗为代价。因此，我们应该预先估计哈希表中最有可能容纳的元素数量，在初始化哈希表时给予合适的值进行构造，以避免不必要的扩充</strong></p>
 <p><strong>3）哈希冲突解决策略：链接技术（chaining）</strong></p>
 <p><strong>链接技术（chaining）</strong>是一种冲突解决策略（Collision Resolution Strategy）。在链接法中，把哈希到同一个槽中的所有元素都放到一个链表中。</p>
 <p><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202208171444170.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>使用探查技术（probing）时，如果发生冲突，则将尝试列表中的下一个位置。如果使用二度哈希（rehashing），则将导致所有的哈希被重新计算。而<strong>链接技术（chaining）</strong>将采用额外的数据结构来处理冲突，其将哈希表中每个位置（slot）都映射到了一个链表。当冲突发生时，冲突的元素将被添加到桶（bucket）列表中，而每个桶都包含了一个链表以存储相同哈希的元素。</p>
 <p><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202208171444667.gif" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>上图中的哈希表包含了 8 个桶（bucket），也就是自顶向下的黄色背景的位置。如果一个新的元素要被添加至哈希表中，将会被添加至其 Key 的哈希所对应的桶中。如果在相同位置已经有一个元素存在了，则将会将新元素添加到列表的前面。</p>
-<p>使用链接技术添加元素的操作涉及到哈希计算和链表操作，但其仍为常量，渐进时间为 O(1)。而进行查询和删除操作时，其平均时间取决于元素的数量和桶（bucket）的数量。具体的说就是运行时间为 O(n&#x2F;m)，这里 n 为元素的总数量，m 是桶的数量。但通常对哈希表的实现几乎总是使 n &#x3D; O(m)，也就是说，元素的总数绝不会超过桶的总数，所以 O(n&#x2F;m) 也变成了常量 O(1)。</p>
+<ul>
+<li>使用链接技术添加元素的操作涉及到哈希计算和链表操作，但其仍为常量，渐进时间为 O(1)。而进行查询和删除操作时，其平均时间取决于元素的数量和桶（bucket）的数量。具体的说就是运行时间为 O(n&#x2F;m)，这里 n 为元素的总数量，m 是桶的数量。但通常对哈希表的实现几乎总是使 n &#x3D; O(m)，也就是说，元素的总数绝不会超过桶的总数，所以 O(n&#x2F;m) 也变成了常量 O(1)</li>
+<li><strong>链地址法将同义词放在同一个链表上，不会引起聚集</strong></li>
+</ul>
 <h3 id="三、完美哈希"><a href="#三、完美哈希" class="headerlink" title="三、完美哈希"></a>三、完美哈希</h3><p>当关键字的集合是一个不变的静态集合（Static）时，哈希技术还可以用来获取出色的最坏情况性能。如果某一种哈希技术在进行查找时，其最坏情况的内存访问次数为 O(1) 时，则称其为<strong>完美哈希（Perfect Hashing）</strong>。</p>
 <p>设计完美哈希的基本思想是利用两级的哈希策略，而每一级上都使用全域哈希（Univeral Hashing）。</p>
 <p><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202208171445847.png" srcset="/img/loading.gif" lazyload alt="img"></p>
