@@ -42,7 +42,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356849.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202208291549311.png">
 <meta property="article:published_time" content="2022-07-09T07:15:45.000Z">
-<meta property="article:modified_time" content="2022-09-01T02:05:58.606Z">
+<meta property="article:modified_time" content="2022-09-01T02:20:52.429Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -1857,9 +1857,9 @@ int main()
 </li>
 <li><p><strong>如果删除节点的颜色为黑色，则肯定会破坏红黑树的第 5 条性质，此时就需要对树进行调整，调整方案分 4 种情况讨论：</strong></p>
 <p>1） 删除节点的兄弟节点颜色是红色，调整措施为：将兄弟节点颜色改为黑色，父亲节点改为红色，以父亲节点来进行左旋操作，同时更新删除节点的兄弟节		点（左旋后兄弟节点发生了变化），如下图所示</p>
+<p><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356849.png" srcset="/img/loading.gif" lazyload></p>
 </li>
 </ol>
-<p><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356849.png" srcset="/img/loading.gif" lazyload></p>
 <p>​		2） 删除节点的兄弟节点及其孩子全部都是黑色的，调整措施为：将删除节点的兄弟节点设为红色，同时设置删除节点的父节点标记为新的节点，继续判断；</p>
 <p>​		3） 删除节点的兄弟节点是黑色，其左孩子是红色，右孩子是黑色。调整措施为：将兄弟节点设为红色，兄弟节点的左孩子节点设为黑色，以兄弟节点为准进				行右旋操作，最终更新删除节点的兄弟节点；</p>
 <p>​		4）删除节点的兄弟节点是黑色，其右孩子是红色（左孩子不管是什么颜色），调整措施为：将删除节点的父节点的颜色赋值给其兄弟节点，然后再设置父节				点颜色为黑色，兄弟节点的右孩子节点为黑色，根据其父节点做左旋操作，最后设置替换删除节点的节点为根节点；</p>
