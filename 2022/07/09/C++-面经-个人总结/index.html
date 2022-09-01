@@ -42,7 +42,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356849.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202208291549311.png">
 <meta property="article:published_time" content="2022-07-09T07:15:45.000Z">
-<meta property="article:modified_time" content="2022-09-01T02:20:52.429Z">
+<meta property="article:modified_time" content="2022-09-01T02:25:28.058Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -1856,13 +1856,13 @@ int main()
 <li><p>如果删除节点的颜色为红色，则不会破坏；</p>
 </li>
 <li><p><strong>如果删除节点的颜色为黑色，则肯定会破坏红黑树的第 5 条性质，此时就需要对树进行调整，调整方案分 4 种情况讨论：</strong></p>
-<p>1） 删除节点的兄弟节点颜色是红色，调整措施为：将兄弟节点颜色改为黑色，父亲节点改为红色，以父亲节点来进行左旋操作，同时更新删除节点的兄弟节		点（左旋后兄弟节点发生了变化），如下图所示</p>
 <p><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356849.png" srcset="/img/loading.gif" lazyload></p>
+<p>1） 删除节点的兄弟节点颜色是红色，调整措施为：将兄弟节点颜色改为黑色，父亲节点改为红色，以父亲节点来进行左旋操作，同时更新删除节点的兄弟节	   点（左旋后兄弟节点发生了变化），如下图所示</p>
+<p>2） 删除节点的兄弟节点及其孩子全部都是黑色的，调整措施为：将删除节点的兄弟节点设为红色，同时设置删除节点的父节点标记为新的节点，继续判断</p>
+<p>3） 删除节点的兄弟节点是黑色，其左孩子是红色，右孩子是黑色。调整措施为：将兄弟节点设为红色，兄弟节点的左孩子节点设为黑色，以兄弟节点为准进	   行右旋操作，最终更新删除节点的兄弟节点；</p>
+<p>4） 删除节点的兄弟节点是黑色，其右孩子是红色（左孩子不管是什么颜色），调整措施为：将删除节点的父节点的颜色赋值给其兄弟节点，然后再设置父节	   点颜色为黑色，兄弟节点的右孩子节点为黑色，根据其父节点做左旋操作，最后设置替换删除节点的节点为根节点；</p>
 </li>
 </ol>
-<p>​		2） 删除节点的兄弟节点及其孩子全部都是黑色的，调整措施为：将删除节点的兄弟节点设为红色，同时设置删除节点的父节点标记为新的节点，继续判断；</p>
-<p>​		3） 删除节点的兄弟节点是黑色，其左孩子是红色，右孩子是黑色。调整措施为：将兄弟节点设为红色，兄弟节点的左孩子节点设为黑色，以兄弟节点为准进				行右旋操作，最终更新删除节点的兄弟节点；</p>
-<p>​		4）删除节点的兄弟节点是黑色，其右孩子是红色（左孩子不管是什么颜色），调整措施为：将删除节点的父节点的颜色赋值给其兄弟节点，然后再设置父节				点颜色为黑色，兄弟节点的右孩子节点为黑色，根据其父节点做左旋操作，最后设置替换删除节点的节点为根节点；</p>
 <h3 id="6-3-红黑树的应用"><a href="#6-3-红黑树的应用" class="headerlink" title="6.3.红黑树的应用"></a>6.3.红黑树的应用</h3><p>红黑树的应用比较广泛，主要是用它来存储有序的数据，它的时间复杂度是O(logn)，效率非常之高。<br><strong>例如，Java集合中的TreeSet和TreeMap，C++ STL中的set、map，以及Linux虚拟内存的管理，都是通过红黑树去实现的，而 JDK8 中 HashMap 当链表长度大于 8 时也会转化为红黑树</strong></p>
 <h3 id="6-4-总结"><a href="#6-4-总结" class="headerlink" title="6.4.总结"></a>6.4.总结</h3><ul>
 <li><p>红黑树，虽隶属于二叉查找树，但是二叉查找树的时间复杂度会受到其树深度的影响，而红黑树可以保证在最坏情况下的时间复杂度仍为<code>O(lgn)</code>。当数据量多到一定程度时，使用红黑树比二叉查找树的效率要高</p>
