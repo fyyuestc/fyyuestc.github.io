@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202207232116840.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202207232136438.png">
 <meta property="article:published_time" content="2022-07-09T07:15:51.000Z">
-<meta property="article:modified_time" content="2022-09-07T05:10:51.259Z">
+<meta property="article:modified_time" content="2022-09-07T05:58:10.507Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -639,10 +639,10 @@
 <li><strong>type：</strong>这是重要的列，显示连接使用了何种类型。从最好到最差的连接类型为const、eq_ref、ref、range、index和ALL，一般来说到range不错，最好到ref<ul>
 <li>all：full table scan；MySQL将遍历全表以找到匹配的行</li>
 <li>index：index scan；index 和 all的区别在于index类型只遍历索引</li>
-<li>range：索引范围扫描，对索引的扫描开始于某一点，返回匹配值的行，常见与between ，等查询</li>
-<li>ref：非唯一性索引扫描，返回匹配某个单独值的所有行，常见于使用非唯一索引即唯一索引的非唯一前缀进行查找</li>
+<li>range：索引范围扫描，对索引的扫描开始于某一点，返回匹配值的行，常见于between 等查询</li>
+<li>ref：非唯一性索引扫描，返回匹配某个单独值的所有行，常见于使用非唯一索引，即唯一索引的非唯一前缀进行查找</li>
 <li>eq_ref：唯一性索引扫描，对于每个索引键，表中只有一条记录与之匹配，常用于主键或者唯一索引扫描</li>
-<li>const，system：当MySQL对某查询某部分进行优化，并转为一个常量时，使用这些访问类型。如果将主键置于where列表中，MySQL就能将该查询转化为一个常量</li>
+<li>const：当MySQL对某查询某部分进行优化，并转为一个常量时，使用这些访问类型。如果将主键置于where列表中，MySQL就能将该查询转化为一个常量</li>
 </ul>
 </li>
 <li><strong>possible_keys：</strong>显示可能应用在这张表中的索引。如果为空，没有可能的索引。可以为相关的域从WHERE语句中选择一个合适的语句</li>
@@ -664,7 +664,7 @@
 <figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs n1ql"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> orders_history <span class="hljs-keyword">where</span> <span class="hljs-built_in">type</span>=<span class="hljs-number">8</span> <span class="hljs-keyword">limit</span> <span class="hljs-number">100000</span>,<span class="hljs-number">1</span>;<br><span class="hljs-keyword">select</span> id <span class="hljs-keyword">from</span> orders_history <span class="hljs-keyword">where</span> <span class="hljs-built_in">type</span>=<span class="hljs-number">8</span> <span class="hljs-keyword">limit</span> <span class="hljs-number">100000</span>,<span class="hljs-number">1</span>;<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> orders_history <span class="hljs-keyword">where</span> <span class="hljs-built_in">type</span>=<span class="hljs-number">8</span> <span class="hljs-keyword">and</span> id&gt;=(<span class="hljs-keyword">select</span> id <span class="hljs-keyword">from</span> orders_history <span class="hljs-keyword">where</span> <span class="hljs-built_in">type</span>=<span class="hljs-number">8</span> <span class="hljs-keyword">limit</span> <span class="hljs-number">100000</span>,<span class="hljs-number">1</span>) <span class="hljs-keyword">limit</span> <span class="hljs-number">100</span>;<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> orders_history <span class="hljs-keyword">where</span> <span class="hljs-built_in">type</span>=<span class="hljs-number">8</span> <span class="hljs-keyword">limit</span> <span class="hljs-number">100000</span>,<span class="hljs-number">100</span>;<br></code></pre></td></tr></table></figure>
 
 <p>4条语句的查询时间如下：第1条语句：3674ms第2条语句：1315ms第3条语句：1327ms第4条语句：3710ms</p>
-<p>针对上面的查询需要注意：</p>
+<p><strong>针对上面的查询需要注意：</strong></p>
 <ul>
 <li>比较第1条语句和第2条语句：使用 select id 代替 select * 速度增加了3倍</li>
 <li>比较第2条语句和第3条语句：速度相差几十毫秒</li>
