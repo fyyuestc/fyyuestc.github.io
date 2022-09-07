@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202207232116840.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202207232136438.png">
 <meta property="article:published_time" content="2022-07-09T07:15:51.000Z">
-<meta property="article:modified_time" content="2022-09-07T06:07:52.435Z">
+<meta property="article:modified_time" content="2022-09-07T06:19:37.808Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -234,7 +234,7 @@
         
         
         
-          161 分钟
+          162 分钟
         
       </span>
     
@@ -908,26 +908,36 @@
 </li>
 </ul>
 <h2 id="3-事务的隔离等级"><a href="#3-事务的隔离等级" class="headerlink" title="3.事务的隔离等级"></a>3.事务的隔离等级</h2><ul>
-<li><strong>读未提交：</strong><ul>
+<li><p><strong>读未提交：</strong></p>
+<ul>
 <li>指一个事务还没提交时，它做的变更就能被其他事务看到</li>
 <li>最低的隔离级别，会产生脏读，不可重复读，幻读问题</li>
 </ul>
 </li>
-<li><strong>读提交：</strong><ul>
+<li><p><strong>读提交：</strong></p>
+<ul>
 <li>指一个事务提交之后，它做的变更才能被其他事务看到</li>
 <li>会产生不可重复读，幻读问题</li>
 </ul>
 </li>
-<li><strong>可重复读：</strong>会产生幻读问题（当前读）<ul>
+<li><p><strong>可重复读：</strong>会产生幻读问题（当前读）</p>
+<ul>
 <li>指一个事务执行过程中看到的数据，一直跟这个事务启动时看到的数据是一致的</li>
 <li><strong>可重复读的事务本身是会发生幻读，但MySQL中默认事务隔离级别是“可重复读”，不会发生脏读，不可重复读和幻读的情况，因为可以通过Next-Key进行控制，Next-Key锁是行锁和GAP（间隙锁）的合并</strong></li>
 <li><strong>在可重复读隔离等级下，普通的查询是快照读，是不会看到别的事务插入的数据的。因此，幻读在当前读下才会出现</strong></li>
-<li>快照读就是普通的读操作，而当前读包括了 <strong>加锁的读取</strong> 和 <strong>DML</strong>（DML只是对表内部的数据操作，不涉及表的定义，结构的修改。主要包括insert、update、deletet） 操作</li>
+<li>快照读就是普通的读操作，而当前读包括了 <strong>加锁的读取</strong> 和 <strong>DML操作</strong>（DML只是对表内部的数据操作，不涉及表的定义，结构的修改。主要包括insert、update、deletet）</li>
 </ul>
 </li>
-<li><strong>串行化：</strong>最高的隔离级别，在这个隔离级别下，不会产生任何异常。并发的事务，就像事务是在一个个按照顺序执行一样<ul>
+<li><p><strong>串行化：</strong>最高的隔离级别，在这个隔离级别下，不会产生任何异常。并发的事务，就像事务是在一个个按照顺序执行一样</p>
+<ul>
 <li>会对记录加上读写锁，在多个事务对这条记录进行读写操作时，如果发生了读写冲突的时候，后访问的事务必须等前一个事务执行完成，才能继续执行</li>
+</ul>
+</li>
+<li><p><strong>锁的范围</strong></p>
+<ul>
 <li>事务隔离级别为读未提交时，写数据只会锁住相应的行</li>
+</ul>
+<ul>
 <li>事务隔离级别为可重复读时，写数据会锁住整张表</li>
 <li>事务隔离级别为串行化时，读写数据都会锁住整张表</li>
 </ul>
