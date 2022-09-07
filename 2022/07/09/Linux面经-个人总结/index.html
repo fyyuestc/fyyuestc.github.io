@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/be608a77-7b7f-4f8e-87cc-f2237270bf69.png">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/docker-filesystems-busyboxrw.png">
 <meta property="article:published_time" content="2022-07-09T07:15:07.000Z">
-<meta property="article:modified_time" content="2022-09-07T15:17:47.462Z">
+<meta property="article:modified_time" content="2022-09-07T15:23:04.998Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -1194,10 +1194,10 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plain">struct linger&#123;<br>    int l_onoff;    //开启或关闭该选项<br>    int l_linger;   //滞留时间<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<pre><code class="hljs">* l_onoff为0，该选项不起作用，采用默认close行为 
-* l_onoff不为0，l_linger为0，close立即返回，TCP模块丢弃被关闭的socket对应的TCP缓冲区中的数据，给对方发送RST复位信号，这样可以异常终止连接，且完全消除了TIME_WAIT状态 
-* l_linger不为0，阻塞socket，被关闭的socket对应TCP缓冲区，若还有数据，close会阻塞，进程睡眠，直到收到对方的确认或等待l_linger时间，若超时仍未收到确认，则close返回-1设置errno为EWOULDBLOCK
-* l_linger不为0，非阻塞socket，close立即返回，需要根据返回值和errno判断残留数据是够发送完毕
+<pre><code class="hljs">- l_onoff为0，该选项不起作用，采用默认close行为 
+- l_onoff不为0，l_linger为0，close立即返回，TCP模块丢弃被关闭的socket对应的TCP缓冲区中的数据，给对方发送RST复位信号，这样可以异常终止连接，且完全消除了TIME_WAIT状态 
+- l_linger不为0，阻塞socket，被关闭的socket对应TCP缓冲区，若还有数据，close会阻塞，进程睡眠，直到收到对方的确认或等待l_linger时间，若超时仍未收到确认，则close返回-1设置errno为EWOULDBLOCK
+- l_linger不为0，非阻塞socket，close立即返回，需要根据返回值和errno判断残留数据是够发送完毕
 </code></pre>
 <ul>
 <li><strong>shutdown没有采用引用计数的机制，会影响所有进程的网络套接字，可以只关闭套接字的读端或写端，也可全部关闭，用于实现半关闭，会直接发送FIN包</strong><ul>
