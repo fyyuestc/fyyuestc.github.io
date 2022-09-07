@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/be608a77-7b7f-4f8e-87cc-f2237270bf69.png">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/docker-filesystems-busyboxrw.png">
 <meta property="article:published_time" content="2022-07-09T07:15:07.000Z">
-<meta property="article:modified_time" content="2022-09-07T15:41:28.478Z">
+<meta property="article:modified_time" content="2022-09-07T15:45:00.662Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -1287,10 +1287,16 @@
 </ul>
 <h2 id="8-LT、ET模式在处理读写事件上的区别"><a href="#8-LT、ET模式在处理读写事件上的区别" class="headerlink" title="8.LT、ET模式在处理读写事件上的区别"></a>8.LT、ET模式在处理读写事件上的区别</h2><ul>
 <li><strong>这两种模式的区别如下：</strong><ul>
-<li>对于水平触发模式，一个事件只要有，就会一直触发</li>
-<li>对于边缘触发模式，在一个事件从无到有时才会触发</li>
-<li>以socket的读事件为例，对于水平模式，只要在socket上有未读完的数据，就会一直产生EPOLLIN事件；而对于边缘模式，socket上每新来以此数据就会触发一次，如果上一次触发后未将socket上的数据读完，也不会再触发，除非再新来一次数据</li>
-<li>对于socket写事件，如果socket的TCP窗口一直不饱和，就会一直触发EPOLLOUT事件；而对于边缘模式，只会触发一次，除非TCP窗口由不饱和变成饱和再一次变成不饱和，才会再次触发EPOLLOUT事件</li>
+<li><strong>对于水平触发模式，一个事件只要有，就会一直触发</strong><ul>
+<li>以socket的读事件为例，对于水平模式，只要在socket上有未读完的数据，就会一直产生EPOLLIN事件</li>
+<li>对于socket写事件，对于水平模式，如果socket的TCP窗口一直不饱和，就会一直触发EPOLLOUT事件</li>
+</ul>
+</li>
+<li><strong>对于边缘触发模式，在一个事件从无到有时才会触发</strong><ul>
+<li>而对于边缘模式，socket上每新来以此数据就会触发一次，如果上一次触发后未将socket上的数据读完，也不会再触发，除非再新来一次数据</li>
+<li>而对于边缘模式，只会触发一次，除非TCP窗口由不饱和变成饱和再一次变成不饱和，才会再次触发EPOLLOUT事件</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>ET比LT更高效的原因</strong><ul>
