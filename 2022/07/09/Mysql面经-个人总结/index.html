@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202207232116840.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202207232136438.png">
 <meta property="article:published_time" content="2022-07-09T07:15:51.000Z">
-<meta property="article:modified_time" content="2022-09-07T05:58:10.507Z">
+<meta property="article:modified_time" content="2022-09-07T06:07:52.435Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -234,7 +234,7 @@
         
         
         
-          162 分钟
+          161 分钟
         
       </span>
     
@@ -731,17 +731,17 @@
 <ul>
 <li>无过滤条件(无where和limit)的order by 必然会出现 Using filesort</li>
 <li>过滤条件中的字段和order by 后跟的字段的顺序不一致，必然会出现 Using filesort</li>
-<li>order by后跟的字段排序即有DESC也有ASC，必然会出现Using filesort</li>
-<li>where条件的值确定，且order by后跟了跟了where条件的排序字段(order by 字段去除定值字段后剩余单字段)，即使order by后跟的字段和组合索引字段顺序不一致，也不会出现Usi</li>
+<li>order by后跟的字段排序既有DESC也有ASC，必然会出现Using filesort</li>
+<li>where条件的值确定，且order by后跟了跟了where条件的排序字段(order by 字段去除定值字段后剩余单字段)，即使order by后跟的字段和组合索引字段顺序不一致，也不会出现Using filesort</li>
 </ul>
 </li>
 <li><p><strong>order by索引建议</strong></p>
 <ul>
-<li>尽量在索引列上完成排序操作，遵循最佳做前缀法则</li>
+<li>尽量在索引列上完成排序操作，遵循最佳前缀法则</li>
 <li>order by子句，尽量使用index方式排序，避免使用filesort方式</li>
 </ul>
 </li>
-<li><p><strong>无索引 order by的索引建议</strong></p>
+<li><p><strong>无索引列order by的索引建议</strong></p>
 <ul>
 <li>双路排序：扫描2次磁盘获取最终数据，第一次扫描读取行指针和order by字段列的值进行排序，刷选出需要的排完序的行指针，第二次扫描读取所需的全部数据</li>
 <li>单路排序：从磁盘中读取查询所需的全部列，在buff中进行排序，排序后进行输出，只需要扫描一次磁盘</li>
@@ -759,17 +759,17 @@
 <li><strong>基本概念</strong><ul>
 <li>InnoDB存储引擎的最小储存单元是 <code>页（Page）</code> ，一个页的大小是默认是 <code>16K</code> 。磁盘存储数据最小单元是 <code>扇区</code> ，一个扇区的大小是 <code>512字节</code> ， 而文件系统（例如XFS&#x2F;EXT4）它的最小单元是 <code>块</code> ，一个块的大小是 <code>4k</code> </li>
 <li>因此InnoDB的所有数据文件（后缀为 <em>.ibd</em> 的文件），它的大小始终都是16384B（16k）的整数倍</li>
-<li>数据表中的数据都是存储在页中的，所以一个页中能存储多少行数据呢？<strong>假设一行数据的大小是1k，那么一个页可以存放16行这样的数据</strong></li>
-<li>但是除了有 <code>存放数据的页</code> 以外，还有 <code>存放键值+指针（索引）的页</code> ，即B+树中的非叶子节点，该页存放键值和指向数据页的指针，这样的页由N个（键值+指针）组成。当然它也是排好序的。 这样的数据组织形式，我们称为「索引组织表」。索引组织表通过非叶子节点的「二分查找法」以及指针确定数据在哪个页中，进而在去数据页中查找到需要的数据</li>
+<li>数据表中的数据都是存储在页中的，<strong>假设一行数据的大小是1k，那么一个页可以存放16行这样的数据</strong></li>
+<li>除了有存放数据的数据页以外，还有存放键值+指针的索引的页 ，<strong>即B+树中的非叶子节点</strong>，该页存放键值和指向数据页的指针，这样的页由N个（键值+指针）组成。当然它也是排好序的。 这样的数据组织形式，我们称为「索引组织表」。索引组织表通过非叶子节点的「二分查找法」以及指针确定数据在哪个页中，进而在去数据页中查找到需要的数据</li>
 </ul>
 </li>
 <li><strong>计算过程</strong><ul>
-<li>这里我们先假设B+树高为2，即存在一个根节点和若干个叶子节点，没有子页节点，那么这棵B+树的存放总记录数为：<code>根节点指针数*单个叶子节点记录行数</code></li>
-<li>那么现在我们需要计算出非叶子节点能存放多少指针，也就是存放多少索引？</li>
-<li>我们假设主键ID为 <code>bigint</code> 类型，长度为8字节，而 <code>指针大小在InnoDB源码中设置为6字节</code> ，这样一共14字节</li>
-<li>我们一个页中能存放多少这样的单元，其实就代表有多少指针，<strong>即 16384&#x2F;14&#x3D;1170。一个页能存放1170个索引</strong></li>
+<li>这里先假设B+树高为2，即存在一个根节点和若干个叶子节点，没有子页节点，那么这棵B+树的存放总记录数为：<code>根节点指针数*单个叶子节点记录行数</code></li>
+<li>那么现在需要计算出非叶子节点能存放多少指针，也就是存放多少索引？</li>
+<li>假设主键ID为 <code>bigint</code> 类型，长度为8字节，而 <code>指针大小在InnoDB源码中设置为6字节</code> ，这样一共14字节</li>
+<li>一个页中能存放多少这样的单元，其实就代表有多少指针，<strong>即 16384&#x2F;14&#x3D;1170。一个页能存放1170个索引</strong></li>
 <li><strong>那么可以算出一棵高度为2的B+树，能存放1170*16&#x3D;18720条这样的数据记录</strong></li>
-<li>根据同样的原理我们可以算出一个高度为3的B+树可以存放：1170（根存的记录指针数据）?1170（下一级每个节点存的记录指针数据）?16（每个叶子阶段存的数据条数）&#x3D;21902400 条这样的记录，即2100w量级</li>
+<li>根据同样的原理可以算出一个高度为3的B+树可以存放：1170（根存的记录指针数据）* 1170（下一级每个节点存的记录指针数据）* 16（每个叶子阶段存的数据条数）&#x3D;21902400 条这样的记录，即2100w量级</li>
 </ul>
 </li>
 <li><strong>结论</strong><ul>
