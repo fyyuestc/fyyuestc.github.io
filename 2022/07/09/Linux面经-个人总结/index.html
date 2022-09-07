@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/be608a77-7b7f-4f8e-87cc-f2237270bf69.png">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/docker-filesystems-busyboxrw.png">
 <meta property="article:published_time" content="2022-07-09T07:15:07.000Z">
-<meta property="article:modified_time" content="2022-09-07T14:28:42.520Z">
+<meta property="article:modified_time" content="2022-09-07T14:32:17.751Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -1368,7 +1368,7 @@
 <ul>
 <li>查找具体文件（一般方式）</li>
 </ul>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">find</span> . -name <span class="hljs-regexp">*.cpp</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">find</span> -name <span class="hljs-regexp">*.cpp</span><br></code></pre></td></tr></table></figure>
 
 <ul>
 <li>查找具体文件（正则方式）</li>
@@ -1379,22 +1379,22 @@
 <ul>
 <li>按类型查找</li>
 </ul>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs scss"># <span class="hljs-built_in">f</span>(file)为文件，<span class="hljs-built_in">d</span>(dictionary)为目录，<span class="hljs-built_in">l</span>(link)为链接<br>find . -type f<br></code></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs scss"># <span class="hljs-built_in">f</span>(file)为文件，<span class="hljs-built_in">d</span>(dictionary)为目录，<span class="hljs-built_in">l</span>(link)为链接<br>find -type f<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li>按时间查找</li>
 </ul>
-<figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sqf"><span class="hljs-meta"># atime为访问时间，x天内加参数<span class="hljs-string">&quot;-atime -x&quot;</span>，超过x天加<span class="hljs-string">&quot;-atime -x&quot;</span></span><br><span class="hljs-meta"># mtime为修改时间</span><br><span class="hljs-built_in">find</span> . -<span class="hljs-built_in">type</span> f -atime -<span class="hljs-number">7</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sqf"><span class="hljs-meta"># atime为访问时间，x天内加参数<span class="hljs-string">&quot;-atime -x&quot;</span>，超过x天加<span class="hljs-string">&quot;-atime -x&quot;</span></span><br><span class="hljs-meta"># mtime为修改时间</span><br><span class="hljs-built_in">find</span> -<span class="hljs-built_in">type</span> f -atime -<span class="hljs-number">7</span><br></code></pre></td></tr></table></figure>
 
 <ul>
 <li>按大小查找</li>
 </ul>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs scss"># -size后接文件大小，单位可以为<span class="hljs-built_in">k</span>(kb)，<span class="hljs-built_in">m</span>(MB)，<span class="hljs-built_in">g</span>(GB)<br>find . -type f -size -<span class="hljs-number">1</span>k<br></code></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs scss"># -size后接文件大小，单位可以为<span class="hljs-built_in">k</span>(kb)，<span class="hljs-built_in">m</span>(MB)，<span class="hljs-built_in">g</span>(GB)<br>find -type f -size -<span class="hljs-number">1</span>k<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li>按权限查询</li>
 </ul>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs haskell"><span class="hljs-meta"># -perm后接权限</span><br><span class="hljs-title">find</span> . -<span class="hljs-class"><span class="hljs-keyword">type</span> -perm 644</span><br></code></pre></td></tr></table></figure></li>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs haskell"><span class="hljs-meta"># -perm后接权限</span><br><span class="hljs-title">find</span> -<span class="hljs-class"><span class="hljs-keyword">type</span> -perm 644</span><br></code></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p><strong>文本搜索：grep</strong></p>
