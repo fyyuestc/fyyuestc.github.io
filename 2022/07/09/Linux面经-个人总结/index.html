@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/be608a77-7b7f-4f8e-87cc-f2237270bf69.png">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/docker-filesystems-busyboxrw.png">
 <meta property="article:published_time" content="2022-07-09T07:15:07.000Z">
-<meta property="article:modified_time" content="2022-09-07T15:45:00.662Z">
+<meta property="article:modified_time" content="2022-09-07T15:49:33.014Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -229,7 +229,7 @@
         
         
         
-          263 分钟
+          269 分钟
         
       </span>
     
@@ -1315,21 +1315,44 @@
 </ul>
 </li>
 </ul>
-<h2 id="9-网络字节序和主机序"><a href="#9-网络字节序和主机序" class="headerlink" title="9.网络字节序和主机序"></a>9.网络字节序和主机序</h2><p>字节序分为大端字节序和小端字节序，大端字节序也称网络字节序，小端字节序也称为主机字节序</p>
+<h2 id="9-网络字节序和主机字节序"><a href="#9-网络字节序和主机字节序" class="headerlink" title="9.网络字节序和主机字节序"></a>9.网络字节序和主机字节序</h2><p>字节序分为大端字节序和小端字节序，大端字节序也称网络字节序，小端字节序也称为主机字节序</p>
 <ul>
-<li><strong>大端字节序</strong><ul>
+<li><p><strong>大端字节序</strong></p>
+<ul>
 <li>一个整数的高位字节存储在低位地址，低位字节存储在高位地址</li>
 </ul>
 </li>
-<li><strong>小端字节序</strong><ul>
+<li><p><strong>小端字节序</strong></p>
+<ul>
 <li>高位字节存储在高位地址，低位字节存储在低位地址</li>
 </ul>
 </li>
-<li><strong>转换API</strong><ul>
+<li><p><strong>转换API</strong></p>
+<ul>
 <li>htonl 主机序转网络序，长整型，用于转换IP地址</li>
 <li>htons 主机序转网络序，短整型，用于转换端口号</li>
 <li>ntohl 网络序转主机序</li>
 <li>ntohs 网络序转主机序</li>
+</ul>
+</li>
+<li><p><strong>用代码判断大小端存储</strong></p>
+<ul>
+<li><p><strong>方式一：使用强制类型转换</strong></p>
+<pre><code class="hljs">#include &lt;iostream&gt;
+using namespace std;
+int main()
+&#123;
+    int a = 0x1234;
+    //由于int和char的长度不同，借助int型转换成char型，只会留下低地址的部分
+    char c = (char)(a);
+    if (c == 0x12)
+        cout &lt;&lt; &quot;big endian&quot; &lt;&lt; endl;
+    else if(c == 0x34)
+        cout &lt;&lt; &quot;little endian&quot; &lt;&lt; endl;
+&#125;
+</code></pre>
+<p><strong>方式二：巧用union联合体</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-comment">//union联合体的重叠式存储，endian联合体占用内存的空间为每个成员字节长度的最大值</span><br><span class="hljs-keyword">union</span> <span class="hljs-title class_">endian</span><br>&#123;<br>    <span class="hljs-type">int</span> a;<br>    <span class="hljs-type">char</span> ch;<br>&#125;;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    endian value;<br>    value.a = <span class="hljs-number">0x1234</span>;<br>    <span class="hljs-comment">//a和ch共用4字节的内存空间</span><br>    <span class="hljs-keyword">if</span> (value.ch == <span class="hljs-number">0x12</span>)<br>        cout &lt;&lt; <span class="hljs-string">&quot;big endian&quot;</span>&lt;&lt;endl;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (value.ch == <span class="hljs-number">0x34</span>)<br>        cout &lt;&lt; <span class="hljs-string">&quot;little endian&quot;</span>&lt;&lt;endl;<br>&#125;<br></code></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
