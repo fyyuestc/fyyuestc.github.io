@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/be608a77-7b7f-4f8e-87cc-f2237270bf69.png">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/docker-filesystems-busyboxrw.png">
 <meta property="article:published_time" content="2022-07-09T07:15:07.000Z">
-<meta property="article:modified_time" content="2022-09-07T15:37:46.774Z">
+<meta property="article:modified_time" content="2022-09-07T15:41:28.478Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -1258,11 +1258,12 @@
 <h2 id="7-EPOLLOUT事件触发条件及典型用法"><a href="#7-EPOLLOUT事件触发条件及典型用法" class="headerlink" title="7.EPOLLOUT事件触发条件及典型用法"></a>7.EPOLLOUT事件触发条件及典型用法</h2><p><strong>以边缘触发下的场景为例，触发EPOLLOUT的条件：</strong> </p>
 <ul>
 <li><p><strong>客户端连接场景</strong></p>
-</li>
-<li><p>触发条件：客户端connect上服务端后，得到fd，这时候把fd添加到epoll事件池里面后，因为连接可写，此时会触发EPOLLOUT事件</p>
+<ul>
+<li>触发条件：客户端connect上服务端后，得到fd，这时候把fd添加到epoll事件池里面后，因为连接可写，此时会触发EPOLLOUT事件</li>
+</ul>
 </li>
 <li><p><strong>服务端发包场景</strong></p>
-</li>
+<ul>
 <li><p>触发条件：缓冲区从满到不满，会触发EPOLLOUT事件</p>
 </li>
 <li><p>典型应用场景（响应报文发送问题）：</p>
@@ -1271,10 +1272,11 @@
 <li>这种情况我们可以借助EPOLLOUT事件加以解决：如果send部分成功，则表示缓存区满了，那么把剩下的部分交给epoll，当检测到EPOLLOUT事件后，再将剩余的包发送出去</li>
 </ul>
 </li>
-<li><p><strong>重新注册EPOLLOUT事件</strong></p>
+</ul>
 </li>
-<li><p>触发条件：如果当连接可用后，且缓存区不满的情况下，调用epoll_ctl将fd重新注册到epoll事件池(使用EPOLL_CTL_MOD)，这时也会触发EPOLLOUT事件</p>
+<li><p><strong>重新注册EPOLLOUT事件</strong></p>
 <ul>
+<li>触发条件：如果当连接可用后，且缓存区不满的情况下，调用epoll_ctl将fd重新注册到epoll事件池(使用EPOLL_CTL_MOD)，这时也会触发EPOLLOUT事件</li>
 <li>典型应用场景：<ul>
 <li>send或write发包函数会涉及系统调用，存在一定开销，如果能将数据包聚合起来，然后调用writev将多个数据包一并发送，则可以减少系统调用次数，提高效率</li>
 <li>这时EPOLLOUT事件就派上用场了：当发包时，可以将先数据包发到数据buffer(用户缓存区)中存放，然后通过重新注册EPOLLOUT事件，从而触发EPOLLOUT事件时，再将数据包一起通过writev发送出去</li>
