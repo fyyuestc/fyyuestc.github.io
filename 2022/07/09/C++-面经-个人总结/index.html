@@ -42,7 +42,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356849.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202208291549311.png">
 <meta property="article:published_time" content="2022-07-09T07:15:45.000Z">
-<meta property="article:modified_time" content="2022-09-08T04:38:24.457Z">
+<meta property="article:modified_time" content="2022-09-08T10:41:35.641Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -1173,11 +1173,11 @@ int main()
 </ul>
 <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">class</span> <span class="hljs-symbol">Animal</span>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">int</span> m_Age;<br>&#125;;<br><span class="hljs-keyword">class</span> <span class="hljs-symbol">Sheep:<span class="hljs-symbol">virtual</span></span> <span class="hljs-symbol">public</span> <span class="hljs-symbol">Animal</span>&#123;<br>    <span class="hljs-built_in">int</span> m_sheep;<br>&#125;;<br><span class="hljs-keyword">class</span> <span class="hljs-symbol">Camel</span> :<span class="hljs-symbol">virtual</span> <span class="hljs-symbol">public</span> <span class="hljs-symbol">Animal</span>&#123;<br>    <span class="hljs-built_in">int</span> m_camel;<br>&#125;;<br><br><span class="hljs-keyword">class</span> <span class="hljs-symbol">Son</span> :<span class="hljs-symbol">virtual</span> <span class="hljs-symbol">public</span> <span class="hljs-symbol">Sheep, <span class="hljs-symbol">virtual</span></span> <span class="hljs-symbol">public</span> <span class="hljs-symbol">Camel</span>&#123;<br>    <span class="hljs-built_in">int</span> m_son<br>&#125;;<br><span class="hljs-built_in">void</span> test01()&#123;<br>    Son son;<br>    son.m_Age = <span class="hljs-number">10</span>;<br>    cout &lt;&lt; sizeof(Animal) &lt;&lt; endl; <span class="hljs-comment">//m_Age</span><br>    cout &lt;&lt; sizeof(Sheep) &lt;&lt; endl;  <span class="hljs-comment">//sheep-Vbptr,m_sheep,m_Age</span><br>    cout &lt;&lt; sizeof(Camel) &lt;&lt; endl;  <span class="hljs-comment">//camel-Vbptr,m_camel,m_Age</span><br>    cout &lt;&lt; sizeof(Son) &lt;&lt; endl;    <span class="hljs-comment">//son-vbptr,m_son,m_Age,sheep-Vbptr,m_sheep,camel-Vbptr,m_camel,</span><br>&#125;<br>- 注意跟上面的区别，一个是son类中的元素顺序，一个是son类有了自己的虚基类指针和虚基类表<br></code></pre></td></tr></table></figure>
 
-<h2 id="19-重载、覆盖、重写"><a href="#19-重载、覆盖、重写" class="headerlink" title="19.重载、覆盖、重写"></a>19.重载、覆盖、重写</h2><ul>
-<li><strong>重载(overload)：</strong>是函数名相同，参数列表不同。重载只是在同一个类的内部存在，但是不能靠返回类型来判断</li>
+<h2 id="19-重载、覆盖、重写的区别"><a href="#19-重载、覆盖、重写的区别" class="headerlink" title="19.重载、覆盖、重写的区别"></a>19.重载、覆盖、重写的区别</h2><ul>
+<li><strong>重载(overload)：</strong>是不同函数间的水平关系，函数名相同，参数列表不同，不能出现参数个数和类型均相同，仅仅依靠返回值不同来区分的函数。重载只是在同一个类的内部存在，但是不能靠返回类型来判断</li>
 <li><strong>覆盖(override)：</strong>也叫重写，子类重新定义父类中有相同名称和参数的虚函数。两者的函数特征相同<ul>
 <li>被重写的函数不能是static的。必须是virtual的</li>
-<li>重写函数必须有相同的类型，名称和参数列表</li>
+<li>重写函数必须有相同的参数个数，参数类型和返回值类型</li>
 <li>重写函数的访问权限可以不同。尽管virtual是private的，子类中重写改写为public,protected也是可以的</li>
 </ul>
 </li>
