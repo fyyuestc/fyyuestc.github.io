@@ -42,7 +42,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356849.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202208291549311.png">
 <meta property="article:published_time" content="2022-07-09T07:15:45.000Z">
-<meta property="article:modified_time" content="2022-09-08T04:30:40.883Z">
+<meta property="article:modified_time" content="2022-09-08T04:38:24.457Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -1728,7 +1728,7 @@ int main()
 <ul>
 <li>对于关联容器(如 map, set,multimap,multiset)，删除当前的 iterator，仅仅会使当前的 iterator 失效，只要在 erase 时，递增当前 iterator 即可</li>
 <li>这是因为 map 之类的容器，使用了红黑树来实现，插入、删除一个结点不会对其他结点造成影响</li>
-<li><strong>erase 迭代器只是被删元素的迭代器失效，但是返回值为 void，所以要采用<code>erase(iter++)</code>的方式删除迭代器</strong></li>
+<li><strong>erase 迭代器只是被删元素的迭代器失效，但是返回值为 void，所以只能采用<code>erase(iter++)</code>的方式删除迭代器</strong></li>
 </ul>
 <figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs ocaml"><span class="hljs-keyword">for</span> (iter = dataMap.<span class="hljs-keyword">begin</span><span class="hljs-literal">()</span>; iter != dataMap.<span class="hljs-keyword">end</span><span class="hljs-literal">()</span>; )<br>&#123;<br>         <span class="hljs-built_in">int</span> nKey = iter-&gt;first;<br>         <span class="hljs-built_in">string</span> strValue = iter-&gt;second;<br><br>         <span class="hljs-keyword">if</span> (nKey % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>)<br>         &#123;<br>               dataMap.erase(iter++);<br>               auto a = iter;<br>         &#125;<span class="hljs-keyword">else</span><br>     		 &#123;<br>          iter++;<br>         &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
