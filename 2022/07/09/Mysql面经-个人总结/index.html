@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202207232116840.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202207232136438.png">
 <meta property="article:published_time" content="2022-07-09T07:15:51.000Z">
-<meta property="article:modified_time" content="2022-09-07T06:19:37.808Z">
+<meta property="article:modified_time" content="2022-09-11T07:27:01.170Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -620,7 +620,8 @@
 </li>
 </ul>
 <h2 id="7-查询优化"><a href="#7-查询优化" class="headerlink" title="7.查询优化"></a>7.查询优化</h2><ul>
-<li><strong>慢查询步骤和过程</strong><ul>
+<li><p><strong>慢查询步骤和过程</strong></p>
+<ul>
 <li><strong>开启慢查询</strong><ul>
 <li>set slow_query_log &#x3D; 1慢查询开启状态</li>
 <li>slow_query_log_file 慢查询日志存放的位置（这个目录需要MySQL的运行帐号的可写权限，一般设置为MySQL的数据存放目录）</li>
@@ -633,8 +634,10 @@
 <li><strong>cat查看慢日志</strong></li>
 <li><strong>用explain分析慢sql语句</strong></li>
 </ul>
+<p><a target="_blank" rel="noopener" href="http://c.biancheng.net/view/7782.html">详解</a></p>
 </li>
-<li><strong>explain优化</strong>，实际上模拟优化器执行sql语句，查看mysql如何执行你的sql语句<ul>
+<li><p><strong>explain优化</strong>，实际上模拟优化器执行sql语句，查看mysql如何执行你的sql语句</p>
+<ul>
 <li><strong>table：</strong>显示这一行的数据是关于哪张表的</li>
 <li><strong>type：</strong>这是重要的列，显示连接使用了何种类型。从最好到最差的连接类型为const、eq_ref、ref、range、index和ALL，一般来说到range不错，最好到ref<ul>
 <li>all：full table scan；MySQL将遍历全表以找到匹配的行</li>
@@ -656,7 +659,8 @@
 </li>
 </ul>
 </li>
-<li><strong>根据explain的结果，进行索引优化</strong></li>
+<li><p><strong>根据explain的结果，进行索引优化</strong></p>
+</li>
 </ul>
 <h2 id="8-分页查询优化"><a href="#8-分页查询优化" class="headerlink" title="8.分页查询优化"></a>8.分页查询优化</h2><ul>
 <li><p><strong>使用覆盖索引+子查询优化</strong></p>
