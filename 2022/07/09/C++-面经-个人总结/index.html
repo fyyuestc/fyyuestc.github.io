@@ -29,6 +29,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202208251433025.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202208251433244.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202208251546070.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202209112310357.webp">
 <meta property="og:image" content="https://axiu-image-bed.oss-cn-shanghai.aliyuncs.com/img/202205220035271.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202208202051612.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202208202052325.png">
@@ -42,7 +43,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356010.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356849.png">
 <meta property="article:published_time" content="2022-07-09T07:15:45.000Z">
-<meta property="article:modified_time" content="2022-09-11T14:40:12.936Z">
+<meta property="article:modified_time" content="2022-09-11T15:11:52.940Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -240,7 +241,7 @@
         
         
         
-          442 分钟
+          446 分钟
         
       </span>
     
@@ -1575,14 +1576,34 @@ int main(void)
 </ul>
 </li>
 </ul>
-<h2 id="10-野指针"><a href="#10-野指针" class="headerlink" title="10.野指针"></a>10.野指针</h2><p><strong>野指针指向一个已删除的对象或 申请访问受限内存区域的指针</strong></p>
+<h2 id="10-shared-ptr的线程安全性"><a href="#10-shared-ptr的线程安全性" class="headerlink" title="10.shared_ptr的线程安全性"></a>10.shared_ptr的线程安全性</h2><ul>
+<li><strong>智能指针结构体</strong><ul>
+<li>智能指针包括一个实际数据指针和一个引用计数指针，这两个操作不是一个指令可以完成的，因此多线程环境下，势必有问题</li>
+<li><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202209112310357.webp" srcset="/img/loading.gif" lazyload alt="img"></li>
+</ul>
+</li>
+<li><strong>结论</strong><ul>
+<li>同一个shared_ptr被多个线程读，是线程安全的</li>
+<li>同一个shared_ptr被多个线程写，不是线程安全的</li>
+<li>共享引用计数的不同的shared_ptr被多个线程写，是线程安全的</li>
+</ul>
+</li>
+<li><strong>weak_ptr</strong><ul>
+<li>weak_ptr最初的引入，是为了解决shared_ptr互相引用导致的内存无法释放的问题。weak_ptr不会增加引用计数，不能直接操作对象的内存（需要先调用lock接口），需要和shared_ptr配套使用</li>
+<li>同时，通过weak_ptr获得的shared_ptr可以安全使用，因为其lock接口是原子性的，那么lock返回的是一个新的shared_ptr，不存在同一个shared_ptr的读写操作，除非后续又对这个新的shared_ptr又被其他线程同时读写</li>
+</ul>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1654442">详解1</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7038581008945872927">详解2</a></p>
+<h2 id="11-野指针"><a href="#11-野指针" class="headerlink" title="11.野指针"></a>11.野指针</h2><p><strong>野指针指向一个已删除的对象或 申请访问受限内存区域的指针</strong></p>
 <p><strong>产生原因：</strong></p>
 <ul>
 <li>指针变量未初始化</li>
 <li>指针释放未置空</li>
 <li>指针操作超出作用域。返回指向栈内存的指针或引用，因为栈内存在函数结束时会被释放</li>
 </ul>
-<h2 id="11-强制转换"><a href="#11-强制转换" class="headerlink" title="11.强制转换"></a>11.强制转换</h2><p><strong>C++中强制转换为static_cast, dynamic_cast,const_cast, reinterpret_cast</strong></p>
+<h2 id="12-强制转换"><a href="#12-强制转换" class="headerlink" title="12.强制转换"></a>12.强制转换</h2><p><strong>C++中强制转换为static_cast, dynamic_cast,const_cast, reinterpret_cast</strong></p>
 <ul>
 <li><strong>static_cast</strong><ul>
 <li>完成基础数据类型；同一个继承体系中类型的转换；任意类型与空指针类型void* 之间的转换，不能用于普通指针的转换（void空指针除外）</li>
@@ -1624,14 +1645,14 @@ int main(void)
 </ul>
 </li>
 </ul>
-<h2 id="12-RTTI"><a href="#12-RTTI" class="headerlink" title="12.RTTI"></a>12.RTTI</h2><p><strong>运行时类型检查，在C++层面主要体现在dynamic_cast和typeid</strong></p>
+<h2 id="13-RTTI"><a href="#13-RTTI" class="headerlink" title="13.RTTI"></a>13.RTTI</h2><p><strong>运行时类型检查，在C++层面主要体现在dynamic_cast和typeid</strong></p>
 <ul>
 <li><p>dynamic_cast 动态类型转换</p>
 </li>
 <li><p>typeid typeid 运算符允许在运行时确定对象的类型，获取对象的实际类型</p>
 </li>
 </ul>
-<h2 id="13-RAII"><a href="#13-RAII" class="headerlink" title="13.RAII"></a>13.RAII</h2><p><strong>什么是单例</strong></p>
+<h2 id="14-RAII"><a href="#14-RAII" class="headerlink" title="14.RAII"></a>14.RAII</h2><p><strong>什么是单例</strong></p>
 <ul>
 <li><p>单例 Singleton 是设计模式的一种，其特点是只提供<strong>唯一</strong>一个类的实例,具有全局变量的特点，在任何位置都可以通过接口获取到那个唯一实例<br>具体运用场景如：</p>
 <ol>
@@ -1664,7 +1685,7 @@ int main(void)
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/sunchaothu/p/10389842.html">详解</a></p>
 </li>
 </ul>
-<h2 id="14-右值引用"><a href="#14-右值引用" class="headerlink" title="14.右值引用"></a>14.右值引用</h2><ul>
+<h2 id="15-右值引用"><a href="#15-右值引用" class="headerlink" title="15.右值引用"></a>15.右值引用</h2><ul>
 <li><p><strong>定义：</strong></p>
 <ul>
 <li>左值：存储在内存中，有明确存储地址(可寻址)的数据</li>
@@ -1754,7 +1775,7 @@ int main(void)
 </ul>
 </li>
 </ul>
-<h2 id="15-无锁队列"><a href="#15-无锁队列" class="headerlink" title="15.无锁队列"></a>15.无锁队列</h2><p><a target="_blank" rel="noopener" href="https://blog.51cto.com/quantfabric/2588193">C++性能优化-无锁队列</a></p>
+<h2 id="16-无锁队列"><a href="#16-无锁队列" class="headerlink" title="16.无锁队列"></a>16.无锁队列</h2><p><a target="_blank" rel="noopener" href="https://blog.51cto.com/quantfabric/2588193">C++性能优化-无锁队列</a></p>
 <h1 id="四、STL模板库"><a href="#四、STL模板库" class="headerlink" title="四、STL模板库"></a>四、STL模板库</h1><h2 id="1-STL中的swap函数"><a href="#1-STL中的swap函数" class="headerlink" title="1.STL中的swap函数"></a>1.STL中的swap函数</h2><ul>
 <li>除了数组，其他容器在交换后本质上是将内存地址进行了交换，而元素本身在内存中的位置是没有变化</li>
 <li>swap在交换的时候并不是完全将2个容器的元素互换，而是交换了2个容器内的内存地址</li>
@@ -1881,7 +1902,7 @@ int main(void)
 <li>空间配置函数allocate()，首先判断区块大小，大于128就直接调用第一级配置器，小于128时就检查对应的free-list。如果free-list之内有可用区块，就直接拿来用，如果没有可用区块，就将区块大小调整至8的倍数，然后调用refill()，为free-list重新分配空</li>
 <li>空间释放函数deallocate()，该函数首先判断区块大小，大于128bytes时，直接调用一级配置器，小于128bytes就找到对应的free-list然后释放内存</li>
 </ul>
-<h2 id="6-vector中resize-和reserve-的区别"><a href="#6-vector中resize-和reserve-的区别" class="headerlink" title="6.vector中resize()和reserve()的区别"></a>6.vector中resize()和reserve()的区别</h2><p><strong>一、reserve()避免多次不必要的扩容</strong></p>
+<h2 id="6-vector扩容以及resize-和reserve-的区别"><a href="#6-vector扩容以及resize-和reserve-的区别" class="headerlink" title="6.vector扩容以及resize()和reserve()的区别"></a>6.vector扩容以及resize()和reserve()的区别</h2><p><strong>一、reserve()避免多次不必要的扩容</strong></p>
 <ul>
 <li>capacity()：告诉我们当前 vector 容器总共可以容纳多少个元素。如果想知道当前 vector 容器有多少未被使用的存储空间，可以通过 capacity()-size() 得知。注意，如果 size() 和 capacity() 返回的值相同，则表明当前 vector 容器中没有可用存储空间了，这意味着，下一次向 vector 容器中添加新元素，将导致 vector 容器扩容</li>
 <li>size()：告诉我们当前 vector 容器中已经存有多少个元素，但仅通过此方法，无法得知 vector 容器有多少存储空间</li>
