@@ -49,7 +49,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202208251639953.jpeg">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202208251639908.jpeg">
 <meta property="article:published_time" content="2022-07-09T07:15:35.000Z">
-<meta property="article:modified_time" content="2022-09-12T05:12:42.808Z">
+<meta property="article:modified_time" content="2022-09-12T05:32:32.255Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -247,7 +247,7 @@
         
         
         
-          332 分钟
+          333 分钟
         
       </span>
     
@@ -1046,7 +1046,7 @@
 <li><a target="_blank" rel="noopener" href="https://www.dounaite.com/article/6277c862ac359fc91324c5dc.html">详见</a></li>
 </ul>
 <h4 id="（3）非对称加密"><a href="#（3）非对称加密" class="headerlink" title="（3）非对称加密"></a>（3）非对称加密</h4><ul>
-<li>非对称加密的方法是，我们拥有两个秘钥，一个是公钥，一个是私钥。公钥是公开的，私钥是保密的。用私钥加密的数据，只有对应的公钥才能解密，用公钥加密的数据，只有对应的私钥才能解密。我们可以将公钥公布出去，任何想和我们通信的客户， 都可以使用我们提供的公钥对数据进行加密，这样我们就可以使用私钥进行解密，这样就能保证数据的安全了。但是非对称加密有一个缺点就是加密的过程很慢，因此如果每次通信都使用非对称加密的方式的话，反而会造成等待时间过长的问题</li>
+<li>非对称加密的方法是，我们拥有两个秘钥，一个是公钥，一个是私钥。公钥是公开的，私钥是保密的。用私钥加密的数据，只有对应的公钥才能解密，用公钥加密的数据，只有对应的私钥才能解密。我们可以将公钥公布出去，任何想和我们通信的客户， 都可以使用我们提供的公钥对数据进行加密，这样我们就可以使用私钥进行解密，这样就能保证数据的安全了。<strong>但是非对称加密有一个缺点就是加密的过程很慢，因此如果每次通信都使用非对称加密的方式的话，反而会造成等待时间过长的问题</strong></li>
 <li>常见的非对称加密算法有<strong>RSA、ECC、DH</strong>等。秘钥成对出现，一般称为公钥（公开）和私钥（保密）。公钥加密的信息只有私钥可以解开，私钥加密的信息只能公钥解开，因此掌握公钥的不同客户端之间不能相互解密信息，只能和服务器进行加密通信，服务器可以实现一对多的的通信，客户端也可以用来验证掌握私钥的服务器的身份</li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202208081130937.png" srcset="/img/loading.gif" lazyload alt="img"></p>
@@ -1054,6 +1054,7 @@
 <ul>
 <li><strong>特点：</strong> <ul>
 <li>非对称加密的特点就是信息一对多，服务器只需要维持一个私钥就可以和多个客户端进行通信，但服务器发出的信息能够被所有的客户端解密，且该算法的计算复杂，加密的速度慢效率不高，一般只适用于处理小量数据(如密钥)</li>
+<li><strong>RSA算法的安全性：将a和b相乘得出乘积c很容易，但要是想要通过乘积c推导出a和b极难。即对一个大数进行因式分解极难(大素数分解)</strong></li>
 </ul>
 </li>
 </ul>
