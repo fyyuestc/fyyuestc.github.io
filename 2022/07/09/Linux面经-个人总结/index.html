@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/be608a77-7b7f-4f8e-87cc-f2237270bf69.png">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/docker-filesystems-busyboxrw.png">
 <meta property="article:published_time" content="2022-07-09T07:15:07.000Z">
-<meta property="article:modified_time" content="2022-09-12T06:45:38.578Z">
+<meta property="article:modified_time" content="2022-09-12T07:09:54.359Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -608,7 +608,7 @@
 </ul>
 </li>
 <li><strong>PCB</strong><ul>
-<li>每个进程的PCB都是存在所有进程共享的内核空间中，操作系统管理进程，也就是在内核空间中管理的，在内核空间中通过链表管理所有进程的PCB，如果有一个进程要被创建，实际上多分配了这么一个4G的虚拟内存，并在共享的内核空间中的双向链表中加入了自己的PCB</li>
+<li><strong>每个进程的PCB都是存在所有进程共享的内核空间中，操作系统管理进程，也就是在内核空间中管理的，在内核空间中通过链表管理所有进程的PCB，如果有一个进程要被创建，实际上多分配了这么一个4G的虚拟内存，并在共享的内核空间中的双向链表中加入了自己的PCB</strong></li>
 <li>PCB(Process Control Block)进程控制块，描述进程的基本信息和运行状态，<strong>进程的创建和销毁都是对PCB进行操作</strong>，PCB的具体内容如下：<ul>
 <li><strong>标识相关：</strong>pid，ppid等等</li>
 <li><strong>文件相关：</strong>进程需要记录打开的文件信息，于是需要文件描述符表</li>
@@ -661,8 +661,10 @@
 </ul>
 </li>
 <li><strong>shm</strong><ul>
-<li><strong>原理</strong></li>
+<li><strong>原理</strong><ul>
 <li>多个进程的地址空间映射到同一个物理内存，不同进程可以将同一段共享的内存连接到自己的地址空间中，从而所有进程都可以访问共享内存中的地址</li>
+</ul>
+</li>
 <li><strong>API</strong><ul>
 <li><code>int shmget(key_t key, size_t size, int shmflg);</code><ul>
 <li>在物理内存创建一个共享内存，返回共享内存的编号</li>
@@ -695,7 +697,7 @@
 <li><strong>原理</strong><ul>
 <li>mmap是映射磁盘上的一个文件，每个进程在自己的逻辑地址空间中开辟一块空间对磁盘上的文件进行映射</li>
 <li>内存映射的过程中，并没有实际的数据拷贝，文件没有被载入内存</li>
-<li>mmap返回一个指针ptr，它指向进程逻辑地址空间中的一个地址，通过ptr就能够操作文件。但是ptr所指向的是一个逻辑地址，要操作其中的数据，必须通过MMU将逻辑地址转换成物理地址，建立内存映射并没有实际拷贝数据，这时，将产生一个缺页中断，会通过mmap()建立的映射关系，从硬盘上将文件读取到物理内存中</li>
+<li><strong>mmap返回一个指针ptr，它指向进程逻辑地址空间中的一个地址，通过ptr就能够操作文件。但是ptr所指向的是一个逻辑地址，要操作其中的数据，必须通过MMU将逻辑地址转换成物理地址，建立内存映射并没有实际拷贝数据，这时，将产生一个缺页中断，会通过mmap()建立的映射关系，从硬盘上将文件读取到物理内存中</strong></li>
 </ul>
 </li>
 <li><strong>效率</strong><ul>
@@ -730,18 +732,18 @@
 </li>
 <li><strong>两者的区别</strong><ul>
 <li><strong>作用</strong><ul>
-<li>mmap系统调用并不完全是为了共享内存来设计的，它本身提供了不同于一般对普通文件的访问的方式，进程可以像读写内存一样对普通文件进行操作</li>
+<li><strong>mmap系统调用并不完全是为了共享内存来设计的，它本身提供了不同于一般对普通文件的访问的方式，进程可以像读写内存一样对普通文件进行操作</strong></li>
 <li>IPC的共享内存shm是纯粹为了共享</li>
 </ul>
 </li>
 <li><strong>映射位置</strong><ul>
-<li>mmap是在磁盘上建立一个文件，每个进程地址空间中开辟出一块空间对磁盘上的文件进行映射</li>
+<li><strong>mmap是在磁盘上建立一个文件，每个进程地址空间中开辟出一块空间对磁盘上的文件进行映射</strong></li>
 <li>shm每个进程映射到同一块物理内存，shm保存在物理内存，这样读写的速度要比磁盘要快，但是存储量不是特别大</li>
 </ul>
 </li>
 <li><strong>内容丢失</strong><ul>
 <li>进程挂了重启不丢失内容，二者都可以做到</li>
-<li>机器挂了重启，mmap把文件存在磁盘上，可以不丢失内容（文件内保存了OS同步过的映像），而 shmget 会丢失</li>
+<li><strong>机器挂了重启，mmap把文件存在磁盘上，可以不丢失内容（文件内保存了OS同步过的映像），而 shmget 会丢失</strong></li>
 </ul>
 </li>
 </ul>
@@ -757,16 +759,16 @@
 <ul>
 <li><strong>fork</strong><ul>
 <li>父进程fork之后创建子进程，子进程复制父进程的所有资源，子进程的代码段、数据段、堆栈都是指向父进程的物理空间，但此时仅仅是子进程的虚拟地址空间和父进程指向的物理地址空间建立了映射关系，并没有真正复制</li>
-<li>由于fork()后会产生一个和父进程完全相同的子进程，但子进程在此后多会exec系统调用，处于效率考虑，linux中引入了“写时复制技术-Copy-On-Write”</li>
-<li>若两个进程一直只是读数据，则子进程一直不会复制，直到任一进程进行写操作</li>
+<li>由于fork()后会产生一个和父进程完全相同的子进程，但子进程在此后多会执行exec系统调用，处于效率考虑，linux中引入了“写时复制技术-Copy-On-Write”</li>
+<li><strong>若两个进程一直只是读数据，则子进程一直不会复制，直到任一进程进行写操作</strong></li>
+<li><strong>读时共享，写时复制</strong></li>
 <li>父进程和子进程执行顺序没有规定，可以乱序执行</li>
-<li>读时共享，写时复制</li>
 </ul>
 </li>
 <li><strong>vfork</strong><ul>
 <li>vfork也是创建一个子进程，但是子进程共享父进程的空间。在vfork创建子进程之后，父进程阻塞，直到子进程执行了exec()或者exit()。</li>
 <li>规定必须子进程先执行</li>
-<li>严格意义上讲，vfork产生的不叫进程，因为他没有独立的地址空间，和父进程共享同一个</li>
+<li><strong>严格意义上讲，vfork产生的不叫进程，因为他没有独立的地址空间，和父进程共享同一个</strong></li>
 </ul>
 </li>
 </ul>
@@ -776,11 +778,11 @@
 <li><strong>僵尸进程是每个子进程退出时必然经历的过程</strong></li>
 <li><strong>僵尸进程的危害</strong><ul>
 <li>在每个进程退出的时候，内核释放该进程所有的资源，包括打开的文件，占用的内存等。但是仍然为其保留一定的信息（包括进程号the process ID，退出状态the termination status of the process，运行时间the amount of CPU time taken by the process等）。直到父进程通过wait &#x2F; waitpid来取时才释放</li>
-<li>如果进程不调用wait &#x2F; waitpid的话， 那么保留的那段信息就不会释放，其进程号就会一直被占用，但是系统所能使用的进程号是有限的，如果大量的产生僵死进程，将因为没有可用的进程号而导致系统不能产生新的进程</li>
+<li><strong>如果进程不调用wait &#x2F; waitpid的话， 那么保留的那段信息就不会释放，其进程号就会一直被占用，但是系统所能使用的进程号是有限的，如果大量的产生僵死进程，将会因为没有可用的进程号而导致系统不能产生新的进程</strong></li>
 </ul>
 </li>
 <li><strong>如何消除僵尸进程</strong><ul>
-<li>kill发送SIGTERM或者SIGKILL信号消灭产生僵尸进程的进程，它产生的僵死进程就变成了孤儿进程，这些孤儿进程会被init进程接管</li>
+<li>kill发送SIGTERM或者SIGKILL信号消灭产生僵尸进程的进程，它产生的僵尸进程就变成了孤儿进程，这些孤儿进程会被init进程接管</li>
 <li>子进程退出时向父进程发送SIGCHILD信号，父进程处理SIGCHILD信号。在信号处理函数中调用wait进行处理僵尸进程</li>
 </ul>
 </li>
