@@ -43,7 +43,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356010.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356849.png">
 <meta property="article:published_time" content="2022-07-09T07:15:45.000Z">
-<meta property="article:modified_time" content="2022-09-12T11:47:09.091Z">
+<meta property="article:modified_time" content="2022-09-12T13:08:39.063Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -241,7 +241,7 @@
         
         
         
-          465 分钟
+          468 分钟
         
       </span>
     
@@ -1283,7 +1283,10 @@ int main(void)
 <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">class</span> <span class="hljs-symbol">Animal</span>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">int</span> m_Age;<br>&#125;;<br><span class="hljs-keyword">class</span> <span class="hljs-symbol">Sheep:<span class="hljs-symbol">virtual</span></span> <span class="hljs-symbol">public</span> <span class="hljs-symbol">Animal</span>&#123;<br>    <span class="hljs-built_in">int</span> m_sheep;<br>&#125;;<br><span class="hljs-keyword">class</span> <span class="hljs-symbol">Camel</span> :<span class="hljs-symbol">virtual</span> <span class="hljs-symbol">public</span> <span class="hljs-symbol">Animal</span>&#123;<br>    <span class="hljs-built_in">int</span> m_camel;<br>&#125;;<br><br><span class="hljs-keyword">class</span> <span class="hljs-symbol">Son</span> :<span class="hljs-symbol">virtual</span> <span class="hljs-symbol">public</span> <span class="hljs-symbol">Sheep, <span class="hljs-symbol">virtual</span></span> <span class="hljs-symbol">public</span> <span class="hljs-symbol">Camel</span>&#123;<br>    <span class="hljs-built_in">int</span> m_son<br>&#125;;<br><span class="hljs-built_in">void</span> test01()&#123;<br>    Son son;<br>    son.m_Age = <span class="hljs-number">10</span>;<br>    cout &lt;&lt; sizeof(Animal) &lt;&lt; endl; <span class="hljs-comment">//m_Age</span><br>    cout &lt;&lt; sizeof(Sheep) &lt;&lt; endl;  <span class="hljs-comment">//sheep-Vbptr,m_sheep,m_Age</span><br>    cout &lt;&lt; sizeof(Camel) &lt;&lt; endl;  <span class="hljs-comment">//camel-Vbptr,m_camel,m_Age</span><br>    cout &lt;&lt; sizeof(Son) &lt;&lt; endl;    <span class="hljs-comment">//son-vbptr,m_son,m_Age,sheep-Vbptr,m_sheep,camel-Vbptr,m_camel,</span><br>&#125;<br>- 注意跟上面的区别，一个是son类中的元素顺序，一个是son类有了自己的虚基类指针和虚基类表<br></code></pre></td></tr></table></figure>
 
 <h2 id="19-重载、覆盖、重写的区别"><a href="#19-重载、覆盖、重写的区别" class="headerlink" title="19.重载、覆盖、重写的区别"></a>19.重载、覆盖、重写的区别</h2><ul>
-<li><strong>重载(overload)：</strong>是不同函数间的水平关系，函数名相同，参数列表不同，不能出现参数个数和类型均相同，仅仅依靠返回值不同来区分的函数。重载只是在同一个类的内部存在，但是不能靠返回类型来判断</li>
+<li><strong>重载(overload)：</strong>是不同函数间的水平关系，函数名相同，参数列表不同，不能出现参数个数和类型均相同，仅仅依靠返回值不同来区分的函数<ul>
+<li>重载只是在同一个类的内部存在，但是不能靠返回类型来判断</li>
+</ul>
+</li>
 <li><strong>覆盖(override)：</strong>也叫重写，子类重新定义父类中有相同名称和参数的虚函数。两者的函数特征相同<ul>
 <li>被重写的函数不能是static的。必须是virtual的</li>
 <li>重写函数必须有相同的参数个数，参数类型和返回值类型</li>
@@ -1390,7 +1393,7 @@ int main(void)
 </li>
 </ul>
 <h2 id="27-哪些函数不能是虚函数"><a href="#27-哪些函数不能是虚函数" class="headerlink" title="27.哪些函数不能是虚函数"></a>27.哪些函数不能是虚函数</h2><ol>
-<li>构造函数，构造函数初始化对象，派生类必须知道基类函数干了什么，才能进行构造；当有虚函数时，每一个类有一个虚表，每一个对象有一个虚表指针，虚表指针在构造函数中初始化</li>
+<li>构造函数，构造函数初始化对象，派生类必须知道基类函数干了什么，才能进行构造；当有虚函数时，每一个类有一个虚表，每一个对象有一个虚函数指针，虚函数指针在构造函数中初始化</li>
 <li>内联函数，内联函数表示在编译阶段进行函数体的替换操作，而虚函数意味着在运行期间进行类型确定，所以内联函数不能是虚函数</li>
 <li>静态函数，静态函数不属于对象属于类，静态成员函数没有this指针，因此静态函数设置为虚函数没有任何意义<ul>
 <li>static成员不属于任何类对象或类实例，所以即使给此函数加上virutal也是没有任何意义的</li>
@@ -1402,7 +1405,19 @@ int main(void)
 <li>友元函数，友元函数不属于类的成员函数，不能被继承。对于没有继承特性的函数没有虚函数的说法</li>
 <li>普通函数，普通函数不属于类的成员函数，不具有继承特性，因此普通函数没有虚函数</li>
 </ol>
-<h2 id="28-类模版和函数模版"><a href="#28-类模版和函数模版" class="headerlink" title="28.类模版和函数模版"></a>28.类模版和函数模版</h2><p><strong>通过template或template实现，主要用于数据的类型参数化，简化代码，有类模板和函数模板，函数模板是用于生成函数的，类模板则是用于生成类的</strong></p>
+<h2 id="28-构造函数和析构函数中可以调用虚函数吗？"><a href="#28-构造函数和析构函数中可以调用虚函数吗？" class="headerlink" title="28.构造函数和析构函数中可以调用虚函数吗？"></a>28.构造函数和析构函数中可以调用虚函数吗？</h2><ul>
+<li><p><strong>因为基类的构造的过程中，虚函数不能算作是虚函数。若构造函数中调用虚函数，可能会导致不确定行为的发生</strong></p>
+</li>
+<li><p><strong>虚函数对应一个vtable(虚函数表)，类中存储一个vptr指向这个vtable。如果构造函数是虚函数，就需要通过vtable调用，可是对象没有初始化就没有vptr，无法找到vtable，所以构造函数不能是虚函数</strong></p>
+</li>
+<li><p>构造函数和析构函数调用虚函数时都不使用动态联编，如果在构造函数或析构函数中调用虚函数，则运行的是为构造函数或析构函数自身类型定义的版本 </p>
+</li>
+<li><p>因为父类对象会在子类之前进行构造，此时子类部分的数据成员还未初始化，因此调用子类的虚函数时不安全的，故而C++不会进行动态联编</p>
+</li>
+<li><p>析构函数是用来销毁一个对象的，在销毁一个对象时，先调用子类的析构函数，然后再调用基类的析构函数。所以在调用基类的析构函数时，派生类对象的数据成员已经销毁，这个时候再调用子类的虚函数没有任何意义</p>
+</li>
+</ul>
+<h2 id="29-类模版和函数模版"><a href="#29-类模版和函数模版" class="headerlink" title="29.类模版和函数模版"></a>29.类模版和函数模版</h2><p><strong>通过template或template实现，主要用于数据的类型参数化，简化代码，有类模板和函数模板，函数模板是用于生成函数的，类模板则是用于生成类的</strong></p>
 <ul>
 <li><p>类模板和函数模板定义</p>
 <ul>
@@ -1419,7 +1434,7 @@ int main(void)
 </ul>
 </li>
 </ul>
-<h2 id="29-构造函数可以抛出异常吗，有什么问题？"><a href="#29-构造函数可以抛出异常吗，有什么问题？" class="headerlink" title="29.构造函数可以抛出异常吗，有什么问题？"></a>29.构造函数可以抛出异常吗，有什么问题？</h2><p><strong>构造函数中应该避免抛出异常</strong></p>
+<h2 id="30-构造函数可以抛出异常吗，有什么问题？"><a href="#30-构造函数可以抛出异常吗，有什么问题？" class="headerlink" title="30.构造函数可以抛出异常吗，有什么问题？"></a>30.构造函数可以抛出异常吗，有什么问题？</h2><p><strong>构造函数中应该避免抛出异常</strong></p>
 <ul>
 <li><p>构造函数中抛出异常后，对象的析构函数将不会被执行</p>
 </li>
@@ -1428,18 +1443,18 @@ int main(void)
 <li><p>当对象发生部分构造时，已经构造完毕的子对象（非动态分配）将会逆序地被析构</p>
 </li>
 </ul>
-<h2 id="30-初始化列表的异常怎么捕获？"><a href="#30-初始化列表的异常怎么捕获？" class="headerlink" title="30.初始化列表的异常怎么捕获？"></a>30.初始化列表的异常怎么捕获？</h2><ul>
+<h2 id="31-初始化列表的异常怎么捕获？"><a href="#31-初始化列表的异常怎么捕获？" class="headerlink" title="31.初始化列表的异常怎么捕获？"></a>31.初始化列表的异常怎么捕获？</h2><ul>
 <li>初始化列表构造，当初始化列表出现异常时，程序还未进入函数体，因此函数体中的try-catch不能执行，catch也无法处理异常。可以通过函数try块解决该问题</li>
 <li>函数try块中的try出现在表示构造函数初始值列表的冒号以及表示构造函数体的花括号之前，与这个try关联的catch既能处理构造函数体抛出的异常，也能处理成员初始化列表抛出的异常</li>
 </ul>
-<h2 id="31-析构函数可以抛出异常吗，有什么问题？"><a href="#31-析构函数可以抛出异常吗，有什么问题？" class="headerlink" title="31.析构函数可以抛出异常吗，有什么问题？"></a>31.析构函数可以抛出异常吗，有什么问题？</h2><p><strong>析构函数不应该抛出异常</strong></p>
+<h2 id="32-析构函数可以抛出异常吗，有什么问题？"><a href="#32-析构函数可以抛出异常吗，有什么问题？" class="headerlink" title="32.析构函数可以抛出异常吗，有什么问题？"></a>32.析构函数可以抛出异常吗，有什么问题？</h2><p><strong>析构函数不应该抛出异常</strong></p>
 <ul>
 <li><p><strong>其他正常，仅析构函数异常</strong>。 如果析构函数抛出异常，则异常点之后的程序不会执行，如果析构函数在异常点之后执行了某些必要的动作比如释放某些资源，则这些动作不会执行，会造成诸如资源泄漏的问题</p>
 </li>
 <li><p><strong>其他异常，且析构函数异常</strong>。 通常异常发生时，c++的机制会调用已经构造好的对象的析构函数来释放资源，此时若析构函数本身也抛出异常，则前一个异常尚未处理，又有新的异常，会造成程序崩溃的问题</p>
 </li>
 </ul>
-<h2 id="32-析构函数如何处理异常"><a href="#32-析构函数如何处理异常" class="headerlink" title="32.析构函数如何处理异常"></a>32.析构函数如何处理异常</h2><ul>
+<h2 id="33-析构函数如何处理异常"><a href="#33-析构函数如何处理异常" class="headerlink" title="33.析构函数如何处理异常"></a>33.析构函数如何处理异常</h2><ul>
 <li>若析构函数抛出异常，调用std::abort()来终止程序</li>
 <li>在析构函数中catch捕获异常并作处理，吞下异常</li>
 <li>如果客户需要对某个操作函数运行期间抛出的异常做出反应，class应该提供普通函数执行该操作，而非在析构函数中</li>
