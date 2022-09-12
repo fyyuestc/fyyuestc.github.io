@@ -43,7 +43,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356010.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356849.png">
 <meta property="article:published_time" content="2022-07-09T07:15:45.000Z">
-<meta property="article:modified_time" content="2022-09-12T11:27:01.773Z">
+<meta property="article:modified_time" content="2022-09-12T11:47:09.091Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -1040,7 +1040,7 @@ int main(void)
 </ul>
 </li>
 </ul>
-<h2 id="10-什么情况下会调用拷贝构造函数"><a href="#10-什么情况下会调用拷贝构造函数" class="headerlink" title="10.什么情况下会调用拷贝构造函数"></a>10.什么情况下会调用拷贝构造函数</h2><ul>
+<h2 id="10-调用拷贝构造函数的场景"><a href="#10-调用拷贝构造函数的场景" class="headerlink" title="10.调用拷贝构造函数的场景"></a>10.调用拷贝构造函数的场景</h2><ul>
 <li>用类的一个实例化对象去初始化另一个对象的时候</li>
 <li>函数的参数是类的对象时（非引用传递）</li>
 <li>函数的返回值是函数体内局部对象的类的对象时 ,此时虽然发生（Named return Value优化）NRV优化，但是由于返回方式是值传递，所以会在返回值的地方调用拷贝构造函数</li>
@@ -1419,6 +1419,31 @@ int main(void)
 </ul>
 </li>
 </ul>
+<h2 id="29-构造函数可以抛出异常吗，有什么问题？"><a href="#29-构造函数可以抛出异常吗，有什么问题？" class="headerlink" title="29.构造函数可以抛出异常吗，有什么问题？"></a>29.构造函数可以抛出异常吗，有什么问题？</h2><p><strong>构造函数中应该避免抛出异常</strong></p>
+<ul>
+<li><p>构造函数中抛出异常后，对象的析构函数将不会被执行</p>
+</li>
+<li><p>构造函数抛出异常时，本应该在析构函数中被delete的对象没有被delete，会导致内存泄露</p>
+</li>
+<li><p>当对象发生部分构造时，已经构造完毕的子对象（非动态分配）将会逆序地被析构</p>
+</li>
+</ul>
+<h2 id="30-初始化列表的异常怎么捕获？"><a href="#30-初始化列表的异常怎么捕获？" class="headerlink" title="30.初始化列表的异常怎么捕获？"></a>30.初始化列表的异常怎么捕获？</h2><ul>
+<li>初始化列表构造，当初始化列表出现异常时，程序还未进入函数体，因此函数体中的try-catch不能执行，catch也无法处理异常。可以通过函数try块解决该问题</li>
+<li>函数try块中的try出现在表示构造函数初始值列表的冒号以及表示构造函数体的花括号之前，与这个try关联的catch既能处理构造函数体抛出的异常，也能处理成员初始化列表抛出的异常</li>
+</ul>
+<h2 id="31-析构函数可以抛出异常吗，有什么问题？"><a href="#31-析构函数可以抛出异常吗，有什么问题？" class="headerlink" title="31.析构函数可以抛出异常吗，有什么问题？"></a>31.析构函数可以抛出异常吗，有什么问题？</h2><p><strong>析构函数不应该抛出异常</strong></p>
+<ul>
+<li><p><strong>其他正常，仅析构函数异常</strong>。 如果析构函数抛出异常，则异常点之后的程序不会执行，如果析构函数在异常点之后执行了某些必要的动作比如释放某些资源，则这些动作不会执行，会造成诸如资源泄漏的问题</p>
+</li>
+<li><p><strong>其他异常，且析构函数异常</strong>。 通常异常发生时，c++的机制会调用已经构造好的对象的析构函数来释放资源，此时若析构函数本身也抛出异常，则前一个异常尚未处理，又有新的异常，会造成程序崩溃的问题</p>
+</li>
+</ul>
+<h2 id="32-析构函数如何处理异常"><a href="#32-析构函数如何处理异常" class="headerlink" title="32.析构函数如何处理异常"></a>32.析构函数如何处理异常</h2><ul>
+<li>若析构函数抛出异常，调用std::abort()来终止程序</li>
+<li>在析构函数中catch捕获异常并作处理，吞下异常</li>
+<li>如果客户需要对某个操作函数运行期间抛出的异常做出反应，class应该提供普通函数执行该操作，而非在析构函数中</li>
+</ul>
 <h1 id="三、C-高级特性"><a href="#三、C-高级特性" class="headerlink" title="三、C++高级特性"></a>三、C++高级特性</h1><h2 id="1-什么是内存池，如何实现？"><a href="#1-什么是内存池，如何实现？" class="headerlink" title="1.什么是内存池，如何实现？"></a>1.什么是内存池，如何实现？</h2><p><strong>内存池（Memory Pool） 是一种内存分配方式</strong></p>
 <ul>
 <li>通常我们习惯直接使用new、malloc 等申请内存，这样做的缺点在于：由于所申请内存块的大小不定，当频繁使用时会造成大量的内存碎片并进而降低性能。内存池则是在真正使用内存之前，先申请分配一定数量的、大小相等(一般情况下)的内存块留作备用</li>
@@ -1443,32 +1468,7 @@ int main(void)
 <li><p>内部实现，目前的所有编译器都是直接调用的::operator new()和::operator delete()，说白了就是和直接使用new运算符的效果是一样的，所以老师说它们都没做任何特殊处理。</p>
 </li>
 </ul>
-<h2 id="2-构造函数可以抛出异常吗，有什么问题？"><a href="#2-构造函数可以抛出异常吗，有什么问题？" class="headerlink" title="2.构造函数可以抛出异常吗，有什么问题？"></a>2.构造函数可以抛出异常吗，有什么问题？</h2><p><strong>构造函数中应该避免抛出异常</strong></p>
-<ul>
-<li><p>构造函数中抛出异常后，对象的析构函数将不会被执行</p>
-</li>
-<li><p>构造函数抛出异常时，本应该在析构函数中被delete的对象没有被delete，会导致内存泄露</p>
-</li>
-<li><p>当对象发生部分构造时，已经构造完毕的子对象（非动态分配）将会逆序地被析构</p>
-</li>
-</ul>
-<h2 id="3-初始化列表的异常怎么捕获？"><a href="#3-初始化列表的异常怎么捕获？" class="headerlink" title="3.初始化列表的异常怎么捕获？"></a>3.初始化列表的异常怎么捕获？</h2><ul>
-<li>初始化列表构造，当初始化列表出现异常时，程序还未进入函数体，因此函数体中的try-catch不能执行，catch也无法处理异常。可以通过函数try块解决该问题</li>
-<li>函数try块中的try出现在表示构造函数初始值列表的冒号以及表示构造函数体的花括号之前，与这个try关联的catch既能处理构造函数体抛出的异常，也能处理成员初始化列表抛出的异常</li>
-</ul>
-<h2 id="4-析构函数可以抛出异常吗，有什么问题？"><a href="#4-析构函数可以抛出异常吗，有什么问题？" class="headerlink" title="4.析构函数可以抛出异常吗，有什么问题？"></a>4.析构函数可以抛出异常吗，有什么问题？</h2><p><strong>析构函数不应该抛出异常</strong></p>
-<ul>
-<li><p><strong>其他正常，仅析构函数异常</strong>。 如果析构函数抛出异常，则异常点之后的程序不会执行，如果析构函数在异常点之后执行了某些必要的动作比如释放某些资源，则这些动作不会执行，会造成诸如资源泄漏的问题</p>
-</li>
-<li><p><strong>其他异常，且析构函数异常</strong>。 通常异常发生时，c++的机制会调用已经构造好的对象的析构函数来释放资源，此时若析构函数本身也抛出异常，则前一个异常尚未处理，又有新的异常，会造成程序崩溃的问题</p>
-</li>
-</ul>
-<h2 id="5-析构函数如何处理异常"><a href="#5-析构函数如何处理异常" class="headerlink" title="5.析构函数如何处理异常"></a>5.析构函数如何处理异常</h2><ul>
-<li>若析构函数抛出异常，调用std::abort()来终止程序</li>
-<li>在析构函数中catch捕获异常并作处理，吞下异常</li>
-<li>如果客户需要对某个操作函数运行期间抛出的异常做出反应，class应该提供普通函数执行该操作，而非在析构函数中</li>
-</ul>
-<h2 id="6-CPP11新特性"><a href="#6-CPP11新特性" class="headerlink" title="6.CPP11新特性"></a>6.CPP11新特性</h2><ul>
+<h2 id="2-CPP11新特性"><a href="#2-CPP11新特性" class="headerlink" title="2.CPP11新特性"></a>2.CPP11新特性</h2><ul>
 <li><strong>nullptr常量</strong><ul>
 <li>C++中NULL仅仅是define NULL 0 的一个宏定义，因此，有时候会产生歧义<ul>
 <li>比如f（char*）和f（int），参数传NULL的话到底该调用哪个？</li>
@@ -1523,7 +1523,7 @@ int main(void)
 </ul>
 </li>
 </ul>
-<h2 id="7-auto、decltype的用法"><a href="#7-auto、decltype的用法" class="headerlink" title="7.auto、decltype的用法"></a>7.auto、decltype的用法</h2><p><strong>1）auto</strong></p>
+<h2 id="3-auto、decltype的用法"><a href="#3-auto、decltype的用法" class="headerlink" title="3.auto、decltype的用法"></a>3.auto、decltype的用法</h2><p><strong>1）auto</strong></p>
 <p>C++11新标准引入了auto类型说明符，用它就能让编译器替我们去分析表达式所属的类型。和原来那些只对应某种特定的类型说明符(例如 int)不同，</p>
 <p>auto 让编译器通过初始值来进行类型推演。从而获得定义变量的类型，所以说 auto 定义的变量必须有初始值。</p>
 <p>举个例子：</p>
@@ -1533,11 +1533,11 @@ int main(void)
 <p>有的时候我们还会遇到这种情况，<strong>我们希望从表达式中推断出要定义变量的类型，但却不想用表达式的值去初始化变量。</strong>还有可能是函数的返回类型为某表达式的值类型。在这些时候auto显得就无力了，所以C++11又引入了第二种类型说明符decltype，它的作用是选择并返回操作数的数据类型。在此过程中，编译器只是分析表达式并得到它的类型，却不进行实际的计算表达式的值。</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs awk">int <span class="hljs-keyword">func</span>() &#123;return <span class="hljs-number">0</span>&#125;;<br><br><span class="hljs-regexp">//</span>普通类型<br>decltype(<span class="hljs-keyword">func</span>()) sum = <span class="hljs-number">5</span>; <span class="hljs-regexp">//</span> sum的类型是函数<span class="hljs-keyword">func</span>()的返回值的类型int, 但是这时不会实际调用函数<span class="hljs-keyword">func</span>()<br>int a = <span class="hljs-number">0</span>;<br>decltype(a) b = <span class="hljs-number">4</span>; <span class="hljs-regexp">//</span> a的类型是int, 所以b的类型也是int<br><br><span class="hljs-regexp">//</span>不论是顶层const还是底层const, decltype都会保留   <br>const int c = <span class="hljs-number">3</span>;<br>decltype(c) d = c; <span class="hljs-regexp">//</span> d的类型和c是一样的, 都是顶层const<br>int e = <span class="hljs-number">4</span>;<br>const int* f = &amp;e; <span class="hljs-regexp">//</span> f是底层const<br>decltype(f) g = f; <span class="hljs-regexp">//</span> g也是底层const<br><br><span class="hljs-regexp">//</span>引用与指针类型<br><span class="hljs-regexp">//</span><span class="hljs-number">1</span>. 如果表达式是引用类型, 那么decltype的类型也是引用<br>const int i = <span class="hljs-number">3</span>, &amp;j = i;<br>decltype(j) k = <span class="hljs-number">5</span>; <span class="hljs-regexp">//</span> k的类型是 const int&amp;<br><br><span class="hljs-regexp">//</span><span class="hljs-number">2</span>. 如果表达式是引用类型, 但是想要得到这个引用所指向的类型, 需要修改表达式:<br>int i = <span class="hljs-number">3</span>, &amp;r = i;<br>decltype(r + <span class="hljs-number">0</span>) t = <span class="hljs-number">5</span>; <span class="hljs-regexp">//</span> 此时是int类型<br><br><span class="hljs-regexp">//</span><span class="hljs-number">3</span>. 对指针的解引用操作返回的是引用类型<br>int i = <span class="hljs-number">3</span>, j = <span class="hljs-number">6</span>, *p = &amp;i;<br>decltype(*p) c = j; <span class="hljs-regexp">//</span> c是int&amp;类型, c和j绑定在一起<br><br><span class="hljs-regexp">//</span><span class="hljs-number">4</span>. 如果一个表达式的类型不是引用, 但是我们需要推断出引用, 那么可以加上一对括号, 就变成了引用类型了<br>int i = <span class="hljs-number">3</span>;<br>decltype((i)) j = i; <span class="hljs-regexp">//</span> 此时j的类型是int&amp;类型, j和i绑定在了一起<br></code></pre></td></tr></table></figure>
 
-<h2 id="8-C-中NULL和nullptr的区别"><a href="#8-C-中NULL和nullptr的区别" class="headerlink" title="8.C++中NULL和nullptr的区别"></a>8.C++中NULL和nullptr的区别</h2><ul>
+<h2 id="4-C-中NULL和nullptr的区别"><a href="#4-C-中NULL和nullptr的区别" class="headerlink" title="4.C++中NULL和nullptr的区别"></a>4.C++中NULL和nullptr的区别</h2><ul>
 <li>NULL来自C语言，一般由宏定义实现，而 nullptr 则是C++11的新增关键字。在C语言中，NULL被定义为(void)0，而在C++语言中，NULL则被定义为整数0</li>
 <li>在传入NULL参数时，会把NULL当做整数0来看，如果我们想调用参数是指针的函数，该怎么办呢?。nullptr在C++11被引入用于解决这一问题，nullptr可以明确区分整型和指针类型，能够根据环境自动转换成相应的指针类型，但不会被转换为任何整型，所以不会造成参数传递错误</li>
 </ul>
-<h2 id="9-智能指针"><a href="#9-智能指针" class="headerlink" title="9.智能指针"></a>9.智能指针</h2><ul>
+<h2 id="5-智能指针"><a href="#5-智能指针" class="headerlink" title="5.智能指针"></a>5.智能指针</h2><ul>
 <li><p><strong>原始指针在引入了异常机制后容易发生内存泄漏、二次释放等问题</strong></p>
 </li>
 <li><p>C++11 中引入了智能指针（Smart Pointer），它利用了一种叫做 RAII（资源获取即初始化）的技术将普通的指针封装为一个栈对象。当栈对象的生存周期结束后，会在析构函数中释放掉申请的内存，从而防止内存泄漏。这使得智能指针实质是一个对象，行为表现的却像一个指针</p>
@@ -1607,7 +1607,7 @@ int main(void)
 </ul>
 </li>
 </ul>
-<h2 id="10-shared-ptr的线程安全性"><a href="#10-shared-ptr的线程安全性" class="headerlink" title="10.shared_ptr的线程安全性"></a>10.shared_ptr的线程安全性</h2><ul>
+<h2 id="6-shared-ptr的线程安全性"><a href="#6-shared-ptr的线程安全性" class="headerlink" title="6.shared_ptr的线程安全性"></a>6.shared_ptr的线程安全性</h2><ul>
 <li><strong>智能指针结构体</strong><ul>
 <li>智能指针包括一个实际数据指针和一个引用计数指针，这两个操作不是一个指令可以完成的，因此多线程环境下，势必有问题</li>
 <li><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202209112310357.webp" srcset="/img/loading.gif" lazyload alt="img"></li>
@@ -1627,14 +1627,14 @@ int main(void)
 </ul>
 <p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1654442">详解1</a></p>
 <p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7038581008945872927">详解2</a></p>
-<h2 id="11-野指针"><a href="#11-野指针" class="headerlink" title="11.野指针"></a>11.野指针</h2><p><strong>野指针指向一个已删除的对象或 申请访问受限内存区域的指针</strong></p>
+<h2 id="7-野指针"><a href="#7-野指针" class="headerlink" title="7.野指针"></a>7.野指针</h2><p><strong>野指针指向一个已删除的对象或 申请访问受限内存区域的指针</strong></p>
 <p><strong>产生原因：</strong></p>
 <ul>
 <li>指针变量未初始化</li>
 <li>指针释放未置空</li>
 <li>指针操作超出作用域。返回指向栈内存的指针或引用，因为栈内存在函数结束时会被释放</li>
 </ul>
-<h2 id="12-强制转换"><a href="#12-强制转换" class="headerlink" title="12.强制转换"></a>12.强制转换</h2><p><strong>C++中强制转换为static_cast, dynamic_cast,const_cast, reinterpret_cast</strong></p>
+<h2 id="8-强制转换"><a href="#8-强制转换" class="headerlink" title="8.强制转换"></a>8.强制转换</h2><p><strong>C++中强制转换为static_cast, dynamic_cast,const_cast, reinterpret_cast</strong></p>
 <ul>
 <li><strong>static_cast</strong><ul>
 <li>完成基础数据类型；同一个继承体系中类型的转换；任意类型与空指针类型void* 之间的转换，不能用于普通指针的转换（void空指针除外）</li>
@@ -1676,14 +1676,14 @@ int main(void)
 </ul>
 </li>
 </ul>
-<h2 id="13-RTTI"><a href="#13-RTTI" class="headerlink" title="13.RTTI"></a>13.RTTI</h2><p><strong>运行时类型检查，在C++层面主要体现在dynamic_cast和typeid</strong></p>
+<h2 id="9-RTTI"><a href="#9-RTTI" class="headerlink" title="9.RTTI"></a>9.RTTI</h2><p><strong>运行时类型检查，在C++层面主要体现在dynamic_cast和typeid</strong></p>
 <ul>
 <li><p>dynamic_cast 动态类型转换</p>
 </li>
 <li><p>typeid typeid 运算符允许在运行时确定对象的类型，获取对象的实际类型</p>
 </li>
 </ul>
-<h2 id="14-RAII"><a href="#14-RAII" class="headerlink" title="14.RAII"></a>14.RAII</h2><p><strong>什么是单例</strong></p>
+<h2 id="10-RAII"><a href="#10-RAII" class="headerlink" title="10.RAII"></a>10.RAII</h2><p><strong>什么是单例</strong></p>
 <ul>
 <li><p>单例 Singleton 是设计模式的一种，其特点是只提供<strong>唯一</strong>一个类的实例,具有全局变量的特点，在任何位置都可以通过接口获取到那个唯一实例<br>具体运用场景如：</p>
 <ol>
@@ -1716,7 +1716,7 @@ int main(void)
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/sunchaothu/p/10389842.html">详解</a></p>
 </li>
 </ul>
-<h2 id="15-右值引用"><a href="#15-右值引用" class="headerlink" title="15.右值引用"></a>15.右值引用</h2><ul>
+<h2 id="11-右值引用"><a href="#11-右值引用" class="headerlink" title="11.右值引用"></a>11.右值引用</h2><ul>
 <li><p><strong>定义：</strong></p>
 <ul>
 <li>左值：存储在内存中，有明确存储地址(可寻址)的数据</li>
@@ -1806,8 +1806,8 @@ int main(void)
 </ul>
 </li>
 </ul>
-<h2 id="16-无锁队列"><a href="#16-无锁队列" class="headerlink" title="16.无锁队列"></a>16.无锁队列</h2><p><a target="_blank" rel="noopener" href="https://blog.51cto.com/quantfabric/2588193">C++性能优化-无锁队列</a></p>
-<h2 id="17-Lambda表达式原理"><a href="#17-Lambda表达式原理" class="headerlink" title="17.Lambda表达式原理"></a>17.Lambda表达式原理</h2><ul>
+<h2 id="12-无锁队列"><a href="#12-无锁队列" class="headerlink" title="12.无锁队列"></a>12.无锁队列</h2><p><a target="_blank" rel="noopener" href="https://blog.51cto.com/quantfabric/2588193">C++性能优化-无锁队列</a></p>
+<h2 id="13-Lambda表达式原理"><a href="#13-Lambda表达式原理" class="headerlink" title="13.Lambda表达式原理"></a>13.Lambda表达式原理</h2><ul>
 <li><p><strong>Lambda 表达式完整的格式如下：</strong></p>
 <p>[捕获列表] (形参列表) mutable 异常列表-&gt; 返回类型<br>{<br>函数体<br>}<br><strong>各项的含义：</strong></p>
 <ul>
@@ -1835,7 +1835,7 @@ int main(void)
 <p><a href="%5Dhttps://www.361shipin.com/blog/1532193536894566400">详解2</a></p>
 </li>
 </ul>
-<h2 id="18-C-11中的bind函数"><a href="#18-C-11中的bind函数" class="headerlink" title="18.C++11中的bind函数"></a>18.C++11中的bind函数</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/WindSun/p/13069887.html">详解1</a></p>
+<h2 id="14-C-11中的bind函数"><a href="#14-C-11中的bind函数" class="headerlink" title="14.C++11中的bind函数"></a>14.C++11中的bind函数</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/WindSun/p/13069887.html">详解1</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35721743/article/details/83308765?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-83308765-blog-71155234.pc_relevant_multi_platform_whitelistv4&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-83308765-blog-71155234.pc_relevant_multi_platform_whitelistv4&utm_relevant_index=1">详解2</a></p>
 <h1 id="四、STL模板库"><a href="#四、STL模板库" class="headerlink" title="四、STL模板库"></a>四、STL模板库</h1><h2 id="1-STL中的swap函数"><a href="#1-STL中的swap函数" class="headerlink" title="1.STL中的swap函数"></a>1.STL中的swap函数</h2><ul>
 <li>除了数组，其他容器在交换后本质上是将内存地址进行了交换，而元素本身在内存中的位置是没有变化</li>
