@@ -43,7 +43,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356010.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356849.png">
 <meta property="article:published_time" content="2022-07-09T07:15:45.000Z">
-<meta property="article:modified_time" content="2022-09-12T08:39:22.097Z">
+<meta property="article:modified_time" content="2022-09-12T09:05:28.500Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -241,7 +241,7 @@
         
         
         
-          458 分钟
+          461 分钟
         
       </span>
     
@@ -859,14 +859,25 @@ int main(void)
 </ul>
 </li>
 </ul>
-<h2 id="25-strcpy和memcpy的区别"><a href="#25-strcpy和memcpy的区别" class="headerlink" title="25.strcpy和memcpy的区别"></a>25.strcpy和memcpy的区别</h2><ul>
-<li><p>strcpy和memcpy都是标准C库函数</p>
+<h2 id="25-strcpy和memcpy的区别以及效率分析"><a href="#25-strcpy和memcpy的区别以及效率分析" class="headerlink" title="25.strcpy和memcpy的区别以及效率分析"></a>25.strcpy和memcpy的区别以及效率分析</h2><ul>
+<li><strong>相同点</strong><ul>
+<li>strcpy和memcpy都是标准C库函数</li>
+</ul>
 </li>
-<li><p>strcpy提供了字符串的复制。即strcpy只用于字符串复制，并且它不仅复制字符串内容之外，还会复制字符串的结束符。memcpy提供了一般内存的复制。即memcpy对于需要复制的内容没有限制，因此用途更广</p>
+<li><strong>不同点</strong><ul>
+<li>strcpy只能应用字符类型的复制。而memcpy应用范围更广，任何类型都可以，只要能给出对象的起始地址和内存长度信息、并且对象具有可操作性即可</li>
+<li>memcpy相比使用strcpy会更加的安全，当然也可以使用strcpy的安全板本strncpy函数</li>
+<li><strong>strcpy一定会拷贝字符串结尾符’\0’，memcpy在拷贝字符串的时候，根据指定拷贝字节数拷贝字符串，是否拷贝‘\0’结束符，根据count的大小</strong></li>
+</ul>
 </li>
-<li><p>strcpy只有两个参数，即遇到‘\0’结束复制，而memcpy是根据第三个参数来决定复制的长度</p>
+<li><strong>效率比较(拷贝字符串)</strong><ul>
+<li><strong>在拷贝相同的字符串，且字节数相同(包括‘\0’)的情况下，strcpy效率比memcpy效率更快</strong>，且strcpy调试方便</li>
+<li>memcpy 虽然高效，但是需要额外提供拷贝的内存长度这一参数，易错且使用不便；并且如果长度指定过大的话（最优长度是源字符串长度 + 1），还会带来性能的下降。其实 strcpy 函数一般是在内部调用 memcpy 函数或者用汇编直接实现的，以达到高效的目的。因此，使用 memcpy 和 strcpy 拷贝字符串在性能上应该没有什么大的差别</li>
+<li>snprintf 要额外指定格式符并且进行格式转化，麻烦且效率不高</li>
+</ul>
 </li>
 </ul>
+<h2 id="26-sizeof-和strlen-的区别"><a href="#26-sizeof-和strlen-的区别" class="headerlink" title="26.sizeof()和strlen()的区别"></a>26.sizeof()和strlen()的区别</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_62534424/article/details/121895300?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-121895300-blog-12656113.pc_relevant_aa&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-121895300-blog-12656113.pc_relevant_aa&utm_relevant_index=1">详解</a></p>
 <h1 id="二、C-面向对象"><a href="#二、C-面向对象" class="headerlink" title="二、C++面向对象"></a>二、C++面向对象</h1><h2 id="1-内存字节对齐"><a href="#1-内存字节对齐" class="headerlink" title="1.内存字节对齐"></a>1.内存字节对齐</h2><ul>
 <li><code>#pragma pack(n)</code> 表示的是设置n字节对齐，windows默认是8，linux是4</li>
 </ul>
