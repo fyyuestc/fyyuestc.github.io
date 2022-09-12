@@ -43,7 +43,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356010.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356849.png">
 <meta property="article:published_time" content="2022-07-09T07:15:45.000Z">
-<meta property="article:modified_time" content="2022-09-11T15:11:52.940Z">
+<meta property="article:modified_time" content="2022-09-12T01:50:05.594Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          53k 字
+          54k 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          446 分钟
+          454 分钟
         
       </span>
     
@@ -1776,6 +1776,34 @@ int main(void)
 </li>
 </ul>
 <h2 id="16-无锁队列"><a href="#16-无锁队列" class="headerlink" title="16.无锁队列"></a>16.无锁队列</h2><p><a target="_blank" rel="noopener" href="https://blog.51cto.com/quantfabric/2588193">C++性能优化-无锁队列</a></p>
+<h2 id="17-Lambda表达式原理"><a href="#17-Lambda表达式原理" class="headerlink" title="17.Lambda表达式原理"></a>17.Lambda表达式原理</h2><ul>
+<li><p><strong>Lambda 表达式完整的格式如下：</strong></p>
+<p>[捕获列表] (形参列表) mutable 异常列表-&gt; 返回类型<br>{<br>函数体<br>}<br><strong>各项的含义：</strong></p>
+<ul>
+<li>捕获列表：捕获外部变量，捕获的变量可以在函数体中使用，可以省略，即不捕获外部变量。</li>
+<li>形参列表：和普通函数的形参列表一样。可省略，即无参数列表</li>
+<li>mutable：mutable 关键字，如果有，则表示在函数体中可以修改捕获变量，根据具体需求决定是否需要省略。</li>
+<li>异常列表：noexcept &#x2F; throw(…)，和普通函数的异常列表一样，可省略，即代表可能抛出任何类型的异常。</li>
+<li>返回类型：和函数的返回类型一样。可省略，如省略，编译器将自动推导返回类型。</li>
+<li>函数体：代码实现。可省略，但是没意义。</li>
+</ul>
+</li>
+<li><p><strong>使用示例</strong></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">LambdaDemo</span>()</span><br>&#123;<br>    <span class="hljs-built_in">int</span> a = <span class="hljs-number">1</span>;<br>    <span class="hljs-built_in">int</span> b = <span class="hljs-number">2</span>;<br>    auto lambda = [a, b](<span class="hljs-built_in">int</span> x, <span class="hljs-built_in">int</span> y)<span class="hljs-function">mutable <span class="hljs-title">throw</span>() -&gt; <span class="hljs-built_in">bool</span></span><br>    &#123;<br>        <span class="hljs-keyword">return</span> a + b &gt; x + y;<br>    &#125;;<br>    <span class="hljs-built_in">bool</span> ret = lambda(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>编译器实现 lambda 表达式大致分为一下几个步骤</strong></p>
+<ul>
+<li>创建 lambda 类，实现构造函数，使用 lambda 表达式的函数体重载 operator()（所以 lambda 表达式 也叫匿名函数对象）</li>
+<li>创建 lambda 对象</li>
+<li>通过对象调用 operator()</li>
+<li>编译器将 lambda 表达式翻译后的代码：</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">class</span> <span class="hljs-title">lambda_xxxx</span><br>&#123;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-built_in">int</span> a;<br>    <span class="hljs-built_in">int</span> b;<br><span class="hljs-keyword">public</span>:<br>    lambda_xxxx(<span class="hljs-built_in">int</span> _a, <span class="hljs-built_in">int</span> _b) :a(_a), b(_b)<br>    &#123;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-built_in">bool</span> <span class="hljs-title">operator</span>()(<span class="hljs-params"><span class="hljs-built_in">int</span> x, <span class="hljs-built_in">int</span> y</span>) <span class="hljs-title">throw</span>()</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> a + b &gt; x + y;<br>    &#125;<br>&#125;;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">LambdaDemo</span>()</span><br>&#123;<br>    <span class="hljs-built_in">int</span> a = <span class="hljs-number">1</span>;<br>    <span class="hljs-built_in">int</span> b = <span class="hljs-number">2</span>;<br>    lambda_xxxx lambda = lambda_xxxx(a, b);<br>    <span class="hljs-built_in">bool</span> ret = lambda.<span class="hljs-keyword">operator</span>()(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>);<br>&#125;<br><span class="hljs-comment">//其中，类名 lambda_xxxx 的 xxxx 是为了防止命名冲突加上的。</span><br></code></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Dreamandpassion/article/details/108236703">详解1</a></p>
+<p><a href="%5Dhttps://www.361shipin.com/blog/1532193536894566400">详解2</a></p>
+</li>
+</ul>
 <h1 id="四、STL模板库"><a href="#四、STL模板库" class="headerlink" title="四、STL模板库"></a>四、STL模板库</h1><h2 id="1-STL中的swap函数"><a href="#1-STL中的swap函数" class="headerlink" title="1.STL中的swap函数"></a>1.STL中的swap函数</h2><ul>
 <li>除了数组，其他容器在交换后本质上是将内存地址进行了交换，而元素本身在内存中的位置是没有变化</li>
 <li>swap在交换的时候并不是完全将2个容器的元素互换，而是交换了2个容器内的内存地址</li>
