@@ -43,7 +43,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356010.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356849.png">
 <meta property="article:published_time" content="2022-07-09T07:15:45.000Z">
-<meta property="article:modified_time" content="2022-09-12T01:56:18.455Z">
+<meta property="article:modified_time" content="2022-09-12T08:21:07.173Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          54k 字
+          55k 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          454 分钟
+          456 分钟
         
       </span>
     
@@ -1826,7 +1826,17 @@ int main(void)
 </ul>
 </li>
 </ul>
-<h2 id="3-STL迭代器失效的几种情况总结"><a href="#3-STL迭代器失效的几种情况总结" class="headerlink" title="3.STL迭代器失效的几种情况总结"></a>3.STL迭代器失效的几种情况总结</h2><ul>
+<h2 id="3-STL迭代器如何实现"><a href="#3-STL迭代器如何实现" class="headerlink" title="3.STL迭代器如何实现"></a>3.STL迭代器如何实现</h2><ul>
+<li><p>迭代器是一种抽象的设计理念，通过迭代器可以在不了解容器内部原理的情况下遍历容器，除此之外，STL中迭代器一个最重要的作用就是作为容器与STL算法的粘合剂</p>
+</li>
+<li><p><strong>迭代器的作用就是提供一个遍历容器内部所有元素的接口，因此迭代器内部必须保存一个与容器相关联的指针，然后重载各种运算操作来遍历，其中最重要的是*运算符与-&gt;运算符，以及++、–等可能需要重载的运算符重载</strong></p>
+</li>
+<li><p>这和C++中的智能指针很像，智能指针也是将一个指针封装，然后通过引用计数或是其他方法完成自动释放内存的功能 </p>
+</li>
+<li><p>最常用的迭代器的相应型别有五种：value type、difference type、pointer、reference、iterator catagoly</p>
+</li>
+</ul>
+<h2 id="4-STL迭代器失效的几种情况总结"><a href="#4-STL迭代器失效的几种情况总结" class="headerlink" title="4.STL迭代器失效的几种情况总结"></a>4.STL迭代器失效的几种情况总结</h2><ul>
 <li><p><strong>迭代器的失效问题：</strong>对容器的操作影响了元素的存放位置，称为迭代器失效</p>
 </li>
 <li><p><strong>失效情况</strong></p>
@@ -1872,7 +1882,7 @@ int main(void)
 </ul>
 </li>
 </ul>
-<h2 id="4-迭代器：-it、it-哪个好，为什么"><a href="#4-迭代器：-it、it-哪个好，为什么" class="headerlink" title="4.迭代器：++it、it++哪个好，为什么"></a>4.迭代器：++it、it++哪个好，为什么</h2><ol>
+<h2 id="5-迭代器：-it、it-哪个好，为什么"><a href="#5-迭代器：-it、it-哪个好，为什么" class="headerlink" title="5.迭代器：++it、it++哪个好，为什么"></a>5.迭代器：++it、it++哪个好，为什么</h2><ol>
 <li>前置返回一个引用，后置返回一个对象</li>
 </ol>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-number">1.</span> <span class="hljs-comment">// ++i实现代码为：</span><br>int&amp; <span class="hljs-keyword">operator</span>++()<br>&#123;<br>  *<span class="hljs-keyword">this</span> += <span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>&#125; <br></code></pre></td></tr></table></figure>
@@ -1882,7 +1892,7 @@ int main(void)
 </ol>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-number">2.</span> <span class="hljs-comment">//i++实现代码为：                 </span><br><span class="hljs-type">int</span> <span class="hljs-keyword">operator</span>++(<span class="hljs-type">int</span>)                 <br>&#123;<br>   <span class="hljs-type">int</span> temp = *<span class="hljs-keyword">this</span>;                   <br>   ++*<span class="hljs-keyword">this</span>;                       <br>   <span class="hljs-keyword">return</span> temp;                  <br>&#125; <br></code></pre></td></tr></table></figure>
 
-<h2 id="5-STL中的二级空间配置器"><a href="#5-STL中的二级空间配置器" class="headerlink" title="5.STL中的二级空间配置器"></a>5.STL中的二级空间配置器</h2><p><strong>为什么需要二级空间配置器：</strong></p>
+<h2 id="6-STL中的二级空间配置器"><a href="#6-STL中的二级空间配置器" class="headerlink" title="6.STL中的二级空间配置器"></a>6.STL中的二级空间配置器</h2><p><strong>为什么需要二级空间配置器：</strong></p>
 <ul>
 <li><p>我们知道动态开辟内存时，要在堆上申请，但若是我们需要频繁的在堆开辟释放内存，则就会在堆上造成很多外部碎片，浪费了内存空间</p>
 </li>
@@ -1930,7 +1940,7 @@ int main(void)
 <li>空间配置函数allocate()，首先判断区块大小，大于128就直接调用第一级配置器，小于128时就检查对应的free-list。如果free-list之内有可用区块，就直接拿来用，如果没有可用区块，就将区块大小调整至8的倍数，然后调用refill()，为free-list重新分配空</li>
 <li>空间释放函数deallocate()，该函数首先判断区块大小，大于128bytes时，直接调用一级配置器，小于128bytes就找到对应的free-list然后释放内存</li>
 </ul>
-<h2 id="6-vector扩容以及resize-和reserve-的区别"><a href="#6-vector扩容以及resize-和reserve-的区别" class="headerlink" title="6.vector扩容以及resize()和reserve()的区别"></a>6.vector扩容以及resize()和reserve()的区别</h2><p><strong>一、reserve()避免多次不必要的扩容</strong></p>
+<h2 id="7-vector扩容以及resize-和reserve-的区别"><a href="#7-vector扩容以及resize-和reserve-的区别" class="headerlink" title="7.vector扩容以及resize()和reserve()的区别"></a>7.vector扩容以及resize()和reserve()的区别</h2><p><strong>一、reserve()避免多次不必要的扩容</strong></p>
 <ul>
 <li>capacity()：告诉我们当前 vector 容器总共可以容纳多少个元素。如果想知道当前 vector 容器有多少未被使用的存储空间，可以通过 capacity()-size() 得知。注意，如果 size() 和 capacity() 返回的值相同，则表明当前 vector 容器中没有可用存储空间了，这意味着，下一次向 vector 容器中添加新元素，将导致 vector 容器扩容</li>
 <li>size()：告诉我们当前 vector 容器中已经存有多少个元素，但仅通过此方法，无法得知 vector 容器有多少存储空间</li>
@@ -1976,7 +1986,7 @@ int main(void)
 <li>resize是改变容器的大小，且在创建对象，因此，调用这个函数之后，就可以引用容器内的对象了，因此当加入新的元素时，用operator[]操作符，或者用迭代器来引用元素对象。此时再调用push_back()函数，是加在这个新的空间后面的</li>
 <li>两个函数的参数形式也有区别的，reserve函数之后一个参数，即需要预留的容器的空间；resize函数可以有两个参数，第一个参数是容器新的大小，第二个参数是要加入容器中的新元素，如果这个参数被省略，那么就调用元素对象的默认构造函数</li>
 </ul>
-<h2 id="7-vector中push-back-时间复杂度"><a href="#7-vector中push-back-时间复杂度" class="headerlink" title="7.vector中push_back()时间复杂度"></a>7.vector中push_back()时间复杂度</h2><p><a target="_blank" rel="noopener" href="http://c.biancheng.net/view/6901.html">C++ vector（STL vector）底层实现机制</a></p>
+<h2 id="8-vector中push-back-时间复杂度"><a href="#8-vector中push-back-时间复杂度" class="headerlink" title="8.vector中push_back()时间复杂度"></a>8.vector中push_back()时间复杂度</h2><p><a target="_blank" rel="noopener" href="http://c.biancheng.net/view/6901.html">C++ vector（STL vector）底层实现机制</a></p>
 <ul>
 <li><p><strong>实现过程：</strong></p>
 <ul>
@@ -1998,7 +2008,7 @@ int main(void)
 </ul>
 </li>
 </ul>
-<h2 id="8-红黑树原理"><a href="#8-红黑树原理" class="headerlink" title="8.红黑树原理"></a>8.红黑树原理</h2><h3 id="8-1-二叉查找树"><a href="#8-1-二叉查找树" class="headerlink" title="8.1.二叉查找树"></a>8.1.二叉查找树</h3><p><strong>删除某节点</strong></p>
+<h2 id="9-红黑树原理"><a href="#9-红黑树原理" class="headerlink" title="9.红黑树原理"></a>9.红黑树原理</h2><h3 id="9-1-二叉查找树"><a href="#9-1-二叉查找树" class="headerlink" title="9.1.二叉查找树"></a>9.1.二叉查找树</h3><p><strong>删除某节点</strong></p>
 <p>假设要删除的为节点 p，则对于二叉查找树来说，需要根据节点 p 所在不同的位置作不同的操作，有以下 3 种可能</p>
 <ol>
 <li><p>节点 p 为叶子节点，此时只需要删除该节点，并修改其双亲节点的指针即可；</p>
@@ -2016,7 +2026,7 @@ int main(void)
 <p><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031339227.png" srcset="/img/loading.gif" lazyload alt="图2"></p>
 <p align='center'>图2</p></li>
 </ol>
-<h3 id="8-2-红黑树"><a href="#8-2-红黑树" class="headerlink" title="8.2.红黑树"></a>8.2.红黑树</h3><p>红黑树本身就是一颗<strong>二叉查找树</strong>，树中没有一条路径比其他任何路径长出两倍，接近平衡状态。</p>
+<h3 id="9-2-红黑树"><a href="#9-2-红黑树" class="headerlink" title="9.2.红黑树"></a>9.2.红黑树</h3><p>红黑树本身就是一颗<strong>二叉查找树</strong>，树中没有一条路径比其他任何路径长出两倍，接近平衡状态。</p>
 <p><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031339243.png" srcset="/img/loading.gif" lazyload alt="红黑树"></p>
 <ul>
 <li><p>每个节点是黑色或者红色</p>
@@ -2039,7 +2049,7 @@ int main(void)
 <blockquote>
 <p>正是因为上述性质，使得一颗n个节点的红黑树始终保持logn的高度</p>
 </blockquote>
-<h4 id="8-2-1红黑树的旋转"><a href="#8-2-1红黑树的旋转" class="headerlink" title="8.2.1红黑树的旋转"></a>8.2.1红黑树的旋转</h4><p>当使用红黑树进行插入或者删除节点的操作时，可能会破坏红黑树的 5 条性质，从而变成了一棵普通树，此时就可以通过对树中的某些子树进行旋转，从而使整棵树重新变为一棵红黑树。</p>
+<h4 id="9-2-1红黑树的旋转"><a href="#9-2-1红黑树的旋转" class="headerlink" title="9.2.1红黑树的旋转"></a>9.2.1红黑树的旋转</h4><p>当使用红黑树进行插入或者删除节点的操作时，可能会破坏红黑树的 5 条性质，从而变成了一棵普通树，此时就可以通过对树中的某些子树进行旋转，从而使整棵树重新变为一棵红黑树。</p>
 <p>旋转操作分为左旋和右旋，同二叉排序树转平衡二叉树的旋转原理完全相同。例如图3表示的是对一棵二叉查找树中局部子树进行左旋和右旋操作：</p>
 <p><img src="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031350020.png" srcset="/img/loading.gif" lazyload alt="图3"></p>
 <p align='center'>图3</p>
@@ -2050,7 +2060,7 @@ int main(void)
 <li><p><strong>右旋</strong>：如图3所示，同左旋是同样的道理，x 节点变为根节点，同时 y 节点连同其右子树 c 作为 x 节点的右子树，原 x 节点的右子树 b 变为 y 节点的左子树</p>
 </li>
 </ul>
-<h4 id="8-2-2红黑树的插入新节点"><a href="#8-2-2红黑树的插入新节点" class="headerlink" title="8.2.2红黑树的插入新节点"></a>8.2.2红黑树的插入新节点</h4><p><strong>当创建一个红黑树或者向已有红黑树中插入新的数据时，只需要按部就班地执行以下 3 步：</strong></p>
+<h4 id="9-2-2红黑树的插入新节点"><a href="#9-2-2红黑树的插入新节点" class="headerlink" title="9.2.2红黑树的插入新节点"></a>9.2.2红黑树的插入新节点</h4><p><strong>当创建一个红黑树或者向已有红黑树中插入新的数据时，只需要按部就班地执行以下 3 步：</strong></p>
 <p>​	一、由于红黑树本身是一棵二叉查找树，所以在插入新的节点时，完全按照二叉查找树插入节点的方法，找到新节点插入的位置</p>
 <p>​	二、将新插入的节点节点初始化，颜色设置为红色后插入到指定位置；（将新节点初始化为红色插入后，不会破坏红黑树第 5 条的性质）</p>
 <p>​	三、由于插入新的节点，可能会破坏红黑树第 4 条的性质（若其父节点颜色为红色，就破坏了红黑树的性质），此时需要调整二叉查找树，想办法通过旋转以及修改树中节点的颜色，使其重新成为红黑树</p>
@@ -2081,7 +2091,7 @@ int main(void)
 <p><strong>分析</strong>：在此种情况下，由于当前节点 F 和父节点 S 颜色都为红色，违背了红黑树的性质 4，此时可以将 S 颜色改为黑色，有违反了性质 5，因为所有 通过 S 的路径其黑高度都增加了 1 ，所以需要将其祖父节点颜色设为红色后紧接一个右旋，这样这部分子树有成为了红黑树。（上图中的右图虽看似不是红黑树，但是只是整棵树的一部分，以 S 为根节点的子树一定是一棵红黑树）</p>
 </li>
 </ol>
-<h4 id="8-2-3红黑树删除节点"><a href="#8-2-3红黑树删除节点" class="headerlink" title="8.2.3红黑树删除节点"></a>8.2.3红黑树删除节点</h4><p>在二叉查找树删除节点时，分为 3 种情况：</p>
+<h4 id="9-2-3红黑树删除节点"><a href="#9-2-3红黑树删除节点" class="headerlink" title="9.2.3红黑树删除节点"></a>9.2.3红黑树删除节点</h4><p>在二叉查找树删除节点时，分为 3 种情况：</p>
 <ol>
 <li><p>若该删除节点本身是叶子节点，则可以直接删除；</p>
 </li>
@@ -2109,8 +2119,11 @@ int main(void)
 <p>4） 删除节点的兄弟节点是黑色，其右孩子是红色（左孩子不管是什么颜色），调整措施为：将删除节点的父节点的颜色赋值给其兄弟节点，然后再设置父节	   点颜色为黑色，兄弟节点的右孩子节点为黑色，根据其父节点做左旋操作，最后设置替换删除节点的节点为根节点；</p>
 </li>
 </ol>
-<h3 id="8-3-红黑树的应用"><a href="#8-3-红黑树的应用" class="headerlink" title="8.3.红黑树的应用"></a>8.3.红黑树的应用</h3><p>红黑树的应用比较广泛，主要是用它来存储有序的数据，它的时间复杂度是O(logn)，效率非常之高。<br><strong>例如，Java集合中的TreeSet和TreeMap，C++ STL中的set、map，以及Linux虚拟内存的管理，都是通过红黑树去实现的，而 JDK8 中 HashMap 当链表长度大于 8 时也会转化为红黑树</strong></p>
-<h3 id="8-4-总结"><a href="#8-4-总结" class="headerlink" title="8.4.总结"></a>8.4.总结</h3><ul>
+<h3 id="9-3-红黑树的应用"><a href="#9-3-红黑树的应用" class="headerlink" title="9.3.红黑树的应用"></a>9.3.红黑树的应用</h3><ul>
+<li>红黑树的应用比较广泛，主要是用它来存储有序的数据，它的时间复杂度是O(logn)，效率非常之高</li>
+<li><strong>例如，Java集合中的TreeSet和TreeMap，C++ STL中的set、map，以及Linux虚拟内存的管理，都是通过红黑树去实现的，而 JDK8 中 HashMap 当链表长度大于 8 时也会转化为红黑树</strong></li>
+</ul>
+<h3 id="9-4-总结"><a href="#9-4-总结" class="headerlink" title="9.4.总结"></a>9.4.总结</h3><ul>
 <li><p>红黑树，虽隶属于二叉查找树，但是二叉查找树的时间复杂度会受到其树深度的影响，而红黑树可以保证在最坏情况下的时间复杂度仍为<code>O(lgn)</code>。当数据量多到一定程度时，使用红黑树比二叉查找树的效率要高</p>
 </li>
 <li><p>同平衡二叉树相比较，红黑树没有像平衡二叉树对平衡性要求的那么苛刻，虽然两者的时间复杂度相同，但是红黑树在实际测算中的速度要更胜一筹！平衡二叉树的时间复杂度是<code>O(logn)</code>，红黑树的时间复杂度为<code>O(lgn)</code>，两者都表示的都是时间复杂度为对数关系（lg 函数为底是 10 的对数，用于表示时间复杂度时可以忽略）</p>
