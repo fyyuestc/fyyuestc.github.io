@@ -43,7 +43,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356010.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356849.png">
 <meta property="article:published_time" content="2022-07-09T07:15:45.000Z">
-<meta property="article:modified_time" content="2022-09-12T13:08:39.063Z">
+<meta property="article:modified_time" content="2022-09-12T13:16:42.535Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          56k 字
+          58k 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          468 分钟
+          480 分钟
         
       </span>
     
@@ -860,17 +860,30 @@ int main(void)
 </li>
 </ul>
 <h2 id="25-strcpy和memcpy的区别以及效率分析"><a href="#25-strcpy和memcpy的区别以及效率分析" class="headerlink" title="25.strcpy和memcpy的区别以及效率分析"></a>25.strcpy和memcpy的区别以及效率分析</h2><ul>
-<li><strong>相同点</strong><ul>
+<li><p><strong>相同点</strong></p>
+<ul>
 <li>strcpy和memcpy都是标准C库函数</li>
 </ul>
 </li>
-<li><strong>不同点</strong><ul>
+<li><p><strong>不同点</strong></p>
+<ul>
 <li>strcpy只能应用字符类型的复制。而memcpy应用范围更广，任何类型都可以，只要能给出对象的起始地址和内存长度信息、并且对象具有可操作性即可</li>
 <li>memcpy相比使用strcpy会更加的安全，当然也可以使用strcpy的安全板本strncpy函数</li>
 <li><strong>strcpy一定会拷贝字符串结尾符’\0’，memcpy在拷贝字符串的时候，根据指定拷贝字节数拷贝字符串，是否拷贝‘\0’结束符，根据count的大小</strong></li>
 </ul>
 </li>
-<li><strong>效率比较(拷贝字符串)</strong><ul>
+<li><p><strong>memcpy实现方法</strong></p>
+<ul>
+<li>memcpy思想：大部分认为memcpy是一个char到char的拷贝循环，担心它的效率。实际上，memcpy是一个效率最高的内存拷贝函数，他不会那么傻来做一个一个字节的内存拷贝，在地址不对齐的情况下，他是一个字节一个字节的拷，地址对齐以后，就会使用CPU字长来拷，32bit或64bit，还会根据CPU的类型选择一些优化的指令来进行拷贝</li>
+<li>总的来说，memcpy的实现是CPU类型、操作系统、cLib相关的。毫无疑问，它是内存拷贝里效率最高的，可以放心使用</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> *<span class="hljs-title">mymemcpy</span><span class="hljs-params">(<span class="hljs-type">void</span> *dst, <span class="hljs-type">const</span> <span class="hljs-type">void</span> *src, <span class="hljs-type">size_t</span> num)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">assert</span>((<span class="hljs-literal">NULL</span> != dst) &amp;&amp; (<span class="hljs-literal">NULL</span> != src));<br>    <span class="hljs-type">int</span> wordnum = num / <span class="hljs-number">4</span>;  <span class="hljs-comment">//计算有多少个32位，按4字节拷贝</span><br>    <span class="hljs-type">int</span> slice = num % <span class="hljs-number">4</span>;    <span class="hljs-comment">//剩余的按字节拷贝</span><br>    <span class="hljs-type">int</span> *pintsrc = (<span class="hljs-type">int</span> *)src; <span class="hljs-comment">//强制转换类型，不同类型的不能进行拷贝</span><br>    <span class="hljs-type">int</span> *pintdst = (<span class="hljs-type">int</span> *)dst;<br>    <span class="hljs-keyword">while</span>(wordnum--)<br>    &#123;<br>        *pintsrc++ = *pintsrc++;<br>    &#125;<br> <br>    <span class="hljs-keyword">while</span>(slice--)<br>    &#123;<br>        ((<span class="hljs-type">char</span> *)pintdst++) = *((<span class="hljs-type">char</span> *)pintsrc++);<br>    &#125;<br>    <span class="hljs-keyword">return</span> dst;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>strcpy实现方法</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span>* <span class="hljs-title">my_strcpy</span><span class="hljs-params">(<span class="hljs-type">void</span> *arr, <span class="hljs-type">void</span> *brr)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> j = <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> k = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span>(brr[j] != <span class="hljs-number">0</span>)<br>    &#123;<br>        arr[j] = brr[j];<br>        j++;<br>    &#125;<br>    arr[j] = <span class="hljs-string">&#x27;\0&#x27;</span>;<br>    <span class="hljs-keyword">return</span> arr;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>效率比较(拷贝字符串)</strong></p>
+<ul>
 <li><strong>在拷贝相同的字符串，且字节数相同(包括‘\0’)的情况下，strcpy效率比memcpy效率更快</strong>，且strcpy调试方便</li>
 <li>memcpy 虽然高效，但是需要额外提供拷贝的内存长度这一参数，易错且使用不便；并且如果长度指定过大的话（最优长度是源字符串长度 + 1），还会带来性能的下降。其实 strcpy 函数一般是在内部调用 memcpy 函数或者用汇编直接实现的，以达到高效的目的。因此，使用 memcpy 和 strcpy 拷贝字符串在性能上应该没有什么大的差别</li>
 <li>snprintf 要额外指定格式符并且进行格式转化，麻烦且效率不高</li>
@@ -1458,6 +1471,34 @@ int main(void)
 <li>若析构函数抛出异常，调用std::abort()来终止程序</li>
 <li>在析构函数中catch捕获异常并作处理，吞下异常</li>
 <li>如果客户需要对某个操作函数运行期间抛出的异常做出反应，class应该提供普通函数执行该操作，而非在析构函数中</li>
+</ul>
+<h2 id="34-类的对象存储空间"><a href="#34-类的对象存储空间" class="headerlink" title="34.类的对象存储空间"></a>34.类的对象存储空间</h2><ul>
+<li><p><strong>对象存储空间</strong></p>
+<ul>
+<li><p>非静态成员的数据类型大小之和</p>
+</li>
+<li><p>编译器加入的额外成员变量（如指向虚函数表的指针）</p>
+</li>
+<li><p>为了边缘对齐优化加入的padding</p>
+</li>
+<li><p>空类(无非静态数据成员)的对象的size为1, 当作为基类时, size为0</p>
+</li>
+</ul>
+</li>
+<li><p><strong>空类默认成员</strong></p>
+<ul>
+<li>声明一个空类，不做任何事情的话，编译器会自动为你生成一个默认构造函数、一个拷贝默认构造函数、一个默认拷贝赋值操作符、一个默认析构函数、取址运算符和一个取址运算符const。这些函数只有在第一次被调用时，才会别编译器创建。所有这些函数都是inline和public的</li>
+</ul>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs awk">class Empty<br>&#123;<br>public:<br>Empty(); <span class="hljs-regexp">//</span> 缺省构造函数<span class="hljs-regexp">//</span><br>Empty( const Empty&amp; ); <span class="hljs-regexp">//</span> 拷贝构造函数<span class="hljs-regexp">//</span><br>~Empty(); <span class="hljs-regexp">//</span> 析构函数<span class="hljs-regexp">//</span><br>Empty&amp; operator=( const Empty&amp; ); <span class="hljs-regexp">//</span> 赋值运算符<span class="hljs-regexp">//</span><br>Empty* operator&amp;(); <span class="hljs-regexp">//</span> 取址运算符<br>const Empty* operator&amp;() const; <span class="hljs-regexp">//</span> 取址运算符 const<br>&#125;;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>空类大小</strong></p>
+<ul>
+<li><strong>C++空类的大小不为0，不同编译器设置不一样，vs设置为1</strong></li>
+<li>C++标准指出，不允许一个对象（当然包括类对象）的大小为0，不同的对象不能具有相同的地址</li>
+<li>带有虚函数的C++类大小不为1，因为每一个对象会有一个vptr指向虚函数表，具体大小根据指针大小确定</li>
+<li>C++中要求对于类的每个实例都必须有独一无二的地址,那么编译器自动为空类分配一个字节大小，这样便保证了每个实例均有独一无二的内存地址</li>
+</ul>
+</li>
 </ul>
 <h1 id="三、C-高级特性"><a href="#三、C-高级特性" class="headerlink" title="三、C++高级特性"></a>三、C++高级特性</h1><h2 id="1-什么是内存池，如何实现？"><a href="#1-什么是内存池，如何实现？" class="headerlink" title="1.什么是内存池，如何实现？"></a>1.什么是内存池，如何实现？</h2><p><strong>内存池（Memory Pool） 是一种内存分配方式</strong></p>
 <ul>
