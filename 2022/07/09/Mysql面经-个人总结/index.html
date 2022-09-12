@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202207232116840.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202207232136438.png">
 <meta property="article:published_time" content="2022-07-09T07:15:51.000Z">
-<meta property="article:modified_time" content="2022-09-11T11:57:52.924Z">
+<meta property="article:modified_time" content="2022-09-12T07:47:00.785Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -804,7 +804,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="11-Mysql的索引为什么使用B-树而不使用跳表"><a href="#11-Mysql的索引为什么使用B-树而不使用跳表" class="headerlink" title="11.Mysql的索引为什么使用B+树而不使用跳表?"></a>11.Mysql的索引为什么使用B+树而不使用跳表?</h2><ul>
+<h2 id="11-Mysql索引为什么使用B-树而不使用跳表"><a href="#11-Mysql索引为什么使用B-树而不使用跳表" class="headerlink" title="11.Mysql索引为什么使用B+树而不使用跳表?"></a>11.Mysql索引为什么使用B+树而不使用跳表?</h2><ul>
 <li><p><strong>查询</strong></p>
 <ul>
 <li>B+树是多叉树结构，每个结点都是一个16k的数据页，能存放较多索引信息，所以扇出很高。三层左右就可以存储2kw左右的数据(知道结论就行，想知道原因可以看之前的文章)。也就是说查询一次数据，如果这些数据页都在磁盘里，那么最多需要查询三次磁盘IO</li>
