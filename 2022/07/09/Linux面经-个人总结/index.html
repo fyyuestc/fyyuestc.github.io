@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/be608a77-7b7f-4f8e-87cc-f2237270bf69.png">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/docker-filesystems-busyboxrw.png">
 <meta property="article:published_time" content="2022-07-09T07:15:07.000Z">
-<meta property="article:modified_time" content="2022-09-13T01:58:08.811Z">
+<meta property="article:modified_time" content="2022-09-13T03:43:47.671Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -1216,7 +1216,7 @@
 </ul>
 </li>
 <li><strong>注意：</strong><ul>
-<li>sendto和recvfrom的第56个参数是sock地址<ul>
+<li>sendto和recvfrom的第5、6个参数是sock地址<ul>
 <li>服务器端的recvfrom和sendto都是cli地址</li>
 <li>客户端sendto是服务器端的地址，最后一个参数是指针，recvfrom是新建的from地址，最后一个参数是整型</li>
 </ul>
@@ -1234,7 +1234,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="2-TCP中的accept和connect和listen的关系"><a href="#2-TCP中的accept和connect和listen的关系" class="headerlink" title="2.TCP中的accept和connect和listen的关系"></a>2.TCP中的accept和connect和listen的关系</h2><ul>
+<h2 id="2-TCP中的accept和connect、listen的关系"><a href="#2-TCP中的accept和connect、listen的关系" class="headerlink" title="2.TCP中的accept和connect、listen的关系"></a>2.TCP中的accept和connect、listen的关系</h2><ul>
 <li><strong>listen</strong><ul>
 <li><strong>listen功能</strong><ul>
 <li>listen函数把一个未连接的套接字转换成一个被动套接字，指示内核应接受指向该套接字的连接请求</li>
@@ -1310,7 +1310,7 @@
 <ul>
 <li><strong>TIMEWAIT</strong><ul>
 <li>可以通过设置SOCKET选项SO_REUSEADDR来重用处于TIMEWAIT的sock地址，对应于内核中的tcp_tw_reuse，这个参数不是“消除” TIME_WAIT的，而是说当资源不够时，可以重用TIME_WAIT的连接</li>
-<li>修改ipv4.ip_local_port_range，增大可用端口范围，来承受更多TIME</li>
+<li>修改ipv4.ip_local_port_range，增大可用端口范围，来承受更多TIMEWAIT</li>
 <li>设置SOCK选项SO_LINGER选项，这样会直接消除TIMEWAIT</li>
 </ul>
 </li>
@@ -1320,34 +1320,37 @@
 </li>
 </ul>
 <h2 id="5-优雅关闭和半关闭"><a href="#5-优雅关闭和半关闭" class="headerlink" title="5.优雅关闭和半关闭"></a>5.优雅关闭和半关闭</h2><ul>
-<li><strong>概念</strong><ul>
+<li><p><strong>概念</strong></p>
+<ul>
 <li>一个文件描述符关联一个文件，这里是网络套接字</li>
+<li><strong>close</strong><ul>
 <li>close会关闭用户应用程序中的socket句柄，释放相关资源，从而触发关闭TCP连接</li>
 <li>关闭TCP连接，是关闭网络套接字，断开连接</li>
 <li>close只是减少引用计数，只有当引用计数为0的时候，才发送fin，真正关闭连接</li>
+</ul>
+</li>
+<li><strong>shutdown</strong><ul>
 <li>shutdown不同，只要以SHUT_WR&#x2F;SHUT_RDWR方式调用即发送FIN包</li>
 <li>shutdown后要调用close</li>
 <li>保持连接的某一端想关闭连接了，<strong>但它需要确保要发送的数据全部发送完毕以后才断开连接</strong>，此种情况下需要使用优雅关闭，一种是shutdown，一种是设置SO_LINGER的close</li>
 <li>半关闭，是关闭写端，但可以读对方的数据，这种只能通过shutdown实现</li>
 </ul>
 </li>
-<li><strong>close函数会关闭文件描述符，不会立马关闭网络套接字，除非引用计数为0，则会触发调用关闭TCP连接</strong><ul>
+</ul>
+</li>
+<li><p><strong>close函数会关闭文件描述符，不会立马关闭网络套接字，除非引用计数为0，则会触发调用关闭TCP连接</strong></p>
+<ul>
 <li>检查接收缓冲区是否有数据未读(不包括FIN包)，如果有数据未读，协议栈会发送RST包，而不是FIN包。如果套接字设置了SO_LINGER选项，并且lingertime设置为0，这种情况下也会发送RST包来终止连接。其他情况下，会检查套接字的状态，只有在套接字的状态是TCP_ESTABLISHED、TCP_SYN_RECV和TCP_CLOSE_WAIT的状态下，才会发送FIN包</li>
 <li>若有多个进程调用同一个网络套接字，会将网络套接字的文件描述符+1，close调用只是将当前套接字的文件描述符-1，只会对当前的进程有效，只会关闭当前进程的文件描述符，其他进程同样可以访问该套接字</li>
 <li>close函数的默认行为是，关闭一个socket，close将立即返回，TCP模块尝试把该socket对应的TCP缓冲区中的残留数据发送给对方，并不保证能到达对方</li>
 <li>close行为可以通过SO_LINGER修改</li>
 </ul>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plain">struct linger&#123;<br>    int l_onoff;    //开启或关闭该选项<br>    int l_linger;   //滞留时间<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">linger</span>&#123;<br>    <span class="hljs-type">int</span> l_onoff;    <span class="hljs-comment">//开启或关闭该选项</span><br>    <span class="hljs-type">int</span> l_linger;   <span class="hljs-comment">//滞留时间</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
-<pre><code class="hljs">- l_onoff为0，该选项不起作用，采用默认close行为 
-- l_onoff不为0，l_linger为0，close立即返回，TCP模块丢弃被关闭的socket对应的TCP缓冲区中的数据，给对方发送RST复位信号，这样可以异常终止连接，且完全消除了TIME_WAIT状态 
-- l_linger不为0，阻塞socket，被关闭的socket对应TCP缓冲区，若还有数据，close会阻塞，进程睡眠，直到收到对方的确认或等待l_linger时间，若超时仍未收到确认，则close返回-1设置errno为EWOULDBLOCK
-- l_linger不为0，非阻塞socket，close立即返回，需要根据返回值和errno判断残留数据是够发送完毕
-</code></pre>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">- l_onoff为<span class="hljs-number">0</span>，该选项不起作用，采用默认<span class="hljs-built_in">close</span>行为 <br>- l_onoff不为<span class="hljs-number">0</span>，l_linger为<span class="hljs-number">0</span>，<span class="hljs-built_in">close</span>立即返回，TCP模块丢弃被关闭的<span class="hljs-built_in">socket</span>对应的TCP缓冲区中的数据，给对方发送RST复位信号，这样可以异常终止连接，且完全消除了TIME_WAIT状态 <br>- l_linger不为<span class="hljs-number">0</span>，阻塞<span class="hljs-built_in">socket</span>，被关闭的<span class="hljs-built_in">socket</span>对应TCP缓冲区，若还有数据，<span class="hljs-built_in">close</span>会阻塞，进程睡眠，直到收到对方的确认或等待l_linger时间，若超时仍未收到确认，则<span class="hljs-built_in">close</span>返回<span class="hljs-number">-1</span>设置errno为EWOULDBLOCK<br>- l_linger不为<span class="hljs-number">0</span>，非阻塞<span class="hljs-built_in">socket</span>，<span class="hljs-built_in">close</span>立即返回，需要根据返回值和errno判断残留数据是够发送完毕<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>shutdown没有采用引用计数的机制，会影响所有进程的网络套接字，可以只关闭套接字的读端或写端，也可全部关闭，用于实现半关闭，会直接发送FIN包</strong></p>
 <ul>
-<li><strong>shutdown没有采用引用计数的机制，会影响所有进程的网络套接字，可以只关闭套接字的读端或写端，也可全部关闭，用于实现半关闭，会直接发送FIN包</strong><ul>
 <li>SHUT_RD，关闭sockfd上的读端，不能再对sockfd文件描述符进行读操作，且接收缓冲区中的所有数据都会丢弃</li>
 <li>SHUT_WR，关闭写端，确保发送缓冲区中的数据会在真正关闭连接之前会发送出去，不能对其进行写操作，连接处于半关闭状态</li>
 <li>SHUT_RDWR，同时关闭sockfd的读写</li>
