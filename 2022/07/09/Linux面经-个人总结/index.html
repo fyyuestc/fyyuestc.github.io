@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/be608a77-7b7f-4f8e-87cc-f2237270bf69.png">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/docker-filesystems-busyboxrw.png">
 <meta property="article:published_time" content="2022-07-09T07:15:07.000Z">
-<meta property="article:modified_time" content="2022-09-12T07:39:12.104Z">
+<meta property="article:modified_time" content="2022-09-13T01:54:10.624Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          36k 字
+          37k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          303 分钟
+          307 分钟
         
       </span>
     
@@ -613,15 +613,9 @@
 <p>显示的十进制数字3转换为2进制为最低两个是1，每个1对应一个cpu，所以进程运行在2个cpu上</p>
 </li>
 <li><p><strong>指定进程运行在cpu1上</strong></p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs ocaml">-&gt; % taskset -pc <span class="hljs-number">1</span> <span class="hljs-number">2726</span><br>pid <span class="hljs-number">2726</span><span class="hljs-symbol">&#x27;s</span> current affinity <span class="hljs-built_in">list</span>: <span class="hljs-number">0</span>,<span class="hljs-number">1</span><br>pid <span class="hljs-number">2726</span><span class="hljs-symbol">&#x27;s</span> <span class="hljs-keyword">new</span> affinity <span class="hljs-built_in">list</span>: <span class="hljs-number">1</span><br><br>注意，cpu的标号是从<span class="hljs-number">0</span>开始的，所以cpu1表示第二个cpu（第一个cpu的标号是<span class="hljs-number">0</span>）<br><br>至此，就把应用程序绑定到了cpu1上运行，查看如下：<br><br>-&gt; % taskset -p <span class="hljs-number">2726</span><br>pid <span class="hljs-number">2726</span><span class="hljs-symbol">&#x27;s</span> current affinity mask: <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
+
 </li>
-</ul>
-<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ocaml">  -&gt; % taskset -pc <span class="hljs-number">1</span> <span class="hljs-number">2726</span><br>pid <span class="hljs-number">2726</span><span class="hljs-symbol">&#x27;s</span> current affinity <span class="hljs-built_in">list</span>: <span class="hljs-number">0</span>,<span class="hljs-number">1</span><br>  pid <span class="hljs-number">2726</span><span class="hljs-symbol">&#x27;s</span> <span class="hljs-keyword">new</span> affinity <span class="hljs-built_in">list</span>: <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
-
-<p>  注意，cpu的标号是从0开始的，所以cpu1表示第二个cpu（第一个cpu的标号是0）</p>
-<p>  <strong>至此，就把应用程序绑定到了cpu1上运行，查看如下：</strong></p>
-<figure class="highlight erlang-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs erlang-repl">  -&gt; <span class="hljs-comment">% taskset -p 2726</span><br>pid <span class="hljs-number">2726</span><span class="hljs-string">&#x27;s current affinity mask: 2</span><br></code></pre></td></tr></table></figure>
-
-<ul>
 <li><p><strong>启动程序时绑定cpu</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">  #</span><span class="language-bash">启动时绑定到第二个cpu</span><br><span class="hljs-meta prompt_">-&gt; </span><span class="language-bash">% taskset -c 1 ./dgram_servr&amp;</span><br>  [1] 3011<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">  #</span><span class="language-bash">查看确认绑定情况</span><br><span class="hljs-meta prompt_">  -&gt; </span><span class="language-bash">% taskset -p 3011</span><br>  pid 3011&#x27;s current affinity mask: 2<br></code></pre></td></tr></table></figure></li>
 </ul>
@@ -1075,7 +1069,28 @@
 </ul>
 </li>
 </ul>
-<h3 id="4-15Posix信号量与System-V信号量的区别"><a href="#4-15Posix信号量与System-V信号量的区别" class="headerlink" title="4.15Posix信号量与System V信号量的区别"></a>4.15Posix信号量与System V信号量的区别</h3><ul>
+<h3 id="4-15协程和线程的区别"><a href="#4-15协程和线程的区别" class="headerlink" title="4.15协程和线程的区别"></a>4.15协程和线程的区别</h3><ul>
+<li><strong>协程概述</strong><ul>
+<li>协程是轻量级线程，拥有自己的寄存器上下文和栈。协程调度切换时，将寄存器上下文和栈保存到其他地方，在切回来的时候，恢复先前保存的寄存器上下文和栈</li>
+<li>协程能保留上一次调用时的状态，即所有局部状态的一个特定组合，每次过程重入时，就相当于进入上一次调用的状态</li>
+</ul>
+</li>
+<li><strong>协程和线程的区别</strong><ul>
+<li>协程最大的优势就是协程极高的执行效率。因为子程序切换不是线程切换，而是由程序自身控制，因此，没有线程切换的开销，和多线程比，线程数量越多，协程的性能优势就越明显</li>
+<li>不需要多线程的锁机制，因为只有一个线程，也不存在同时写变量冲突，在协程中控制共享资源不加锁，只需要判断状态就好了，所以执行效率比多线程高很多</li>
+</ul>
+</li>
+<li><strong>应用场景</strong><ul>
+<li><strong>I&#x2F;O 密集型任务</strong><ul>
+<li>这一点与多线程有些类似，但协程调用是在一个线程内进行的，是单线程，切换的开销小，因此效率上略高于多线程</li>
+<li>当程序在执行 I&#x2F;O 时操作时，CPU 是空闲的，此时可以充分利用 CPU 的时间片来处理其他任务。在单线程中，一个函数调用，一般是从函数的第一行代码开始执行，结束于 return 语句、异常或者函数执行（也可以认为是隐式地返回了 None ）</li>
+<li>有了协程，我们在函数的执行过程中，如果遇到了耗时的 I&#x2F;O 操作，函数可以临时让出控制权，让 CPU 执行其他函数，等 I&#x2F;O 操作执行完毕以后再收回控制权</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-16Posix信号量与System-V信号量的区别"><a href="#4-16Posix信号量与System-V信号量的区别" class="headerlink" title="4.16Posix信号量与System V信号量的区别"></a>4.16Posix信号量与System V信号量的区别</h3><ul>
 <li><p>POSIX信号量常用于线程；system v信号量常用于进程的同步</p>
 </li>
 <li><p>从使用的角度，System V 信号量的使用比较复杂，而 POSIX 信号量使用起来相对简单</p>
