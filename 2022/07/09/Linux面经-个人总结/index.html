@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/be608a77-7b7f-4f8e-87cc-f2237270bf69.png">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/docker-filesystems-busyboxrw.png">
 <meta property="article:published_time" content="2022-07-09T07:15:07.000Z">
-<meta property="article:modified_time" content="2022-09-13T01:54:10.624Z">
+<meta property="article:modified_time" content="2022-09-13T01:58:08.811Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -613,12 +613,11 @@
 <p>显示的十进制数字3转换为2进制为最低两个是1，每个1对应一个cpu，所以进程运行在2个cpu上</p>
 </li>
 <li><p><strong>指定进程运行在cpu1上</strong></p>
-<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs ocaml">-&gt; % taskset -pc <span class="hljs-number">1</span> <span class="hljs-number">2726</span><br>pid <span class="hljs-number">2726</span><span class="hljs-symbol">&#x27;s</span> current affinity <span class="hljs-built_in">list</span>: <span class="hljs-number">0</span>,<span class="hljs-number">1</span><br>pid <span class="hljs-number">2726</span><span class="hljs-symbol">&#x27;s</span> <span class="hljs-keyword">new</span> affinity <span class="hljs-built_in">list</span>: <span class="hljs-number">1</span><br><br>注意，cpu的标号是从<span class="hljs-number">0</span>开始的，所以cpu1表示第二个cpu（第一个cpu的标号是<span class="hljs-number">0</span>）<br><br>至此，就把应用程序绑定到了cpu1上运行，查看如下：<br><br>-&gt; % taskset -p <span class="hljs-number">2726</span><br>pid <span class="hljs-number">2726</span><span class="hljs-symbol">&#x27;s</span> current affinity mask: <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
-
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs ocaml">-&gt; % taskset -pc <span class="hljs-number">1</span> <span class="hljs-number">2726</span><br>pid <span class="hljs-number">2726</span><span class="hljs-symbol">&#x27;s</span> current affinity <span class="hljs-built_in">list</span>: <span class="hljs-number">0</span>,<span class="hljs-number">1</span><br>pid <span class="hljs-number">2726</span><span class="hljs-symbol">&#x27;s</span> <span class="hljs-keyword">new</span> affinity <span class="hljs-built_in">list</span>: <span class="hljs-number">1</span><br><br>注意，cpu的标号是从<span class="hljs-number">0</span>开始的，所以cpu1表示第二个cpu（第一个cpu的标号是<span class="hljs-number">0</span>）<br><br>至此，就把应用程序绑定到了cpu1上运行，查看如下：<br><br>-&gt; % taskset -p <span class="hljs-number">2726</span><br>pid <span class="hljs-number">2726</span><span class="hljs-symbol">&#x27;s</span> current affinity mask: <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure></li>
+</ul>
 </li>
 <li><p><strong>启动程序时绑定cpu</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">  #</span><span class="language-bash">启动时绑定到第二个cpu</span><br><span class="hljs-meta prompt_">-&gt; </span><span class="language-bash">% taskset -c 1 ./dgram_servr&amp;</span><br>  [1] 3011<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">  #</span><span class="language-bash">查看确认绑定情况</span><br><span class="hljs-meta prompt_">  -&gt; </span><span class="language-bash">% taskset -p 3011</span><br>  pid 3011&#x27;s current affinity mask: 2<br></code></pre></td></tr></table></figure></li>
-</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">  #</span><span class="language-bash">启动时绑定到第二个cpu</span><br><span class="hljs-meta prompt_">-&gt; </span><span class="language-bash">% taskset -c 1 ./dgram_servr&amp;</span><br>  [1] 3011<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">查看确认绑定情况</span><br><span class="hljs-meta prompt_">  -&gt; </span><span class="language-bash">% taskset -p 3011</span><br>  pid 3011&#x27;s current affinity mask: 2<br></code></pre></td></tr></table></figure>
 </li>
 <li><p><strong>使用sched_setaffinity系统调用(绑定进程)</strong><br>sched_setaffinity可以将某个进程绑定到一个特定的CPU</p>
 <figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">#define _GNU_SOURCE             <span class="hljs-comment">/* See feature_test_macros(7) */</span><br>#<span class="hljs-keyword">include</span> &lt;sched.h&gt;<br><br><span class="hljs-comment">/* 设置进程号为pid的进程运行在mask所设定的CPU上</span><br><span class="hljs-comment"></span><br><span class="hljs-comment"> * 第二个参数cpusetsize是mask所指定的数的长度</span><br><span class="hljs-comment"> * 通常设定为sizeof(cpu_set_t)</span><br><span class="hljs-comment"></span><br><span class="hljs-comment"> * 如果pid的值为0,则表示指定的是当前进程 </span><br><span class="hljs-comment">   */</span><br>   <span class="hljs-built_in">int</span> sched<span class="hljs-constructor">_setaffinity(<span class="hljs-params">pid_t</span> <span class="hljs-params">pid</span>, <span class="hljs-params">size_t</span> <span class="hljs-params">cpusetsize</span>, <span class="hljs-params">cpu_set_t</span> <span class="hljs-operator">*</span><span class="hljs-params">mask</span>)</span>;<br><br><span class="hljs-built_in">int</span> sched<span class="hljs-constructor">_getaffinity(<span class="hljs-params">pid_t</span> <span class="hljs-params">pid</span>, <span class="hljs-params">size_t</span> <span class="hljs-params">cpusetsize</span>, <span class="hljs-params">cpu_set_t</span> <span class="hljs-operator">*</span><span class="hljs-params">mask</span>)</span>;<span class="hljs-comment">/* 获得pid所指示的进程的CPU位掩码,并将该掩码返回到mask所指向的结构中 */</span><br></code></pre></td></tr></table></figure>
@@ -827,7 +826,7 @@
 <li>调用_exit()函数</li>
 </ul>
 </li>
-<li>**异常退出 **<ul>
+<li><strong>异常退出</strong> <ul>
 <li>调用abort函数</li>
 <li>进程收到某个信号，该信号使程序终止</li>
 </ul>
@@ -867,46 +866,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="4-8线程不安全的五大原因"><a href="#4-8线程不安全的五大原因" class="headerlink" title="4.8线程不安全的五大原因"></a>4.8线程不安全的五大原因</h3><ol>
-<li><strong>抢占式执行</strong></li>
-</ol>
-<ul>
-<li>抢占式执行是导致线程不安全的罪魁祸首，当多个线程并发执行的时候，那个线程先执行，那个线程后执行，这是程序员决定不了的，是由操作系统内核来决定的，或者说是系统的调度器决定的</li>
-</ul>
-<ol start="2">
-<li><strong>多个线程修改同一个资源</strong></li>
-</ol>
-<ul>
-<li>由于线程是抢占式执行的，这就导致了多个线程可能会同时访问同一个系统资源，如果是只是读取资源当然不会有什么影响，但是如果有多个线程同时写资源，这样就会发生错误，从而导致了线程不安去的情况</li>
-</ul>
-<ol start="3">
-<li><p><strong>操作不是原子性</strong></p>
-<ul>
-<li>比如像 i++ 这样的操作就不是原子性的，在系统调用执行时，这个操作被分为了三步，首先是 cpu 从内存中读取到 i 的值，读到 cpu 里面的寄存器（寄存器是存在于 cpu 中，空间比内存小，访问速度比内存快）里，然后在寄存器里执行了类似于 ADD 这样的指令然后就完成了 +1 的操作，操作结果依旧放在寄存器里，最后 cpu 里的寄存器把值写回到内存中，这样才完成了一个 i++ 的操作。这样的三步就相当于读取，修改，写入的过程  </li>
-<li>由于线程是抢占式执行的，这就导致了，一个线程在自增执行了一半的时候，另一个线程也来读取，然后自增。就比如现在假如有两个线程分别在两个 cpu 中同时从执行 i++ 的操作，那么它们将同时读到 i 的值(此时读取到的值相同)，然后分别执行加 1，再写回到内存中，此时就会发现 i 的值就只是加了一次。因为操作是非原子性，导致了出现了这样的错误，从而导致发生线程不安全</li>
-</ul>
-</li>
-<li><p><strong>内存可见性</strong></p>
-<ul>
-<li><p>两个线程同时操作一个内存，比如，一个读一个写，写操作的线程进行了修改的时候，读线程读取到的结果可能是修改前的也可能是修改后，结果是不确定的，也造成线程不安去。至于为什么会产生这样的结果？</p>
-</li>
-<li><p>原因：假如出现了一种情况，循环自增 while(true){i++}，那么当一个线程执行的时候，理论上 cpu 会在内存上循环的执行读取，修改，写入…读取，修改，写入…这样的操作，然后像这种连续且大量的读写内存的操作是非常消耗资源开销的，于是 JMM 就会对指令进行优化。那么是如何优化呢？我们知道数据的修改是在 cpu 的寄存器里面实现的，并且寄存器的的访问速度又比内存快，于是所有的 ADD 操作就会一直在寄存器里面实现，于是整个过程就变成了读取，修改..修改..修改，写入这样的过程。</p>
-</li>
-<li><p>这种优化对于单线程来说，是很好的，但是如果是多线程，这样的有优化就适得其反了。就比如一个线程读取后，已经把值自增了 100 次了，另一个线程可能还读取的是它的初始值 1。而我们预期要读到的值应该是它自增过程中的一个中间值，这就发生了严重的错误，导致了线程不安全</p>
-</li>
-</ul>
-<p><strong>总结：内存的可见性本质就是编译器优化导致了线程修改后的结果没有及时地写回到内存中，从而也进一步导致了其他线程读取到地值不是最新地数据(读地是一个旧的数据)</strong></p>
-</li>
-<li><p><strong>指令重排序</strong><br>  指令重排序也是和编译器优化直接相关，为了让程序跑地更快，调整了执行地顺序。从而导致了不必要地错误，同样地在单线程下这样地优化是好的，但多线程下这样的优化就会出现问题</p>
-</li>
-</ol>
-<ul>
-<li><strong>关于 cpu 和 内存 交互的问题</strong><ul>
-<li>文章上面一直用 cpu 和内存直接交互举的例子，但实际情况是 cpu 并没有和 内存 直接交互，它们之间还有 L1 Cache (一级缓存)， L2 Cache (二级缓存)，它们之间具体有多少级缓存，不同的计算机是不一样的。由于 cpu 空间很小，读取速度快；内存的空间大，读取速度慢，于是中间这些缓存就起到了一个存储交互的作用，cpu 一般是能去操作缓存就去操作缓存，除非缓存没有数据了才会去操作内存，总之，cpu 会尽量减少内存操作的次数，从而提高效率</li>
-</ul>
-</li>
-</ul>
-<h3 id="4-9回收进程资源的方式和区别"><a href="#4-9回收进程资源的方式和区别" class="headerlink" title="4.9回收进程资源的方式和区别"></a>4.9回收进程资源的方式和区别</h3><ul>
+<h3 id="4-8回收进程资源的方式和区别"><a href="#4-8回收进程资源的方式和区别" class="headerlink" title="4.8回收进程资源的方式和区别"></a>4.8回收进程资源的方式和区别</h3><ul>
 <li><strong>init进程（进程号为1）会周期性的调用wait系统调用来清除各个僵尸进程</strong></li>
 <li><strong>wait</strong><ul>
 <li><code>pid_t wait (int *status)</code> status表示子进程的退出状态，成功返回值为子进程进程号，失败为-1</li>
@@ -935,7 +895,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="4-10线程间同步及系统调用"><a href="#4-10线程间同步及系统调用" class="headerlink" title="4.10线程间同步及系统调用"></a>4.10线程间同步及系统调用</h3><ul>
+<h3 id="4-9线程间同步及系统调用"><a href="#4-9线程间同步及系统调用" class="headerlink" title="4.9线程间同步及系统调用"></a>4.9线程间同步及系统调用</h3><ul>
 <li><p><strong>信号量</strong><br>信号量是一种特殊的变量，可用于线程同步。它只取自然数值，并且只支持两种操作：</p>
 <ul>
 <li>P(SV)：如果信号量SV大于0，将它减一；如果SV值为0，则挂起该线程</li>
@@ -967,6 +927,45 @@
 <li>pthread_cond_wait：等待目标条件变量。需要一个加锁的互斥锁确保操作的原子性。该函数中在进入wait状态前首先进行解锁，然后接收到信号后会再加锁，保证该线程对共享资源正确访问</li>
 </ul>
 </li>
+</ul>
+</li>
+</ul>
+<h3 id="4-10线程不安全的五大原因"><a href="#4-10线程不安全的五大原因" class="headerlink" title="4.10线程不安全的五大原因"></a>4.10线程不安全的五大原因</h3><ol>
+<li><strong>抢占式执行</strong></li>
+</ol>
+<ul>
+<li>抢占式执行是导致线程不安全的罪魁祸首，当多个线程并发执行的时候，那个线程先执行，那个线程后执行，这是程序员决定不了的，是由操作系统内核来决定的，或者说是系统的调度器决定的</li>
+</ul>
+<ol start="2">
+<li><strong>多个线程修改同一个资源</strong></li>
+</ol>
+<ul>
+<li>由于线程是抢占式执行的，这就导致了多个线程可能会同时访问同一个系统资源，如果是只是读取资源当然不会有什么影响，但是如果有多个线程同时写资源，这样就会发生错误，从而导致了线程不安去的情况</li>
+</ul>
+<ol start="3">
+<li><p><strong>操作不是原子性</strong></p>
+<ul>
+<li>比如像 i++ 这样的操作就不是原子性的，在系统调用执行时，这个操作被分为了三步，首先是 cpu 从内存中读取到 i 的值，读到 cpu 里面的寄存器（寄存器是存在于 cpu 中，空间比内存小，访问速度比内存快）里，然后在寄存器里执行了类似于 ADD 这样的指令然后就完成了 +1 的操作，操作结果依旧放在寄存器里，最后 cpu 里的寄存器把值写回到内存中，这样才完成了一个 i++ 的操作。这样的三步就相当于读取，修改，写入的过程  </li>
+<li>由于线程是抢占式执行的，这就导致了，一个线程在自增执行了一半的时候，另一个线程也来读取，然后自增。就比如现在假如有两个线程分别在两个 cpu 中同时从执行 i++ 的操作，那么它们将同时读到 i 的值(此时读取到的值相同)，然后分别执行加 1，再写回到内存中，此时就会发现 i 的值就只是加了一次。因为操作是非原子性，导致了出现了这样的错误，从而导致发生线程不安全</li>
+</ul>
+</li>
+<li><p><strong>内存可见性</strong></p>
+<ul>
+<li><p>两个线程同时操作一个内存，比如，一个读一个写，写操作的线程进行了修改的时候，读线程读取到的结果可能是修改前的也可能是修改后，结果是不确定的，也造成线程不安去。至于为什么会产生这样的结果？</p>
+</li>
+<li><p>原因：假如出现了一种情况，循环自增 while(true){i++}，那么当一个线程执行的时候，理论上 cpu 会在内存上循环的执行读取，修改，写入…读取，修改，写入…这样的操作，然后像这种连续且大量的读写内存的操作是非常消耗资源开销的，于是 JMM 就会对指令进行优化。那么是如何优化呢？我们知道数据的修改是在 cpu 的寄存器里面实现的，并且寄存器的的访问速度又比内存快，于是所有的 ADD 操作就会一直在寄存器里面实现，于是整个过程就变成了读取，修改..修改..修改，写入这样的过程。</p>
+</li>
+<li><p>这种优化对于单线程来说，是很好的，但是如果是多线程，这样的有优化就适得其反了。就比如一个线程读取后，已经把值自增了 100 次了，另一个线程可能还读取的是它的初始值 1。而我们预期要读到的值应该是它自增过程中的一个中间值，这就发生了严重的错误，导致了线程不安全</p>
+</li>
+</ul>
+<p><strong>总结：内存的可见性本质就是编译器优化导致了线程修改后的结果没有及时地写回到内存中，从而也进一步导致了其他线程读取到地值不是最新地数据(读地是一个旧的数据)</strong></p>
+</li>
+<li><p><strong>指令重排序</strong><br>指令重排序也是和编译器优化直接相关，为了让程序跑地更快，调整了执行地顺序。从而导致了不必要地错误，同样地在单线程下这样地优化是好的，但多线程下这样的优化就会出现问题</p>
+</li>
+</ol>
+<ul>
+<li><strong>关于 cpu 和 内存 交互的问题</strong><ul>
+<li>文章上面一直用 cpu 和内存直接交互举的例子，但实际情况是 cpu 并没有和 内存 直接交互，它们之间还有 L1 Cache (一级缓存)， L2 Cache (二级缓存)，它们之间具体有多少级缓存，不同的计算机是不一样的。由于 cpu 空间很小，读取速度快；内存的空间大，读取速度慢，于是中间这些缓存就起到了一个存储交互的作用，cpu 一般是能去操作缓存就去操作缓存，除非缓存没有数据了才会去操作内存，总之，cpu 会尽量减少内存操作的次数，从而提高效率</li>
 </ul>
 </li>
 </ul>
