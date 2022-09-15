@@ -43,7 +43,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356010.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356849.png">
 <meta property="article:published_time" content="2022-07-09T07:15:45.000Z">
-<meta property="article:modified_time" content="2022-09-14T00:56:11.341Z">
+<meta property="article:modified_time" content="2022-09-15T07:03:45.802Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -230,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          59k 字
+          60k 字
         
       </span>
     
@@ -241,7 +241,7 @@
         
         
         
-          496 分钟
+          500 分钟
         
       </span>
     
@@ -1759,15 +1759,14 @@ int main(void)
 </ul>
 <h2 id="10-RAII"><a href="#10-RAII" class="headerlink" title="10.RAII"></a>10.RAII</h2><p><strong>什么是单例</strong></p>
 <ul>
-<li><p>单例 Singleton 是设计模式的一种，其特点是只提供<strong>唯一</strong>一个类的实例,具有全局变量的特点，在任何位置都可以通过接口获取到那个唯一实例<br>具体运用场景如：</p>
+<li><strong>单例 Singleton 是设计模式的一种，其特点是只提供唯一一个类的实例,具有全局变量的特点，在任何位置都可以通过接口获取到那个唯一实例</strong><br>具体运用场景如：</li>
+</ul>
 <ol>
 <li><p>设备管理器，系统中可能有多个设备，但是只有一个设备管理器，用于管理设备驱动</p>
 </li>
 <li><p>数据池，用来缓存数据的数据结构，需要在一处写，多处读取或者多处写，多处读取</p>
 </li>
 </ol>
-</li>
-</ul>
 <p><strong>C++单例的实现</strong></p>
 <ul>
 <li>全局只有一个实例：static 特性，同时禁止用户自己声明并定义实例（把构造函数设为 private）</li>
@@ -1790,12 +1789,37 @@ int main(void)
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/sunchaothu/p/10389842.html">详解</a></p>
 </li>
 </ul>
-<h2 id="11-右值引用"><a href="#11-右值引用" class="headerlink" title="11.右值引用"></a>11.右值引用</h2><ul>
+<h2 id="11-设计模式-观察者模式"><a href="#11-设计模式-观察者模式" class="headerlink" title="11.设计模式-观察者模式"></a>11.设计模式-观察者模式</h2><ul>
+<li><p><strong>意图</strong></p>
+<ul>
+<li>观察者模式是一种行为设计模式， 允许你定义一种订阅机制， 可在对象事件发生时通知多个 “观察” 该对象的其他对象</li>
+</ul>
+</li>
+<li><p><strong>解决方案</strong></p>
+<ul>
+<li>拥有一些值得关注的状态的对象通常被称为目标， 由于它要将自身的状态改变通知给其他对象， 我们也将其称为发布者 （pub­lish­er）。 所有希望关注发布者状态变化的其他对象被称为订阅者 （sub­scribers）</li>
+<li>观察者模式建议你为发布者类添加订阅机制， 让每个对象都能订阅或取消订阅发布者事件流。 不要害怕！ 这并不像听上去那么复杂。 实际上， 该机制包括 1） 一个用于存储订阅者对象引用的列表成员变量； 2） 几个用于添加或删除该列表中订阅者的公有方法</li>
+</ul>
+</li>
+<li><p><strong>应用场景</strong></p>
+<ul>
+<li>当一个对象状态的改变需要改变其他对象， 或实际对象是事先未知的或动态变化的时， 可使用观察者模式</li>
+<li>当你使用图形用户界面类时通常会遇到一个问题。 比如， 你创建了自定义按钮类并允许客户端在按钮中注入自定义代码， 这样当用户按下按钮时就会触发这些代码</li>
+<li>观察者模式允许任何实现了订阅者接口的对象订阅发布者对象的事件通知。 你可在按钮中添加订阅机制， 允许客户端通过自定义订阅类注入自定义代码</li>
+<li>当应用中的一些对象必须观察其他对象时， 可使用该模式。 但仅能在有限时间内或特定情况下使用</li>
+<li>订阅列表是动态的， 因此订阅者可随时加入或离开该列表</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://refactoringguru.cn/design-patterns/observer">详解1</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/design-pattern/observer-pattern.html">详解2</a></p>
+</li>
+</ul>
+<h2 id="12-右值引用"><a href="#12-右值引用" class="headerlink" title="12.右值引用"></a>12.右值引用</h2><ul>
 <li><p><strong>定义：</strong></p>
 <ul>
 <li>左值：存储在内存中，有明确存储地址(可寻址)的数据</li>
-<li>右值：可以提供数据值的数据(不一定可以寻址，如寄存器中的数据)</li>
 </ul>
+</li>
+<li><p>右值：可以提供数据值的数据(不一定可以寻址，如寄存器中的数据)</p>
 </li>
 <li><p><strong>判断某个表达式是左值还是右值</strong></p>
 <ul>
@@ -1880,8 +1904,8 @@ int main(void)
 </ul>
 </li>
 </ul>
-<h2 id="12-无锁队列"><a href="#12-无锁队列" class="headerlink" title="12.无锁队列"></a>12.无锁队列</h2><p><a target="_blank" rel="noopener" href="https://blog.51cto.com/quantfabric/2588193">C++性能优化-无锁队列</a></p>
-<h2 id="13-Lambda表达式原理"><a href="#13-Lambda表达式原理" class="headerlink" title="13.Lambda表达式原理"></a>13.Lambda表达式原理</h2><ul>
+<h2 id="13-无锁队列"><a href="#13-无锁队列" class="headerlink" title="13.无锁队列"></a>13.无锁队列</h2><p><a target="_blank" rel="noopener" href="https://blog.51cto.com/quantfabric/2588193">C++性能优化-无锁队列</a></p>
+<h2 id="14-Lambda表达式原理"><a href="#14-Lambda表达式原理" class="headerlink" title="14.Lambda表达式原理"></a>14.Lambda表达式原理</h2><ul>
 <li><p><strong>Lambda 表达式完整的格式如下：</strong></p>
 <p>[捕获列表] (形参列表) mutable 异常列表-&gt; 返回类型<br>{<br>函数体<br>}<br><strong>各项的含义：</strong></p>
 <ul>
@@ -1909,7 +1933,7 @@ int main(void)
 <p><a href="%5Dhttps://www.361shipin.com/blog/1532193536894566400">详解2</a></p>
 </li>
 </ul>
-<h2 id="14-C-11中的bind函数"><a href="#14-C-11中的bind函数" class="headerlink" title="14.C++11中的bind函数"></a>14.C++11中的bind函数</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/WindSun/p/13069887.html">详解1</a></p>
+<h2 id="15-C-11中的bind函数"><a href="#15-C-11中的bind函数" class="headerlink" title="15.C++11中的bind函数"></a>15.C++11中的bind函数</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/WindSun/p/13069887.html">详解1</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35721743/article/details/83308765?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-83308765-blog-71155234.pc_relevant_multi_platform_whitelistv4&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-83308765-blog-71155234.pc_relevant_multi_platform_whitelistv4&utm_relevant_index=1">详解2</a></p>
 <h1 id="四、STL模板库"><a href="#四、STL模板库" class="headerlink" title="四、STL模板库"></a>四、STL模板库</h1><h2 id="1-STL中的swap函数"><a href="#1-STL中的swap函数" class="headerlink" title="1.STL中的swap函数"></a>1.STL中的swap函数</h2><ul>
 <li>除了数组，其他容器在交换后本质上是将内存地址进行了交换，而元素本身在内存中的位置是没有变化</li>
