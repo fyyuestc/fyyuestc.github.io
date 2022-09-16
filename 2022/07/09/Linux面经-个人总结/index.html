@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/be608a77-7b7f-4f8e-87cc-f2237270bf69.png">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/docker-filesystems-busyboxrw.png">
 <meta property="article:published_time" content="2022-07-09T07:15:07.000Z">
-<meta property="article:modified_time" content="2022-09-16T02:24:58.742Z">
+<meta property="article:modified_time" content="2022-09-16T02:30:48.126Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -1171,7 +1171,7 @@
 <h2 id="6-文件系统"><a href="#6-文件系统" class="headerlink" title="6.文件系统"></a>6.文件系统</h2><h3 id="6-1Linux权限详解"><a href="#6-1Linux权限详解" class="headerlink" title="6.1Linux权限详解"></a>6.1Linux权限详解</h3><p><a target="_blank" rel="noopener" href="https://www.eet-china.com/mp/a100753.html">参考</a></p>
 <h2 id="7-设备管理"><a href="#7-设备管理" class="headerlink" title="7.设备管理"></a>7.设备管理</h2><h2 id="8-网络系统"><a href="#8-网络系统" class="headerlink" title="8.网络系统"></a>8.网络系统</h2><h1 id="二、Linux网络编程"><a href="#二、Linux网络编程" class="headerlink" title="二、Linux网络编程"></a>二、Linux网络编程</h1><h2 id="1-网络编程步骤"><a href="#1-网络编程步骤" class="headerlink" title="1.网络编程步骤"></a>1.网络编程步骤</h2><ul>
 <li><strong>TCP</strong><ul>
-<li><strong>服务端：</strong>socket-&gt;bind-&gt;listen-&gt;accept-&gt;recv&#x2F;send-&gt;close<ul>
+<li><strong>服务端：socket-&gt;bind-&gt;listen-&gt;accept-&gt;recv&#x2F;send-&gt;close</strong><ul>
 <li>创建一个socket，用函数socket()，设置SOCK_STREAM</li>
 <li>设置服务器地址和侦听端口，初始化要绑定的网络地址结构</li>
 <li>bind()函数绑定服务器IP地址、端口等信息到socket上</li>
@@ -1198,7 +1198,7 @@
 </ul>
 </li>
 <li><strong>UDP</strong><ul>
-<li><strong>服务端：</strong>socket -&gt; bind -&gt; recvfrom&#x2F;sendto -&gt; close<ul>
+<li><strong>服务端：socket -&gt; bind -&gt; recvfrom&#x2F;sendto -&gt; close</strong><ul>
 <li>建立套接字文件描述符，使用函数socket()，设置SOCK_DGRAM</li>
 <li>设置服务器地址和侦听端口，初始化要绑定的网络地址结构</li>
 <li>绑定侦听端口，使用bind()函数，将套接字文件描述符和一个地址类型变量进行绑定</li>
@@ -1207,7 +1207,7 @@
 <li>关闭套接字，使用close()函数释放资源</li>
 </ul>
 </li>
-<li><strong>客户端：</strong>socket -&gt; sendto&#x2F;recvfrom -&gt; close<ul>
+<li><strong>客户端：socket -&gt; sendto&#x2F;recvfrom -&gt; close</strong><ul>
 <li>建立套接字文件描述符，socket()</li>
 <li>设置服务器地址和端口，struct sockaddr</li>
 <li>向服务器发送数据，sendto()</li>
