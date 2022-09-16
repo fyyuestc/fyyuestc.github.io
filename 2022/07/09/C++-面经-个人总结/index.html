@@ -43,7 +43,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356010.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/fyyuestc/Images/main/img/202204031356849.png">
 <meta property="article:published_time" content="2022-07-09T07:15:45.000Z">
-<meta property="article:modified_time" content="2022-09-15T07:26:33.734Z">
+<meta property="article:modified_time" content="2022-09-16T02:42:10.458Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -924,8 +924,8 @@ int main(void)
 
 <ul>
 <li><strong>内存对齐规则</strong><ul>
-<li>对于结构的各个成员，第一个成员位于偏移为0的位置，以后的每个数据成员的偏移量必须是 min(#pragma pack()指定的数,这个数据成员的自身长度)的倍数</li>
-<li>在所有的数据成员完成各自对齐之后，结构或联合体本身也要进行对齐，对齐将按照 #pragam pack指定的数值和结构或者联合体最大数据成员长度中比较小的那个，也就是 min(#pragram pack() , 长度最长的数据成员)</li>
+<li>对于结构的各个成员，第一个成员位于偏移为0的位置，以后的每个数据成员的偏移量必须是 **min(#pragma pack()指定的数，这个数据成员的自身长度)**的倍数</li>
+<li>在所有的数据成员完成各自对齐之后，结构或联合体本身也要进行对齐，对齐将按照 #pragam pack指定的数值和结构或者联合体最大数据成员长度中比较小的那个，<strong>也就是 min(#pragram pack() , 长度最长的数据成员)</strong></li>
 </ul>
 </li>
 <li><strong>需要对齐的原因</strong><ul>
