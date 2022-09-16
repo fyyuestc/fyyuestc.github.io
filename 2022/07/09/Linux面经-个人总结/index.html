@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/be608a77-7b7f-4f8e-87cc-f2237270bf69.png">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/docker-filesystems-busyboxrw.png">
 <meta property="article:published_time" content="2022-07-09T07:15:07.000Z">
-<meta property="article:modified_time" content="2022-09-16T02:30:48.126Z">
+<meta property="article:modified_time" content="2022-09-16T02:35:55.919Z">
 <meta property="article:author" content="Fyy">
 <meta property="article:tag" content="PersonalSummary">
 <meta name="twitter:card" content="summary_large_image">
@@ -1455,10 +1455,10 @@
 </ul>
 </li>
 <li><strong>总结：</strong><ul>
-<li>在LT模式下，读事件触发后可以按需读取想要的字节数，不用把本次接收的数据收取干净（即不用循环到recv或者read函数返回-1，错误码为EAGAIN或EWOULDBLOCK）；在ET模式下，读事件时必须把数据收取干净，因为我们不一定再有机会收取数据了，即使有机会，也可能因为没有及时处理上次没读完的数据，造成客户端响应延迟</li>
-<li>在ET模式下，写事件触发后，如果还需要下一次的写事件触发来驱动任务（例如，发送上次剩余的数据），则我们需要继续注册一次检测可写事件。在LT模式下，不需要写事件时一定要及时移除，避免不必要地触发且浪费CPU资源（因为如果socket的TCP窗口一直不饱和，就会一直触发EPOLLOUT事件）<ul>
-<li>解决方法1：每次要写数据时，将fd绑定EPOLLOUT事件，写完后将fd同EPOLLOUT从epoll中移除</li>
-<li>解决方法2：方法一中每次写数据都要操作epoll。如果数据量很少，socket很容易将数据发送出去。可以考虑改成：数据量很少时直接send，数据量很多时在采用方法1</li>
+<li><strong>在LT模式下，读事件触发后可以按需读取想要的字节数，不用把本次接收的数据收取干净（即不用循环到recv或者read函数返回-1，错误码为EAGAIN或EWOULDBLOCK）；在ET模式下，读事件时必须把数据收取干净，因为我们不一定再有机会收取数据了，即使有机会，也可能因为没有及时处理上次没读完的数据，造成客户端响应延迟</strong></li>
+<li><strong>在ET模式下，写事件触发后，如果还需要下一次的写事件触发来驱动任务（例如，发送上次剩余的数据），则我们需要继续注册一次检测可写事件。在LT模式下，不需要写事件时一定要及时移除，避免不必要地触发且浪费CPU资源（因为如果socket的TCP窗口一直不饱和，就会一直触发EPOLLOUT事件）</strong><ul>
+<li><strong>解决方法1：每次要写数据时，将fd绑定EPOLLOUT事件，写完后将fd同EPOLLOUT从epoll中移除</strong></li>
+<li><strong>解决方法2：方法一中每次写数据都要操作epoll。如果数据量很少，socket很容易将数据发送出去。可以考虑改成：数据量很少时直接send，数据量很多时在采用方法1</strong></li>
 </ul>
 </li>
 <li>LT模式和ET模式各有优缺点。使用LT模式时，我们可以自由决定每次读取多少字节（对于普通socket）或何时接收连接（对于监听socket），但是可能会导致多次触发；使用ET模式，我们必须每次都将数据收完，或立即调用accept接收连接（对于监听socket），其优点是触发次数少</li>
